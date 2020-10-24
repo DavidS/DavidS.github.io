@@ -7,6 +7,7 @@ pushed_refs = $stdin.readlines
 output, status = Open3.capture2e("git annex post-receive", stdin_data: pushed_refs.join("\n"))
 
 puts output
+puts Dir.pwd
 
 Dir.chdir("#{ENV['SRV_DIR']}/git")
 # # redirect bundle config to protect read-only homes
