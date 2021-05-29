@@ -34,9 +34,7 @@ jekyll_analytics:
   Plausible:
     domain: 'club.black.co.at'
     source: 'https://plausible.black.co.at/js/plausible.js'
-  GoogleAnalytics:
-    id: UA-155086367-1
-    anonymizeIp: true
+    404_tracking: true
 
 twitter:
   username: dev_el_ops

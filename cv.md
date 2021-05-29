@@ -5,21 +5,39 @@ permalink: '/cv/index.html'
 layout: default
 ---
 
-
 <div style="float: right">
-<img src="{{ '/assets/david.png' | relative_url }}" />
+<img src="{% link /assets/2020-12-david.jpg %}" height=250 style="max-width: 100%; border-radius: 5%; margin: 3em;"  />
 </div>
+
+Throughout my career I've approached new projects with curiosity and the desire to improve the product, the process and myself.
+
 
 # Projects
 
-* 2015-present **Software Engineer**; Puppet, Inc.; [Modules Team](https://forge.puppet.com/supported),
+* 2018-today **Principal Software Engineer**; Puppet, Inc.
+
+  - ***Puppet Native Testing:***
+    **Goals:** Improve customer's deployment speed and confidence. "Move fast, without breaking things."
+    **Activities:** As tech lead and initiator of the project, I'm driving direction and design of a new set of tooling integrating existing code in an innovative workflow. This includes UX-Research with customers and collaborating with Solution Architects to define the problem space and refine the solution
+
+  - ***Cloud CI/CD:***
+    **Goals:** Improve OSS community collaboration; reduce engineering overhead on common operations.
+    **Results:** Improved developer feedback cycle from "at least an hour" to "90% of jobs are finished under 15 minutes, averaging at 6 minutes"; Improved infrastructure reliability to ~1% environmental failures; Reduced release cycle time from "a few hours of work" to "we did 37 releases in an afternoon without breaking a sweat"; public availability of PR test results for OSS community self-service
+    **Activities:** Design, develop and deploy a new green-field service; integration of existing tooling and multiple services to achieve usable outcome; mentor and uplevel team on cloud technologies; mentor on agile project management; implement deep observability with [Honeycomb](https://www.honeycomb.io/) for service and the hosted tests; implement continuous delivery including dynamic dev environments with terraform based on Google Cloudbuild
+
+  - ***Network Automation:***
+    **Goals:** Build out commercial support for a new market segment (network devices)
+    **Results:** implemented backend service and maintainable support for several device families
+    **Activities:** engineering and architecture collaboration across multiple teams and with Cisco; designed, implemented and integrated new backend service and new APIs to support the feature
+
+* 2015-2018 **Senior Software Engineer**; Puppet, Inc.; [Modules Team](https://forge.puppet.com/supported),
   [PDK](https://puppet.com/docs/pdk/1.x/pdk.html), [Resource API](https://puppet.com/docs/puppet/6.0/custom_resources.html), [Network Automation](https://github.com/orgs/puppetlabs/teams/networking/repositories)
 
-* 2014-2015  **Puppetmaster**;
+* 2014-2015  **Puppetwrangler**;
   *Jumio Software Development GmbH*;
   Puppet, collectd, opentsdb, python, mongodb
 
-* 2008-2015  **Puppetmaster**;
+* 2008-2015  **Puppetwrangler**;
   *Boehringer-Ingelheim RCV GmbH*; Puppet, RHEL5, RHEL6,
   Scientific Linux 6, PostgreSQL, The Foreman, PuppetDB,
   ruby, libvirt/KVM, apache, tomcat, SGE/OGS, ganglia,
@@ -35,7 +53,7 @@ layout: default
   *[dasz.at OG](http://dasz.at)*; C#, MSSQL, PostgreSQL, NHibernate,
   jenkins, NUnit, WPF, WCF, Autofac, FogBugz, Windows Server, Mono
 
-* 2006    **Applikationdeveloper**;
+* 2006    **Applicationdeveloper**;
   *ERES NET Consulting – Immobilien.NET GmbH*;
   C#, ASP.NET, MSSQL
 
