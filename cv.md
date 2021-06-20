@@ -11,27 +11,66 @@ layout: default
 
 Throughout my career I've approached new projects with curiosity and the desire to improve the product, the process and myself.
 
+# Major Projects
 
-# Projects
+* 2021 (ongoing): Puppet Native Testing - Move fast, without breaking things. Principal Software Engineer at Puppet, Inc.
 
-* 2018-today **Principal Software Engineer**; Puppet, Inc.
+  A regular complaint of customers and the open source community is Puppet's requirement for writing infrastructure tests in Ruby and RSpec.
+  This is a major adoption blocker for newcomers to infrastructure automation. This year I could initiate a new project to address this.
+  Puppet Native Testing combines new and existing components under a new Developer Experience tool.
 
-  - ***Puppet Native Testing:***
-    **Goals:** Improve customer's deployment speed and confidence. "Move fast, without breaking things."
-    **Activities:** As tech lead and initiator of the project, I'm driving direction and design of a new set of tooling integrating existing code in an innovative workflow. This includes UX-Research with customers and collaborating with Solution Architects to define the problem space and refine the solution
+  With Puppet Native Testing, customers can get documentation, unit testing and system integration testing from a single test case definition written in the Puppet DSL they already know.
+  Removing Ruby and RSpec from the pipelines reduces onboarding cost and provides an improved CI/CD experience as part of Puppet's paid offerings.
 
-  - ***Cloud CI/CD:***
-    **Goals:** Improve OSS community collaboration; reduce engineering overhead on common operations.
-    **Results:** Improved developer feedback cycle from "at least an hour" to "90% of jobs are finished under 15 minutes, averaging at 6 minutes"; Improved infrastructure reliability to ~1% environmental failures; Reduced release cycle time from "a few hours of work" to "we did 37 releases in an afternoon without breaking a sweat"; public availability of PR test results for OSS community self-service
-    **Activities:** Design, develop and deploy a new green-field service; integration of existing tooling and multiple services to achieve usable outcome; mentor and uplevel team on cloud technologies; mentor on agile project management; implement deep observability with [Honeycomb](https://www.honeycomb.io/) for service and the hosted tests; implement continuous delivery including dynamic dev environments with terraform based on Google Cloudbuild
+  Skills and technologies used: Product Design, UX Research, Ruby, Puppet internals, CI/CD
 
-  - ***Network Automation:***
-    **Goals:** Build out commercial support for a new market segment (network devices)
-    **Results:** implemented backend service and maintainable support for several device families
-    **Activities:** engineering and architecture collaboration across multiple teams and with Cisco; designed, implemented and integrated new backend service and new APIs to support the feature
+
+* 2021: node/NestJS/TypeORM backend on AWS. Backend Engineer at pre-seed Startup
+
+  As part of a fixed-scope, fixed-term, fixed-cost contract I joined the engineering team of a pre-seed Startup to build out the infrastructure and backend for a mobile app.
+  My main responsibility was bootstrapping and implementing a new node-based GraphQL service using NestJS and TypeORM to manage and access the database.
+  This included regular syncs with the frontend engineer to align the data model and API to the needs of the mobile app.
+
+  As the project progressed, I also implemented Stripe Payments, backend observability with honeycomb, continuous deployment of the backend service into AWS Fargate, continuous build and deployment of the react-native based app through expo.io, and a number of data import and ETL jobs to seed the database.
+
+  Technologies used: TypeScript, yarn, node, NestJS, TypeORM, postgres, honeycomb.io, AWS (CodeBuild, ECS, Fargate, ECR, Secrets Manager, IAM), react native, expo.io, CI/CD
+
+
+* 2019-2021: Reduce CI cycle time and improve reliability. Principal Software Engineer at Puppet, Inc.
+
+  As part of my team's open source maintainer responsibilities, we review and merge community contributions across ~70 public repositories.
+  A major part of this work was maintaining complex CI scripts on a private Jenkins instance with limited resources.
+  The weak CI system meant a lot of churn and rework as problems only surfaced after merges or through customer reports.
+
+  To address these issues we formed a small task force (myself and two senior engineers) and re-built the entire CI process on top of Github Actions with a custom service on GCP to provision ephemeral compute resources for our required system integration tests.
+  The new CI pipelines use a mix of docker containers and full GCP-hosted VMs (for licensed systems) for system integration testing.
+  Now all our public Open Source repos have fully automated CI responses within 20 minutes, nightly scheduled builds and less than 2% overall failure rates for about 20 USD per day.
+  Through full integration with honeycomb.io we get real-time, easy to query insights across service and test health.
+
+  Throughout the project I drove technical direction, system and API design, cloud strategy (services, environments, deployment), collaborated on project management with the engineering manager, and assisted my team members to skill up on the new technologies.
+
+  Skills and technologies used: Ruby, sinatra, RSpec, terraform, GCP (Cloud Build, Cloud Run, Container Registry, Firestore, Compute Engine, Cloud Storage, networking), Swagger/OpenAPI, honeycomb.io, Github Actions, system-level testing, CI/CD
+
+
+* 2019: Improving Puppet's Network Automation Offerings. Principal Software Engineer at Puppet, Inc.
+
+  To catch up with a competitor's offering, a new team was formed to improve Puppet's Network Device Automation offerings.
+  During a year of development, building on the previous success of the Resource API (see below), the team built a backend service for the new commercial product feature, supported the frontend team to build out the UI for this, integrated into the existing installer and authorization framework, solved a couple of structural problems, implemented support for several device families, and liaised with a device vendor's team to bring their agent-based code forward to the newer agent-less solution.
+
+  Skills and technologies used: Ruby, sinatra, API design, Developer Experience Design, cross-team collaboration, systems programming
+
+
+* 2017: Resource API. Senior Software Engineer at Puppet, Inc.
+
+  Designed, implemented, documented and integrated a convenient wrapper around the existing low-level API to build native Puppet integrations.
+  The low-level API (for which official docs, a lot of blogs and several books exist) has been described regularly as "ok, but needs docs."
+  With the Resource API, attendees to a workshop could build a working Puppet integration inside of two hours, following the hands-on-lab that I wrote.
+
+  Skills and technologies used: Puppet-internals, ruby, technical writing, API design, README-driven development.
+
 
 * 2015-2018 **Senior Software Engineer**; Puppet, Inc.; [Modules Team](https://forge.puppet.com/supported),
-  [PDK](https://puppet.com/docs/pdk/1.x/pdk.html), [Resource API](https://puppet.com/docs/puppet/6.0/custom_resources.html), [Network Automation](https://github.com/orgs/puppetlabs/teams/networking/repositories)
+  [PDK](https://puppet.com/docs/pdk/1.x/pdk.html)
 
 * 2014-2015  **Puppetwrangler**;
   *Jumio Software Development GmbH*;
@@ -65,7 +104,7 @@ Throughout my career I've approached new projects with curiosity and the desire 
   > **Josef Pfleger**
 
 * 2005    **Internship: Merbershipmanager**;
-  *FCG*; PHP, postgresql, data recovery
+  PHP, postgresql, data recovery
 
 * 2001-present  **Web/Mail/DNS [Hosting](https://github.com/DavidS/dasz-configuration/tree/master/modules/hosting)**;
   *[edv-bus.at](http://www.edv-bus.at/)*; Debian, apache, nginx, exim, bind,
