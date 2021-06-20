@@ -51,6 +51,12 @@ Throughout my career I've approached new projects with curiosity and the desire 
 
   Skills and technologies used: Ruby, sinatra, RSpec, terraform, GCP (Cloud Build, Cloud Run, Container Registry, Firestore, Compute Engine, Cloud Storage, networking), Swagger/OpenAPI, honeycomb.io, Github Actions, system-level testing, CI/CD
 
+* 2019-2021: Cheesy::Gallery - simple management of large galleries. Personal Project
+
+  For my [partner's website](https://www.cheesy.at) I've implemented a new [jekyll photo gallery](https://github.com/DavidS/cheesy-gallery) that allows my partner to handle ~30k (~45GB) pictures in her blog and galleries.
+  This project also included migrating ~900 posts, and 1500 galleries from the previous Wordpress site.
+
+  Skills and technologies used: Ruby, jekyllrb, wordpress, migration, ETL, nokogiri.
 
 * 2019: Improving Puppet's Network Automation Offerings. Principal Software Engineer at Puppet, Inc.
 
