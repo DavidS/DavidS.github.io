@@ -4,6 +4,8 @@ category: programming
 tags: devops hosting deployment applications jekyll programming
 ---
 
+**Update:** I've finally [finished this project]({% link _posts/2021-06-20-cheesy-gallery.md %}) and released the [underlying library](https://github.com/DavidS/cheesy-gallery).
+
 [The Wife](http://www.cheesy.at) is running a [WordPress](https://en-gb.wordpress.org/) site with over 700 blog posts, recipies and galleries containing over 50GB of pictures on my old hosting server. Between WordPress complaining about PHP being too old to upgrade and myself wanting to get that site off the old infrastructure, I've started looking into migrating her page to a less resource-hungry, easier to maintain solution. Since this blog here is running on jekyll, I thought I'll give it a try.
 
 Over the holidays I did a lot of research and experimentation, and now I'm finalising the plan to do so:
