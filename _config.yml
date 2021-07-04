@@ -33,8 +33,9 @@ defaults:
 jekyll_analytics:
   Plausible:
     domain: 'club.black.co.at'
-    source: 'https://plausible.black.co.at/js/plausible.js'
+    host: 'https://plausible.black.co.at'
     404_tracking: true
+    embed_tracker: true
 
 twitter:
   username: dev_el_ops
