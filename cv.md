@@ -13,7 +13,7 @@ Throughout my career I've approached new projects with curiosity and the desire 
 
 # Major Projects
 
-* 2021 (ongoing): Puppet Native Testing - Move fast, without breaking things. Principal Software Engineer at Puppet, Inc.
+* 2021: Puppet Native Testing - Move fast, without breaking things. Principal Software Engineer at Puppet, Inc.
 
   A regular complaint of customers and the open source community is Puppet's requirement for writing infrastructure tests in Ruby and RSpec.
   This is a major adoption blocker for newcomers to infrastructure automation. This year I could initiate a new project to address this.
@@ -45,7 +45,7 @@ Throughout my career I've approached new projects with curiosity and the desire 
   To address these issues we formed a small task force (myself and two senior engineers) and re-built the entire CI process on top of Github Actions with a custom service on GCP to provision ephemeral compute resources for our required system integration tests.
   The new CI pipelines use a mix of docker containers and full GCP-hosted VMs (for licensed systems) for system integration testing.
   Now all our public Open Source repos have fully automated CI responses within 20 minutes, nightly scheduled builds and less than 2% overall failure rates for about 20 USD per day.
-  Through full integration with honeycomb.io we get real-time, easy to query insights across service and test health.
+  Through full integration with [Honeycomb](https://honeycomb.io) we get real-time, easy to query insights across service and test health.
 
   Throughout the project I drove technical direction, system and API design, cloud strategy (services, environments, deployment), collaborated on project management with the engineering manager, and assisted my team members to skill up on the new technologies.
 
@@ -63,6 +63,8 @@ Throughout my career I've approached new projects with curiosity and the desire 
   To catch up with a competitor's offering, a new team was formed to improve Puppet's Network Device Automation offerings.
   During a year of development, building on the previous success of the Resource API (see below), the team built a backend service for the new commercial product feature, supported the frontend team to build out the UI for this, integrated into the existing installer and authorization framework, solved a couple of structural problems, implemented support for several device families, and liaised with a device vendor's team to bring their agent-based code forward to the newer agent-less solution.
 
+  This was released in PE 2019.2.0, Nov 6, 2019.
+
   Skills and technologies used: Ruby, sinatra, API design, Developer Experience Design, cross-team collaboration, systems programming
 
 
@@ -72,11 +74,15 @@ Throughout my career I've approached new projects with curiosity and the desire 
   The low-level API (for which official docs, a lot of blogs and several books exist) has been described regularly as "ok, but needs docs."
   With the Resource API, attendees to a workshop could build a working Puppet integration inside of two hours, following the hands-on-lab that I wrote.
 
+  Resource API 1.0 was released on Mar 23, 2018.
+
   Skills and technologies used: Puppet-internals, ruby, technical writing, API design, README-driven development.
 
 
 * 2015-2018 **Senior Software Engineer**; Puppet, Inc.; [Modules Team](https://forge.puppet.com/supported),
   [PDK](https://puppet.com/docs/pdk/1.x/pdk.html)
+
+  When joining Puppet it became clear the the lack of a standardized Development Environment is a major hurdler to customer adoption and success. I initiated and lead a project to assemble and package such a standardized environment. The PDK cut several days worth of work out of onboarding new engineers onto the product.
 
 * 2014-2015  **Puppetwrangler**;
   *Jumio Software Development GmbH*;
