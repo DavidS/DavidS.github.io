@@ -85,3 +85,9 @@ root@zion:/etc# etckeeper commit -m 'Create subuid and subgid mappings for `davi
  4 files changed, 2 insertions(+), 2 deletions(-)
 root@zion:/etc#
 ```
+
+
+## Resources
+
+* [Gentoo Wiki: Subuid subgid](https://wiki.gentoo.org/wiki/Subuid_subgid)
+* [Getting started with Buildah: Building a container](https://developers.redhat.com/blog/2021/01/11/getting-started-with-buildah#building_a_container)
