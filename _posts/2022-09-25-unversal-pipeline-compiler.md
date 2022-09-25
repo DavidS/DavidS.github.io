@@ -28,6 +28,10 @@ Looking back at various pipelines I've used and worked on over the years, there 
 
 While the basic shape is independent of the actual tooling used, rediscovering the details for each language is tedious. Similarly, CI Provider's offerings really aren't that different, except in the config language they use, and each's little walled garden of language ecosystem support-ish.
 
+Most importantly, I believe those two dimensions are pretty independent of each other. While, of course, it makes sense to use the CircleCI Ruby convenience image on CircleCI to have a higher cahce hit ratio and save 20s on job startup, that does not affect the actual commands to run rubocop (Ruby's linter) or how to build a gem (Ruby's package format.)
+
+What if there were a magical universal pipeline compiler that could take any project and create a functional, beautiful pipeline for any CI provider to cover the basics, and allow infrastructure-independent enhancements by developers?
+
 ## Tooling
 
 After complaining about the lackluster status quo for long enough, let's have a look at what could be done.
@@ -91,3 +95,7 @@ Configuring GitHub Actions Pipline:
 You can change the defaults by editing `.config/pipeline.conf` and re-running this command.
 ❯
 ```
+
+## Conclusion
+
+Of course, all of that only exists in my head, but if you really like this idea, or really hate it, please do reach out at <david@black.co.at> or [Twitter](https://twitter.com/dev_el_ops) and tell me why.
