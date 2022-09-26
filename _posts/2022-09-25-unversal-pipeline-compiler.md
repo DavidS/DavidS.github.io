@@ -4,9 +4,11 @@ category: programming
 tags: ci continuous-integration pipeline definition compiler python rust experiment design
 ---
 
+What if there were a magical universal pipeline compiler that could take any project and create a functional, beautiful pipeline for any CI provider to cover the basics, and allow infrastructure-independent enhancements by developers?
+
 ## Introduction
 
-What follows is a dramatic re-enactment of a couple of days of processing a lifetime of painful "second day" experiences with programming ecosystems.
+[What follows is a dramatic re-enactment of a couple of days of processing a lifetime of painful "second day" experiences with programming ecosystems.]
 
 While - or maybe because - my [last project](https://twitter.com/dev_el_ops/status/1573756127455608838) was specific to [CircleCI](https://circleci.com) one thought that didn't leave me was how annoying it was to set up the basic CI pipeline to get linting, testing and build the rust code when the project itself had no special needs. What can be done? It's weird how we have an automatic method for running services ([buildpacks](https://buildpacks.io/)), but - coming from an operational background (its inventors are PaaS privoders, now part of the [CNCF]) - I'm not surprised that they are absolutely lacking on the software development side. With Heroku's recent departure from the OSS field, I'm also not expecting any more innovation from that side. And finally, building a container and building a package (or binary for that matter) are different things. What can we do? 
 
@@ -30,22 +32,21 @@ While the basic shape is independent of the actual tooling used, rediscovering t
 
 Most importantly, I believe those two dimensions are pretty independent of each other. While, of course, it makes sense to use the CircleCI Ruby convenience image on CircleCI to have a higher cahce hit ratio and save 20s on job startup, that does not affect the actual commands to run rubocop (Ruby's linter) or how to build a gem (Ruby's package format.)
 
-What if there were a magical universal pipeline compiler that could take any project and create a functional, beautiful pipeline for any CI provider to cover the basics, and allow infrastructure-independent enhancements by developers?
-
 ## Tooling
 
 After complaining about the lackluster status quo for long enough, let's have a look at what could be done.
 
-* Like buildpacks, the tool can detect which languages are in use in a repo.
-* Like debhelper, the tool can provide sensible defaults from a single entrypoint.
+* Like buildpacks, the compiler can detect which languages are in use in a repo.
+* Like debhelper, the compiler can provide sensible defaults from a single entrypoint.
 
-* Because we can't guess everything, the tool provides a nice onboarding experience.
-* Because CI systems are configured through files in the repository, the tool outputs (and commits) the unrolled configuration.
-* Because everyone will have additional quirks to scratch, the tool provides a mechanism to inject additional commands into the configuration.
-* Because today's world is complex, the tool supports multiple languages and nested projects in a single repository.
-* Because projects evolve over time, te tool can deploy incremental changes to pipelines to cover new requirements.
-* Because this project evolve over time, the tool can deploy incremental changes to piplines to integrate implementation improvements.
-* Because language ecosystems sign-post good behaviour, the tool integrates into them on the calling side.
+* Because we can't guess everything, the compiler provides a nice onboarding experience.
+* Because CI systems are configured through files in the repository, the compiler outputs (and commits) the unrolled configuration.
+* Because everyone will have additional quirks to scratch, the compiler provides a mechanism to inject additional commands into the configuration.
+* Because today's world is complex, the compiler supports multiple languages and nested projects in a single repository.
+* Because projects evolve over time, te compiler can deploy incremental changes to pipelines to cover new requirements.
+* Because this project evolve over time, the compiler can deploy incremental changes to piplines to integrate implementation improvements.
+* Because language ecosystems sign-post good behaviour, the compiler integrates into them on the calling side.
+* Because releasing is a high-risk activity, the compiler should provide preview support for whatever would happen at release time.
 
 ## Rust/Cargo Example
 
@@ -59,8 +60,8 @@ Which CI provider to you want to use?
   GitLab CI/CD
 
 Detected Ecosystems:
-* Cargo (rust)
-* Dockerfile
+* Cargo (rust), from ./Cargo.toml
+* Docker, from ./Dockerfile
 
 Configuring GitHub Actions Pipline:
 * Linting: clippy (rust), hadolint (Dockerfile)
@@ -84,7 +85,7 @@ Which CI provider to you want to use?
 * GitLab CI/CD (recommended based on git remotes)
 
 Detected Ecosystems:
-* pip venv (python)
+* pip-tools venv (python), from ./requirements.in
 
 Configuring GitHub Actions Pipline:
 * Linting: black (python)
@@ -99,3 +100,7 @@ You can change the defaults by editing `.config/pipeline.conf` and re-running th
 ## Conclusion
 
 Of course, all of that only exists in my head, but if you really like this idea, or really hate it, please do reach out at <david@black.co.at> or [Twitter](https://twitter.com/dev_el_ops) and tell me why.
+
+----
+
+*Thanks to Michael Lombardi for comments/corrections/discussion.*
