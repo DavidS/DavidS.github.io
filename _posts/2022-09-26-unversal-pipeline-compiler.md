@@ -12,7 +12,7 @@ What if there were a magical universal pipeline compiler that could take any pro
 
 While - or maybe because - my [last project](https://twitter.com/dev_el_ops/status/1573756127455608838) was specific to [CircleCI](https://circleci.com) one thought that didn't leave me was how annoying it was to set up the basic CI pipeline to get linting, testing and build the rust code when the project itself had no special needs. What can be done? It's weird how we have an automatic method for running services ([buildpacks](https://buildpacks.io/)), but - coming from an operational background (its inventors are PaaS providers, now part of the [CNCF]) - I'm not surprised that they are absolutely lacking on the software development side. With Heroku's recent departure from the OSS field, I'm also not expecting any more innovation from that side. And finally, building a container and building a package (or binary for that matter) are different things. What can we do? 
 
-Any solution would need to be modular to support a multitude of language ecosystems and CI providers. Even within a language ecosystem, there might be different linters, test framworks and buildprocesses (e.g. binary vs library) to contend with. Going down this path of considerations reminded me of the [debhelper](https://salsa.debian.org/debian/debhelper) set of scripts that is part of Debian's efforts to package up all software. The suite of dh scripts provides a single, configurable entrypoint to configure and build Linux packages. How would that work for for a development process?
+Any solution would need to be modular to support a multitude of language ecosystems and CI providers. Even within a language ecosystem, there might be different linters, test frameworks and build processes (e.g. binary vs library) to contend with. Going down this path of considerations reminded me of the [debhelper](https://salsa.debian.org/debian/debhelper) set of scripts that is part of Debian's efforts to package up all software. The suite of dh scripts provides a single, configurable entrypoint to configure and build Linux packages. How would that work for for a development process?
 
 Speaking of development process, another option discarded is integrating into an IDE like VSCode. As much as I enjoy VSCode for all my authoring needs, it is not universal by any stretch of the imagination.
 
@@ -30,7 +30,7 @@ Looking back at various pipelines I've used and worked on over the years, there 
 
 While the basic shape is independent of the actual tooling used, rediscovering the details for each language is tedious. Similarly, CI Provider's offerings really aren't that different, except in the config language they use, and each's little walled garden of language ecosystem support-ish.
 
-Most importantly, I believe those two dimensions are pretty independent of each other. While, of course, it makes sense to use the CircleCI Ruby convenience image on CircleCI to have a higher cahce hit ratio and save 20s on job startup, that does not affect the actual commands to run rubocop (Ruby's linter) or how to build a gem (Ruby's package format.)
+Most importantly, I believe those two dimensions are pretty independent of each other. While, of course, it makes sense to use the CircleCI Ruby convenience image on CircleCI to have a higher cache hit ratio and save 20s on job startup, that does not affect the actual commands to run rubocop (Ruby's linter) or how to build a gem (Ruby's package format.)
 
 ## Tooling
 
@@ -44,7 +44,7 @@ After complaining about the lackluster status quo for long enough, let's have a 
 * Because everyone will have additional quirks to scratch, the compiler provides a mechanism to inject additional commands into the configuration.
 * Because today's world is complex, the compiler supports multiple languages and nested projects in a single repository.
 * Because projects evolve over time, te compiler can deploy incremental changes to pipelines to cover new requirements.
-* Because this project evolve over time, the compiler can deploy incremental changes to piplines to integrate implementation improvements.
+* Because this project evolve over time, the compiler can deploy incremental changes to pipelines to integrate implementation improvements.
 * Because language ecosystems sign-post good behaviour, the compiler integrates into them on the calling side.
 * Because releasing is a high-risk activity, the compiler should provide preview support for whatever would happen at release time.
 
@@ -63,7 +63,7 @@ Detected Ecosystems:
 * Cargo (rust), from ./Cargo.toml
 * Docker, from ./Dockerfile
 
-Configuring GitHub Actions Pipline:
+Configuring GitHub Actions Pipeline:
 * Linting: clippy (rust), hadolint (Dockerfile)
 * Testing: cargo test
 * Building: cargo build --release, docker buildx
@@ -87,7 +87,7 @@ Which CI provider to you want to use?
 Detected Ecosystems:
 * pip-tools venv (python), from ./requirements.in
 
-Configuring GitHub Actions Pipline:
+Configuring GitLab CI/CD Pipeline:
 * Linting: black (python)
 * Testing: pytest (python)
 * Building: pip build (python)
