@@ -10,7 +10,7 @@ What if there were a magical universal pipeline compiler that could take any pro
 
 [What follows is a dramatic re-enactment of a couple of days of processing a lifetime of painful "second day" experiences with programming ecosystems.]
 
-While - or maybe because - my [last project](https://twitter.com/dev_el_ops/status/1573756127455608838) was specific to [CircleCI](https://circleci.com) one thought that didn't leave me was how annoying it was to set up the basic CI pipeline to get linting, testing and build the rust code when the project itself had no special needs. What can be done? It's weird how we have an automatic method for running services ([buildpacks](https://buildpacks.io/)), but - coming from an operational background (its inventors are PaaS privoders, now part of the [CNCF]) - I'm not surprised that they are absolutely lacking on the software development side. With Heroku's recent departure from the OSS field, I'm also not expecting any more innovation from that side. And finally, building a container and building a package (or binary for that matter) are different things. What can we do? 
+While - or maybe because - my [last project](https://twitter.com/dev_el_ops/status/1573756127455608838) was specific to [CircleCI](https://circleci.com) one thought that didn't leave me was how annoying it was to set up the basic CI pipeline to get linting, testing and build the rust code when the project itself had no special needs. What can be done? It's weird how we have an automatic method for running services ([buildpacks](https://buildpacks.io/)), but - coming from an operational background (its inventors are PaaS providers, now part of the [CNCF]) - I'm not surprised that they are absolutely lacking on the software development side. With Heroku's recent departure from the OSS field, I'm also not expecting any more innovation from that side. And finally, building a container and building a package (or binary for that matter) are different things. What can we do? 
 
 Any solution would need to be modular to support a multitude of language ecosystems and CI providers. Even within a language ecosystem, there might be different linters, test framworks and buildprocesses (e.g. binary vs library) to contend with. Going down this path of considerations reminded me of the [debhelper](https://salsa.debian.org/debian/debhelper) set of scripts that is part of Debian's efforts to package up all software. The suite of dh scripts provides a single, configurable entrypoint to configure and build Linux packages. How would that work for for a development process?
 
@@ -103,4 +103,4 @@ Of course, all of that only exists in my head, but if you really like this idea,
 
 ----
 
-*Thanks to Michael Lombardi for comments/corrections/discussion.*
+*Thanks to Michael Lombardi and Evgeni Golov for comments/corrections/discussion.*
