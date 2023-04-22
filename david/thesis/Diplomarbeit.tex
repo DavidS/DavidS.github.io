@@ -1,0 +1,144 @@
+\documentclass[11pt,german,oneside]{book}
+% \draft zeigt einem alle überbreiten Stellen an
+%\documentclass[11pt,german,oneside,draft]{book}
+
+% Schrift und Symbole
+\usepackage{german}	% oder english
+\usepackage{ngerman}	
+\usepackage{babel}	% wenn man nicht english verwendet
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{pifont}
+\usepackage{textcomp}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{helvet}
+\usepackage{palatino}
+\usepackage{array}
+\usepackage{texdraw}
+\usepackage{eurosym}
+\usepackage{listings}
+\lstset{
+language=Java,
+columns=fullflexible,
+%numbers=left,
+%stepnumber=5,
+numberstyle=\tiny,
+%% basicstyle=\it\small,
+basicstyle=\small,
+lineskip=\smallskipamount,
+tabsize=4,
+extendedchars=true,
+frame=tb,
+aboveskip=\bigskipamount,
+abovecaptionskip=\bigskipamount,
+captionpos=b
+}
+
+\newcommand{\code}[1]{\lstinline[columns=fullflexible,basicstyle=\it]{#1}\/}
+ \newcommand{\sql}[1]{\lstinline[columns=fullflexible,basicstyle=\it,language=sql]{#1}}
+ \newcommand{\xml}[1]{\lstinline[columns=fullflexible,basicstyle=\it,language=xml]{#1}}
+ \newcommand{\abschnitt}[1]{Abschnitt~\ref{#1}}
+
+%\newcommand{\TODO}[1]{\paragraph{TODO:}#1}
+\newcommand{\TODO}[1]{}
+
+%% TODO:
+%% zusätzliche Schlüsselwörter für SQL: 
+%% - COMMITTED
+%% - REPEATABLE
+%% - SERIALIZABLE
+%% - WORK
+%% - IS
+%% - FOR
+%% - LOCK
+% Graphik
+\usepackage[pdftex]{graphicx}
+\usepackage{tikz}
+
+% Layout
+%% TODO: Gedankenstriche: - -> --
+\usepackage{fancyhdr}
+\usepackage{multirow}
+\usepackage{alltt}
+\usepackage{url}
+\usepackage{vmargin}
+\usepackage{varioref}
+%%\usepackage{pstricks}
+\usepackage{longtable}
+
+% Bibliographie
+\usepackage{bibgerm}
+\usepackage[nottoc]{tocbibind}
+%%\sloppy
+
+% Seiteneinstellungen
+\setpapersize{A4}
+\setmarginsrb{25.4mm}{25.4mm}{25.4mm}{25.4mm}{15pt}{11mm}{0pt}{11mm}
+
+% URLs
+\ifx\pdfoutput\undefined\ifx\pdfoutput\undefined
+  \usepackage[hypertex,hypertex,colorlinks=true,linkcolor=black,
+  citecolor=black]{hyperref}\else\usepackage[pdftex,hypertex,colorlinks=true,
+  linkcolor=black,citecolor=black]{hyperref}\fi\else\ifx\pdfoutput\undefined
+  \usepackage[hypertex,pdftex,colorlinks=true,linkcolor=black,
+  citecolor=black]{hyperref}\else\usepackage[pdftex,pdftex,colorlinks=true,
+  linkcolor=black,citecolor=black]{hyperref}\fi\fi
+
+% Definitionen für Abstände (vor Tabellen am besten
+% \renewcommand{\baselinestretch}{1} aufrufen, nach Tabellen wieder mit
+% \renewcommand{\baselinestretch}{1.5} auf 1.5 Zeilenabstand setzen.
+\def\file#1{\texttt{\spaceskip=1sp\relax#1}}
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\arraystretch}{1.5}
+
+% myquote und myquotecite: Umgebungen um Zitate schön abzubilden:
+% aufruf einfach mit /begin{myquote} wenn das Zitat keine Referenz auf die
+% Bibliographie hat oder mit /begin{myquote}{BIBLIOGRAPHY-Eintrag} wenn eine
+% Referenz auf die Bibliographie dabeistehen soll.
+\newenvironment{myquote}{\begin{list}{}{\rightmargin\leftmargin\slshape}\item[]}  {\end{list}}
+\newsavebox{\myquotecitebox}
+\newenvironment{myquotecite}[1]{\sbox{\myquotecitebox}{\cite{#1}}\begin{list}{}
+  {\rightmargin\leftmargin\slshape}\item[]}{\hspace*{\fill}
+  \usebox{\myquotecitebox}\end{list}}
+
+\newenvironment{note}{\begin{quote}\small\textbf{Anmerkung:}}  {\end{quote}}
+\bibliographystyle{gerplain}
+\pagestyle{headings}
+
+\nonfrenchspacing
+\hyphenation{fach-spe-zi-fi-sches fach-spe-zi-fi-sch fach-spe-zi-fi-schen}
+
+\begin{document}
+
+% Anfangsteil ist mit römischen Zahlen nummeriert
+\frontmatter
+\include{Titel}
+\include{Abstract}
+\include{Acknowledgements}
+\tableofcontents
+
+% Hauptteil
+\mainmatter
+%% \include{Beispiel}
+
+\include{01_Einleitung}
+\include{02_Modellierung}
+\include{03_Konzepte}
+\include{04_Implementierung}
+\include{05_OODBMS}
+\include{06_Zusammenfassung}
+
+\TODO{Relational:Tabellarisch - Objektorientierung:Baumstruktur}
+
+%% TODO: "`"' reparieren
+
+% Tabellen-, Abbildungs- und Literaturverzeichnis
+\backmatter
+%\listoftables
+\bibliography{bib/bib}
+\nocite{*}
+\listoffigures
+
+
+\end{document}

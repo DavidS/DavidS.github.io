@@ -1,0 +1,10 @@
+# Should apt-listchanges prompt for confirmation after displaying changes?
+apt-listchanges apt-listchanges/confirm boolean true
+# To whom should apt-listchanges mail changes?
+apt-listchanges apt-listchanges/email-address   string  root
+# Choices: news, both, changelogs
+apt-listchanges apt-listchanges/which   select  both
+# Choices: pager, browser, xterm-pager, xterm-browser, text, mail, none
+apt-listchanges apt-listchanges/frontend        select  pager
+# Should apt-listchanges skip changes that have already been seen?
+apt-listchanges apt-listchanges/save-seen       boolean true

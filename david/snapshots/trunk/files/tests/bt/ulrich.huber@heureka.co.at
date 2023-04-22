@@ -1,0 +1,4 @@
+ulrich.huber@heureka.co.at
+  router = dnslookup, transport = remote_smtp
+  host ns1.heureka.co.at [83.64.231.80] MX=200
+  host ns2.heureka.co.at [83.64.231.71] MX=400

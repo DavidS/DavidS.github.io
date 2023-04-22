@@ -1,0 +1,51 @@
+# Additional checks for vis-med
+# ---------------------------------------------------------------------
+deny 
+  message = unrouteable sender
+  hosts = +strict_from_to_hosts
+  !verify = sender/callout=20s
+
+deny
+  message = unrouteable destination
+  hosts = +strict_from_to_hosts
+  !verify = recipient/callout=20s,use_sender
+# ---------------------------------------------------------------------
+
+
+# Deny if we have previously given a reason for doing so in $acl_m0.
+# Also stall the sender for another 20s first.
+# exclude authenticated and whitelisted
+
+deny
+  !acl = acl_whitelist_local_deny
+  !authenticated = *
+  message     = $acl_m0
+  log_message = $acl_m1 (delaying for 20s)
+  condition   = ${if and {{def:acl_m0}{def:acl_m1}} {true}}
+  delay       = 20s
+
+
+# Deny and delay the sender if the recipient (in the local and virtual
+# domains) cannot be verified. This slows down spamruns, virii and
+# address brute forcing.
+
+deny domains = +local_domains
+     message = unknown user
+     !verify = recipient
+     set acl_m7 = ${eval:${if >{$acl_m7}{0}{$acl_m7}{1}} + 3}
+     log_message = delaying invalid recipient ($acl_m7 s)
+     delay = ${if >{$acl_m7}{0}{$acl_m7}}s
+
+
+# Deny and delay the sender if the recipient (in a domain for which we
+# are relaying) cannot be verified. This slows down spamruns, virii
+# and address brute forcing.
+
+require domains = +relay_to_domains
+     message = unknown user
+     verify = recipient/callout=20s,defer_ok,use_sender
+     set acl_m7 = ${eval:${if >{$acl_m7}{0}{$acl_m7}{1}} + 3}
+     log_message = delaying unrouteable address ($acl_m7 s)
+     delay = ${if >{$acl_m7}{0}{$acl_m7}}s
+
+

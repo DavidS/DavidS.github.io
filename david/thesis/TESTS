@@ -1,0 +1,22 @@
+programming
+
+* inheritance (DataObject)
+* Add field
+* change Picture.type into multi-boolean-column
+* Error handling (missing fields, sql errors)
+* management (schema updates)
+* Associations/Collections
+** SimpleORM unterstützt keine Collections ...
+* Transparenz (IFolder.getParent/getParentId)
+* Datensicherheit (Standardtransaktionsisolierung etc ...)
+* Distribution(!!)
+
+performace (Alle transaktionen auf serializable und alle SELECT ... FOR UPDATE)
+
+* startup time
+* findByIId
+* findByTags
+* update
+* delete
+* walk folders
+

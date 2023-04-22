@@ -1,0 +1,15 @@
+
+**** SMTP testing session as if from host 127.0.0.1
+**** but without any ident (RFC 1413) callback.
+**** This is not for real!
+
+220 smtp.black.co.at ESMTP Exim 4
+250 smtp.black.co.at Hello localhost [127.0.0.1]
+250 OK
+250 Accepted
+354 Enter message, ending with "." on a line by itself
+250 OK id=
+
+**** SMTP testing: that is not a real message id!
+
+221 smtp.black.co.at closing connection

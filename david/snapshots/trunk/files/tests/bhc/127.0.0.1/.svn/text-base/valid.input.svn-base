@@ -1,0 +1,12 @@
+HELO localhost
+MAIL FROM: <postmaster@uni-ak.ac.at>
+RCPT TO: <postmaster@student.uni-ak.ac.at>
+DATA
+From: <postmaster@uni-ak.ac.at>
+To: <postmaster@student.uni-ak.ac.at>
+Subject: smtpscanner testmail
+
+blah 
+fasel
+.
+QUIT

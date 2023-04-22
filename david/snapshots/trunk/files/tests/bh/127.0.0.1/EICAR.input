@@ -1,0 +1,23 @@
+HELO localhost
+MAIL FROM: <postmaster@google.com>
+RCPT TO: <postmaster@microsoft.com>
+DATA
+To: postmaster@black.co.at
+Subject: eicar test mail
+MIME-Version: 1.0 (mime-construct 1.9)
+Content-Type: multipart/mixed; boundary=algonquin
+
+--algonquin
+Content-Transfer-Encoding: base64
+
+VGhlIEVJQ0FSIHRlc3QgdmlydXM=
+
+--algonquin
+Content-Disposition: attachment; filename=eicar
+Content-Type: application/octet-stream; name=eicar
+
+X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*
+
+--algonquin--
+.
+QUIT

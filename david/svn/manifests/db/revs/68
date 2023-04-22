@@ -1,0 +1,168 @@
+PLAIN
+K 10
+apache2.pp
+V 17
+file 38.0.r32/411
+K 11
+asterisk.pp
+V 19
+file 3a.0.r16/12334
+K 9
+backup.pp
+V 18
+file 3b.0.r48/4192
+K 13
+base-users.pp
+V 19
+file 3c.0.r16/11303
+K 7
+bind.pp
+V 17
+file 3d.0.r45/197
+K 8
+exim4.pp
+V 17
+file 3f.0.r37/124
+K 11
+firewall.pp
+V 17
+file 3g.0.r30/322
+K 11
+leshaper.pp
+V 18
+file 5e.0.r28/2233
+K 11
+logcheck.pp
+V 19
+file 3h.0.r16/11821
+K 10
+modules.pp
+V 17
+file 3i.0.r17/862
+K 8
+munin.pp
+V 17
+file 3j.0.r41/308
+K 8
+mysql.pp
+V 19
+file 3k.0.r16/10278
+K 9
+nagios.pp
+V 19
+file 3l.0.r16/11994
+K 6
+ntp.pp
+V 18
+file 3m.0.r16/9941
+K 15
+puppetmaster.pp
+V 19
+file 3n.0.r16/12846
+K 8
+samba.pp
+V 17
+file 5g.0.r34/903
+K 10
+slimfit.pp
+V 19
+file 3o.0.r16/11131
+K 11
+snvserve.pp
+V 16
+file 3p.0.r38/62
+K 8
+ssmtp.pp
+V 19
+file 3r.0.r16/10961
+END
+ENDREP
+id: 37.0.r68/761
+type: dir
+pred: 37.0.r67/7946
+count: 34
+text: 68 0 748 748 b59efb313697488b757a1832ef273675
+cpath: /trunk/manifests/classes
+copyroot: 0 /
+
+PLAIN
+K 7
+classes
+V 16
+dir 37.0.r68/761
+K 9
+common.pp
+V 18
+file 3u.0.r54/1580
+K 10
+modules.pp
+V 18
+file 5p.0.r58/7974
+K 7
+site.pp
+V 18
+file 3v.0.r67/6990
+END
+ENDREP
+id: 36.0.r68/1082
+type: dir
+pred: 36.0.r67/8272
+count: 45
+text: 68 917 152 152 b5e370f40a4fa7ac80fcc6cc7f222548
+cpath: /trunk/manifests
+copyroot: 0 /
+
+PLAIN
+K 7
+LICENSE
+V 18
+file 57.0.r16/8923
+K 3
+doc
+V 16
+dir 51.0.r36/714
+K 5
+files
+V 16
+dir 2.0.r67/4378
+K 9
+manifests
+V 17
+dir 36.0.r68/1082
+K 7
+modules
+V 17
+dir 5h.0.r67/6840
+K 9
+templates
+V 17
+dir 3w.0.r45/3294
+END
+ENDREP
+id: 1.0.r68/1457
+type: dir
+pred: 1.0.r67/8648
+count: 67
+text: 68 1233 211 211 22fc58211df57dd7d9d039816acb0c69
+cpath: /trunk
+copyroot: 0 /
+
+PLAIN
+K 5
+trunk
+V 16
+dir 1.0.r68/1457
+END
+ENDREP
+id: 0.0.r68/1646
+type: dir
+pred: 0.0.r67/8837
+count: 68
+text: 68 1597 36 36 a787eb7d68043f98ee303c9d70525774
+cpath: /
+copyroot: 0 /
+
+3e.0.r61/47 delete false false /trunk/manifests/classes/dbp.pp
+
+
+1646 1779

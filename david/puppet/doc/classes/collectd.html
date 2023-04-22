@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: collectd</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">collectd</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/home/david/repos/complete/modules/collectd/manifests/logfile_pp.html">
+                /home/david/repos/complete/modules/collectd/manifests/logfile.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/collectd/manifests/plugin_pp.html">
+                /home/david/repos/complete/modules/collectd/manifests/plugin.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/collectd/manifests/init_pp.html">
+                /home/david/repos/complete/modules/collectd/manifests/init.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/collectd/manifests/syslog_pp.html">
+                /home/david/repos/complete/modules/collectd/manifests/syslog.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/collectd/manifests/network_pp.html">
+                /home/david/repos/complete/modules/collectd/manifests/network.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/collectd/manifests/conf_pp.html">
+                /home/david/repos/complete/modules/collectd/manifests/conf.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/collectd/manifests/libdir_pp.html">
+                /home/david/repos/complete/modules/collectd/manifests/libdir.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/collectd/plugins/puppet/provider/collectd_threshold/parsed_rb.html">
+                /home/david/repos/complete/modules/collectd/plugins/puppet/provider/collectd_threshold/parsed.rb
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/collectd/plugins/puppet/provider/collectd_conf/parsed_rb.html">
+                /home/david/repos/complete/modules/collectd/plugins/puppet/provider/collectd_conf/parsed.rb
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/collectd/plugins/puppet/parser/functions/join_rb.html">
+                /home/david/repos/complete/modules/collectd/plugins/puppet/parser/functions/join.rb
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/collectd/plugins/puppet/type/collectd_conf_rb.html">
+                /home/david/repos/complete/modules/collectd/plugins/puppet/type/collectd_conf.rb
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/collectd/plugins/puppet/type/collectd_threshold_rb.html">
+                /home/david/repos/complete/modules/collectd/plugins/puppet/type/collectd_threshold.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Thanks
+</p>
+<h6></h6>
+<p>
+Work on this module was made possible by funding from neoTactics, Inc.
+</p>
+<pre>
+                     http://neotactics.com/
+</pre>
+<p>
+Collectd
+</p>
+<h6>==</h6>
+<p>
+Collectd is a very lightweight system statistics gathering daemon. To quote
+from <a href="http://collectd.org">collectd.org</a>/ :
+</p>
+<p>
+&gt; [&#8230;] it&#8216;s written in C for performance and portability,
+[&#8230;] It includes &gt; optimizations and features to handle hundreds of
+thousands of data sets. It &gt; comes with over 60 plugins [&#8230;]. It
+provides powerful networking features &gt; and is extensible in numerous
+ways. Last but not least: <a href="collectd.html">collectd</a> is actively
+&gt; developed and supported and well documented.
+</p>
+<p>
+The Module
+</p>
+<h6>====</h6>
+<p>
+The <a href="collectd.html">collectd</a> puppet module contains high-level
+defines to configure the most important modules as well as native puppet
+types to manage the configuration files as well as <a
+href="collectd.html">collectd</a>&#8216;s notification and threshold rules.
+</p>
+<p>
+The mapping tries to use <a href="collectd.html">collectd</a>&#8216;s
+config file keywords as much as possible. Therefore any know-how should
+carry over pretty straight forward.
+</p>
+<p>
+You can find the module at <a
+href="http://git.black.co.at/?p=module-collectd">git.black.co.at/?p=module-collectd</a>
+</p>
+<p>
+Please send any patches and comments to this list for discussion.
+</p>
+<p>
+Caveats
+</p>
+<h6>=</h6>
+<ol>
+<li>Due to the heterogeneous syntax of <a
+href="collectd.html">collectd</a>&#8216;s configuration files, I opted
+
+</li>
+</ol>
+<p>
+to split the Key-Value-style configuration of the daemon itself and the
+sections for the plugins into different native types. This in turn
+necessitates to have each <a href="collectd.html#M000002">plugin</a>
+configuration in a separate file. The default &quot;<a
+href="collectd.html">collectd</a>&quot; class in the module will setup the
+proper structures to automatically create the default locations and include
+them into the daemon&#8216;s configuration.
+</p>
+<ol>
+<li>There are currently only a few plugins explicitly implemented. To implement
+
+</li>
+</ol>
+<p>
+a new <a href="collectd.html#M000002">plugin</a> configuration, one just
+needs to specify a mapping from puppet resources&#8217; parameters to the
+actual configuration, which is really straight forward using the provided
+infrastructure.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Defines</h3>
+
+      <div class="name-list">
+      <a href="#M000005">conf</a>&nbsp;&nbsp;
+      <a href="#M000006">libdir</a>&nbsp;&nbsp;
+      <a href="#M000001">logfile</a>&nbsp;&nbsp;
+      <a href="#M000004">network</a>&nbsp;&nbsp;
+      <a href="#M000002">plugin</a>&nbsp;&nbsp;
+      <a href="#M000003">syslog</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+<!-- if facts -->
+
+<!-- if plugins -->
+    <div id="class-list">
+      <h3 class="section-bar">Plugins</h3>
+<a href="../plugins/join.html">join</a>&nbsp;&nbsp;
+<a href="../plugins/collectd_conf.html">collectd_conf</a>&nbsp;&nbsp;
+<a href="../plugins/collectd_threshold.html">collectd_threshold</a>&nbsp;&nbsp;
+    </div>
+
+<!-- if nodes -->
+
+<!-- if class -->
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="collectd/collectd.html" class="link">collectd::collectd</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Defines</h3>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <span class="method-name">conf</span><span class="method-args">( $value, $quote =&gt; '', $ensure =&gt; 'present' )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define: <a href="collectd.html">collectd</a>::<a
+href="collectd.html#M000005">conf</a>
+</p>
+<p>
+Parameters:
+</p>
+<pre>
+  namevar       - the name of the collect.conf option
+  value - the value to set for this option. Use an array to specify
+                  multiple values, these will be put on separate lines
+  ensure        - 'present' or 'absent'
+  quote - specify whether the value needs quoting. A default is chosen
+                  for known options, if nothing is specified.
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <span class="method-name">libdir</span><span class="method-args">( )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+private, a purged directory to store the various additional configs
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000001" class="method-detail">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+          <span class="method-name">logfile</span><span class="method-args">( $timestamp =&gt; 'true', $level )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define: <a href="collectd.html">collectd</a>::<a
+href="collectd.html#M000001">logfile</a> specifies a <a
+href="collectd.html#M000001">logfile</a> for <a
+href="collectd.html">collectd</a>
+</p>
+<p>
+Parameters:
+</p>
+<pre>
+  namevar       - The basename for the logfile. It'll actually be called &quot;/var/log/collectd_${namevar}.log&quot;
+  level - The collectd loglevel
+  timestamp     - 'true' (default) or 'false'; whether to add timestamps to the log
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <span class="method-name">network</span><span class="method-args">( $ttl =&gt; '', $forward =&gt; 'false', $server =&gt; '', $cache_flush =&gt; '1800', $listen =&gt; '' )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define: <a href="collectd.html">collectd</a>::<a
+href="collectd.html#M000004">network</a> manage the <a
+href="collectd.html#M000004">network</a> <a
+href="collectd.html#M000002">plugin</a>&#8216;s parameters
+</p>
+<p>
+Parameters:
+</p>
+<pre>
+  namevar       - ignored, there can only be one network plugin specification per node
+  listen        - The Listen statement's values. Can be an array for multiple interfaces.
+  server        - The Server statement's values. Can be an array for multiple interfaces.
+  ttl           - 1-255; set the time-to-live of sent packets.
+  forward       - 'true' or 'false' (default); If set to true, write packets
+                  that were received via the network plugin to the sending sockets.
+  cache_flush   - seconds, (default=1800); how often the network plugin should
+                  flush it's caches. Since this process is somewhat expensive
+                  and normally doesn't do much, this value should not be too
+                  small.  The default is 1800 seconds, but setting this to
+                  86400 seconds (one day) will not do much harm either.
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <span class="method-name">plugin</span><span class="method-args">( $lines =&gt; '' )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define: <a href="collectd.html">collectd</a>::<a
+href="collectd.html#M000002">plugin</a> A generic wrapper for a <a
+href="collectd.html#M000002">plugin</a> configuration. This automatically
+loads the <a href="collectd.html#M000002">plugin</a> before it&#8216;s
+configuration and notifies the <a href="collectd.html">collectd</a> service
+to reload its configs.
+</p>
+<p>
+Parameters:
+</p>
+<pre>
+  namevar       - The plugin to configure.
+  lines - an array of lines to configure the plugin.
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <span class="method-name">syslog</span><span class="method-args">( )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define: <a href="collectd.html">collectd</a>::<a
+href="collectd.html#M000003">syslog</a> A shortcut to specifying the <a
+href="collectd.html#M000003">syslog</a> log level. This can be used only
+once per node.
+</p>
+<p>
+Parameters:
+</p>
+<pre>
+  namevar       - the lowest loglevel which should be sent to syslog
+</pre>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- if resource_list -->
+
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

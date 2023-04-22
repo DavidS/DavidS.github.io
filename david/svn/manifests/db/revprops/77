@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-06-28T10:16:09.257832Z
+K 7
+svn:log
+V 66
+re-add ssmtp class as module, add $mta variable, add ssmtp via dbp
+END

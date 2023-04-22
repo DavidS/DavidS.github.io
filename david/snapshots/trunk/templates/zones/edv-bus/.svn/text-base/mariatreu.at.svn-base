@@ -1,0 +1,34 @@
+$TTL 86400
+$ORIGIN <%= name %>.
+$INCLUDE <%= soa %>
+
+$INCLUDE <%= ns %>
+
+
+; add better mx for mariatreu's mailer
+@		IN	MX	20 mail.mariatreu.at.
+$INCLUDE <%= mx %>
+
+webmail	IN	CNAME www
+www		IN	A	85.125.165.67
+		IN	MX	10 mail.mariatreu.at.
+mysql5		A	85.125.165.67
+
+mail		IN	A	85.125.165.68
+wiki		IN	CNAME	mail.mariatreu.at.
+kalender	IN	CNAME	mail.mariatreu.at.
+posteingang	IN	CNAME	mail.mariatreu.at.
+postausgang	IN	CNAME	mail.mariatreu.at.
+
+lan		IN	A	85.125.165.70
+
+joomla		IN	A	85.125.165.69
+		IN	MX	10 mail.mariatreu.at.
+chip		IN	A	85.125.165.66
+		;IN	AAAA	2002:557d:a542::1
+		IN	MX	10 mail.mariatreu.at.
+
+; Admin-MX
+mysql5		IN MX	10 <%= smarthost %>.
+fw-maria		IN MX	10 <%= smarthost %>.
+fw-treu		IN MX	10 <%= smarthost %>.

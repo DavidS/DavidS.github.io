@@ -1,0 +1,291 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{german,a4,url}
+
+\title{Praktikum\\"`LVA-spezifischer Webspace f"ur Vortragende"'}
+\author{David Schmitt\thanks{e9725491@student.tuwien.ac.at}}
+
+\nonfrenchspacing
+
+\begin{document}
+
+\maketitle
+
+\vfill
+
+\begin{abstract}
+
+Das Ziel dieses Praktikums ist es einen "Uberblick "uber die M"oglichkeiten
+f"ur eine Einbettung "`LVA-spezifischen Webspaces f"ur Vortragende"' in die
+vorhandene SIDES Umgebung. Im Kapitel \textsl{Anforderungen} werden die
+Punkte Authentifikation und Autorisation, Sessionabwicklung,
+Life-Cyclemanagement einer LVA, Referenz-Management beim Upload,
+statistische Zugriffsauswertungen f"ur Vortragende, Security sowie die
+notwendigen technischen Grundlagen diskutiert, die f"ur das Projekt
+zentrale Punkte sind.
+
+% Dann werden im Kapitel \textsl{Vorschl"age} konkrete Vorschl"age zur
+% Verwendung von Software gemacht, die die geforderte Funktionalit"at
+% unterst"utzt oder entsprechend angepa"st werden kann.
+
+%% BZW: ...entsprechende Implementierung...
+
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Einleitung}
+
+\section{Anforderungen}
+\subsection{Authentifikation und Autorisation}
+
+Wie auf \url{http://www.lzk.ac.at/sides/sides-auth.html} beschrieben sind
+die Authentifikation\footnote{Festellung der Person} und die
+Autorisation\footnote{Feststellung der Berechtigungen einer Person}
+getrennte Abl"aufe.
+
+\subsubsection{Authentifikation}
+
+Zur Authentifizierung kann der sogenannte Auth-Daemon, der via LDAP auf die
+X.500 Whitepages\footnote{Siehe \url{http://wp.tuwien.ac.at/}} der TU-Wien
+zugreift, genutzt werden.
+
+%% FIXME: Keine Dokumentation f"ur authd vorhanden.
+
+\subsubsection{Autorisation}
+
+Autorisiert soll "uber die Zuordnung von LVAs zu Vortragenden in der SIDES
+Datenbank werden. Hierbei ist sowohl der Zugang via Embedded SQL von Oracle
+oder via DBD::Oracle\footnote{Siehe
+\url{http://search.cpan.org/doc/TIMB/DBD-Oracle-1.06/Oracle.pm}} m"oglich.
+Eine Erweiterung des Auth-Daemons w"are ebenfalls eine denkbare Alternative
+um die ben"otigte Information "uber einen Socket zu Verf"ugung zu stellen.
+
+\subsubsection{Integration in die Infrastruktur}
+
+\paragraph{DRAFT:}{Die Methode des Filezugriffs muss "uber die gew"ahlten
+Methoden authentifizieren und autorisieren k"onnen.}
+
+\subsection{Sessionabwicklung}
+
+Im Rahmen einer Session eines Nutzers sollten Files zu LVAspaces
+hinzugef"ugt, "uberschrieben bzw. ge"andert, verschoben, umbenannt und
+gel"oscht werden k"onnen. "Ahnliches mu"s f"ur Verzeichnisse m"oglich sein. 
+Dabei ist besonders darauf zu achten, da"s auch unge"ubte Nutzer das System
+leicht bedienen k"onnen.
+
+% FIXME: Um eine gute Integration zu erreichen m"ussen div. HTML-Editoren auf ihre publishing features hin untersucht werden.
+
+\subsubsection{FTP}
+
+\paragraph{Vorteile: } 
+\begin{itemize}
+\item{Wird von vielen HTML-Editoren zum Publishen benutzt}
+\item{Stabiles Protokoll}
+\item{Codebasis vorhanden}
+\item{Plattformunabh"angig}
+\end{itemize}
+\paragraph{Nachteile: }
+\begin{itemize}
+\item{Nicht trivial in der Anwendung}
+\end{itemize}
+
+
+\begin{description}
+\item[proFTPd:]{A powerful replacement for wu-ftpd, this File Transfer
+Protocol daemon supports hidden directories, virtual hosts, and
+per-directory "`.ftpaccess"' files.
+\begin{description}
+\item[Homepage:]{\url{www.proftpd.net}}
+\item[Implementierung:]{C}
+\item[Modular:]{Ja}
+\item[Virtuelles Filesystem:]{M"oglich}
+\item[Quota:]{M"oglich}
+\item[Externe Authentifikation:]{M"oglich}
+\end{description}}
+
+\item[pyftpd:]{An advanced ftp server written in python.
+\begin{description}
+\item[Homepage:]{\url{http://melkor.dnp.fmph.uniba.sk/~garabik/pyftpd.html}}
+\item[Implementierung:]{Python}
+\item[Modular:]{Ja}
+\item[Virtuelles Filesystem:]{M"oglich}
+\item[Quota:]{M"oglich}
+\item[Externe Authentifikation:]{M"oglich}
+\end{description}}
+
+\item[Net::FTPServer:]{Net::FTPServer is a secure, extensible and
+configurable FTP server written in Perl.
+\begin{description}
+\item[Homepage:]{\url{http://search.cpan.org/doc/RWMJ/Net-FTPServer-1.0.7/lib/Net/FTPServer.pm}}
+\item[Implementierung:]{Perl}
+\item[Modular:]{Ja}
+\item[Virtuelles Filesystem:]{Vorhanden, mu"s adaptiert werden}
+\item[Quota:]{M"oglich}
+\item[Externe Authentifikation:]{M"oglich}
+\end{description}}
+
+\end{description}
+
+\subsubsection{SMB}
+
+\paragraph{Vorteile: }
+\begin{itemize}
+\item{Triviale Anwendung f"ur Windows User}
+\item{Codebasis vorhanden}
+\end{itemize}
+\paragraph{Nachteile: }
+\begin{itemize}
+\item{Instabiles Protokoll}
+\item{Plattformabh"angig}
+\item{Probleme unter Win95 mit Username/Passwort}
+\end{itemize}
+
+\begin{description}
+\item[Samba]
+\begin{description}
+\item[Homepage:]{\url{http://de.samba.org/}}
+\item[Implementierung:]{C}
+\item[Modular:]{Nein}
+\item[Virtuelles Filesystem:]{via Shares}
+\item[Quota:]{Nein}
+\item[Externe Authentifikation:]{Nein}
+\end{description}
+\end{description}
+
+\subsubsection{WebFormular}
+
+\paragraph{Vorteile: }
+\begin{itemize}
+\item{Einfache Anwendung}
+\item{Plattformunabh"angig}
+\end{itemize}
+\paragraph{Nachteile: }
+\begin{itemize}
+\item{kaum Codebasis vorhanden}
+\item{M"uhsam mehrere Files upzuloaden}
+\end{itemize}
+
+\paragraph{Beispiele:} Siehe \url{http://www.rainerhansen.de/webspace.htm}
+
+\subsubsection{WebDAV}
+
+\paragraph{Vorteile: }
+\begin{itemize}
+\item{Einfache Anwendung}
+\end{itemize}
+\paragraph{Nachteile: }
+\begin{itemize}
+\item{keine Codebasis vorhanden}
+\item{Applikationsabh"angig}
+\end{itemize}
+
+
+\subsection{Life-Cyclemanagement}
+
+\paragraph{TODO}{Es m"ussen "Uberlegungen zur Erstellung, Benutzung,
+Rechtevergabe, Quota"anderungen, Semesterwechsel und L"oschung der LVA
+angestellt werden. Diese Vorg"ange m"ussen in die bestehenden Automatismen
+eingebunden werden und entsprechend automatisiert durchf"uhrbar sein.  Wie
+die restlichen Abl"aufe im SIDES sollten auch zu diesen Abl"aufen ohne
+h"andische Eingriffe Verst"andigungen an die Betroffenen verschickt
+werden.}
+
+\subsection{Referenzmanagement}
+
+Um die Benutzung des Systems m"oglichst einfach und transparent zu
+gestalten sollte das System daf"ur sorgen, dass Referenzen zwischen
+Dokumenten nach M"oglichkeit erhalten bleiben. Insbesondere sollte
+versucht werden Referenzen in das Filesystem des Nutzers auf korrekte
+Referenzen in den LVAspaces umzuschreiben. Komplement"ar dazu sollte mit
+einem Linkchecker die Seiten "uberpr"uft werden um Fehler, die durch
+einfaches Umschreiben nicht behoben werden konnten abzufangen und den
+Benutzer m"oglichst proaktiv darin zu Unterst"utzen, den Fehler zu
+beheben.
+
+\subsubsection{Referenzen umschreiben}
+
+\paragraph{TODO}{Einbindung in Fileupload?}
+
+\begin{itemize}
+\item{Liste aller ung"ultigen Referenzen extrahieren (\url{file://}, \dots)}
+\item{Ersetzen von "`$\backslash$"' (Backslash) durch "`/"' (Schr"agstrich)}
+\item{Liste von Dateien im Verzeichnis der LVA mit "`ung"ultigen"'
+Referenzen vergleichen und Treffer ausbessern}
+\item{Restliche Referenzen als defekt markieren?}
+\end{itemize}
+
+\subsubsection{Referenzchecking}
+
+\paragraph{DRAFT:}{Da zu erwarten ist, dass durch das Umschreiben von
+Referenzen nicht alle Fehler behoben werden k"onnen und auch im Laufe der
+Zeit externe Links ung"ultig werden, ist es angebracht eine zweite
+Verifikationsphase anzuschliessen, die mit einem
+Standardtool\footnote{urlbot, linkbot, o."a.} zu "uberpr"ufen und die
+Resultate den Vortragenden zur Verf"ugung zu stellen. Im Sinne einer
+Verbesserung\footnote{haha.} der Qualit"at des HTML-Angebotes k"onnte man
+an dieser Stelle auch einen HTML-Checker wie
+\url{http://valse.tuwien.ac.at/} einbinden.}
+
+\subsection{Zugriffsstatistiken}
+
+Ein Tool wie analog oder webalizer soll benutzt werden um nach LVA
+aufgeschl"usselte Zugriffstatistiken zu erzeugen.
+
+\subsection{Security}
+
+K"onnen durch den Einsatz des Systems Resourcen mi"sbraucht werden?
+Welche besonderen Vorkehrungen zur Absicherung des Systems sind
+notwendig?
+
+\subsection{Technische Infrastruktur}
+
+\subsubsection{Vorhandene}
+
+Liste der aktuell eingesetzten Technologien und Produkte:
+\begin{description}
+\item[Webserver:]{Apache\footnote{Siehe \url{http://www.apache.org/}}}
+\item[CGI-Umgebung:]{mod\_perl\footnote{Siehe \url{http://perl.apache.org/}}}
+\item[Datenbank:]{Oracle 8\footnote{Siehe \url{http://www.oracle.com/}}}
+\item[DB-Access:]{oraperl/DBD::Oracle\footnote{Siehe 
+\url{http://search.cpan.org/doc/TIMB/DBD-Oracle-1.06/Oracle.pm}}}
+\item[Securityframework:]{SIDES\footnote{Siehe \url{http://www.lzk.ac.at/sides/sides-auth.html}}/Whitepages/authd}
+\end{description}
+
+\subsubsection{Ben"otigte Ressourcen}
+
+Sch"atzungsweise 1500 LVAs der insgesamt 5000 an der TU-Wien angebotenen
+LVAs werden das Service in Anspruch nehmen.
+
+Daraus ergeben sich folgende Sch"atzungen f"ur den Platzbedarf der aktiven
+LVAspaces:
+\begin{description}
+\item[Fixbedarf Statistiken:]{$500kB*1500 = 750MB$}
+\item[1MB pro aktiver LVA:]{$1MB*1500 = 1.5GB$}
+\item[10MB pro aktiver LVA:]{$10MB*1500 = 15GB$}
+\item[Maximalbedarf der aktiven LVA]{$20MB*1500 = 30GB$}
+\end{description}
+
+Es kann also mit einem Bedarf von rund 1GB sofort und bis zu maximal 15GB
+Platzbedarf nach der Anlaufphase gerechnet werden. Das ist nat"urlich stark
+von der tats"achlichen Nutzung abh"angig. Einen Bedarf von 3GB nach dem
+ersten Semester halte ich f"ur realistischer, kann diese Zahlen jedoch
+nicht mit konkreten Hinweisen untermauern. Sollte eher der maximale Rahmen
+ausgesch"opft werden so ist mit hoher Wahrscheinlichkeit sowieso die
+Anschaffung neuer Hardware erforderlich, da nach meiner Information
+momentan keine 15GB zur Verf"ugung stehen. Nach dem heutigen Stand der
+Technik sollte eine solche Erweiterung jedoch keine technischen Probleme
+verursachen.
+
+\section{Vorschl"age}
+
+\subsection{Software}
+
+\subsection{Implementierung}
+
+\section{Zusammenfassung}
+
+\end{document}

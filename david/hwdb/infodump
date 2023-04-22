@@ -1,0 +1,89 @@
+#!/bin/bash
+#
+#    infodump - collect hardware info for submission to the hwdb
+#
+#    Copyright 2005 David Schmitt <david@schmitt.edv-bus.at>
+# 
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+# 
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+# 
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+#    Version: 0.1
+#             * Initial version: grab whatever we can and put it into info.tar
+#
+
+set -e
+
+mkdir info
+
+(
+
+	cd info
+
+	uname -a > uname
+
+	(lspci; lspci -n) | sort > lspci
+
+	for i in free lsmod ; do
+
+		$i > cmd_$i
+
+	done
+
+
+	for i in cpuinfo interrupts cmdline devices dma fb iomem ioports \
+		meminfo modules mtrr version ; do
+
+		cat /proc/$i > proc_$i
+
+	done
+
+	cp /boot/config-$(uname -r) kernel.config
+
+	for i in XFree86.0.log dmesg ; do
+
+		cp /var/log/$i log_$i
+
+	done
+
+	dmesg > dmesg.cur
+
+	COLUMNS=1000 dpkg -l kernel-image-$(uname -r) | grep kernel-image-$(uname -r) | tr -s ' ' > running_kernel
+
+	../Sysfs/sysdump > sysdump
+
+	for i in X11/XF86Config-4 modules ; do
+
+		cat /etc/$i > conf_$(echo $i | sed -s 's/\//_/g' )
+
+	done
+
+)
+
+tar cjf info.tar.bz2 info/ && rm -Rf info/
+
+echo "Thanks for collecting this information"
+
+echo "Please fill out this form and send it together with info.tar.bz2 to"
+echo "	David Schmitt <david@schmitt.edv-bus.at>"
+
+cat <<EOF
+Class: <Laptop/Desktop/Server/built-to-order/self-assembled>
+Manufacturer:
+Model:
+Distributor: <Where did you buy it>
+Bought in: <Country and Date>
+
+Components/Options: <If the PC was built-to-order or self assembled, please
+	list the options or components you used>
+EOF

@@ -1,0 +1,102 @@
+\BOOKMARK [0][-]{chapter.1}{Einleitung}{}
+\BOOKMARK [0][-]{chapter.2}{Grundlagen}{}
+\BOOKMARK [1][-]{section.2.1}{Datenbankmodellierung}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.1.1}{Fachspezifisches Wissensmodell}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.2}{Datenbankschema}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.3}{Normalformen}{section.2.1}
+\BOOKMARK [1][-]{section.2.2}{Objektmodellierung}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{Die webbook Beispieldatenbank}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.3.1}{Schnittstellen}{section.2.3}
+\BOOKMARK [1][-]{section.2.4}{Datensicherheit}{chapter.2}
+\BOOKMARK [1][-]{section.2.5}{Transaktionen}{chapter.2}
+\BOOKMARK [1][-]{section.2.6}{Basisoperationen}{chapter.2}
+\BOOKMARK [1][-]{section.2.7}{Programmierung}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.7.1}{Datentypen}{section.2.7}
+\BOOKMARK [2][-]{subsection.2.7.2}{Abfragen}{section.2.7}
+\BOOKMARK [2][-]{subsection.2.7.3}{Portabilit\344t}{section.2.7}
+\BOOKMARK [1][-]{section.2.8}{Kommunikation}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Konzepte}{}
+\BOOKMARK [1][-]{section.3.1}{Funktionsumfang}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Integrierte Datenschicht}{chapter.3}
+\BOOKMARK [1][-]{section.3.3}{Getrennte Datenschicht}{chapter.3}
+\BOOKMARK [1][-]{section.3.4}{Implementierung der Datenschicht}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.4.1}{Statische Implementierung}{section.3.4}
+\BOOKMARK [2][-]{subsection.3.4.2}{Dynamische Methoden}{section.3.4}
+\BOOKMARK [1][-]{section.3.5}{Objektidentit\344t}{chapter.3}
+\BOOKMARK [1][-]{section.3.6}{Sperrmechanismen}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.6.1}{Konservative Isolierung}{section.3.6}
+\BOOKMARK [2][-]{subsection.3.6.2}{Optimistische Sperren}{section.3.6}
+\BOOKMARK [2][-]{subsection.3.6.3}{Pr\344ventive Konfliktvermeidung}{section.3.6}
+\BOOKMARK [0][-]{chapter.4}{Produkte}{}
+\BOOKMARK [1][-]{section.4.1}{SQL}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{Reines Java}{chapter.4}
+\BOOKMARK [1][-]{section.4.3}{SimpleORM}{chapter.4}
+\BOOKMARK [1][-]{section.4.4}{Hibernate}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Gegen\374berstellung}{}
+\BOOKMARK [1][-]{section.5.1}{Schemadefinition}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.1.1}{SQL}{section.5.1}
+\BOOKMARK [2][-]{subsection.5.1.2}{Reines Java}{section.5.1}
+\BOOKMARK [2][-]{subsection.5.1.3}{SimpleORM}{section.5.1}
+\BOOKMARK [2][-]{subsection.5.1.4}{Hibernate}{section.5.1}
+\BOOKMARK [1][-]{section.5.2}{Objektmengen}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.2.1}{SQL}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.2}{Reines Java}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.3}{SimpleORM}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.4}{Hibernate}{section.5.2}
+\BOOKMARK [1][-]{section.5.3}{Datenbankverbindung und -abfragen}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.3.1}{SQL}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.2}{Reines Java}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.3}{SimpleORM}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.4}{Hibernate}{section.5.3}
+\BOOKMARK [1][-]{section.5.4}{Datensicherheit}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.4.1}{SQL}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.2}{Reines Java}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.3}{SimpleORM}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.4}{Hibernate}{section.5.4}
+\BOOKMARK [1][-]{section.5.5}{Objektlebenszyklus}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.5.1}{SQL}{section.5.5}
+\BOOKMARK [2][-]{subsection.5.5.2}{Reines Java}{section.5.5}
+\BOOKMARK [2][-]{subsection.5.5.3}{SimpleORM}{section.5.5}
+\BOOKMARK [2][-]{subsection.5.5.4}{Hibernate}{section.5.5}
+\BOOKMARK [1][-]{section.5.6}{Ableitung}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.6.1}{SQL}{section.5.6}
+\BOOKMARK [2][-]{subsection.5.6.2}{Reines Java}{section.5.6}
+\BOOKMARK [2][-]{subsection.5.6.3}{SimpleORM}{section.5.6}
+\BOOKMARK [2][-]{subsection.5.6.4}{Hibernate}{section.5.6}
+\BOOKMARK [1][-]{section.5.7}{Prozesskoordination}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.7.1}{SQL}{section.5.7}
+\BOOKMARK [2][-]{subsection.5.7.2}{Reines Java}{section.5.7}
+\BOOKMARK [2][-]{subsection.5.7.3}{SimpleORM}{section.5.7}
+\BOOKMARK [2][-]{subsection.5.7.4}{Hibernate}{section.5.7}
+\BOOKMARK [1][-]{section.5.8}{Leistungsorientiertes Programmieren}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.8.1}{SQL}{section.5.8}
+\BOOKMARK [2][-]{subsection.5.8.2}{Reines Java}{section.5.8}
+\BOOKMARK [2][-]{subsection.5.8.3}{SimpleORM}{section.5.8}
+\BOOKMARK [2][-]{subsection.5.8.4}{Hibernate}{section.5.8}
+\BOOKMARK [1][-]{section.5.9}{Leistungsvergleich Beispieldatenbank}{chapter.5}
+\BOOKMARK [1][-]{section.5.10}{Programmieraufwand}{chapter.5}
+\BOOKMARK [0][-]{chapter.6}{Objekt-orientierte Datenbanksysteme}{}
+\BOOKMARK [1][-]{section.6.1}{Die Goldenen Regeln}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.1.1}{Thou shalt support complex objects}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.2}{Thou shalt support object identity}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.3}{Thou shalt encapsulate thine objects}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.4}{Thou shalt support types or classes}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.5}{Thine classes or types shalt inherit from their ancestors}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.6}{Thou shalt not bind prematurely}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.7}{Thou shalt be computationally complete}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.8}{Thou shalt be extensible}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.9}{Thou shalt remember thy data}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.10}{Thou shalt manage very large databases}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.11}{Thou shalt support concurrent users}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.12}{Thou shalt recover from hardware and software failures}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.13}{Thou shalt have a simple way of querying data}{section.6.1}
+\BOOKMARK [1][-]{section.6.2}{Details}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.2.1}{Verteilung}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.2}{Langlaufende Transaktionen}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.3}{Versionskontrolle}{section.6.2}
+\BOOKMARK [1][-]{section.6.3}{Offene Parameter}{chapter.6}
+\BOOKMARK [1][-]{section.6.4}{Datenbanken der "`Dritten Generation"'}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.4.1}{Randbedingungen und Trigger}{section.6.4}
+\BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}
+\BOOKMARK [0][-]{section*.67}{Literaturverzeichnis}{}
+\BOOKMARK [0][-]{section*.69}{Abbildungsverzeichnis}{}

@@ -1,0 +1,84 @@
+head	1.4;
+access;
+symbols;
+locks
+	www-data:1.4; strict;
+comment	@# @;
+
+
+1.4
+date	2003.06.03.14.45.37;	author www-data;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2003.06.02.20.00.07;	author www-data;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2003.06.02.19.15.58;	author www-data;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2003.06.02.18.04.50;	author david;	state Exp;
+branches;
+next	;
+
+
+desc
+@init
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@
+Das ist die StartSeite.
+
+= StudentenWiki = 
+
+* Was ist das StudentenWiki?
+* AccountRegistrieren
+* InformatikStudium
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d1 3
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@a5 2
+
+Neu2@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 7
+a7 7
+
+= StudentenWiki = 
+
+* Was ist das StudentenWiki?
+* AccountRegistrieren
+* InformatikStudium
+
+@

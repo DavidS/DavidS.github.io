@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-08-01T08:02:18.682915Z
+K 7
+svn:log
+V 39
+fix firewalling sysctls: add ip_forward
+END

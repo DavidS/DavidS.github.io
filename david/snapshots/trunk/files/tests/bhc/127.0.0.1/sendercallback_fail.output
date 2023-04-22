@@ -1,0 +1,14 @@
+
+**** SMTP testing session as if from host 127.0.0.1
+**** but without any ident (RFC 1413) callback.
+**** This is not for real!
+
+220 smtp.uni-ak.ac.at ESMTP Exim 4
+250 smtp.uni-ak.ac.at Hello localhost [127.0.0.1]
+250 OK
+550-Verification failed for <ADSHJLHDAJS@black.co.at>
+550-Called:   85.125.165.35
+550-Sent:     RCPT TO:<ADSHJLHDAJS@black.co.at>
+550-Response: 550 unknown user
+550 Sender verify failed
+221 smtp.uni-ak.ac.at closing connection

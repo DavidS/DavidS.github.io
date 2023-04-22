@@ -1,0 +1,963 @@
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2007.8.16)  28 AUG 2007 11:55
+entering extended mode
+ %&-line parsing enabled.
+**Diplomarbeit
+(./Diplomarbeit.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, german, ngerman, german, ngerman, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/book.cls
+Document Class: book 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/bk11.clo
+File: bk11.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-texlive/tex/generic/german/german.sty v2.5e 1998-07-08
+Package: german 1998/07/08 v2.5e Support for writing german texts (br)
+\grmnU@D=\dimen103
+german -- \language number for Austrian undefined, default 6 used.
+german -- \language number for French undefined, default 255 used.
+)
+(/usr/share/texmf-texlive/tex/generic/german/ngerman.sty v2.5e 1998-07-08
+Package: ngerman 1998/07/08 v2.5e Support for writing german texts (br)
+LaTeX Info: Redefining \glqq on input line 255.
+LaTeX Info: Redefining \glq on input line 268.
+LaTeX Info: Redefining \flqq on input line 281.
+LaTeX Info: Redefining \frqq on input line 289.
+LaTeX Info: Redefining \flq on input line 297.
+LaTeX Info: Redefining \frq on input line 304.
+ngerman -- \language number for naustrian undefined, default 7 used.
+)
+(/usr/share/texmf-texlive/tex/generic/babel/babel.sty
+Package: babel 2005/11/23 v3.8h The Babel package
+
+(/usr/share/texmf-texlive/tex/generic/babel/germanb.ldf
+Language: germanb 2004/02/19 v2.6k German support from the babel system
+
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def
+File: babel.def 2005/11/23 v3.8h Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen104
+)))
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2006/05/05 v1.1b Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texmf-texlive/tex/latex/base/latin1.def
+File: latin1.def 2006/05/05 v1.1b Input encoding file
+))
+(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/share/texmf-texlive/tex/latex/psnfss/pifont.sty
+Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 64.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+(/usr/share/texmf-texlive/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+(/usr/share/texmf-texlive/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 311.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 312.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 313.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 314.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 315.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 316.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 317.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 318.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 319.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 320.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 321.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 322.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 323.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
+)
+(/usr/share/texmf-texlive/tex/latex/wasysym/wasysym.sty
+Package: wasysym 2003/10/30 v2.0 Wasy-2 symbol support package
+\symwasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 90.
+)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\@emptytoks=\toks16
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+))
+(/usr/share/texmf-texlive/tex/latex/psnfss/helvet.sty
+Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks17
+))
+(/usr/share/texmf-texlive/tex/latex/psnfss/palatino.sty
+Package: palatino 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(/usr/share/texmf-texlive/tex/latex/tools/array.sty
+Package: array 2005/08/23 v2.4b Tabular extension package (FMi)
+\col@sep=\dimen105
+\extrarowheight=\dimen106
+\NC@list=\toks18
+\extratabsurround=\skip43
+\backup@length=\skip44
+)
+(/usr/share/texmf-texlive/tex/generic/texdraw/texdraw.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
+\Gread@gobject=\count89
+))
+(/usr/share/texmf-texlive/tex/generic/texdraw/texdraw.tex
+\t@counta=\count90
+\t@countb=\count91
+\t@countc=\count92
+\t@countd=\count93
+\t@counte=\count94
+\t@pixa=\count95
+\t@pixb=\count96
+\t@pixc=\count97
+\t@pixd=\count98
+\t@xpos=\dimen107
+\t@ypos=\dimen108
+\xminpix=\count99
+\xmaxpix=\count100
+\yminpix=\count101
+\ymaxpix=\count102
+\a@lenpix=\count103
+\a@widpix=\count104
+\x@pix=\count105
+\y@pix=\count106
+\x@segoffpix=\count107
+\y@segoffpix=\count108
+\x@savepix=\count109
+\y@savepix=\count110
+\s@ppix=\count111
+\d@bs=\count112
+\t@xdnum=\count113
+\t@xdbox=\box26
+\drawfile=\write3
+\everytexdraw=\toks19
+)
+Package: texdraw 1995/12/19 TeXdraw V2R0
+)
+(/usr/share/texmf-texlive/tex/latex/eurosym/eurosym.sty
+Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
+\@eurobox=\box27
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+\lst@mode=\count114
+\lst@gtempboxa=\box28
+\lst@token=\toks20
+\lst@length=\count115
+\lst@currlwidth=\dimen109
+\lst@column=\count116
+\lst@pos=\count117
+\lst@lostspace=\dimen110
+\lst@width=\dimen111
+\lst@newlines=\count118
+\lst@lineno=\count119
+\c@lstlisting=\count120
+\lst@maxwidth=\dimen112
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2004/10/17 1.3b (Carsten Heinz)
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+\c@lstnumber=\count121
+\lst@skipnumbers=\count122
+\lst@framebox=\box29
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+File: listings.cfg 2004/09/05 1.3 listings configuration
+))
+Package: listings 2004/10/17 1.3b (Carsten Heinz)
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+\Gin@req@height=\dimen113
+\Gin@req@width=\dimen114
+)
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-common.tex)
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def)
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfrcs.code.tex
+Package: pgfrcs 2007/06/08 v1.18 (rcs-revision 1.16)
+))
+Package: pgf 2007/01/01 v1.18 (rcs-revision 1.8)
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2007/06/07 v1.18 (rcs-revision 1.24)
+\pgf@x=\dimen115
+\pgf@y=\dimen116
+\pgf@xa=\dimen117
+\pgf@ya=\dimen118
+\pgf@xb=\dimen119
+\pgf@yb=\dimen120
+\pgf@xc=\dimen121
+\pgf@yc=\dimen122
+\c@pgf@counta=\count123
+\c@pgf@countb=\count124
+\c@pgf@countc=\count125
+\c@pgf@countd=\count126
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2007/03/20  (rcs-revision 1.4)
+)
+Package pgfsys Info: Driver file for pgf: pgfsys-pdftex.def on input line 846.
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2007/06/07  (rcs-revision 1.15)
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2006/10/16  (rcs-revision 1.7)
+)))
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2007/02/19  (rcs-revision 1.5)
+)
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/etc/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2007/03/09 v1.18 (rcs-revision 1.5)
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@stack=\toks21
+\c@pgfmath@parsecounta=\count127
+\c@pgfmath@parsecountb=\count128
+\c@pgfmath@parsecountc=\count129
+\pgfmath@parsex=\dimen123
+)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathoperations.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathtrig.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathrnd.code.tex))
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathbase.code.tex)))
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2007/04/19  (rcs-revision 1.9)
+\pgf@picminx=\dimen124
+\pgf@picmaxx=\dimen125
+\pgf@picminy=\dimen126
+\pgf@picmaxy=\dimen127
+\pgf@pathminx=\dimen128
+\pgf@pathmaxx=\dimen129
+\pgf@pathminy=\dimen130
+\pgf@pathmaxy=\dimen131
+\pgf@xx=\dimen132
+\pgf@xy=\dimen133
+\pgf@yx=\dimen134
+\pgf@yy=\dimen135
+\pgf@zx=\dimen136
+\pgf@zy=\dimen137
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2007/06/07  (rcs-revision 1.9)
+\pgf@path@lastx=\dimen138
+\pgf@path@lasty=\dimen139
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2007/03/09  (rcs-revision 1.8)
+\pgf@shorten@end@additional=\dimen140
+\pgf@shorten@start@additional=\dimen141
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2007/06/07  (rcs-revision 1.24)
+\pgfpic=\box30
+\pgf@hbox=\box31
+\pgf@layerbox@main=\box32
+\pgf@picture@serial@count=\count130
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2007/03/09  (rcs-revision 1.7)
+\pgflinewidth=\dimen142
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2007/06/07  (rcs-revision 1.6)
+\pgf@pt@x=\dimen143
+\pgf@pt@y=\dimen144
+\pgf@pt@temp=\dimen145
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2007/03/09  (rcs-revision 1.6)
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2007/06/07  (rcs-revision 1.8)
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2007/03/09  (rcs-revision 1.8)
+\pgf@max=\dimen146
+\pgf@sys@shading@range@num=\count131
+)))
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfbaseshapes.sty
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfbaseshapes.code.tex
+Package: pgfbaseshapes 2007/06/07 v1.18 (rcs-revision 1.19)
+\pgfnodeparttextbox=\box33
+))
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfbaseplot.sty
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfbaseplot.code.tex
+Package: pgfbaseplot 2007/05/02 v1.18 (rcs-revision 1.7)
+\pgf@plotwrite=\write4
+))
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfbaseimage.sty
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfbaseimage.code.tex
+Package: pgfbaseimage 2007/05/31 v1.18 (rcs-revision 1.7)
+\pgfexternal@startupbox=\box34
+))
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfbaselayers.sty
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfbaselayers.code.tex
+Package: pgfbaselayers 2006/10/16 v1.18 (rcs-revision 1.5)
+))
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfbasesnakes.sty
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfbasesnakes.code.tex
+Package: pgfbasesnakes 2007/03/09 v1.18 (rcs-revision 1.11)
+\pgfsnakeremainingdistance=\dimen147
+\pgfsnakecompleteddistance=\dimen148
+))
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfbasepatterns.sty
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfbasepatterns.code.tex
+Package: pgfbasepatterns 2007/02/05 v1.18 (rcs-revision 1.10)
+))
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfbasematrix.sty
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfbasematrix.code.tex
+Package: pgfbasematrix 2007/03/09 v1.18 (rcs-revision 1.11)
+\pgfmatrixcurrentrow=\count132
+\pgfmatrixcurrentcolumn=\count133
+\pgf@matrix@numberofcolumns=\count134
+))
+(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2006/10/11 v1.18 (rcs-revision 1.4)
+\pgf@nodesepstart=\dimen149
+\pgf@nodesepend=\dimen150
+))
+(/usr/share/texmf-texlive/tex/latex/tools/calc.sty
+Package: calc 2005/08/06 v4.2 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count135
+\calc@Bcount=\count136
+\calc@Adimen=\dimen151
+\calc@Bdimen=\dimen152
+\calc@Askip=\skip45
+\calc@Bskip=\skip46
+LaTeX Info: Redefining \setlength on input line 75.
+LaTeX Info: Redefining \addtolength on input line 76.
+\calc@Ccount=\count137
+\calc@Cskip=\skip47
+)
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2006/10/16 v1.18 (rcs-revision 1.5)
+\pgffor@iter=\dimen153
+\pgffor@skip=\dimen154
+))
+(/usr/share/texmf-texlive/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2006/11/18 v2.5f package option processing (HA)
+
+(/usr/share/texmf-texlive/tex/latex/xkeyval/xkeyval.tex
+\XKV@toks=\toks22
+\XKV@depth=\count138
+File: xkeyval.tex 2006/11/18 v2.5f key=value parser (HA)
+))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz.code.tex
+Package: tikz 2007/06/07 v1.18 (rcs-revision 1.87)
+
+(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2007/03/09 v1.18 (rcs-revision 1.9)
+\pgf@plot@mark@count=\count139
+\pgfplotmarksize=\dimen155
+)
+\tikz@lastx=\dimen156
+\tikz@lasty=\dimen157
+\tikz@lastxsaved=\dimen158
+\tikz@lastysaved=\dimen159
+\tikzleveldistance=\dimen160
+\tikzsiblingdistance=\dimen161
+\tikz@figbox=\box35
+\tikz@tempbox=\box36
+\tikztreelevel=\count140
+\tikznumberofchildren=\count141
+\tikznumberofcurrentchild=\count142
+\tikz@fig@count=\count143
+\tikz@expandcount=\count144
+
+(/usr/share/texmf/tex/generic/pgf/libraries/pgflibrarytikztopaths.code.tex
+File: pgflibrarytikztopaths.code.tex 2007/06/07 v1.18 (rcs-revision 1.7)
+)))
+(/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip48
+\f@ncyO@elh=\skip49
+\f@ncyO@erh=\skip50
+\f@ncyO@olh=\skip51
+\f@ncyO@orh=\skip52
+\f@ncyO@elf=\skip53
+\f@ncyO@erf=\skip54
+\f@ncyO@olf=\skip55
+\f@ncyO@orf=\skip56
+)
+(/usr/share/texmf-texlive/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen162
+)
+(/usr/share/texmf-texlive/tex/latex/base/alltt.sty
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+)
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip10
+Package: url 2005/06/27  ver 3.2  Verb mode for urls, etc.
+)
+(/usr/share/texmf-texlive/tex/latex/vmargin/vmargin.sty
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+\PaperWidth=\dimen163
+\PaperHeight=\dimen164
+) (/usr/share/texmf-texlive/tex/latex/tools/varioref.sty
+Package: varioref 2006/05/13 v1.4p package for extended references (FMi)
+\c@vrcnt=\count145
+)
+(/usr/share/texmf-texlive/tex/latex/tools/longtable.sty
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip57
+\LTright=\skip58
+\LTpre=\skip59
+\LTpost=\skip60
+\LTchunksize=\count146
+\LTcapwidth=\dimen165
+\LT@head=\box37
+\LT@firsthead=\box38
+\LT@foot=\box39
+\LT@lastfoot=\box40
+\LT@cols=\count147
+\LT@rows=\count148
+\c@LT@tables=\count149
+\c@LT@chunks=\count150
+\LT@p@ftn=\toks23
+)
+(/usr/share/texmf-texlive/tex/latex/germbib/bibgerm.sty
+Package: bibgerm 2000/08/18 v0.1 Support for mixed language bibliographies
+
+** Macros for german `BibTeX'ing added to Style Option `german' 20 Apr 1993 **
+** idea and languages `german' and `USenglish' implemented by M. Wallmeier **
+** Modified for LaTeX 2e and german.sty 2.5b by A. Scherer 1 Nov 1995 **
+** Modified for ngerman.sty and babel.sty by H. Harders 21 August 2000 **)
+(/usr/share/texmf-texlive/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2003/03/13 v1.5g extra ToC listings
+
+
+Package tocbibind Note: The document has chapter divisions.
+
+
+Package tocbibind Note: Using chapter style headings, unless overridden.
+
+) (/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2007/02/07 v6.75r Hypertext links for LaTeX
+\@linkdim=\dimen166
+\Hy@linkcounter=\count151
+\Hy@pagecounter=\count152
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2007/02/07 v6.75r Hyperref: PDFDocEncoding definition (HO)
+)
+(/etc/texmf/tex/latex/config/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2006/08/22 v2.4 Connects package keyval with LaTeX options (
+HO)
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 2238.
+Package hyperref Info: Hyper figures OFF on input line 2288.
+Package hyperref Info: Link nesting OFF on input line 2293.
+Package hyperref Info: Hyper index ON on input line 2296.
+Package hyperref Info: Plain pages OFF on input line 2303.
+Package hyperref Info: Backreferencing OFF on input line 2308.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 2444.
+LaTeX Info: Redefining \url on input line 2599.
+\Fld@menulength=\count153
+\Field@Width=\dimen167
+\Fld@charsize=\dimen168
+\Choice@toks=\toks24
+\Field@toks=\toks25
+Package hyperref Info: Hyper figures OFF on input line 3102.
+Package hyperref Info: Link nesting OFF on input line 3107.
+Package hyperref Info: Hyper index ON on input line 3110.
+Package hyperref Info: backreferencing OFF on input line 3117.
+Package hyperref Info: Link coloring ON on input line 3120.
+\Hy@abspage=\count154
+\c@Item=\count155
+\c@Hfootnote=\count156
+)
+*hyperref using driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2007/02/07 v6.75r Hyperref driver for pdfTeX
+\Fld@listcount=\count157
+)
+\myquotecitebox=\box41
+ (./Diplomarbeit.aux
+(./Titel.aux) (./Abstract.aux) (./Acknowledgements.aux) (./01_Einleitung.aux)
+(./02_Modellierung.aux) (./03_Konzepte.aux) (./04_Implementierung.aux)
+(./05_OODBMS.aux) (./06_Zusammenfassung.aux))
+\openout1 = `Diplomarbeit.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 112.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 112.
+
+
+(/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 112.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/t1ppl.fd
+File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
+)
+(/usr/share/texmf/tex/context/base/supp-pdf.tex
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count158
+\scratchdimen=\dimen169
+\scratchbox=\box42
+\nofMPsegments=\count159
+\nofMParguments=\count160
+\MPscratchCnt=\count161
+\MPscratchDim=\dimen170
+\MPnumerator=\count162
+\everyMPtoPDFconversion=\toks26
+)
+
+bibgerm.sty: (n)german.sty 2.5b detected
+
+Package hyperref Info: Link coloring ON on input line 112.
+(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2006/12/27 v2.28 Cross-referencing by name of section
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
+)
+\c@section@level=\count163
+)
+LaTeX Info: Redefining \ref on input line 112.
+LaTeX Info: Redefining \pageref on input line 112.
+ (./Diplomarbeit.out) (./Diplomarbeit.out)
+\@outlinefile=\write5
+\openout5 = `Diplomarbeit.out'.
+
+\openout2 = `Titel.aux'.
+
+ (./Titel.tex
+<img/Titel_Logo.png, id=415, 136.8312pt x 68.1747pt>
+File: img/Titel_Logo.png Graphic file (type png)
+ <use img/Titel_Logo.png>
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 21.
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 39.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 49.
+
+(/usr/share/texmf-texlive/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 49.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 49.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+) [1
+
+
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/Titel_Logo.png>])
+\openout2 = `Abstract.aux'.
+
+ (./Abstract.tex
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 2.
+pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.28 \newpage
+              [1
+
+
+])
+\openout2 = `Acknowledgements.aux'.
+
+ (./Acknowledgements.tex [2
+
+
+]) (./Diplomarbeit.toc [3
+
+
+]
+[4] [5])
+\tf@toc=\write6
+\openout6 = `Diplomarbeit.toc'.
+
+ [6]
+\openout2 = `01_Einleitung.aux'.
+
+ (./01_Einleitung.tex
+Kapitel 1.
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 1.
+LaTeX Font Info:    Try loading font information for TS1+ppl on input line 12.
+(/usr/share/texmf-texlive/tex/latex/psnfss/ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+) [1
+
+
+
+]) [2]
+\openout2 = `02_Modellierung.aux'.
+
+
+(./02_Modellierung.tex
+Kapitel 2.
+[3
+
+
+
+]
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 40.
+ [4] [5] [6] [7]
+Overfull \hbox (0.5591pt too wide) in paragraph at lines 223--231
+\T1/ppl/m/n/10.95 Aufgrund der mitt-ler-wei-le weit-ver-brei-te-ten Er-fah-rung
+ mit Da-ten-bank-sche-ma-ta ha-ben die Nor-
+ []
+
+[8] <img/webbook_use_cases.pdf, id=609, 448.67625pt x 256.96pt>
+File: img/webbook_use_cases.pdf Graphic file (type pdf)
+
+<use img/webbook_use_cases.pdf> [9]
+LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <14.4> not available
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 286.
+ [10 <./img/webbook_use_cases.pdf>]
+<img/overview.pdf, id=656, 623.32875pt x 906.38625pt>
+File: img/overview.pdf Graphic file (type pdf)
+ <use img/overview.pdf>
+
+LaTeX Warning: Float too large for page by 30.33147pt on input line 316.
+
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 329.
+[11] [12 <./img/overview.pdf>]
+LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10> not available
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 359.
+
+<img/folderstruct.pdf, id=827, 397.485pt x 232.87pt>
+File: img/folderstruct.pdf Graphic file (type pdf)
+
+<use img/folderstruct.pdf> [13] [14 <./img/folderstruct.pdf>] [15]
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+) [16] [17]
+Overfull \hbox (0.15433pt too wide) in paragraph at lines 555--562
+\T1/ppl/m/n/10.95 even-tu-ell er-for-der-li-che Zei-chen-satz-kon-ver-sio-nen z
+wi-schen ver-schie-de-nen An-wen-dungs-
+ []
+
+[18] [19]) [20]
+\openout2 = `03_Konzepte.aux'.
+
+ (./03_Konzepte.tex
+Kapitel 3.
+<img/klassisch.pdf, id=965, 311.1625pt x 256.96pt>
+File: img/klassisch.pdf Graphic file (type pdf)
+ <use img/klassisch.pdf>
+<img/orm.pdf, id=966, 297.11pt x 310.15875pt>
+File: img/orm.pdf Graphic file (type pdf)
+ <use img/orm.pdf>
+Underfull \hbox (badness 2035) in paragraph at lines 26--26
+[]\T1/ppl/m/n/10.95 Abbildung 3.2: []Architektur mit objekt-
+ []
+
+[21
+
+
+
+] [22 <./img/klassisch.pdf> <./img/orm.pdf>]
+<img/integrierteDatenschicht.pdf, id=1076, 328.22626pt x 270.00874pt>
+File: img/integrierteDatenschicht.pdf Graphic file (type pdf)
+
+<use img/integrierteDatenschicht.pdf>
+<img/externeDatenschicht.pdf, id=1077, 471.7625pt x 246.9225pt>
+File: img/externeDatenschicht.pdf Graphic file (type pdf)
+
+<use img/externeDatenschicht.pdf> [23 <./img/integrierteDatenschicht.pdf>]
+[24 <./img/externeDatenschicht.pdf>] [25]
+LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10.95> not available
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 197.
+ [26] [27] [28]) [29]
+\openout2 = `04_Implementierung.aux'.
+
+
+(./04_Implementierung.tex
+Kapitel 4.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 28.
+(/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Overfull \hbox (0.88812pt too wide) in paragraph at lines 26--33
+\T1/ppl/m/n/10.95 Diese objekt-orientierte Pro-gram-mier-spra-che wur-de von Su
+n Mi-cro-sy-stems er-fun-den und wird
+ []
+
+[30
+
+
+
+] [31]
+Kapitel 5.
+[32
+
+] [33] [34] [35]
+Overfull \hbox (0.30104pt too wide) in paragraph at lines 266--268
+[]\T1/ppl/m/n/10.95 Die Funk-ti-on [][][][][][][][][][] er-zeugt ei-ne SQL An-w
+ei-sung, die ei-ne pas-
+ []
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+) [36] [37] [38]
+<img/NzuM.pdf, id=1381, 313.17pt x 40.15pt>
+File: img/NzuM.pdf Graphic file (type pdf)
+ <use img/NzuM.pdf> [39 <./img/NzuM.pdf>] [40] [41] [42] [43] [44] [45]
+Overfull \hbox (0.74524pt too wide) in paragraph at lines 696--700
+\T1/ppl/m/n/10.95 Diese Bi-blio-thek über-nimmt die Ver-wal-tung, je-doch nicht
+ die Er-stel-lung der JDBC-Verbindung.
+ []
+
+[46] [47] [48] [49] [50] [51] [52] [53] [54] [55]
+Overfull \hbox (0.20839pt too wide) in paragraph at lines 1121--1124
+\T1/ppl/m/n/10.95 Die [][][][][][] Me-tho-de mar-kiert ein Ob-jekt als ge-lösch
+t. Mit dem Ab-schluss
+ []
+
+[56] <img/concrete.pdf, id=1791, 342.27875pt x 79.29625pt>
+File: img/concrete.pdf Graphic file (type pdf)
+
+<use img/concrete.pdf> [57 <./img/concrete.pdf>] [58]
+<img/per-class.pdf, id=1855, 253.94875pt x 180.675pt>
+File: img/per-class.pdf Graphic file (type pdf)
+ <use img/per-class.pdf>
+[59 <./img/per-class.pdf>] [60]
+<img/per-hierarchy.pdf, id=1922, 78.2925pt x 131.49126pt>
+File: img/per-hierarchy.pdf Graphic file (type pdf)
+
+<use img/per-hierarchy.pdf> [61 <./img/per-hierarchy.pdf>] [62] [63] [64]
+[65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77]
+(./img/articles.tex
+\plotpoint=\box43
+) [78] (./img/effects.tex) [79] (./img/picturecache.tex)
+(./img/picturetypical.tex) [80]) [81]
+\openout2 = `05_OODBMS.aux'.
+
+ (./05_OODBMS.tex
+Kapitel 6.
+[82
+
+
+
+] [83] [84]
+Overfull \hbox (0.75592pt too wide) in paragraph at lines 145--148
+\T1/ppl/m/n/10.95 banktrans-ak-tio-nen ab-ge-bil-det. Da-mit kön-nen dort al-le
+ tra-dio-nel-len und eta-blier-ten Si-che-rungs-
+ []
+
+[85] [86] [87]) [88]
+\openout2 = `06_Zusammenfassung.aux'.
+
+ (./06_Zusammenfassung.tex
+Kapitel 7.
+[89
+
+
+
+]) [90] (./Diplomarbeit.bbl [91
+
+
+
+]
+Underfull \hbox (badness 1681) in paragraph at lines 76--80
+[]\T1/ppl/m/sc/10.95 Niemann, Chri-stoph\T1/ppl/m/n/10.95 : \T1/ppl/m/it/10.95 
+Da-ten-bank-fä-hi-ge Cli-ent/-Ser-ver An-wen-dun-gen: Ge-ne-rie-rung aus
+ []
+
+[92]) [93] (./Diplomarbeit.lof)
+\tf@lof=\write7
+\openout7 = `Diplomarbeit.lof'.
+
+ [94
+
+] (./Diplomarbeit.aux (./Titel.aux)
+(./Abstract.aux) (./Acknowledgements.aux) (./01_Einleitung.aux)
+(./02_Modellierung.aux) (./03_Konzepte.aux) (./04_Implementierung.aux)
+(./05_OODBMS.aux) (./06_Zusammenfassung.aux)) ) 
+Here is how much of TeX's memory you used:
+ 16112 strings out of 95062
+ 241728 string characters out of 1182216
+ 524011 words of memory out of 1500000
+ 17854 multiletter control sequences out of 10000+50000
+ 51917 words of font info for 109 fonts, out of 1200000 for 2000
+ 31 hyphenation exceptions out of 8191
+ 45i,10n,76p,347b,2065s stack positions out of 5000i,500n,6000p,200000b,5000s
+{/usr/share/texmf-texlive/fonts/
+enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.p
+fb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf
+-texlive/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type
+1/bluesky/ams/msam10.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr
+8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplb8a.pfb></usr/shar
+e/texmf-texlive/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texmf-texlive/
+fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/p
+alatino/uplr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplri8a.p
+fb>
+Output written on Diplomarbeit.pdf (101 pages, 781010 bytes).
+PDF statistics:
+ 2591 PDF objects out of 2984 (max. 8388607)
+ 960 named destinations out of 1000 (max. 131072)
+ 893 words of extra memory for PDF output out of 10000 (max. 10000000)
+

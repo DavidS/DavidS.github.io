@@ -1,0 +1,126 @@
+
+
+*******************************************************************************
+Mon Jun 11 09:38:37 2007
+
+
+FIT:    data read from 'BH.typical' using 2:3
+        #datapoints = 1308
+        residuals are weighted equally (unit weight)
+
+function used for fitting: HibernateFunc(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 8.70632e+08       delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 10.2774
+
+initial set of free parameter values
+
+HRATE           = 135.598
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 5.94627e+06
+rel. change during last iteration : -6.73478e-15
+
+degrees of freedom    (FIT_NDF)                        : 1307
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 67.4504
+variance of residuals (reduced chisquare) = WSSR/ndf   : 4549.56
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+HRATE           = 214.71           +/- 0.1815       (0.08452%)
+
+
+correlation matrix of the fit parameters:
+
+               HRATE  
+HRATE           1.000 
+
+
+*******************************************************************************
+Mon Jun 11 09:38:37 2007
+
+
+FIT:    data read from 'BS.typical' using 2:3
+        #datapoints = 1297
+        residuals are weighted equally (unit weight)
+
+function used for fitting: SimpleORMFunc(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 9.70155e+08       delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 9.32581
+
+initial set of free parameter values
+
+SRATE           = 113.478
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 1.15905e+07
+rel. change during last iteration : -1.60704e-15
+
+degrees of freedom    (FIT_NDF)                        : 1296
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 94.5691
+variance of residuals (reduced chisquare) = WSSR/ndf   : 8943.31
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+SRATE           = 205.662          +/- 0.2816       (0.1369%)
+
+
+correlation matrix of the fit parameters:
+
+               SRATE  
+SRATE           1.000 
+
+
+*******************************************************************************
+Mon Jun 11 09:38:37 2007
+
+
+FIT:    data read from 'BM.typical' using 2:3
+        #datapoints = 1309
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ManualFunc(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 3.56031e+08       delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 6.73712
+
+initial set of free parameter values
+
+MRATE           = 118.43
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 2.31049e+06
+rel. change during last iteration : -3.8293e-15
+
+degrees of freedom    (FIT_NDF)                        : 1308
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 42.0289
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1766.43
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+MRATE           = 195.589          +/- 0.1724       (0.08816%)
+
+
+correlation matrix of the fit parameters:
+
+               MRATE  
+MRATE           1.000 

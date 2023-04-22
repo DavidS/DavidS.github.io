@@ -1,0 +1,21 @@
+$INCLUDE <%= header %>
+
+;
+; zaczek.net
+;	Arthur Zaczek
+;	Wagramer Strasse 4/802
+;	1220 WIEN
+;
+;		DS, 2001-11-20
+;
+
+
+mail	IN	CNAME	mail.edv-bus.at.
+www	IN	A	212.41.228.123
+server	IN	A	212.41.228.123
+
+$ORIGIN *.bo.zaczek.net.
+$INCLUDE <%= mx %>
+@	IN	A	212.41.228.123
+
+

@@ -1,0 +1,156 @@
+PLAIN
+K 11
+asterisk.pp
+V 19
+file 3a.0.r16/12334
+K 9
+backup.pp
+V 18
+file 3b.0.r130/340
+K 7
+bind.pp
+V 19
+file 3d.0.r124/4383
+K 8
+david.pp
+V 19
+file 6r.0.r116/5453
+K 11
+firewall.pp
+V 19
+file 3g.0.r124/4211
+K 11
+leshaper.pp
+V 18
+file 5e.0.r28/2233
+K 11
+logcheck.pp
+V 18
+file 3h.0.r71/2058
+K 10
+modules.pp
+V 17
+file 3i.0.r17/862
+K 8
+munin.pp
+V 19
+file 3j.0.r150/1145
+K 8
+mysql.pp
+V 17
+file 3k.0.r85/378
+K 9
+nagios.pp
+V 17
+file 3l.0.r129/53
+K 15
+puppetmaster.pp
+V 18
+file 3n.0.r106/131
+K 10
+slimfit.pp
+V 19
+file 3o.0.r16/11131
+K 11
+snvserve.pp
+V 16
+file 3p.0.r38/62
+END
+ENDREP
+id: 37.0.r159/571
+type: dir
+pred: 37.0.r150/1928
+count: 59
+text: 159 0 558 558 aa365ce4bf31941ca86b2c3dd80178d8
+cpath: /trunk/manifests/classes
+copyroot: 0 /
+
+PLAIN
+K 7
+classes
+V 17
+dir 37.0.r159/571
+K 9
+common.pp
+V 18
+file 3u.0.r54/1580
+K 10
+modules.pp
+V 18
+file 5p.0.r94/1100
+K 7
+site.pp
+V 19
+file 3v.0.r156/2387
+END
+ENDREP
+id: 36.0.r159/897
+type: dir
+pred: 36.0.r156/2719
+count: 87
+text: 159 730 154 154 b167f114b3d0a1fb8c0fd32d5826b428
+cpath: /trunk/manifests
+copyroot: 0 /
+
+PLAIN
+K 7
+LICENSE
+V 18
+file 57.0.r16/8923
+K 12
+README.users
+V 19
+file 7w.0.r158/1793
+K 3
+doc
+V 16
+dir 51.0.r36/714
+K 5
+files
+V 17
+dir 2.0.r154/1758
+K 9
+manifests
+V 17
+dir 36.0.r159/897
+K 7
+modules
+V 18
+dir 5h.0.r158/1640
+K 11
+puppet.conf
+V 18
+file 7v.0.r132/262
+K 9
+templates
+V 18
+dir 3w.0.r119/5499
+END
+ENDREP
+id: 1.0.r159/1361
+type: dir
+pred: 1.0.r158/2260
+count: 158
+text: 159 1050 298 298 d904491fc0e7a6f9830b8a423f39cae2
+cpath: /trunk
+copyroot: 0 /
+
+PLAIN
+K 5
+trunk
+V 17
+dir 1.0.r159/1361
+END
+ENDREP
+id: 0.0.r159/1555
+type: dir
+pred: 0.0.r158/2454
+count: 159
+text: 159 1505 37 37 f53762ecc4d2bb51fde18c0f08e171ba
+cpath: /
+copyroot: 0 /
+
+3c.0.r16/11303 delete false false /trunk/manifests/classes/base-users.pp
+
+
+1555 1692

@@ -1,0 +1,52 @@
+8
+
+dir
+31
+file:///home/david/public_html/svn/manifests/trunk/files/puppet/type
+file:///home/david/public_html/svn/manifests
+
+
+
+2007-04-13T09:53:48.370553Z
+12
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f03ff2f1-f02d-0410-970d-b9634babeaa1
+
+apt_source.rb
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+fb3a154d8db5ca6b2e055169592e13d8
+2007-04-13T09:53:48.370553Z
+12
+david
+
+mysqld_param.rb
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+46b4a678e357754906add2f5fe6487af
+2007-04-12T21:34:21.827236Z
+2
+david
+

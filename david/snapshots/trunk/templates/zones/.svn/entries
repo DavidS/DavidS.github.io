@@ -1,0 +1,79 @@
+8
+
+dir
+31
+file:///home/david/public_html/svn/manifests/trunk/templates/zones
+file:///home/david/public_html/svn/manifests
+
+
+
+2007-04-12T21:34:21.827236Z
+2
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f03ff2f1-f02d-0410-970d-b9634babeaa1
+
+header.erb
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+7180882fa28cadb788a72969828ecdbe
+2007-04-12T21:34:21.827236Z
+2
+david
+
+edv-bus
+dir
+
+ns.erb
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+6bba9fee2178410bb815cb473a422c77
+2007-04-12T21:34:21.827236Z
+2
+david
+
+soa.erb
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+9435f16ddb462093a65bdc7cd4c404f7
+2007-04-12T21:34:21.827236Z
+2
+david
+
+mx.erb
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+aedaa8c976e6de51c8cbd32250a0d91b
+2007-04-12T21:34:21.827236Z
+2
+david
+

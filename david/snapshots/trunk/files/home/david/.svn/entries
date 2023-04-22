@@ -1,0 +1,55 @@
+8
+
+dir
+31
+file:///home/david/public_html/svn/manifests/trunk/files/home/david
+file:///home/david/public_html/svn/manifests
+
+
+
+2007-04-17T09:19:42.707889Z
+23
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f03ff2f1-f02d-0410-970d-b9634babeaa1
+
+.bashrc
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+3f579022e7739b9af9d2bf3754347bd4
+2007-04-12T21:34:21.827236Z
+2
+david
+
+.toprc
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+0458abf2ce2a6af604e6abd99a2d9e9a
+2007-04-17T09:19:42.707889Z
+23
+david
+
+.ssh
+dir
+

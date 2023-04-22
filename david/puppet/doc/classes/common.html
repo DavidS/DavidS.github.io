@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: common</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">common</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/home/david/repos/complete/modules/common/manifests/defines/line_pp.html">
+                /home/david/repos/complete/modules/common/manifests/defines/line.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/manifests/defines/module_dir_pp.html">
+                /home/david/repos/complete/modules/common/manifests/defines/module_dir.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/manifests/defines/concatenated_file_pp.html">
+                /home/david/repos/complete/modules/common/manifests/defines/concatenated_file.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/manifests/defines/config_file_pp.html">
+                /home/david/repos/complete/modules/common/manifests/defines/config_file.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/manifests/defines/replace_pp.html">
+                /home/david/repos/complete/modules/common/manifests/defines/replace.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/manifests/defines/module_file_pp.html">
+                /home/david/repos/complete/modules/common/manifests/defines/module_file.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/manifests/init_pp.html">
+                /home/david/repos/complete/modules/common/manifests/init.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/manifests/classes/lsb_release_pp.html">
+                /home/david/repos/complete/modules/common/manifests/classes/lsb_release.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/plugins/puppet/parser/functions/re_escape_rb.html">
+                /home/david/repos/complete/modules/common/plugins/puppet/parser/functions/re_escape.rb
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/plugins/puppet/parser/functions/split_rb.html">
+                /home/david/repos/complete/modules/common/plugins/puppet/parser/functions/split.rb
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/plugins/puppet/parser/functions/basename_rb.html">
+                /home/david/repos/complete/modules/common/plugins/puppet/parser/functions/basename.rb
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/plugins/puppet/parser/functions/prefix_with_rb.html">
+                /home/david/repos/complete/modules/common/plugins/puppet/parser/functions/prefix_with.rb
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/plugins/puppet/parser/functions/dirname_rb.html">
+                /home/david/repos/complete/modules/common/plugins/puppet/parser/functions/dirname.rb
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/common/plugins/puppet/parser/functions/gsub_rb.html">
+                /home/david/repos/complete/modules/common/plugins/puppet/parser/functions/gsub.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The <a href="common.html">common</a> module installs various functions that
+are required by other modules. This module should be installed before any
+of the other module.
+</p>
+<p>
+To use this module, follow these directions:
+</p>
+<ol>
+<li>Your modules directory will need all the files included in this repository
+placed under a directory called &quot;<a
+href="common.html">common</a>&quot;
+
+</li>
+<li>Add the following <a href="common.html#M000021">line</a> to
+manifests/site.pp:
+
+<pre>
+    import &quot;modules.pp&quot;
+</pre>
+</li>
+<li>Add the following <a href="common.html#M000021">line</a> to
+manifests/modules.pp:
+
+<pre>
+    import &quot;common&quot;
+</pre>
+</li>
+</ol>
+<table>
+<tr><td valign="top">Author:</td><td>David Schmitt (<a href="mailto:david@dasz.at">david@dasz.at</a>)
+
+</td></tr>
+<tr><td valign="top">Copyright:</td><td>Copyright (c) 2007-2009 dasz.at OG
+
+</td></tr>
+<tr><td valign="top">License:</td><td>3-clause BSD
+
+</td></tr>
+</table>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Defines</h3>
+
+      <div class="name-list">
+      <a href="#M000023">concatenated_file</a>&nbsp;&nbsp;
+      <a href="#M000024">concatenated_file_part</a>&nbsp;&nbsp;
+      <a href="#M000025">config_file</a>&nbsp;&nbsp;
+      <a href="#M000021">line</a>&nbsp;&nbsp;
+      <a href="#M000022">module_dir</a>&nbsp;&nbsp;
+      <a href="#M000027">module_file</a>&nbsp;&nbsp;
+      <a href="#M000026">replace</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+<!-- if facts -->
+
+<!-- if plugins -->
+    <div id="class-list">
+      <h3 class="section-bar">Plugins</h3>
+<a href="../plugins/re_escape.html">re_escape</a>&nbsp;&nbsp;
+<a href="../plugins/split.html">split</a>&nbsp;&nbsp;
+<a href="../plugins/basename.html">basename</a>&nbsp;&nbsp;
+<a href="../plugins/prefix_with.html">prefix_with</a>&nbsp;&nbsp;
+<a href="../plugins/dirname.html">dirname</a>&nbsp;&nbsp;
+<a href="../plugins/gsub.html">gsub</a>&nbsp;&nbsp;
+    </div>
+
+<!-- if nodes -->
+
+<!-- if class -->
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="common/pkg.html" class="link">common::pkg</a><br />
+Class <a href="common/assert_lsbdistcodename.html" class="link">common::assert_lsbdistcodename</a><br />
+Class <a href="common/require_lsbdistcodename.html" class="link">common::require_lsbdistcodename</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Global Variables</h3>
+
+      <div class="name-list">
+        <table summary="Variables">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">module_dir_path</td>
+          <td>=</td>
+          <td class="context-item-value">/var/lib/puppet/modules</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Use this variable to reference the base path. Thus you are safe from any
+changes.
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Defines</h3>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <span class="method-name">concatenated_file</span><span class="method-args">( $group =&gt; '0', $dir =&gt; '', $mode =&gt; '0644', $header =&gt; '', $footer =&gt; '', $owner =&gt; 'root' )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This resource collects file snippets from a directory ($dir) and
+concatenates them in lexical order of their names into a new file ($name).
+This can be used to collect information from disparate sources, when the
+target file format doesn&#8216;t allow includes.
+</p>
+<p>
+<a href="common.html#M000024">concatenated_file_part</a> can be used to
+easily configure content for this.
+</p>
+<p>
+If no $dir is specified, the target name with &#8217;.d&#8217; appended
+will be used.
+</p>
+<p>
+The $dir is purged by puppet and will only contain explicitely configured
+files. This can be overridden by defining the directory before the <a
+href="common.html#M000023">concatenated_file</a>.
+</p>
+<p>
+Depend on File[$name] to change if and only if its contents change. Notify
+Exec[&quot;concat_${name}&quot;] if you want to force an update.
+</p>
+<p>
+Usage:
+</p>
+<pre>
+ concatenated_file { &quot;/etc/some.conf&quot;:
+        dir =&gt; &quot;/etc/some.conf.d&quot;,
+ }
+</pre>
+<p>
+where the snippets are located a file with content to prepend a file with
+content to append default permissions for the target file
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <span class="method-name">concatenated_file_part</span><span class="method-args">( $group =&gt; '0', $dir, $mode =&gt; '0644', $content =&gt; '', $ensure =&gt; 'present', $owner =&gt; 'root' )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Add a snippet called $name to the <a
+href="common.html#M000023">concatenated_file</a> at $dir. The file can be
+referenced as File[&quot;cf_part_${name}&quot;]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <span class="method-name">config_file</span><span class="method-args">( $content =&gt; '', $ensure =&gt; 'present', $source =&gt; '' )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+A simple wrapper to give all configuration files <a
+href="common.html">common</a> defaults.
+</p>
+<p>
+Usage:
+</p>
+<pre>
+ config_file { filename:
+        content =&gt; &quot;....\n&quot;,
+ }
+</pre>
+<p>
+Examples:
+</p>
+<p>
+To create the file /etc/vservers/${vs_name}/context with specific content:
+</p>
+<pre>
+ config_file {
+        &quot;/etc/vservers/${vs_name}/context&quot;:
+                content =&gt; &quot;${context}\n&quot;,
+                notify =&gt; Exec[&quot;vs_restart_${vs_name}&quot;],
+                require =&gt; Exec[&quot;vs_create_${vs_name}&quot;];
+</pre>
+<p>
+}
+</p>
+<p>
+To create the file /etc/apache2/sites-available/munin-stats with the
+content pulled from a template:
+</p>
+<pre>
+ config_file {
+                &quot;/etc/apache2/sites-available/munin-stats&quot;:
+                content =&gt; template(&quot;apache/munin-stats&quot;),
+                require =&gt; Package[&quot;apache2&quot;],
+                notify =&gt; Exec[&quot;reload-apache2&quot;];
+ }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <span class="method-name">line</span><span class="method-args">( $line, $ensure =&gt; 'present', $file )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Ensures that a specific <a href="common.html#M000021">line</a> is present
+or absent in a file. This can be very brittle, since even small changes can
+throw this off.
+</p>
+<p>
+If the <a href="common.html#M000021">line</a> is not present yet, it will
+be appended to the file.
+</p>
+<p>
+The name of the define is not used. Just keep it (globally) unique and
+descriptive.
+</p>
+<p>
+Use this only for very trivial stuff. Usually replacing the whole file is a
+more stable solution with less maintenance headaches afterwards.
+</p>
+<p>
+Usage:
+</p>
+<pre>
+ line {
+        description:
+                        file =&gt; &quot;filename&quot;,
+                line =&gt; &quot;content&quot;,
+                        ensure =&gt; {absent,*present*}
+ }
+</pre>
+<p>
+Example: The following ensures that the <a
+href="common.html#M000021">line</a> &quot;allow ^$munin_host$&quot; exists
+in /etc/munin/munin-node.conf, and if there are any changes notify the
+service for a restart
+</p>
+<pre>
+ line {
+        allow_munin_host:
+                file =&gt; &quot;/etc/munin/munin-node.conf&quot;,
+                line =&gt; &quot;allow ^$munin_host$&quot;,
+                ensure =&gt; present,
+                notify =&gt; Service[munin-node],
+                require =&gt; Package[munin-node];
+ }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <span class="method-name">module_dir</span><span class="method-args">( $group =&gt; '0', $mode =&gt; '0644', $owner =&gt; 'root' )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+A <a href="common.html#M000022">module_dir</a> is a storage place for all
+the stuff a module might want to store. According to the FHS, this should
+go to /var/lib. Since this is a part of puppet, the full path is
+/var/lib/puppet/modules/${name}. Every module should # prefix its
+module_dirs with its name.
+</p>
+<p>
+By default, the <a href="common.html#M000022">module_dir</a> is loaded from
+&quot;puppet:///${name}/<a href="common.html#M000022">module_dir</a>&quot;.
+If that doesn&#8216;t exist an empty directory is taken as source. The
+directory is purged so that modules do not have to worry about removing
+cruft.
+</p>
+<p>
+Usage:
+</p>
+<pre>
+ module_dir { [&quot;common&quot;, &quot;common/dir1&quot;, &quot;common/dir2&quot; ]: }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <span class="method-name">module_file</span><span class="method-args">( $group =&gt; '0', $mode =&gt; '0644', $source, $owner =&gt; 'root' )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Put a file into module-local storage.
+</p>
+<p>
+Usage:
+</p>
+<pre>
+ module_file {
+        &quot;module/file&quot;:
+                        source =&gt; &quot;puppet://..&quot;,
+</pre>
+<p>
+}
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <span class="method-name">replace</span><span class="method-args">( $pattern, $file, $replacement )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+A hack to <a href="common.html#M000026">replace</a> all ocurrances of a
+regular expression in a file with a specified string. Sometimes it can be
+less effort to <a href="common.html#M000026">replace</a> only a single
+value in a huge config file instead of creating a template out of it.
+Still, creating a template is often better than this hack.
+</p>
+<p>
+This define uses perl regular expressions.
+</p>
+<p>
+Usage:
+</p>
+<p>
+<a href="common.html#M000026">replace</a> { description:
+</p>
+<pre>
+          file =&gt; &quot;filename&quot;,
+          pattern =&gt; &quot;regexp&quot;,
+          replacement =&gt; &quot;replacement&quot;
+</pre>
+<p>
+Example: To <a href="common.html#M000026">replace</a> the current port in
+/etc/munin/munin-node.conf with a new port, but only disturbing the file
+when needed:
+</p>
+<pre>
+ replace {
+        set_munin_node_port:
+                file =&gt; &quot;/etc/munin/munin-node.conf&quot;,
+                pattern =&gt; &quot;^port (?!$port)[0-9]*&quot;,
+                replacement =&gt; &quot;port $port&quot;
+ }
+</pre>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- if resource_list -->
+
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

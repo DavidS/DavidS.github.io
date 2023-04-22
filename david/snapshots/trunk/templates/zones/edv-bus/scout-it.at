@@ -1,0 +1,8 @@
+$TTL 86400
+$ORIGIN <%= name %>.
+$INCLUDE <%= soa %>
+$INCLUDE <%= ns %>
+$INCLUDE <%= mx %>
+
+p100 	CNAME p100.bernhard-zeiler.at.
+

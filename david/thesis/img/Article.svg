@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created by diasvg.py -->
+<svg width="27.250cm" height="11.300cm" viewBox="1.400 2.075 28.650 13.375"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="1.450" y="2.125" width="12.850" height="3.400" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="1.450" y="2.125" width="12.850" height="3.400" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="7.875" y="3.125"  fill="#000000" text-anchor="middle" font-size="1.00" font-family="sans" font-style="normal" font-weight="700">
+DataObject</text>
+<text x="7.875" y="4.125"  fill="#000000" text-anchor="middle" font-size="1.00" font-family="sans" font-style="normal" font-weight="400">
+Gemeinsame Operationen für alle</text>
+<text x="7.875" y="5.125"  fill="#000000" text-anchor="middle" font-size="1.00" font-family="sans" font-style="normal" font-weight="400">
+persistenten Objekte</text>
+<rect x="1.450" y="5.525" width="12.850" height="0.400" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="1.450" y="5.525" width="12.850" height="0.400" fill="none" stroke="#000000" stroke-width="0.100" />
+<rect x="1.450" y="5.925" width="12.850" height="7.400" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="1.450" y="5.925" width="12.850" height="7.400" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="1.600" y="6.575"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++getId(): int</text>
+<text x="1.600" y="7.375"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++setId(in id:int)</text>
+<text x="1.600" y="8.175"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++getCreatedOn(): Date</text>
+<text x="1.600" y="8.975"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++setCreatedOn(in created:Date)</text>
+<text x="1.600" y="9.775"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++getLastModified(): Date</text>
+<text x="1.600" y="10.575"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++setLastModified(in modified:Date)</text>
+<text x="1.600" y="11.375"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++getTitle(): String</text>
+<text x="1.600" y="12.175"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++setTitle(in title:String)</text>
+<text x="1.600" y="12.975"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++getTags(): Set&lt;Tag&gt;</text>
+<rect x="16.750" y="2.125" width="11.850" height="2.400" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="16.750" y="2.125" width="11.850" height="2.400" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="22.675" y="3.125"  fill="#000000" text-anchor="middle" font-size="1.00" font-family="sans" font-style="normal" font-weight="700">
+Article</text>
+<text x="22.675" y="4.125"  fill="#000000" text-anchor="middle" font-size="1.00" font-family="sans" font-style="normal" font-weight="400">
+Spezielle Attribute von Artikeln</text>
+<rect x="16.750" y="4.525" width="11.850" height="0.400" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="16.750" y="4.525" width="11.850" height="0.400" fill="none" stroke="#000000" stroke-width="0.100" />
+<rect x="16.750" y="4.925" width="11.850" height="3.400" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="16.750" y="4.925" width="11.850" height="3.400" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="16.900" y="5.575"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++getSummary(): String</text>
+<text x="16.900" y="6.375"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++setSummary(in summary:String)</text>
+<text x="16.900" y="7.175"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++getText(): String</text>
+<text x="16.900" y="7.975"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
++setText(in text:String)</text>
+<polyline fill="none" stroke="#000000" stroke-width="0.100"  points="15.212,3.825 15.950,3.825 15.950,3.325 16.750,3.325 "/>
+<polygon fill="#FFFFFF" stroke="none" stroke-width="0.100" points="15.212,3.425 14.412,3.825 15.212,4.225 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="15.212,3.425 14.412,3.825 15.212,4.225 "/>
+</svg>

@@ -1,0 +1,4 @@
+HELO localhost
+MAIL FROM: <ADSHJLHDAJS@black.co.at>
+RCPT TO: <root@uni-ak.ac.at>
+QUIT

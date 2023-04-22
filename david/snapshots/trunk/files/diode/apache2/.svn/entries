@@ -1,0 +1,40 @@
+8
+
+dir
+31
+file:///home/david/public_html/svn/manifests/trunk/files/diode/apache2
+file:///home/david/public_html/svn/manifests
+
+
+
+2007-04-12T22:28:54.777784Z
+4
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f03ff2f1-f02d-0410-970d-b9634babeaa1
+
+svn.conf
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+58e75a2523d6b295fddc82a766dbcec0
+2007-04-12T22:28:54.777784Z
+4
+david
+

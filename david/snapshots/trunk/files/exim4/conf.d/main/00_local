@@ -1,0 +1,47 @@
+# our local ips
+hostlist localhosts = 127.0.0.8 : ::::1 
+
+# enhance default acls
+CHECK_RCPT_LOCAL_ACL_FILE = CONFDIR/acls/check_rcpt
+CHECK_DATA_LOCAL_ACL_FILE = CONFDIR/acls/check_data
+MAIL_ACL_CHECK_MAIL = local_check_mail
+
+# other ACLs
+acl_smtp_helo = local_check_helo
+
+# This has to be disabled, so the callout happens as required by local_sender_callout
+#CHECK_RCPT_VERIFY_SENDER =
+
+# enable checks in the ACLs
+CHECK_RCPT_REVERSE_DNS = *
+# CHECK_RCPT_SPF = *
+CHECK_RCPT_POSTMASTER = postmaster
+
+# recognize all configured interfaces when routing
+extra_local_interfaces = <; 0.0.0.0; ::0
+
+# enable TLS
+MAIN_TLS_ENABLE = defined
+MAIN_LOG_SELECTOR = +tls_cipher +tls_peerdn
+
+# disable frozen notifications
+MAIN_FREEZE_TELL = 
+
+# allow more concurrent smtp sessions
+smtp_accept_max = 30
+
+# accept mails on smtps and submission ports too
+daemon_smtp_ports = smtp : 465 : 587
+# do ssl on connect
+tls_on_connect_ports = 465
+
+# require TLS for AUTH
+auth_advertise_hosts = ${if or{ \
+		{!eq{$tls_cipher}{}} \
+		{!eq{$interface_port}{25}} \
+	}\
+	{*}{}}
+
+# TODO
+domainlist virtual_domains =
+hostlist strict_from_to_hosts =

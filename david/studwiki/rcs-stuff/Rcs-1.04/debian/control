@@ -1,0 +1,16 @@
+Source: librcs-perl
+Section: perl
+Priority: optional
+Build-Depends-Indep: debhelper (>= 3.0.5), perl (>= 5.8.0-7)
+Maintainer: David Schmitt <david@schmitt.edv-bus.at>
+Standards-Version: 3.5.1
+
+Package: librcs-perl
+Architecture: all
+Depends: rcs, ${perl:Depends}, ${misc:Depends}
+Description:  Perl Object Class for Revision Control System (RCS)
+ This Perl module provides an object oriented interface to access 
+ Revision Control System (RCS) utilities. 
+ .
+ This module should simplify the creation of an RCS front-end.
+

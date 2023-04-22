@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-07-01T08:54:47.314000Z
+K 7
+svn:log
+V 51
+repair vserver IPs and add new host ldap.edv-bus.at
+END

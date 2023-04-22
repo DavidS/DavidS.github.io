@@ -1,0 +1,61 @@
+8
+
+dir
+31
+file:///home/david/public_html/svn/manifests/trunk/files/exim4
+file:///home/david/public_html/svn/manifests
+
+
+
+2007-04-12T21:34:21.827236Z
+2
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f03ff2f1-f02d-0410-970d-b9634babeaa1
+
+acls
+dir
+
+tests
+dir
+
+local_rcpt_callout
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+b3136a962c78ed1216a17f6c0e30b9c0
+2007-04-12T21:34:21.827236Z
+2
+david
+
+conf.d
+dir
+
+local_sender_callout
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+b3136a962c78ed1216a17f6c0e30b9c0
+2007-04-12T21:34:21.827236Z
+2
+david
+

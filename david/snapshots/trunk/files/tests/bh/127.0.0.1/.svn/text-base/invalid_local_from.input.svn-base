@@ -1,0 +1,4 @@
+HELO localhost
+MAIL FROM: <lkhdsahgdfka@black.co.at>
+RCPT TO: <gerhard.schmitt@black.co.at>
+QUIT

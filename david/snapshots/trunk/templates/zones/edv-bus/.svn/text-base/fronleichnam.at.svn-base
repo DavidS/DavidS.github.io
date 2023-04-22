@@ -1,0 +1,5 @@
+$INCLUDE <%= header %>
+
+@               IN      MX      20 mail.mariatreu.at.
+www             IN      CNAME   www.mariatreu.at.
+

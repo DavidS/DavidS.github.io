@@ -1,0 +1,67 @@
+html {
+	height: 100%;
+}
+
+body {
+	font-family: arial, sans-serif;
+	color: #000000;
+	background: white url("../pics/TT-400x203-transparent.png") no-repeat center; 
+	height: 98%;
+}
+
+.page {
+}
+
+table {
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+table.content {
+	height: auto;
+}
+.toplogo {
+	text-align: right;
+	vertical-align: top;
+}
+.botlogo {
+	text-align: left;
+	vertical-align: bottom;
+}
+
+.descriptor {
+	vertical-align: middle;
+	text-align: left;
+}
+.mailto {
+	font-size: larger;
+	font-weight: bold;
+}
+.skills { }
+.gsm {
+	font-size: smaller;
+}
+
+.title {
+	text-align: right;
+	font-size: larger;
+	font-weight: bold;
+	margin: 1em 0em 1em 0em;
+}
+	
+.office {
+	text-align: right;
+	font-size: smaller;
+}
+.address {
+	margin: 1em 0em 1em 0em;
+}
+.contact {
+	margin: 1em 0em 1em 0em;
+}
+
+img {
+	border: none;
+}
+
+

@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-05-05T08:25:34.533240Z
+K 7
+svn:log
+V 57
+add another virtual host. this is still way too much work
+END

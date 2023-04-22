@@ -1,0 +1,46 @@
+$INCLUDE <%= header %>
+
+mail		A	83.64.231.72
+
+
+$ORIGIN www.edv-bus.at.
+@		A	83.64.231.72
+;@		AAAA	2002:557d:a522::1
+$INCLUDE <%= mx %>
+
+$ORIGIN schmitt.EDV-BuS.at.
+$INCLUDE <%= mx %>
+@		A	83.64.231.72
+
+$ORIGIN EDV-BuS.at.
+time		A	83.64.231.72
+sicherheit	A	83.64.231.72
+mrtg		A	83.64.231.72
+
+
+test		A	83.64.231.72
+baz		A	81.223.104.146
+mul-t-lock	A	62.178.226.98
+
+; FW-Schmidg-als-Nameserver
+foo			A	85.125.165.34
+fw-schmidg	A	85.125.165.34
+
+; Chip-als-Nameserver
+named		A	85.125.165.66
+chip		A	85.125.165.66
+; Zid-als-Nameserver
+bar		A	193.170.188.107
+
+smtpscanner			A	83.64.231.70
+
+*		A	83.64.231.72
+
+registrar	A	83.64.231.72
+
+; admin MX einträge
+nagios		MX	10	<%= smarthost %>.
+mx				MX	10	<%= smarthost %>.
+fw-schmidg	MX	10	<%= smarthost %>.
+svn-test		MX	10	<%= smarthost %>.
+rt				MX	10	<%= smarthost %>.

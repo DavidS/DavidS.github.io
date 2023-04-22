@@ -1,0 +1,2260 @@
+\chapter{Produkte}
+\thispagestyle{empty}
+\label{Kapitel_Produkte}
+
+Im Rahmen dieser Diplomarbeit wurden einige Werkzeuge und Methoden getestet.
+Die gesamten Tests wurden in Java in der Eclipse Entwicklungsumgebung
+programmiert. Im diesem Kapitel werden die Komponenten und Bibliotheken
+vorgestellt.
+
+\section{SQL}
+
+SQL ist eine Abfrage- und Manipulationssprache für relationale Datenbanken.
+Diese Sprache wird von ISO in \cite{SQL92} standardisiert. Diesen Standard
+setzen die meisten Hersteller zu großen Teilen um. 1999 wurde eine neue Version
+des Standards \cite{SQL99} mit objekt-orientierten Merkmalen herausgebracht.
+Implementierungen dazu sind jedoch nicht weit verbreitet und vor allem im
+Hinblick auf die Objektorientierung unvollständig.
+
+Als Abfragesprache genügt SQL nicht mehr modernen Anforderungen an
+Endnutzersoftware. Als Basis aller anderen Produkte bildet die Darstellung von
+Lösungsansätzen in SQL jedoch einen interessanten Hintergrund gegen den die
+anderen Methoden kontrastieren.
+
+\section{Reines Java}
+
+Diese objekt-orientierte Programmiersprache wurde von Sun Microsystems erfunden
+und wird zur Zeit im Rahmen des \emph{Java Community Process} auf
+\url{http://jcp.org} weiterentwickelt. Für die meisten Datenbanken existieren
+Java Bibliotheken nach dem JDBC Standard (siehe \cite{jdbc4}), die einen
+direkten SQL-Zugriff auf das DBMS über ein einheitliches Programmiermodell
+erlauben. Geschäftsobjekte und deren Verknüpfung
+mit der Datenbank müssen jedoch manuell implementiert werden.
+
+\section{SimpleORM}
+
+Berglas beschreibt in \cite{simpleorm} diese Bibliothek als
+\emph{Persistenzautomatisierung}. Der Schwerpunkt liegt also darauf, die
+repetetiven Aufgaben automatisch durchzuführen. SimpleORM ist jedoch kein
+Versuch, Persistenz transparent zu machen, da "für die meisten
+Informationssysteme Persistenz und Abfragen an die Datenbank alles
+durchdringende Aufgaben sind, die üblicherweise die 'Geschäftslogik'
+überschatten."\footnote{Aus \cite{simpleorm}, Abschnitt "Why SimpleORM?";
+Übersetzung des Autors} Die Bibliothek integriert
+daher die Datenschicht direkt in die Geschäftsobjekte und bietet nur die
+Kernfunktionalitäten einer objekt-relationalen Abbildung: Schemakonvergenz,
+typsichere Abfragekonstruktoren, einen Objektpuffer und Beibehaltung der
+Datenbankidentität.
+
+SimpleORM benötigt keine zusätzlichen Übersetzungsschritte für
+Byte\-code-Ma\-ni\-pu\-la\-tio\-nen und keine Laufzeitkonfiguration mit Reflection. Dadurch
+bleibt die Implementierung für den Anwender überschaubar, und bei der Fehlersuche
+"gilt" der unmodifizierte Quelltext der betrachteten Komponente.
+
+\section{Hibernate}
+
+Das erklärte Ziel der Entwickler von Hibernate ist es, dem Benutzer "$95\%$
+der häufigsten persistenz-spezifischen Programmiertätigkeiten"\footnote{Aus
+\cite{hibernate}, S. ix; Übersetzung des Autors} abzunehmen.
+
+Hibernate positioniert sich als externe Datenschicht, die zwischen beliebig
+strukturierten Geschäftsobjekten und einer unabhängigen Datenbank übersetzt. In
+einer XML-Datei wird die gewünschte Abbildung zwischendem Daten- und dem
+Objektmodell definiert. Diese Datei wird zur Laufzeit von der
+Hibernatekomponente geladen und verarbeitet, um die notwendigen Übersetzungs-
+und Zugriffsoperationen zu erzeugen.
+
+Hibernate wird als Open Source Projekt auf \url{http://www.hibernate.org}
+entwickelt.
+
+\chapter{Gegenüberstellung}
+\thispagestyle{empty}
+\label{Kapitel_Gegenueberstellung}
+
+\section{Schemadefinition}
+
+\subsection{SQL}
+
+Tabellen werden mit \sql{CREATE TABLE} erzeugt. Dabei werden Attribute und deren
+Datentyp festgelegt. Zusätzlich können Einschränkungen für die einzelnen
+Attribute angegeben werden, um die Randbedingungen für interne Konsistenz zu
+definieren.
+
+Im folgenden Beispiel ist die Definition der Tabellen von Artikeln und
+ihren Schlagwörtern angeführt:
+
+\begin{lstlisting}[language=sql,numbers=left,columns=flexible]
+CREATE TABLE articles (
+	id				integer NOT NULL PRIMARY KEY, -- Primärschlüssel
+	created_on		timestamp without time zone DEFAULT now() NOT NULL,
+	last_modified	timestamp without time zone DEFAULT now() NOT NULL,
+	title			text DEFAULT '' NOT NULL,
+	text			text DEFAULT '' NOT NULL,
+	summary			text DEFAULT '' NOT NULL,
+	CHECK ( created_on <= last_modified ) -- Letzte Änderung muss nach der Erzeugung sein
+);
+
+CREATE TABLE articles_tags (
+	id		integer NOT NULL REFERENCES articles ( id ), -- Artikelnummer muss existieren
+	tag		tag NOT NULL,
+	UNIQUE ( id, tag ) -- jedes Schlagwort darf bei jedem Artikel nur einmal auftauchen
+);
+
+\end{lstlisting}
+
+In Zeile~2 wird mit dem Zusatz \sql{PRIMARY KEY} das \sql{id} Attribut als
+Identität der Artikel in der Datenbank definiert. Automatisch werden so
+gekennzeichnete Spalten mit einem Index hinterlegt, sodass Abfragen auf diese
+Werte besonders schnell abgewickelt werden können.
+
+Normalerweise können alle Attribute in einer Tabelle den \sql{NULL}-Wert
+annehmen und so "kein Wert" aussagen. Mit der \sql{NOT NULL} Einschränkung wird
+dies hier überall verboten.
+
+In Zeile~8 wird definiert, dass das Erzeugungsdatum eines Artikels immer vor dem
+Datum seiner letzten Modifikation sein muss. Mit \sql{CHECK} können beliebige
+zeilenweise Einschränkungen auf der Tabelle definiert werden.
+
+Zeile~12 schränkt den Wertebereich des \sql{id} Attributs auf Werte aus der
+Menge der Artikelnummern ein. Damit können nur Schlagwörter für existierende
+Artikel abgelegt werden.
+
+Zuletzt wird in Zeile~14 noch festgelegt, dass jedes Schlagwort bei jedem
+Artikel nur einmal vorkommen darf.
+
+Operationen, die eines dieser Kriterien verletzen würden -- zum Beispiel
+doppeltes Einfügen von Schlagworten für den selben Artikel -- brechen mit einer
+Fehlermeldung ab.
+
+\subsection{Reines Java}
+
+In einem Javaprogramm besteht das Schema aus zwei fundamental unterschiedlichen
+Teilen: auf der einen Seite die zur Kompilierung verwendete
+Schnittstellendefinition, aus der die Attributzugriffe erzeugt werden, und auf
+der anderen Seite das Datenformat, die "physikalische" Art und Weise wie die
+Attribute gepeichert werden.
+
+\subsubsection{Schnittstellendefinition}
+
+Die Schnittstelle des Datenobjektes gibt alle notwendigen Operationen der
+Klasse
+an. Das sind zumindest alle Operationen, um die Attribute zu setzen und wieder
+auszulesen:
+
+\begin{lstlisting}
+public interface IArticle {
+
+	public abstract int getId();
+	public abstract void setId(int id);
+	
+	public abstract java.util.Set<Tag> getTags();
+	
+	public abstract String getTitle();
+	public abstract void setTitle(String title);
+	
+	public abstract Date getCreatedOn();
+	public abstract void setCreatedOn(Date created);
+	
+	public abstract Date getLastModified();
+	public abstract void setLastModified(Date modified);
+	
+	public abstract String  getSummary();
+	public abstract void    setSummary(String summary);
+	
+	public abstract String  getText();
+	public abstract void    setText(String text);
+
+}
+\end{lstlisting}
+
+Diese Schnittstellendefinition gibt -- im Gegensatz zur SQL \sql{CREATE TABLE}
+Anweisung -- weder für die Laufzeit noch für die Persistenz ein Speicherschema
+vor.
+
+\subsubsection{Datenformat: Laufzeit}
+
+Für die Laufzeit werden im einfachsten Fall Attribute mit den passenden
+Javatypen als private Instanzvariablen abgelegt. Beispielhaft dafür hier die
+Implementation des \code{Summary}-Feldes des Artikels:
+
+\begin{lstlisting}
+public class Article implements IArticle {
+	private String _summary = "";
+
+	public String getSummary()
+	{
+		return _summary;
+	}
+
+	public void setSummary(String summary)
+	{
+		_summary = summary;
+	}
+\end{lstlisting}
+
+Diese Zugriffmethoden können auch zusätzliche Validierungsanweisungen
+enthalten. Das kann von einfachen Überprüfungen wie der Beschränkung der
+maximalen Länge von Zeichenketten bis zu komplexen Geschäftsregeln gehen.
+
+\subsubsection{Datenformat: Serialisierung}
+
+Der Standardpersistenzmechanismus von Java ist Serialisierung (siehe
+\cite{javaser}). Wie der Name schon andeutet, handelt es sich dabei um eine
+Methode, Objektbäume in eine ein-eindeutige lineare Repräsentation zu
+transformieren und wieder daraus zu lesen. Diese lineare Repräsentation kann
+dann in einer Datei gespeichert und von einem anderen Prozess gelesen werden.
+
+Für einfache Klassen, die ihrerseits nur aus serialisierbaren Teilen bestehen,
+wird das Schema von der virtuellen Maschine automatisch generiert und Instanzen
+können ohne weitere Programmierung in einen \code{ObjectOutputStream}
+geschrieben werden.
+
+Darüber hinaus werden jedoch keine weiteren Hilfsmittel angeboten. Konkret
+fehlen Vorrichtungen zur Erfüllung der ACID Anforderungen (Siehe
+Abschnitt~\ref{ACID}), Mechanismen, um einmal abgespeicherte Objekte
+wiederzufinden sowie Indizierungsmechanismen, um bei einer Suche nicht alle
+Objekte laden zu müssen. Das Speicherformat enthält Java Typinformationen zur
+korrekten Rekonstruktion, die speziell bei großen Mengen gleichartiger Objekte
+zu überflüssiger Redundanz führen.
+
+\subsubsection{Datenformat: SQL}
+
+Bei großen Datenmengen wird bevorzugt auf eine SQL-Datenbank zurückgegriffen.
+Über die JDBC Schnittstelle können dann Objektattribute manuell in der Datenbank gespeichert
+und gelesen werden. Über SQL Abfragen können einzelne Objekte und Objektmengen
+nach beliebigen Kriterien gesucht werden.
+
+Ohne besondere Unterstützung durch Werkzeuge wird das SQL-Schema parallel zur
+Entwicklung der Java Schnittstellen und Klassen mitentwickelt und als SQL-Skript
+abgelegt. Zur Evolution des Schemas können dann einzelne SQL Befehle zur
+Transformation von einer Version zur nächsten abgelegt werden.
+
+\subsection{SimpleORM}
+
+Das Schema von SimpleORM Objekten wird direkt in der Java Klasse definiert. Die
+eigentliche Persistenzfunktionalität über eine Ableitung von der
+\code{SRecordInstance} Klasse eingebunden. Die Schemainformationen speichert
+ein Feld vom Typ \code{SRecordMeta}. Für jedes Attribut der Klasse wird ein
+\code{SFieldMeta}-Deskriptor angelegt und mit dem \code{SRecordMeta} verknüpft.
+Hier eine vereinfachte Darstellung der \code{Article} Klasse:
+
+\begin{lstlisting}[columns=flexible]
+public class Article extends SRecordInstance
+{
+	private	static final SRecordMeta
+			meta = new SRecordMeta(Article.class, "articles");
+	public	static final SFieldInteger
+			ID = new SFieldInteger(meta, "id",
+				SSimpleORMProperties.SFD_PRIMARY_KEY,
+				SSimpleORMProperties.SGENERATED_KEY.pvalue(
+					new SGeneratorSequence(meta)));
+	public	static final SFieldString 
+			TITLE = new SFieldString(meta, "title", -1,
+				SSimpleORMProperties.SMANDATORY.ptrue());
+	public	static final SFieldTimestamp
+			CREATED_ON = new SFieldTimestamp(meta, "created_on",
+				SSimpleORMProperties.SMANDATORY.ptrue(),
+				SSimpleORMProperties.SEXTRA_COLUMN_DDL.pvalue(" DEFAULT now()"));
+	public	static final SFieldTimestamp LAST_MODIFIED = // ...
+	public	static final SFieldString SUMMARY = // ...
+	public	static final SFieldString TEXT = // ...
+
+}
+\end{lstlisting}
+\label{simple_orm_schema}
+
+Die Funktion \code{String Article.meta.createTableSQL()} erzeugt eine SQL Anweisung,
+die eine passende Tabelle für diese Klasse anlegt.
+
+\subsection{Hibernate}
+
+Javaklassen und das Datenbankschema können in Hibernate voneinander komplett
+unabhängig verwaltet werden, solange eine passende Abbildungsbeschreibung
+existiert. Es besteht auch die Möglichkeit, das Datenbankschema von Hibernate
+einmalig oder laufend aus der Abbildungsbeschreibung erzeugen oder erneuern zu
+lassen.
+
+Die Beschreibung wird in XML notiert. Hier wieder das Beispiel für Artikel:
+
+\begin{lstlisting}[language=xml]
+<hibernate-mapping package="webbook.hibernate">
+	<class name="Article">
+		<id name="id" column="id">
+			<generator class="native"/>
+		</id>
+		
+		<property name="title" type="text" not-null="true"/>
+		<property name="createdOn" type="timestamp" not-null="true"/>
+		<property name="lastModified" type="timestamp" not-null="true"/>
+		
+		<property name="text" type="text" not-null="true"/>
+		<property name="summary" type="text" not-null="true"/>
+	
+		<set name="tags" table="articles_tags" cascade="all">
+			<key column="id"/>
+			<element column="tag" type="webbook.hibernate.utils.TagType" not-null="true"/>
+		</set>
+	</class>
+</hibernate-mapping>
+\end{lstlisting}
+
+Dieses XML-Stück definiert die Abbildung der \code{Article} Klasse auf eine
+triviale -- weil gleichförmige -- Tabelle. Mittels weiterer Attribute können
+Tabellen (\xml{table="table\_name"}) und Spalten (\xml{column="column\_name"})
+umbenannt werden. Am Ende ist die Menge der Schlagwörter mit dem \xml{<set/>}
+Element definiert. Im Gegensatz zu den anderen Methoden können die Schlagworte
+hier direkt als Menge abgebildet werden. Um die Abbildung der
+Schlagworte direkt auf die korrekte Klasse \code{webbook.utils.Tag} zu machen,
+steht hier als \xml{type} eine benutzerdefinierte Klasse
+\code{webbook.hibernate.utils.TagType}, die \code{Tag}-Instanzen auf \sql{text}
+Spalten abbildet. Diese Klasse leitet von \code{org.hibernate.type.TextType} ab
+und muss nur eine kleine Anzahl von Funktionen implementieren, um die passenden
+Typumwandlungen durchzuführen.
+
+Darüber hinaus bietet Hibernate Möglichkeiten, Ableitungsbäume auf
+unterschiedliche SQL Strukturen abzubilden, Attribute nach diversen
+Gesichtspunkten zu gruppieren sowie $1:1$, $1:N$ und $N:M$ Abbildungen zu
+modellieren. Mehr dazu in den folgenden Abschnitten.
+
+\section{Objektmengen}
+
+Attribute, die mehrere Werte gleichzeitig annehmen können -- vor allem Listen und
+Mengen -- sind in der Datenmodellierung von besonderem Interesse, da sie die
+Grundlage für alle komplexeren Strukturen darstellen.
+
+\subsection{SQL}
+
+Relationale Systeme kennen nur einen Beziehungstyp: $[0,1] : [0,n]$, kurz $1:N$
+geschrieben: Jedes Element in der einen Menge kann, muss aber nicht, zu keinem,
+einem oder mehreren Elementen in Beziehung stehen. Durch Kombination und mittels
+Randbedingungen können alle anderen Beziehungsmannigfaltigkeiten abgebildet werden.
+
+\subsubsection{Einfache Beziehungen}
+
+Umgesetzt werden solche Beziehungen mittels Fremdschlüsseln. Als Beispiel hier
+die Beziehung zwischen Ordnern. Jeder Ordner kann -- muss aber nicht -- in genau
+einem übergeordneten Ordner -- \code{parent} -- enthalten sein. Umgekehrt kann
+jeder Ordner mehrere andere Ordneren enthalten.
+
+In SQL wird dazu der Schlüsselwert des übergeordneten Tupels in einem weiteren
+Attribut gespeichert. Durch die \sql{REFERENCES} Beschränkung wird festgelegt,
+welche Werte vorkommen dürfen. Hier die ganze Anweisung:
+
+\begin{lstlisting}[language=sql]
+CREATE TABLE folders (
+    id integer NOT NULL PRIMARY KEY,
+    parent integer REFERENCES folders (id),
+    -- weitere Attribute hier
+);
+\end{lstlisting}
+
+Die großen Pluspunkte dieser Methode sind die Redundanzfreiheit dieser
+Darstellung und der daraus automatisch folgenden Symmetrie zwischen den
+Beziehungen "enthält" und "ist enthalten in". Die relevanten Abfragen zu diesen
+beiden Beziehungsrichtungen ist einerseits "Welche Ordner sind im Ordner
+\sql{id=PARENT} enthalten?" und andererseits "Welcher Ordner enthält den Ordner
+\sql{id=CHILD}?"
+
+\begin{lstlisting}[language=sql]
+-- Unterordner
+SELECT id	FROM folder WHERE parent = PARENT;
+
+-- Überordner
+SELECT parent	FROM folder WHERE id	 = CHILD;
+\end{lstlisting}
+
+\pagebreak
+
+Ein spezielles Problem solcher rekursiven Beziehungen ist die Forderung, dass ein
+Ordner sich nicht selbst enthalten darf. Durch einen Konsistenzprüfung der Form
+\begin{samepage}\sql{parent} \sql{IS} \sql{NULL} \sql{OR} \sql{parent} \sql{!=} \sql{id}\end{samepage}
+lässt sich zwar verhindern, dass ein Ordner
+sich selbst \emph{direkt} enthält, für eine allgemeine Lösung sind diese
+zeilenweisen Bedingungen jedoch nicht mächtig genug. Hier muss man sich entweder
+auf die korrekte Implementierung der Applikation verlassen oder mit Triggern
+komplexere -- und damit in der Ausführung und Wartung teure -- Überprüfungen
+implementieren.
+
+Als flankierende Maßnahmen können auch externe Konsistenzprüfprogramme
+eingesetzt werden, um regelmässig solche Bedingungen "manuell" zu überprüfen. 
+
+\subsubsection{Mengenbeziehungen}
+
+Komplexere Beziehungen mit $M:N$ Kardinalitäten implementiert man mit einer
+Hilfstabelle. Diese Konstruktion ist in Abbildung~\ref{nzum} dargestellt.
+In der Hilfstabelle können auch beschreibende Attribute der Beziehung
+gespeichert werden. 
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics{img/NzuM}
+\caption{$M:N$ Beziehung}
+\label{nzum}
+\end{center}
+\end{figure}
+
+\subsection{Reines Java}
+
+\subsubsection{Modellierung}
+
+Java Objektmengen kommen in drei grundlegenden Varianten: 
+
+\begin{description}
+\item[Set<\emph{E}>:]{Menge von \emph{E}-Objekten ohne Duplikate}
+\item[List<\emph{E}>:]{geordnete Liste von \emph{E}-Objekten; Duplikate sind erlaubt}
+\item[Map<\emph{K},\emph{V}>:]{$1:1$ Abbildung von \emph{K}-Objekten auf \emph{V}-Objekte}
+\end{description}
+
+Für jede dieser Schnittstellen gibt es in \cite{javaapi} ausführliche Garantien
+zu Laufzeit und Speicherverhalten der tatsächlichen Implementierungen. Java
+selbst liefert für die unterschiedlichen Anforderungen des Programmierers
+Implementierungen auf Vektor-, Listen- und Hash\-ta\-bellen\-ba\-sis, die an
+entscheidenden Stellen eben besser als die von der Schnittstelle geforderten
+Kriterien sind. Bei besonderen Anforderungen können diese Schnittstellen auch
+selbst oder von Drittanbietern implementiert werden.
+
+Hier das Beispiel der Ordnerstruktur mit Hilfe eines
+\code{Set}s:\label{java-unidirectional}
+\begin{lstlisting}
+package webbook;
+class BasicFolder implements IFolder {
+	/* Die Menge der Unterordner dieses Ordners */
+	java.util.Set<IFolder> subfolders 
+		= new java.util.HashSet<IFolder>();
+	
+	/* ... */
+}
+\end{lstlisting}
+
+Diese Methode modelliert jedoch nicht die Symmetrie dieser Beziehung. In der
+Navigation durch dieses Modell kann nicht direkt von einem Unterorder zu seinem
+Überordner gesprungen werden. Dafür müsste die -- ebenfalls händisch zu
+implementierende -- Liste aller Ordner durchsucht werden.
+
+Umgekehrt könnte das SQL-Modell übernommen werden, um immer im Modell "nach oben"
+navigieren zu können. 
+
+\begin{lstlisting}
+package webbook;
+class BasicFolder implements IFolder {
+	/* Der übergordnete Ordner */
+	IFolder parent = null;
+	
+	/* ... */
+}
+\end{lstlisting}
+
+Somit kann der übergeordnete Ordner festgestellt werden. Da Java
+keine Möglichkeit bietet, über alle Instanzen einer Klasse zu iterieren, kann mit
+dieser Methode -- ohne zusätzlichen Programmieraufwand -- nicht einmal die Menge aller
+enthaltenen Ordner festgestellt werden. Normalerweise werden daher beide
+Richtungen implementiert. Da es sich dabei um redundante Informationen handelt,
+muss bei Manipulationen dieser Struktur jedoch besondere Sorgfalt an den Tag
+gelegt werden. Durch die Kapselung der Attribute kann das Problem jedoch auf die
+betroffene Klasse beschränkt werden.
+
+\begin{lstlisting}
+package webbook.manual;
+class Folder implements IFolder {
+	/* Die Menge der Unterordner dieses Ordners */
+	private java.util.Set<Folder> subfolders 
+		= new java.util.HashSet<Folder>();
+	/* Der übergordnete Ordner */
+	private Folder parent = null;
+
+	public void setParent(Folder f)
+	{
+		/* Konsistenzüberprüfung */
+		if (f == this || (f != null && f.hasParent(this)) )
+			throw new Exception("Konsistenzverletzung");
+
+		/* entfernt diesen Ordner aus altem parent */
+		if (parent != null)
+			parent.removeFolder(this);
+
+		/* fügt diesen Ordner zum neuen parent hinzu */
+		parent = f;
+		if (parent != null)
+			parent.addFolder(this);
+	}
+
+	/* rekursiver Überprüfung der Überordnung */
+	public bool hasParent(Folder p)
+	{
+		return parent == p || ( parent != null && parent.hasParent(p) );
+	}
+
+	/* ... */
+}
+\end{lstlisting}
+
+Gleichzeitig können solche Methoden auch dazu benutzt, werden zusätzliche
+Konsistenzüberprüfungen durchzuführen, wie hier die \code{hasParent} Methode,
+deren Überprüfung die Baumstruktur garantiert, da kein Zyklus gebildet werden
+kann (\code{this} müsste dazu bereits dem neuen Überordner übergeordnet sein).
+
+Andere Beziehungstypen können mit entsprechendem Aufwand mit passenden
+Kombinationen von \code{Set}s und einfachen Attributen implementiert werden.
+
+\subsubsection{Implementierung mit Datenbank}
+
+Werden die betrachteten Objekte in einer Datenbank gespeichert, so müssen die
+Beziehungen ebenfalls gespeichert werden. Dazu eignen sich die im vorhergehenden
+Abschnitt besprochenen Fremdschlüssel.
+
+Um beim Laden aus der Datenbank nicht den kompletten Objektbaum holen zu müssen,
+braucht man Beziehungen nicht automatisch mitladen, sondern lädt die
+verknüpften Daten erst bei Zugriffen auf die Mengenattribute in die
+Javaumgebung. 
+
+Je nach Beziehungstyp und Darstellung in der Datenbank wird beim Speichern
+einfach das betroffene Attribut überschrieben oder der gesamte betroffene
+Bereich der Relation wird gelöscht und neu geschrieben. Bei 
+Beziehungen mit einer großen Anzahl von beteiligten Objekten lohnt es sich
+speziellen Mengenklassen zu implementieren, die nur inkrementell die
+durchgeführten Änderungen speichern.
+
+Komplexere Abfragen auf Beziehungen werden direkt in SQL implementiert. Die
+Ergebnisse können  dabei individuell an die Anforderungen angepasst werden.
+
+\subsection{SimpleORM}
+
+In \cite{simpleorm}, "Associations and Class Mappings", argumentiert Berglas,
+dass reale Anwendungen soviel Kontrolle -- zum Beispiel für seitenweises
+Anzeigen -- über die "zu $N$" Seite brauchen, dass besser die allgemeine
+Suchfunktionen verwendet werden sollen, als diese Funktionen nochmals für diesen
+Spezialfall zu implementieren. Daher unterstützt SimpleORM nur die "zu Eins"
+Seite von Beziehungen direkt. Durch eine \code{SFieldReference} werden die
+notwendigen Strukturen definiert. Hier die Definition der Eltern-Kind Beziehung
+der Ordner:
+
+\begin{lstlisting}
+package webbook.simpleorm;
+public class Folder implements IFolder {
+	// Referenz auf den übergeordneten Ordner
+	public final SFieldReference PARENT = new SFieldReference(meta, meta, "ref");
+
+	public Folder getParent() {
+		return (Folder)getObject(PARENT);
+	}
+
+	public void setParent(Folder parent) {
+		setObject(PARENT, parent);
+	}
+\end{lstlisting}
+
+Dank der höheren Abstraktionsebene von SimpleORM operiert die Klasse nun direkt
+auf \code{Folder}-Instanzen. Damit wird schon bei der Verarbeitung in der
+Javaapplikation die Konsistenz der Datenbank garantiert. Die Zyklusfreiheit des
+Graphen kann durch die oben vorgestellte \code{hasParent} Methode überprüft
+werden:
+
+\begin{lstlisting}
+package webbook.simpleorm;
+public class Folder implements IFolder {
+	public void validateField(SFieldMeta field, Object newValue) {
+		if (field == PARENT) {
+			if (newValue == null)
+				return;
+
+			if (!newValue instanceof Folder)
+				throw new SValidationException("unerwarteter Objekttyp");
+
+			if (newValue == this || ((Folder)newValue).hasParent(this))
+				throw new SValidationException("Konsistenzverletzung");
+
+			// Alle Bedingungen erfüllt
+			return;
+		}
+	}
+\end{lstlisting}
+
+Um alle Unterfolder zu erhalten, befragt man die Datenbank:
+
+\begin{lstlisting}
+public class Folder implements IFolder {
+	public List<Folder> getChildren() {
+		SResultSet result = Folder.meta.newQuery().eq(Folder.PARENT, this)
+			.descending(Folder.TITLE).execute();
+		return Collection.unmodifiableList(result.getArrayList(1000));
+	}
+\end{lstlisting}
+
+Bei der Modellierung der Schnittstelle nach außen stellen sich natürlich die
+gleichen Probleme wie bei reinem Java. Der minimalistische Ansatz von SimpleORM
+läßt bei der Implementierung jedoch keine Mißverständnisse zu. Die Beziehung ist
+über das \code{PARENT} Feld definiert. \code{add}- und \code{remove}-Methoden
+brauchen sich daher auch nur um dieses kümmern. Änderungen am Abfrageergebnis
+aus \code{getChildren()} können daher keine Auswirkung auf die Datenbank haben.
+Um das auch an Benutzer dieser Klassen zu kommunizieren, kann mit
+%% für silbentrennung:
+\emph{Collection.unmodifiableList()} eine nur-Lesen Liste erzeugt werden, die
+bei Schreibversuchen eine Ausnahmebedingung erzeugt. 
+
+Eine Spezialität von SimpleORM ist die Notwendigkeit einer oberen Schranke für
+die Anzahl der Ergebnisobjekte bei der \code{getArrayList} Methode. Im
+Quelltext wird dies mit der Früherkennung unbeschränkter Abfragen begründet.
+Darüber hinaus ist es aber auch sinnvoller, große Ergebnismengen zeilenweise
+abzuarbeiten, da bereits bearbeitete Objekte wieder freigegeben werden können.
+
+\subsection{Hibernate}
+
+In der XML-Abbildungsbeschreibung werden $1:N$ und Mengenbeziehungen direkt mit
+eigenen Elementen unterstützt. Dadurch ergibt sich eine sehr komfortable
+Modellierung dieser Sachverhalte.
+
+Die Menge der Schlagworte wird mit einem \xml{<set/>} beschrieben:
+\begin{lstlisting}[language=xml]
+<set name="tags" cascade="all">
+	<key column="id"/>
+	<element column="tag" type="webbook.hibernate.utils.TagType" not-null="true"/>
+</set>
+\end{lstlisting}
+
+Hibernate erzeugt aus dieser Definition automatisch die Tabelle \sql{tags} mit
+den Spalten \sql{id} und \sql{tag}. Da die Schlagwortmenge kein eigenständiges
+Objekt ist, sondern immer nur im Kontext des beschlagworteten Artefakts
+existiert, wird durch \xml{cascade="all"} angezeigt, dass alle Operationen auf
+dem übergeordneten Element -- vor allem Änderungen am Schlüsselwert und Löschung
+-- auch auf diesem \xml{<set/>} durchgeführt werden sollen.
+
+Hibernate kennt auch \xml{<list/>}, \xml{<array/>} und \xml{<primitive-array/>}
+für angeordnete Daten mit unterschiedlichen Javarepräsentationen, \xml{<map/>}
+für 2-Tupel und \xml{<bag/>} für ungeordnete Multimengen.
+
+Beziehungen zwischen Objekten werden mit den Elementen \xml{<one-to-many/>},
+\xml{<many-to-} \xml{one/>} und \xml{<many-to-many/>} beschrieben. Die $:N$ Varianten
+müssen dabei in einer Mengendefinition eingebettet werden, um die Semantik der
+Beziehung zu spezifizieren. Von den eingeschränkten Möglichkeiten der
+Modellierung in reinem Java erbt auch Hibernate die Assymetrie von Beziehungen.
+Die beiden Enden müssen seperat modelliert werden. Hier wieder am Beispiel der
+Ordner:
+\begin{lstlisting}[language=xml]
+<many-to-one name="parent" class="Folder"/>
+<set name="children" inverse="true">
+	<key column="id"/>
+	<one-to-many class="Folder"/>
+</set>
+\end{lstlisting}
+
+Dabei verhindert die \xml{inverse="true"} Deklaration, dass über die
+\code{children} Menge die Beziehung verändert werden kann. Die \code{children}
+Menge muss auf der Javaseite wie schon bei der Implementierung mit reinem JDBC
+beschrieben gepflegt werden.
+
+\section{Datenbankverbindung und -abfragen}
+
+\subsection{SQL}
+
+Der direkte Zugriff auf die Datenbank erfolgt entweder mit SQL-Befehlen auf
+einem eigenen kommandozeilenorientierten Klienten oder mit einer
+Verwaltungsapplikation, die auch Unterstützung in der Verwaltung und Wartung
+des Datenbankschemas sowie der Erstellung von Abfragen bietet.
+
+\subsection{Reines Java}
+
+Die JDBC API unter Java ist eine gemeinsame Schnittstelle für den
+Datenbankzugriff. Um die verschiedenen Kommunikationsprotokolle zu unterstützen,
+wird von den jeweiligen Datenbankherstellern auch ein JDBC-Treiber zur Verfügung
+gestellt.
+
+Ein typischer Verbindungsablauf sieht so aus:
+
+\begin{lstlisting}[numbers=left]
+Class.forName(TREIBER); // registrieren
+Connection connection = DriverManager.getConnection(URL); // verbinden
+PreparedStatement stmt = connection.prepareStatement(SQL);
+stmt.set<<Type>>(INDEX, VALUE); // Parameter setzen
+stmt.execute(); // Abfrage durchführen
+ResultSet rs = stmt.getResultSet();
+while(rs.next()) { // Cursor bewegen
+	rs.get<<Type>>(INDEX); // Werte abfragen
+}
+// Resourcen explizit freigeben
+rs.close();
+stmt.close();
+connection.close();
+\end{lstlisting}
+
+Zuerst lädt \code{Class.forName("JDBC-Treiber")} den JDBC-Treiber in die
+virtuelle Maschine (Zeile~1). Danach öffnet
+\code{DriverManager.getConnection("URL")} die Verbindung \code{conn} zur
+Datenbank (Zeile~2). Optional werden über diesen Aufruf weitere Parameter an den
+Treiber übergeben. 
+Die Anweisung \code{conn.prepareStatement(SQL)} erzeugt aus der SQL-Abfrage
+ein parameterisiertes, wiederverwertbares Kontainerobjekt (Zeile~3) in dem
+\code{set}-Aufrufe Parameter verschiedener Typen setzen (Zeile~4).
+\code{execute()} überträgt die Abfrage und die Parameter an die
+Datenbank, wo sie direkt interpretiert und ausgeführt wird (Zeile~5). Als Ergebnis erhält
+man ein \code{ResultSet}, eine Repräsentation eines Datenbankcursors (Zeile~6).
+Parallel zu den \code{set}-Methoden des \code{PreparedStatement}s hat das
+\code{ResultSet} \code{get}-Methoden, die Attribute in verschiedenen Datentypen
+auslesen.
+
+\subsection{SimpleORM}
+
+Diese Bibliothek übernimmt die Verwaltung, jedoch nicht die Erstellung der
+JDBC-Verbindung. Auch hier lädt zuerst \code{Class.forName("JDBC-Treiber")} den
+JDBC-Treiber in die virtuelle Maschine (Zeile~1). \code{SConnection} übernimmt
+nun die direkte Verwaltung der JDBC-Verbindung (Zeile~2-4). 
+
+\begin{lstlisting}[numbers=left]
+Class.forName(TREIBER); // registrieren
+SDataSource ds = new SDataSource(URL, new Properties());
+SConnection.attach(ds, "default"); // verbinden
+SConnection.begin();
+\end{lstlisting}
+
+Wenn die Verbindung steht, können Standardabfragen nach dem Primärschlüssel
+automatisiert mit \code{mustFind(PRIMARY\_KEY)} erzeugt werden. Über die
+\code{SQuery} Schnittstelle können komplexere Anfragen programmatisch gebaut
+werden.
+
+\subsection{Hibernate}
+
+Die Datenbankverbindung von Hibernate wird über eine XML-Datei konfiguriert.
+
+\begin{lstlisting}[language=xml,numbers=left]
+<hibernate-configuration>
+	<session-factory>
+		<!-- Databankverbindungsparameter -->
+		<property name="connection.driver_class">JDBC-TREIBER</property>
+		<property name="connection.url">URL</property>
+		<!-- SQL Dialekt -->
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<!-- ... -->
+		<!-- Schema Definition einbinden -->
+		<mapping resource="webbook/hibernate/DataObject.hbm.xml"/>
+\end{lstlisting}
+
+Wie bei den anderen Bibilotheken auch, liegt hier eine JDBC-Verbindung zu
+Grunde. Der Treiber und die URL dafür werden mit \xml{connection.driver\_class}
+und \xml{connection.url} angegeben (Zeile~4,5). Damit Hibernate korrekt
+optimierte SQL-Definitionen und Abfragen erzeugt, gibt der \xml{dialect} auf
+Zeile~7 den -- für die Tests verwendeten -- \code{PostgreSQLDialect} an. Zuletzt
+werden über \xml{mapping}-Elemente die einzelnen Abbildungsdefinitionen
+eingebunden (Zeile~10). Über weitere \xml{property}-Elemente können zusätzliche
+Parameter von Hibernate konfiguriert werden.
+
+Da die Konfiguration von Hibernate über die XML-Datei läuft, enthält der
+Quelltext keine Parameter mehr, Objekte können direkt über Javakonstrukte
+angesprochen werden:
+
+\begin{lstlisting}[numbers=left,columns=fullflexible]
+// hibernate.cfg.xml einlesen
+SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+
+// Abfrage nach Primärschlüssel
+Object result = sessionFactory.getCurrentSession().get(KLASSE, ID);
+
+// beliebige Abfragen
+List results = sessionFactory.getCurrentSession().createQuery(
+	"from NAME join NAME.tags where CONDITION").list();
+\end{lstlisting}
+
+Hibernate bringt eine eigene, SQL-ähnliche Abfragesprache mit, die in der
+letzten Anweisung gezeigt wird. 
+
+\section{Datensicherheit}
+\label{datensicherheit}
+
+Die in Abschnitt~\ref{ACID} aufgelisteten Forderungen sollten natürlich auch im
+Objektmodell halten. Welche Vorkehrungen die einzelnen Systeme dafür haben,
+wird im folgenden Abschnitt besprochen.
+
+\subsection{SQL}
+
+In SQL können mehrere Anweisungen zu einer Transaktion zusammengefasst werden.
+Die Anweisungen einer Transaktion werden entweder alle gemeinsam oder überhaupt
+nicht ausgeführt. Eine Transaktion wird mit dem Befehl \sql{BEGIN} geöffnet und
+mit \sql{COMMIT WORK}
+abgeschlossen. Das Datenbanksystem garantiert mit dem erfolgreichen Abschluss
+der Transaktion deren Dauerhaftigkeit. Kommt es zu einem Fehler, kann die
+Transaktion mit dem Befehl \sql{ROLLBACK WORK} abgebrochen werden.
+
+Das sogenannte Isolationslevel beschreibt die (Un-)Abhängigkeit von
+Transaktionen untereinander. Starke Isolierung von parallel ablaufenden
+Anweisungen erfordert einen gewissen Aufwand auf Seiten des Datenbanksystems.
+Durch die Angabe eines niedrigeren Isolationslevels verzichtet man auf nicht
+benötigte Mechanismen. Das sollte natürlich nur gemacht werden, wenn die
+Anwendung auch ohne diese Zusicherungen korrekt funktioniert.
+
+Die beiden wichtigsten Isolationslevels sind \sql{READ COMMITTED}
+und \sql{SERIALIZABLE}. Mit \sql{READ COMMITTED} Isolation sieht jede Anweisung
+nur Datansätze aus bereits abgeschlossenen Transaktionen. Innerhalb einer
+Transaktion kann es jedoch vorkommen, dass beim neuerlichen Lesen eines
+Datensatzes auch neue, geänderte Daten gelesen werden, wenn von einer
+parallelen Transaktion dieser Datensatz geändert wurde. Damit sichert
+\sql{READ COMMITTED} einen konsistenten Blick auf die Datenbank \emph{innerhalb
+einer einzelnen Anweisung} zu. Mit
+%% Silbentrennung
+\emph{SERIALIZABLE} Isolation verhält sich die
+Datenbank so, als würden alle Transaktionen strikt nacheinander ausgeführt
+werden. Je nach Implementierung in der Datenbank kommt es dadurch zu verstärkten
+Wartezeiten auf den benutzten Tabellen- und Zeilensperren oder zu erzwungenen
+Transaktionsabbrüchen bei Schreibkonflikten (wie bei MVCC in
+Abschnitt~\ref{mvcc} beschrieben).
+
+\subsection{Reines Java}
+
+In der Standardkonfiguration befindet sich JDBC im \emph{autocommit}-Modus.
+Dabei wird nach jeder SQL-Anweisung automatisch die aktuelle Transaktion
+abgeschlossen und
+eine neue eröffnet. Muss eine Applikation mehrere Anweisungen gemeinsam in
+einer Transaktion abwickeln, so kann der autocommit-Modus mit
+\code{conn.setAutoCommit(false);} deaktiviert werden. Die gesamte Struktur
+einer Transaktion sieht dann so aus:
+\begin{lstlisting}[columns=fullflexible,numbers=left]
+public static void machWas(java.sql.Connection conn)
+	throws java.sql.SQLException
+{
+	conn.setAutoCommit(false);
+	
+	try {
+	
+		/* Datenbankanweisungen hier */
+
+		conn.commit();
+	} catch (Throwable t) {
+		conn.rollback();
+		throw t;
+	}
+}
+\end{lstlisting}
+
+Das Deaktivieren des automatischen Transaktionsabschlusses in Zeile~4 eröffnet
+gleichzeitig eine neue Transaktion. Danach kann im \code{try}-Block die
+Datenbank über JDBC-Aufrufe abgefragt und modifiziert werden (Zeile~8). Ist
+alles korrekt abgelaufen, schliesst \code{conn.commit()} die Transaktion ab
+(Zeile~10). Kommt es zu einem Fehler, bricht \code{conn.rollback()} die
+Transaktion ab (Zeile~12), bevor \code{throw t} den Fehler weiterreicht
+(Zeile~13). Situationsabhängig kann hier auch versucht werden, den Fehler
+lokal zu behandeln, zum Beispiel durch das Neustarten der Transaktion.
+
+Es ist dabei auf die Synchronisation zwischen den verschiedenen Ausführungssträngen der
+Java-Applikation zu achten, da diese die Möglichkeit haben sich gegenseitig auf
+der JDBC-Verbindung zu stören. Normalerweise wird dieses Problem umgangen, indem
+für mehrere Threads jeweils eigene Verbindungen geöfnet werden.
+
+\subsection{SimpleORM}
+
+Die JDBC-Verbindung wird in eine \code{SConnection} Instanz gehüllt. Diese
+Instanz ist Thread-lokal. Damit wird die gesamte Synchronisation zwischen
+Threads an das DBMS delegiert. Transaktionen können über die Methoden
+\code{begin()}, \code{rollback()} und \code{commit()} gesteuert werden:
+
+\begin{lstlisting}
+SConnection.begin();
+
+try {
+	/* Datenbankmodifikationen */
+
+	SConnection.commit();
+} catch (Throwable t) {
+	SConnection.rollback();
+	throw t;
+}
+\end{lstlisting}
+
+\code{SRecordInstance}s sind jedoch an die Lebenszeit einer Datenbanktransaktion
+gebunden, da außerhalb einer Transaktion die Konsistenz zur Datenbank nicht
+gewährleistet werden kann. Will man solche Objekte ausserhalb einer Transaktion
+verwenden, zum Beispiel um sie via RMI zu transportieren, kann man mit
+\code{INSTANZ.detach()} den Record von der Transaktion lösen. Dabei aktiviert
+SimpleORM automatisch optimistische Sperrmechanismen, um auch über die
+Datenbanktransaktion hinaus Inkonsistenzen feststellen zu können.
+\code{INSTANZ.attach()} fügt einen Record in die aktuelle Transaktion wieder
+ein.
+
+\subsection{Hibernate}
+
+Das Hibernate Gegenstück zur JDBC-Verbindung, ist die \code{Session}. In ihr wird
+die Verbindung zur Datenbank aufgebaut und die einzelnen Transaktionen
+abgehandelt. Die Hibernate Dokumentation empfiehlt entweder eine Session pro
+Anfrage in einem Client/Server System zu verwenden oder eine Session für die
+Abwicklung eines ganzen Geschäftsfalls zu verwenden. Im zweiten Fall werden die
+Objekte automatisch versioniert und beim Abschluss einer Transaktion
+optimistisch in die Datenbank zurückgeschrieben. Dadurch werden keine Sperren
+in der Datenbank gebraucht, es kann jedoch bei Schreibkonflikten zu einem
+erzwungenen Transaktionsabbruch kommen. Um diese zu vermeiden, kann man an
+einer bekannten Stelle in der Datenbank vermerken, welche Objekte gerade "in
+Arbeit" sind und
+so bereits beim ersten Zugriff verhindern, dass es zu solchen erzwungenen
+Abbrüchen kommt.
+
+\begin{lstlisting}
+Transaction trans = sessionFactory.getCurrentSession().getTransaction();
+trans.begin();
+
+try {
+	/* Datenbankmodifikationen */
+
+	trans.commit();
+} catch (Throwable t) {
+	trans.rollback();
+	throw t;
+}
+\end{lstlisting}
+
+\section{Objektlebenszyklus}
+
+Der typische Lebenszyklus eines Objektes besteht aus seiner Erzeugung, einer
+beliebigen Abfolge von Lese- und Modifikationsoperationen und endet mit der
+Löschung des Objektes. Das wird in der Literatur im Akronym CRUD, engl. für
+Create, Read, Update, Delete, zusammengefasst. Hier zeigt sich der erste große
+Vorteil der Bibliotheken gegenüber der manuellen Implementierung, da diese
+Operationen aus den bisher definierten Strukturen automatisch abgeleitet werden
+können.
+
+\subsection{SQL}
+
+Die SQL Anweisung \sql{INSERT INTO Tabelle (Spalten) VALUES (Werte)} ist die Grundform der
+Objekterzeugung. Dabei wird eine neue Zeile in \sql{Tabelle} mit den
+angegeben Werten geschrieben.
+
+Um Objekte aus der Datenbank zu lesen, können mit \sql{SELECT}-Abfragen
+beliebig komplexe Relationen und Bedingungen spezifiziert werden.
+
+\sql{UPDATE Tabelle SET Spalte1=Wert1, Spalte2=Wert2 WHERE Bedingung} ändert
+die angegebenen Attribute in \sql{Tabelle} bei allen Tupeln, die \sql{Bedingung}
+erfüllen.
+
+\sql{DELETE FROM Tabelle WHERE Bedingung} löscht alle Zeilen, die \sql{Bedingung}
+erfüllen.
+
+Ergebnisse werden in tabellarischer Form zurückgegeben. Die genau Darstellung
+hängt von der benutzten Software ab.
+
+\subsection{Reines Java}
+
+Über \code{java.sql.Statement}s oder \code{java.sql.PreparedStatement}s können
+SQL-Anweisungen direkt an die Datenbank abgesetzt werden. Das Ergebnis wird
+durch ein \code{java.sql.ResultSet} repräsentiert.
+
+\subsubsection{Schnittstelle}
+
+Will man die Koppelung zwischen Geschäftslogik und Persistenz gering halten,
+empfiehlt sich eine strikte Trennung der beiden Teile durch die Einrichtung
+einer eigenen
+Datenzugriffschicht\footnote{engl.: DAL, Data Access Layer}. Dabei ist zwischen
+den Datenbank- und den Objektoperationen zu unterscheiden:
+\begin{lstlisting}[columns=fullflexible,numbers=left]
+public interface IDatabase
+{
+	public abstract void connect();
+	public abstract void begin();
+	public abstract void executeSQL(String sql) throws SQLException;
+	public abstract void rollback();
+	public abstract void commit();
+	public abstract void disconnect();
+}
+
+public interface IDriver<OBJ extends IDataObject>
+{
+
+	/** Objekt erzeugen */
+	public abstract OBJ createObject();
+	/** Objekt abspeichern */
+	public abstract OBJ saveObject(OBJ o) throws SQLException;
+
+	/** Objekt nach Primärschlüssel suchen */
+	public abstract OBJ findById(int id) throws SQLException;
+	/** Objekt nach Schlüsselwörtern suchen */
+	public abstract Set<? extends OBJ> findByTags(TagExpression tags) throws SQLException;
+
+	/** Objekt löschen */
+	public abstract void deleteById(int id) throws SQLException;
+	public abstract void deleteObject(OBJ o) throws SQLException;
+
+}
+\end{lstlisting}
+
+\subsubsection{Suchen und Laden}
+
+Der einfachste Fall ist das Laden eines \code{Article}s nach seinem
+Primärschlüssel:
+\begin{lstlisting}[columns=fullflexible,numbers=left]
+public class ArticleDAL extends BaseDAL implements IDAL<Article> {
+
+	public Article findById(int id) throws SQLException
+	{
+		PreparedStatement stmt = _conn.prepareStatement(
+			"SELECT * FROM articles WHERE id = ?");
+		stmt.setInt(1, id);
+		ResultSet result = stmt.executeQuery();
+	
+		if (result.next())
+			return loadFrom(result);
+		else
+			return null;
+
+	}
+\end{lstlisting}
+
+In Zeile~5-7 wird die SQL Anweisung vorbereitet und ausgeführt. Wenn ein
+Artikel mit dieser ID existiert (Zeile~9), dann lädt
+\code{BaseDAL.loadFrom(ResultSet)} die Attribute aus dem \code{ResultSet} in
+eine neue Instanz. \code{loadFrom} ist eine virtuelle Methode, bei der die
+Basisimplementierung in \code{BaseDAL} die \code{IDataObject}-Attribute lädt,
+während \code{ArticleDAL.loadFrom} die zusätzlichen Attribute des Artikels
+ausliest. Das \code{PreparedStatement} kann auch wiederverwendet werden, wie
+das nächste Beispiel zeigt.
+
+\subsubsection{Schreiben}
+
+Hier die Methode, um einen neuen \code{Article} in die Datenbank zu speichern:
+\begin{lstlisting}[columns=fullflexible,numbers=left]
+	private PreparedStatement	_getNewId	= null;
+	private PreparedStatement	_insertArticle	= null;
+
+	protected void insertObject(Article obj) throws SQLException
+	{
+		if (_getNewId == null) {
+			_getNewId = getConnection().prepareStatement(
+				"select nextval('articles_id_seq')");
+		}
+		_getNewId.execute();
+		ResultSet rs = _getNewId.getResultSet();
+		rs.next();
+		obj.setId(rs.getInt(1));
+	
+		if (_insertArticle == null) {
+			_insertArticle = getConnection().prepareStatement(
+				"INSERT INTO articles (created_on, last_modified, title, text, summary, id)\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?)");
+		}
+		// prepareSave(obj, _insertArticle):
+		{
+			_insertArticle.setTimestamp(1, new Timestamp(obj.getCreatedOn().getTime()));
+			_insertArticle.setTimestamp(2, new Timestamp(obj.getLastModified().getTime()));
+			_insertArticle.setString(3, obj.getTitle());
+			_insertArticle.setString(4, obj.getText());
+			_insertArticle.setString(5, obj.getSummary());
+			_insertArticle.setInt(6, obj.getId());
+		}
+		_insertArticle.execute();
+	}
+\end{lstlisting}
+
+Das zentrale Stück hier ist die \sql{INSERT}-Anweisung (Zeile~17,18) und das
+Befüllen der Parameter (Zeile~20-28). Durch geschicktes Anordnen der Parameter
+in der SQL-Anweisung können die \code{set}-Anweisungen bei \sql{INSERT} und
+\sql{SELECT} gemeinsam genutzt werden, wie hier mit dem \code{prepareSave}
+\label{prepareSave} Kommentar angedeutet ist (Zeile~20). Aufgrund der fehlenden
+Unterstützung für benannte Parameter von \code{Statement}s ist dabei besonders
+auf die korrekte Reihenfolge der Platzhalter und Attribute zu achten.
+
+Die benötigten SQL-Anweisungen werden in Instanzvariablen als
+\code{PreparedStatement} gespeichert und erst bei der ersten Benutzung
+initialisiert (Zeile~1,2,7,16). Das ermöglicht dem JDBC-Treiber, die
+SQL-Anweisung einmalig im Datebankserver in optimierter Form abzulegen.
+Nachfolgende Aufrufe übertragen nur noch die Parameter und ersparen sich somit
+das wiederholte Parsen und Optimieren der Anweisung.
+
+Am Anfang der Methode ist ein Block um einen eindeutigen ID für den neuen
+Artikel aus der Datenbank abzufragen (Zeile~6-13). Dadurch kann sichergestellt
+werden, dass ein eindeutiger ID benutzt wird, ohne die ganze Tabelle sperren zu
+müssen. Alternativ können auch UUIDs\footnote{Universally Unique IDentifier}
+eingesetzt werden. Diese sind sogar über unabhängige System hinweg eindeutig,
+bestehen aber aus 128 Bit und sind daher in der Bearbeitung teurer. UUIDs sind
+in \cite{DCE} definiert.
+
+\subsubsection{Löschen}
+
+Objekte werden mit einer einfachen \sql{DELETE} Anweisung gelöscht. Die
+Java-Methode dazu gleicht in der Struktur den bisher vorgestellten Methoden.
+
+\subsection{SimpleORM}
+
+Um die Werkzeuge vergleichbar zu halten, implementiert auch der SimpleORM Test
+die gleichen Schnittstellen wie zuvor vorgestellt. Aufgrund der direkten Koppelung zur
+Persistenzschicht durch die Ableitung von \code{SRecordInstance} sind die
+meisten Methoden der \code{IDAL} Schnittstelle nur Weiterreichungen an
+\code{SRecordInstance} Methoden des betroffenen Objektes. Diese werden hier
+vorgestellt.
+
+\subsubsection{Suchen und Laden}
+
+Zuerst wieder das Auffinden eines Objektes nach seinem Primärschlüssel:
+\begin{lstlisting}
+public Article findById(int id)
+{
+	// Das ist wirklich so einfach:
+	return (Article) Article.meta.find(new Integer(id));
+}
+\end{lstlisting}
+Damit erstellt die SimpleORM Bibliothek automatisch die notwendigen
+SQL-Abfragen und erzeugt ein befülltes Java Objekt. Um auf die Attribute
+zugreifen zu können, ist es notwendig, auf die \code{SRecordInstance}
+zuzugreifen. Für den Titel sieht das so aus:
+\begin{lstlisting}
+public class DataObject extends SRecordInstance {
+	public static final SFieldString TITLE
+		= new SFieldString(meta, "title", -1, SSimpleORMProperties.SMANDATORY.ptrue());
+
+	public String getTitle()
+	{
+		return getString(TITLE);
+	}
+
+	public void setTitle(String title)
+	{
+		setString(TITLE, title);
+	}
+\end{lstlisting}
+\code{getString} und \code{setString} sind dabei Funktionen der
+\code{SRecordInstance}, die das angegebene Feld bearbeiten. Aufgrund der
+Metainformationen im \code{SFieldString} Objekt können bereits beim Setzen des
+Feldes Randbedingungen wie Typ, Wertebereich oder benutzerspezifische
+Validierungsregeln überprüft werden.
+
+\subsubsection{Schreiben}
+
+\code{SConnection.commit()} überträgt alle ausstehenden Änderungen an die
+Datenbank und schliesst die Transaktion ab. Soll ein Objekt frühzeitig in die
+Datenbank geschrieben werden -- zum Beispiel, um in einer nachfolgenden Abfragen
+innerhalb der gleichen Transaktion aufzuscheinen, kann die Methode \code{flush}
+der \code{SRecordInstance} verwendet werden.
+
+\subsubsection{Löschen}
+
+Die \code{SRecordInstance.deleteRecord()} Methode markiert ein Objekt als
+gelöscht. Mit dem Abschluss der Transaktion wird es auch in der Datenbank
+gelöscht.
+
+\subsection{Hibernate}
+
+Um die Werkzeuge vergleichbar zu halten, implementiert auch der Hibernate Test
+die gleichen Schnittstellen wie zuvor vorgestellt. 
+
+\subsubsection{Suchen und Laden}
+
+Wie auch bei SimpleORM ist die Abfrage nach dem Primärschlüssel sehr einfach
+und erzeugt ebenfalls gleich die notwendigen Java Objekte.
+\begin{lstlisting}
+public Article findById(int id)
+{
+	// Das ist wirklich so einfach:
+	return (Article)sessionFactory.getCurrentSession().get(Article.class, id);
+}
+\end{lstlisting}
+
+\subsubsection{Schreiben und Löschen}
+
+Mit den \code{saveOrUpdate(OBJEKT)} und \code{delete(OBJEKT)} Methoden der
+\code{Session} können Objekte in die Datenbank geschrieben oder gelöscht werden.
+
+
+\section{Ableitung}
+\label{ableitung}
+
+Selbst in so einfachen Systemen wie der \code{webbook} Beispieldatenbank kann
+mit einer passenden Klassenhierarchie doppelter Programmtext vermieden werden.
+Alle Klassen der \code{webbook} Beispieldatenbank haben die Attribute der
+\code{IDataObjekt} Schnittstelle gemein. Diese Attribute in einer gemeinsamen
+Basisklasse zu verwalten reduziert den Programmieraufwand und verhindert
+Inkonsistenzen in der Definition zwischen den Klassen.
+
+\TODO{Literatursuche: OO-Design: Warum Ableiten?}
+
+\subsection{SQL}
+
+Für verschiedene Modellierungs- und Leistungsanforderungen gibt es
+unterschiedliche Ansätze, um Ableitungshierarchien abzubilden. Da die korrekte
+Auswahl des Ansatzes wichtig ist, um die für die Applikation notwendigen
+Abfragen effizient durchführen zu können, hat sich hier kein einzelner
+"bester" Ansatz herauskristallisiert.
+
+\subsubsection{Tabelle pro konkreter Klasse}
+
+Ein sehr direkter Ansatz zur Abbildung einer Klassenhierarchie ist der Einsatz
+einer eigenen Tabelle für jede Klasse, von der direkt
+Instanzen\footnote{typischerweise nur Blätter im Ableitungsbaum} erzeugt
+werden. Abbildung~\ref{concrete} illustriert das.
+
+\begin{figure}
+\begin{center}
+\includegraphics{img/concrete}
+\caption{Tabelle pro konkreter Klasse}
+\label{concrete}
+\end{center}
+\end{figure}
+
+\paragraph{Vorteile:} Durch die direkte Abbildung ist dieser Ansatz der
+einfachste der hier vorgestellten und erzwingt keine Koordination der
+Objektklassen auf der Applikationsseite. So erfordert zum Beispiel das
+Hinzufügen neuer Unterklassen keine Änderungen an vorhandenen Strukturen und
+bei Änderungen an bestehenden Attributen ist der Implementierungsaufwand auf
+die direkt betroffenen Tabellen und Klassen beschränkt.
+
+Abfragen auf einzelne Klassen/Tabellen werden ebenfalls unmittelbar umgesetzt
+und können mit minimalem Aufwand in der Datenbank auch tabellenspezifisch
+optimiert werden, ohne Interferenzen auszulösen. Aufgrund der separaten Tabellen
+bleiben Transaktionen auf die von ihnen direkt betroffenen Hierarchieteile
+eingeschränkt.
+
+\paragraph{Nachteile:} Bei jeder Abfrage müssen alle beteiligten konkreten
+Klassen bekannt sein, da danach die Tabellen ausgewählt werden.
+
+Datenbankanweisungen, die zentrale Attribute betreffen -- Abfragen und
+Datenänderungen -- müssen auf mehrere Tabellen zugreifen. Das wiederum
+erfordert einen Mehraufwand pro Tabelle in Form von längeren Anweisungen
+und mehrfachen Indexzugriffen. 
+
+Da es keinen gemeinsamen Primärschlüssel gibt, muss bei polymorphen Abfragen
+zur Klassenunterscheidung eine künstliche Typspalte erzeugt werden. Dabei
+können Attribute je nach Position in der Ableitungshierarchie nicht oder nur
+schwer polymorph abgefragt werden. Ebenfalls aufgrund des fehlenden
+gemeinsamen Primärschlüssels können Fremdschlüssel nur als Verweis auf eine
+konkrete Klasse definiert werden. Polymorphe Relationen können so entweder als
+unüberprüfte Konvention über ein Hilfskonstrukt wie das oben erwähnte
+künstliche Typattribut angelegt werden, oder indem für jede Unterklasse wiederum
+eine eigene, verweisende Tabelle angelegt wird.
+
+Bei Änderungen an gemeinsamen Attributen müssen alle Tabellen einzeln
+modfiziert werden. Es gibt dabei keine Absicherung gegen unbeabsichtigte
+Inkonsistenzen in der Struktur der einzelnen Tabellen.
+
+\paragraph{Einsatzgebiet:} Dieses Schema eignet sich besonders für kleine
+Objektmodelle wie die
+%% Silbentrennung
+\emph{webbook}-Datenbank, in der polymorphe Abfragen oder
+Relationen nur eine geringe Rolle spielen aber die einfachen Strukturen dem
+Verständnis förderlich sind.
+
+Hier einige beispielhafte Abfragen:
+\begin{lstlisting}[language=sql]
+-- einfache Abfrage nach Primärschlüssel
+SELECT * FROM articles WHERE id = ?
+
+-- polymorphe Abfrage mit künstlicher Typspalte
+-- spezielle Attribute müssen separat nachgeladen werden
+SELECT 'articles'	AS class, id, created_on FROM articles WHERE -- ...
+UNION ALL
+SELECT 'pictures'	AS class, id, created_on FROM pictures WHERE -- ...
+UNION ALL
+SELECT 'folders'	AS class, id, created_on FROM folders WHERE -- ...
+\end{lstlisting}
+
+\subsubsection{Tabelle pro Klasse}
+
+Mit $1:1$ Beziehungen wird der Ableitungsbaum direkt auf Tabellen
+abgebildet. Attribute werden jeweils in der "allgemeinsten" Tabelle abgelegt.
+
+Im Gegensatz zum "Tabelle pro konkreter Klasse" Schema sind hier die
+Primärschlüssel in der gesamten Hierarchie eindeutig, und Attribute von Knoten
+des Ableitungsbaumes werden nur einmal definiert.
+
+\begin{figure}
+\begin{center}
+\includegraphics{img/per-class}
+\caption{Tabelle pro Klasse}
+\label{per-class}
+\end{center}
+\end{figure}
+
+\paragraph{Vorteile:} Dieser Ansatz bildet die Objekte nicht nur als
+Attributslisten ab, sondern erfasst auch die Struktur der Ableitungshierarchie.
+Dadurch sind polymorphe Abfragen auf den inneren Knoten des Ableitungsbaumes
+möglich. Eine typische polymorphe Abfrage in der Beispieldatenbank könnte die
+Suche von Artefakten nach Worten aus dem Titel sein. Bei einer solchen Abfrage
+ist der tatsächliche Typ des gefundenen Objekts zweitrangig. Da "Titel" ein
+Attribut der Basistabelle \sql{data\_objects} ist, genügt eine einfache Abfrage
+auf das \sql{title} Attribut.
+
+Durch die Abbildung der Ableitungshierarchie gibt es nun auch einen gemeinsamen
+Primärschlüssel: \sql{data\_objects.id}. Dadurch können nun Fremdschlüssel auf
+beliebige Teilbäume der Hierarchie referenzieren, indem die \sql{id} Spalte aus
+der entsprechenden Tabelle angegeben wird.
+
+Bei globalen Modifikationen in und an der Datenbank gibt es aufgrund der
+geringen Strukturredundanz weniger Möglichkeiten, inkonsistente Manipulationen
+durchzuführen. Speziell bei größeren Schemata und dem Hinzufügen oder Entfernen
+von Attributen kann hier Aufwand gespart werden. Wie beim
+Tabelle-pro-konkreter-Klasse Ansatz bleiben die Auswirkungen von solchen
+Änderungen auf die direkt
+betroffenen Klassen und Tabellen beschränkt und neue Unterklassen verursachen
+keine Änderungen an vorhandenen Strukturen.
+
+\paragraph{Nachteile:} Da die Attribute eines einzelnen Objektes über mehrere
+Tabellen verteilt sind, multipliziert sich damit auch der Aufand an diese Daten
+heranzukommen. Bei jeder Lese- oder Schreiboperation müssen die verschiedenen
+Tabellen extra verknüpft werden. Das bedeutet auch, dass der Benutzer der
+Datenbank diese Strukturen kennen muss. 
+
+Ein anderer gravierender Nachteil ergibt sich in einer Schwäche der
+Datenbankbeschränkungen von SQL. Dort können Eindeutigkeitsbeschränkungen
+nur auf einzelne Tabellen gelegt werden. Ohne zusätzliche Attribute oder
+Triggermethoden kann daher nicht verhindert werden, dass eine fehlerhafte
+Anwendung ein Objekt mit Attributen mehrerer Klassen erzeugt, zum Beispiel,
+indem Einträge in der \sql{pictures} und der \sql{articles} Tabelle auf ein
+gemeinsames \sql{data\_object} verweisen.
+
+Durch die gemeinsamen Basistabellen blockieren sich Tabellensperren für spezifische
+Unterklassen gegenseitig. Wie stark dieser Nachteil sich auf die Anwendung
+auswirkt, hängt stark von den Abfrageprofilen ab.
+
+\paragraph{Einsatzgebiet:} Dieser Ansatz eignet sich besonders, wenn polymorphe
+Suchanfragen auf alle Objekte gestellt werden sollen aber nur wenige Resultate
+die kompletten Attribute benötigen.
+
+Hier einige beispielhafte Abfragen:
+\begin{lstlisting}[language=sql,columns=fullflexible]
+-- einfache Abfrage nach Primärschlüssel
+SELECT * FROM data_objects JOIN articles ON (id) WHERE id = ?
+
+-- polymorphe Abfrage, Klassenattribute müssen einzeln nachgeladen werden,
+-- keine Unterklasseninformation
+SELECT * FROM data_objects WHERE bedingung
+
+-- polymorphe Abfrage, Klassenattribute werden mitgeladen
+SELECT
+	*,
+	CASE
+		WHEN articles.id	IS NOT NULL THEN 'articles'
+		WHEN pictures.id	IS NOT NULL THEN 'pictures'
+		WHEN folders.id		IS NOT NULL THEN 'folders'
+	END AS class
+FROM 
+	data_objects
+		LEFT JOIN articles	ON (data_objects.id = articles.id)
+		LEFT JOIN pictures	ON (data_objects.id = pictures.id)
+		LEFT JOIN folders	ON (data_objects.id = folders.id)
+\end{lstlisting}
+
+\subsubsection{Tabelle pro Hierarchie}
+
+Bei diesem Ansatz werden alle Attribute der gesamten Ableitungshierarchie in
+einer Tabelle vereinigt. Nicht benötigte Spalten werden einfach mit \sql{NULL}
+Werten aufgefüllt. Um unterscheiden zu können, um welche Klasse es sich bei einer
+gegebenen Zeile handelt, ist ein zusätzliches Attribut notwendig.
+
+\begin{figure}
+\begin{center}
+\includegraphics{img/per-hierarchy}
+\caption{Tabelle pro Hierarchie}
+\label{per-hierarchy}
+\end{center}
+\end{figure}
+
+Fremdschlüssel können -- ohne zusätzlichen Aufwand -- nur auf die Wurzel der
+Hierarchie verweisen. Werden Fremdschlüssel auf Teilbäume benötigt, kann dies über
+einen Trick mit dem Unterscheidungsattribut erreicht werden. Dazu nimmt man das
+Unterscheidungsattribut in den Primärschlüssel auf und schränkt im
+Fremdschlüssel das verweisende
+Attribut über eine Datenbankregel auf die gewünschten Werte ein. Das folgende
+Quelltextfragement demonstriert das für eine Tabelle, die nur auf Artikel
+verweisen kann, obwohl in der \sql{data\_objects} Tabelle alle Artefakte
+gespeichert werden.
+
+\begin{lstlisting}[language=sql,numbers=left]
+CREATE TABLE data_objects (
+	id INTEGER NOT NULL UNIQUE,
+	-- a für Artikel, f für Ordner und p für Bilder
+	class CHAR NOT NULL CHECK ( class IN ('a', 'f', 'p') ),
+	PRIMARY KEY (id, class),
+	-- weitere Attribute hier
+
+CREATE TABLE something_has_articles (
+	id INTEGER NOT NULL,
+	-- nur Verweise auf Artikel zulassen
+	class CHAR NOT NULL CHECK ( class = 'a' ),
+	FOREIGN KEY (id, class) REFERENCES data_objects (id, class)),
+	-- weitere Attribute hier
+
+\end{lstlisting}
+
+Dabei ist zu beachten, dass \sql{data\_objects.id} als \sql{UNIQUE} definiert
+ist, um diese Werte alleine zur Identifikation nutzen zu können. Die \sql{CHECK}
+Regel in Zeile~4 definiert die zulässigen Klassen von Artefakten. In Zeile~11
+wird dann die Menge der zulässigen Klassen -- und damit die Verweismöglichkeiten
+-- auf Artikel eingeschränkt.
+
+\paragraph{Vorteile:} Dieser Ansatz zeichnet sich besonders durch seine einfache
+und äusserst effiziente Möglichkeit zur polymorphen Abfrage aus. Es sind keine
+\sql{JOIN}s oder \sql{UNION}s notwendig, und verschiedene Kriterien für
+verschiedene Unterklassen können direkt in einer Anweisung kombiniert werden.
+
+Indizes werden damit auch nur einmal verwaltet. Dies ist bei Anfragen positiv,
+da Abfragen über den Index nur einen Zugriff benötigen. Bei Schreibanweisungen
+hingegen müssen die Indizes auch für jene Attribute mitverwaltet werden, die gar
+nicht zu dieser Klasse gehören.
+
+Wenn einmal die Infrastruktur implementiert ist, um Attribute für manche Zeilen
+"auszublenden", erlaubt das auch bei Spezialanforderungen Attribute nach anderen
+Kriterien als der Klasse zuzuordnen. 
+
+\paragraph{Nachteile:} Dieser Ansatz verletzt alle strukturellen Normalformen.
+Um die Integrität der Datenbank aufrechtzuerhalten, sind daher besonders
+aufwändige Vorkehrungen notwendig. Eine mögliche \sql{CHECK} Regel für die in
+Abbildung~\ref{per-hierarchy} gezeigten Felder sieht so aus:
+
+\begin{lstlisting}[language=sql]
+	CHECK (
+		   (class = 'a' AND text IS NOT NULL AND data IS NULL AND parent IS NULL)
+		OR (class = 'p' AND text IS NULL AND data IS NOT NULL AND parent IS NULL)
+		OR (class = 'f' AND text IS NULL AND data IS NULL AND parent IS NOT NULL)
+	)
+\end{lstlisting}
+
+Nimmt man eine gewisse Datenbankabhängigkeit in Kauf, kann man mit einer
+SQL-Funk\-tion, die die Klassenzugehörigkeit prüft, den Ausdruck vereinfachen.
+
+\begin{lstlisting}[language=sql]
+CREATE OR REPLACE FUNCTION inclass (which_class char, actual_class char, attr_value TEXT)
+	RETURNS boolean
+	LANGUAGE sql
+	IMMUTABLE
+	CALLED ON NULL INPUT
+	AS 'SELECT ($1 = $2 AND $3 IS NOT NULL) OR ($1 <> $2 AND $3 IS NULL)';
+
+-- Vereinfachte CHECK Regel
+CHECK ( inclass('a', class, text) AND inclass('p', class, data) AND inclass('f', class, parent) )
+\end{lstlisting}
+
+Die Abhängigkeiten der Attribute von dem Unterscheidungsattribut werden zwar in
+der \sql{CHECK} Regel überprüft, sind dort aber nicht mehr automtisiert
+verarbeitbar. Alle Anwendungen, die auf diese Tabelle zugreifen, benötigen daher
+externe Informationen über ihre Struktur.
+
+Da dieser Ansatz alle Information in einer einzigen Tabelle zusammenfasst,
+ergeben sich einzigartige Einschränkungen, die zu beachten sind. Jedes Objekt
+reserviert Platz für alle Attribute der Hierarchie. Entsprechend benötigt dieser
+Ansatz auch mehr Speicherplatz als alle anderen. Beim Hinzufügen neuer
+Unterklassen oder Änderungen an Attributen ändert sich das Schema für alle
+eingetragenen Objekte. Bei der Benennung von Feldern müssen über die ganze
+Hierarchie eindeutige Namen gewählt werden. Standardwertregeln können im 
+Datenbanksystem nur für Felder, die allen Klassen gemein sind, vergeben werden. 
+
+\paragraph{Einsatzgebiet:} Bei besonders komplexen Objekthierarchien, und wenn
+viel öfter gesucht als geschrieben wird, spielt dieser Ansatz seine Stärken aus.
+Bei Klassenhierarchien mit vielen Unterklassen, die sich nur durch wenige
+Attribute unterscheiden, fällt der zusätzliche Platzverbrauch weniger ins
+Gewicht.
+
+Hier einige beispielhafte Abfragen:
+\begin{lstlisting}[language=sql]
+-- einfache Abfrage nach Primärschlüssel
+SELECT * FROM data_objects WHERE id = ?
+
+-- polymorphe Abfrage, Klassenattribute werden mitgeladen
+SELECT * FROM data_objects 
+\end{lstlisting}
+
+\TODO{\subsubsection{SQL:1999}}
+
+\TODO{Wie schaut das da aus?
+\url{file:///usr/share/doc/postgresql-doc-8.1/html/sql-createtable.html} sagt
+dazu: "Multiple inheritance via the INHERITS clause is a PostgreSQL language
+extension. SQL:1999 and later define single inheritance using a different
+syntax and different semantics. SQL:1999-style inheritance is not yet supported
+by PostgreSQL."}
+
+\subsection{Reines Java}
+
+Auf Klassenebene unterstützt Java einfache Vererbung von Attributen und
+Methoden. Solche Ableitungsbäume können je nach Anforderungen auf entsprechende
+SQL Strukturen abgebildet werden.
+
+\subsubsection{Suchen und Laden}
+
+Um Programmtextduplikation zu vermeiden, implementiert \code{BaseDAL} eine
+Methode, um die \code{IDataObject} Attribute aus einem \code{RecordSet} zu laden:
+\begin{lstlisting}
+public abstract class BaseDAL<OBJ extends DataObject> {
+	protected void loadFieldsFrom(OBJ obj, RecordSet rs)
+	{
+		obj.setId(rs.getInt("id"));
+		obj.setCreatedOn(new Date(rs.getTimestamp("created_on").getTime()));
+		obj.setLastModified(new Date(rs.getTimestamp("last_modified").getTime()));
+		obj.setTitle(rs.getString("title"));
+	}
+\end{lstlisting}
+Die Klassen-spezifische Implementierung erweitert diese Funktionalität um die
+eigenen Attribute:
+\begin{lstlisting}
+public class ArticleDAL extends BaseDAL<Article> implements IDAL<Article> {
+	@Override
+	protected void loadFieldsFrom(Article obj, RecordSet rs)
+	{
+		super.loadFieldsFrom(obj, rs)
+		obj.setSummary(rs.getInt("summary"));
+		/* weitere Article Attribute hier */
+\end{lstlisting}
+Diese Methode erfordert nur die passende Formulierung der SQL-Abfrage und ist
+bei allen Tabellenstrukturen anwendbar. 
+
+Bei der Tabelle-pro-Klasse Struktur kann mit einer zusätzlichen SQL-Abfrage pro
+Ableitungsebene die Koppelung innerhalb der Datenzugriffschicht reduziert
+werden. Dazu werden die einzelnen Tabellen in den jeweiligen DAL Klassen
+separat abgefragt und das Objekt von der Ableitungswurzel aus aufgebaut. Für
+einen \code{Article} sieht das so aus:
+\begin{lstlisting}
+public class ArticleDAL extends BaseDAL<Article> implements IDAL<Article> {
+	// Der obj Parameter hat bereits alle IDataObject Attribute ausgefüllt
+	public Article fillObject(Article obj) throws SQLException
+	{
+		// Abfrage vorbereiten
+		PreparedStatement stmt = _conn.prepareStatement(
+			"SELECT * FROM articles WHERE id = ?");
+		stmt.setInt(1, obj.getId());
+
+		ResultSet rs = stmt.executeQuery(); // ausführen
+
+		obj.setSummary(rs.getInt("summary"));
+		/* weitere Article Attribute hier */
+
+		return obj;
+	}
+\end{lstlisting}
+
+\subsubsection{Schreiben}
+
+Da JDBC nur positionelle und keine benannten Parameter unterstützt, müssen bei
+\sql{INSERT}s und \sql{UPDATE}s spezielle Vorkehrungen getroffen werden, um die
+Feld- und Parameterlisten synchron zu halten.
+
+Für den Tabelle-pro-Klasse Fall ist die Umsetzung sehr einfach: jedes
+Objekt schreibt seine Attribute in die jeweilige Tabelle, die
+entsprechenden Methoden müssen nur in der korrekten Reihenfolge aufgerufen
+werden, um die Datenbankkonsistenzbedingungen zu erfüllen, also von der
+Ableitungswurzel beginnend.
+
+Für die beiden Schemata mit Tabellen für jede konkrete Klasse oder einer
+Tabelle für die gesamte Hierarchie kann das Schreiben ebenfalls nach Klassen
+getrennt werden. Im ersteren Fall muss dem Datenobjekt noch mitgeteilt werden,
+in welche Tabelle geschrieben werden soll. In beiden Fällen müssen Unterklassen
+dann nur noch \sql{UPDATE}s durchführen, da die entsprechende Zeile ja schon
+existiert. Transaktionsisolierung verhindert, dass halb-geschriebene Objekte von
+anderen Prozessen gesehen werden.
+
+Durch zusätzlichen Aufwand auf der Javaseite kann ein Objekt in einer einzigen
+SQL-Anweisung in die Datenbank geschrieben werden. 
+
+\TODO{ $\Rightarrow$ Performanceoptimierung?? }
+
+\subsection{SimpleORM}
+
+SimpleORM unterstützt keine komplexen Abbildungen zwischen Unterklassen und
+SQL-Ta\-bel\-len. Speziell die Konvention, die eigentliche Struktur in statischen
+Konstanten abzulegen, läuft einer Ableitungshierarchie zuwider, da
+\code{SField}-Beschreibungen von gemeinsamen Attributen nicht mehr einer
+einzigen \code{SRecordMeta}-Instanz zugeordnet werden können.
+
+\subsubsection{Tabelle pro konkreter Klasse}
+
+Um das Tabelle-pro-konkreter-Klasse-Schema zu erhalten, kann die eigentliche
+Strukturdefinition in Singletons\footnote{also Klassen mit genau einer Instanz
+pro Laufzeitumgebung} ausgelagert werden. Diese bilden dann wieder
+die benötigte Ableitungshierarchie und haben damit jeweils eigene Definitionen
+der gemeinsamen Felder, wie das SimpleORM erfordert.
+
+Im \code{DataObjectMeta} werden die gemeinsamen Attribute definiert. Der
+Konstruktor initialisiert die \code{final} \code{SField} Konstanten. Durch die
+Definition als \code{protected} können nur Instanzen abgeleiteter Klassen
+erzeugt werden. SimpleORM benötigt die konkrete Klasse der
+\code{SRecordInstance} zur Laufzeit, um neue Instanzen zu erzeugen. Über den
+Klassenparameter \code{MAIN} kann im Konstruktor eine passende Typbeschränkung
+für den \code{cls} Parameter formuliert werden, um Fehleingaben schon bei der
+Übersetzung zu verhindern.
+
+\begin{lstlisting}
+public class DataObjectMeta<MAIN extends SRecordInstance>
+{
+
+	public final SRecordMeta meta;
+	public final SFieldInteger ID;
+	public final SFieldString TITLE;
+	/* weitere gemeinsame Attribute */
+
+	protected DataObjectMeta(Class<MAIN> cls, String tablename)
+	{
+		meta = new SRecordMeta(cls, tablename);
+		ID = new SFieldInteger(meta, "id",
+				SSimpleORMProperties.SFD_PRIMARY_KEY,
+				SSimpleORMProperties.SGENERATED_KEY
+						.pvalue(new SGeneratorSequence(meta)));
+		TITLE = // ...
+
+		/* weitere SFieldMeta Objekte erzeugen */
+\end{lstlisting}
+
+Als nächstes werden die spezifischen Attribute der Unterklassen definiert. Dazu
+wird eine Ableitung des \code{DataObjectMeta} angelegt, die die fehlenden Teile
+spezifiziert. Die Metaklassen für die anderen Artefakte werden analog definiert.
+
+\begin{lstlisting}
+public class ArticleMeta extends DataObjectMeta<Article>
+{
+	public final SFieldString TEXT;
+	public final SFieldString SUMMARY;
+
+	public ArticleMeta()
+	{
+		super(Article.class, "articles");
+		TEXT = // ...
+		SUMMARY = // ...
+\end{lstlisting}
+
+Beim Einsatz in den \code{SRecordInstance}s bekommt die Elterninstanz
+\code{DataObject} die notwendige Metadefinition wieder im Konstruktor übergeben.
+Da hier ja nur die Artefaktattribute benötigt werden, braucht es hier auch
+keinen Klassenparameter.
+
+\begin{lstlisting}
+public abstract class DataObject extends SRecordInstance implements IDataObject
+{
+	private final DataObjectMeta meta;
+	
+	protected DataObject(DataObjectMeta meta)
+	{
+		this.meta = meta;
+		/* ab jetzt: Zugriff auf IDataObject Attribute via meta.meta */
+\end{lstlisting}
+
+Zuletzt wird im eigentlichen Geschäftsobjekt alles zusammengeführt. Die globale
+Instanz
+der Strukturdefinition \code{ArticleMeta} wird erzeugt und gespeichert. Wird
+eine neue Instanz erzeugt, so wird die übergeordnete Klasse mit dieser
+Definition initialisiert.
+
+\begin{lstlisting}
+public class Article extends DataObject implements IArticle
+{
+	public Article()
+	{
+		super(meta);
+	}
+
+	static final ArticleMeta meta = new ArticleMeta();
+	
+	/* ... */
+\end{lstlisting}
+
+Mit dieser Methode können weitere Artefaktarten ohne großen Aufwand hinzugefügt
+werden. Bereits implementierte Artefaktarten weiter ableiten erfordert jedoch
+Vorbereitungen in der Elternklasse, um die Strukturdefinition -- wie beim
+\code{DataObject} -- für jede Instanz getrennt zu setzen.
+
+\subsubsection{Tabelle pro Klasse}
+
+Ableitung kann auch mit $1:1$ Abbildungen simuliert werden. Die Artikelklasse
+von Abschnitt~\ref{simple_orm_schema} mit einem Tabelle-pro-Klasse-Schema benötigt
+dafür zuerst eine Definition der gemeinsamen Attribute im \code{DataObject}.
+Diese folgt der Empfehlung von SimpleORM, wie das schon oben gezeigt wurde.
+
+Die \code{Article} Klasse definiert anschließend nur noch die
+Artikel-spezifischen Attribute und verweist auf das zugrundeliegende
+\code{DataObject} mit einer \code{SFieldReference}. Die \code{getDataObject()}
+zeigt, wie auf die Instanz zugegriffen werden kann.
+\begin{lstlisting}
+public class Article extends SRecordInstance implements IArticle
+{
+
+	static final SRecordMeta meta = new SRecordMeta(Article.class, "article_details");
+
+	private static final SFieldReference DATA_OBJECT = new SFieldReference(meta,
+			 DataObject.meta, "do", SSimpleORMProperties.SFD_PRIMARY_KEY); 
+
+	private DataObject getDataObject() {
+		return (DataObject)getReference(DATA_OBJECT);
+	}
+
+	public static final SFieldString TEXT = // ...
+	public static final SFieldString SUMMARY = // ...
+
+\end{lstlisting}
+
+Über die in der \code{IArticle} Schnittstelle definierten \code{get}- und
+\code{set}-Methoden werden die Attributzugriffe den Gegebenheiten entsprechend
+implementiert. Dadurch bleibt die einheitliche Schnittstelle für die Benutzer
+erhalten.
+
+\subsection{Hibernate}
+
+%% \begin{figure}
+\begin{lstlisting}[language=xml,numbers=left]
+<hibernate-mapping package="webbook.hibernate">
+	<class name="webbook.BasicDataObject" abstract="true">
+		<id name="id" column="id">
+			<generator class="native"/>
+		</id>
+		
+		<property name="title" type="text" not-null="true"/>
+		<property name="createdOn" type="timestamp" not-null="true"/>
+		<property name="lastModified" type="timestamp" not-null="true"/>
+		
+		<union-subclass name="Article" table="articles">
+			<property name="text" type="text" not-null="true"/>
+			<property name="summary" type="text" not-null="true"/>
+			<set name="tags" table="articles_tags">
+				<key column="id"/>
+				<element column="tag" type="webbook.hibernate.utils.TagType" not-null="true"/>
+			</set>
+		</union-subclass>
+		
+		<!-- ... -->
+\end{lstlisting}
+%% \caption{Ein Hibernate Mapping}
+%% \label{hibernate_mapping}
+%% \end{figure}
+
+In Zeile~2 wird die abstrakte Basisklasse \code{BasicDataObject} abgebildet.
+Zuerst wird ein Schlüsselattribut (Zeile~3-5) deklariert, das über einen
+Datenbank-abhängigen Standardmechanismus \xml{"native"} erzeugt wird.
+Anschließend werden die einzelnen Attribute, die allen Objekten gemein sind,
+angeschrieben (Zeile~7-9). Jede Deklaration enthält dabei den Namen der
+Java-Property\footnote{nach der JavaBean-Konvention mit \code{get}- und
+\code{set}-Methoden} \xml{name}, den Datenbanktyp \xml{type} und eventuelle
+Einschränkungen in der Datenbank, hier \xml{not-null}. Zusätzlich könnten hier
+auch von der Java-Property unabhängige Spaltenbezeichnung angeschrieben
+werden.
+
+Ab Zeile~11 beginnt die Definition der \code{Article} Klasse.
+\xml{union-subclass} erzeugt eine eigene Tabelle für jede konkrete
+Unterklasse. Die Attribute von \code{Picture} und \code{Folder} werden in
+eigenen \xml{union-subclass} Elementen notiert.
+
+\TODO{Alternativ könnte auch eine einzelne Tabelle für die gesamte Hierarchie
+verwendet werden oder eine zusätzliche Tabelle für die Basisklasse.
+$\Rightarrow$ Methodenkapitel+Referenz hier.}
+
+Eine Besonderheit gegenüber den anderen Methoden ist die Möglichkeit, die
+Schlagworte mit \xml{set} direkt als Menge abzubilden. Um die Abbildung der
+Schlagworte direkt auf die korrekte Klasse \code{webbook.utils.Tag} zu machen,
+steht hier als \xml{type} eine benutzerdefinierte Klasse
+\code{webbook.hibernate.utils.TagType}, die \code{Tag}-Instanzen auf \sql{text}
+Spalten abbildet.
+
+
+\section{Prozesskoordination}
+
+Da die meisten Applikationen mehrere Geschäftsfälle gleichzeitig abarbeiten, ist
+auch die Koordination zwischen Prozessen ein wichtiger Aspekt in der
+Implementierung eines Persistenzschemas, um nicht Anomalien beim Datenzugriff zu
+erzeugen.
+
+\subsection{SQL}
+
+Der SQL Standard schreibt nur eine implizite Koordination über die
+Isolationslevel der Transaktionen vor. Zur Unterstützung von alten
+Applikationen und um in komplexen Situationen Deadlocks zu vermeiden,
+unterstützen DBMS normalerweise auch explizite Koordination mit Tabellen- und
+Zeilensperren. Diese werden jedoch nicht vom Standard verlangt.
+
+Transaktionen werden mit einer \sql{BEGIN}-Anweisung gestartet. Mit \sql{COMMIT}
+werden sie abgeschlossen und mit \sql{ROLLBACK} verworfen.
+
+\subsubsection{Isolationslevels}
+\label{isolation}
+
+Je nach Anforderung der Applikation und an eine gegebene Transaktion können mit
+\sql{SET} \sql{TRANSACTION} \sql{ISOLATION} \sql{LEVEL} unterschiedliche
+Isolationslevels angefordert werden sein.
+
+\begin{description}
+\item[READ UNCOMMITED:] Der Zustand geringster Isolation. Parallele
+Transaktionen sehen alle bereits geänderten Daten unabhäging von dem Zustand der
+umgebenden Transaktion. 
+\item[READ COMMITTED:] Um zumindest grundlegende Zusicherungen an die gelesenen
+Daten einer Transaktion zu geben, sehen Transaktionen in diesem Isolationslevel
+nur noch Daten, die von bereits erfolgreich abgeschlossenen Transaktionen stammen.
+\item[REPEATABLE READ:] Zusätzlich wird zugesichert, dass sich innerhalb einer
+Transaktion bereits gelesene Daten nicht mehr verändern. Das erlaubt immer noch,
+dass neue Datensätze bei Wiederholgen der gleichen Abfrage hinzukommen.
+\item[SERIALIZABLE:] Jede Transaktion sieht nur Ergebnisse jener Transaktionen,
+die zu ihrer Eröffnung bereits abgeschlossen waren. Andere gerade laufende
+Transaktionen sehen
+Ergebnisse dieser Transaktion wiederum erst nach ihrem Abschluß. Kommt es zu
+Zugriffsüberschneidungen, muss eine der Transaktionen auf den Abschluß der
+anderen warten.
+\end{description}
+
+Der Standard erlaubt einer Implementierung auch strenger als das angeforderte
+Isolationslevel zu handeln. PostgreSQL zum Beispiel kennt nur \sql{READ
+COMMITTED} und 
+%% Silbentrennung
+\emph{SERIALIZABLE}. Die beiden anderen Levels werden jeweils wie
+die nächststrengere Stufe behandelt.
+
+\subsubsection{Explizite Sperren}
+
+Zusätzlich zu den Isolationslevels kennt SQL noch die \sql{FOR UPDATE} Klausel,
+mit der die Ergebnisse einer \sql{SELECT}-Anweisung gesperrt werden können.
+\sql{UPDATE}, \sql{DELETE} oder \sql{SELECT} \sql{FOR} \sql{UPDATE} aus anderen
+Transaktionen blockieren bis zum Abschluß dieser Transaktion.
+
+Ausserhalb des Standards implementieren manche DBMS noch explizite
+Tabellensperren. Damit können bei komplexen Transaktionen Deadlocks durch eine
+determinierte Sperrreihenfolge vermieden werden. In PostgreSQL wird dies mit dem
+\sql{LOCK TABLE} Befehl durchgeführt.
+
+\subsubsection{Transaktionen}
+
+Auf Seite des DBMS kann durch intelligentere Transaktionskontrolle die
+Auswirkungen langer Transaktionen durch feinere Sperren -- zum Beispiel
+zeilenweise statt auf Tabellenebene -- verbessert werden. Ein anderes Verfahren
+ist die Versionierung der gesamten Datenbank. Dieses Verfahren wird zum
+Beispiel von PostgreSQL implementiert. \cite{postgres} beschreibt das
+MVCC\footnote{Multiversion Concurrency Control}\label{mvcc} Verfahren. Damit
+bleibt der aktuelle Zustand der Datenbank für die Dauer der Transaktion in
+einem virtuellen Schnappschuß erhalten. Dadurch kommt es zu keinen
+Behinderungen von parallelen Lese- und Schreibvorgängen auf den selben Daten.
+Allerdings muss dafür in Kauf genommen werden, dass bei möglicherweise
+auftretenden Schreibkonflikten Transaktionen abgebrochen und von neuem
+gestartet werden müssen.
+
+\subsection{Reines Java}
+
+Die Programmiersprache Java enthält einen Mechanismus zur Synchronisierung
+zwischen\linebreak{}Ausführungssträngen einer einzelnen virtuellen Maschine. Das
+\code{synchronised} Schlüsselwort\linebreak{}markiert Methoden, die nicht gleichzeitig aus
+verschiedenen Strängen aufgerufen werden dürfen. Soll ein Objekt über mehrere
+Aufrufe hinweg gesperrt sein, kann ein Ausschlußbereich definiert werden.
+
+\begin{lstlisting}
+void doSomething(Article a) {
+	synchronized(a) {
+		a.setTitle("Neuer Titel");
+		a.setText("Neuer Text");
+	}
+}
+\end{lstlisting}
+
+Bei zwei gleichzeitigen Aufrufem von \code{doSomething} mit der selben
+\code{Article} Instanz sorgt die virtuelle Maschine dafür, dass einer der
+Stränge blockiert, bis der andere die Abarbeitung des Ausschlußbereichs beendet
+hat.
+
+In \code{java.util.concurrent} befinden sich Werkzeuge für komplexere
+Ausschlußmechanismen und Datenstrukturen, die auch bei gleichzeitigem Zugriff
+von mehreren Ausführungssträngen konsistent bleiben. Eine detaillierte
+Beschreibung findet sich in der offiziellen Dokumentation bei \cite{juc}.
+
+\subsubsection{JDBC}
+
+JDBC Verbindungen sind normalerweise im sogenannten \emph{autocommit}-Modus.
+Dabei wird jede Anweisung in einer eigenen Transaktion ausgeführt, die sofort
+abgeschlossen wird. Wird dieser Modus mit \code{connection.setAutoCommit(false)}
+verlassen, kann die Transaktion manuell mit \code{connection.commit()} oder
+\code{connection.rollback()} abgeschlossen oder abgebrochen werden. Die JDBC
+Bibliothek sorgt dabei dafür, dass immer eine Transaktion offen ist. Daher wird
+keine \code{begin()} Methode benötigt.
+
+\subsection{SimpleORM}
+
+Die Transaktionen werden bei dieser Bibliothek mit den statischen Methoden
+\code{begin()}, \code{commit()} und \code{rollback()} der \code{SConnection}
+Klasse gesteuert. Dabei wird über interne Mechanismen sichergestellt, dass immer
+die richtige Verbindung für den gerade aktiven Kontext bearbeitet wird.
+
+\subsection{Hibernate}
+
+Hibernate kapselt die Transaktion in eine eigene Klasse, um unterschiedliche
+Implementierungen zu unterstützen. Eine Instanz, die die \code{Transaction}
+Schnittstelle implementiert, erhält man von einer \code{Session} mit
+\code{getTransaction()}. Die Schnittstelle bietet wiederum die schon bekannten
+\code{begin()}, \code{commit()} und \code{rollback()} Methoden an.
+
+
+\section{Leistungsorientiertes Programmieren}
+
+Die \emph{Leistung} eines Systems ist eine heikle Angelegenheit. Zu lange
+Antwortzeiten bremsen die Produktivität der Benutzer und schrecken Kunden ab.
+Zu frühe oder zu intensive Konzentration auf die Optimierung der Anwendung
+bremst die Entwicklungsgeschwindigkeit bei immer geringer werdenden Renditen. 
+Für den optimalen Einsatz von Resourcen bei der Optimierung ist es daher
+notwendig. die speziellen Anforderungen der Anwendung zu analysieren und dort
+zielgerichtet zu investieren.
+
+\subsection{SQL}
+
+Die Abfrage \sql{SELECT * FROM articles WHERE id = 42} liest bei einer trivialen
+Implementierung die gesamten Daten von den Platten und durchsucht sie nach dem
+gewünschten Objekt mit der Nummer $42$. Dieser Aufwand fällt zum Beispiel auch
+bei allen Operationen an, die die Eindeutigkeit des Primärschlüssels überprüfen
+müssen. Um diese
+großen Datentransfers zu vermeiden kann für häufig benutzte Spalten ein Index
+eingerichtet werden.
+
+Indizes sind automatisch gepflegte Datenstrukturen, die von Attributwerten direkt
+auf Tupel(-adressen) abbilden. Je nach Implementierung werden verschiedene
+Datenstrukturen mit verschiedenen Fähigkeiten und Leistungskriterien angeboten.
+PostgreSQL unterstützt \emph{B-tree} Indizes für Gleichheits- und
+Bereichsabfragen sowie \emph{GiST}\footnote{Generalized indexed Search Tree}
+Indizes für Be\-nut\-zer-pro\-gram\-mierte Erweiterungen. Im Gegensatz zum $O(n)$ Aufwand
+der trivialen Implementierung\linebreak{}braucht die Abfrage eines \emph{B-tree} Indexes
+typischerweise nur $O(\log{}n)$. Ist das Tupel im Index gefunden, können die
+Daten ohne weitere Suche geladen werden. Wird der gesuchte Wert im Index nicht
+gefunden, existiert auch kein passendes Tupel in der Tabelle.
+
+Indizes kosten dafür in anderen Bereichen: zuerst einmal wird zusätzlicher
+Speicherplatz auf der Platte benötigt, um die Verwaltungsdaten zu speichern.
+Diese Daten brauchen dann auch Platz in den diversen Zwischenspeichern des
+Betriebssystems. Je nach Plattform ist die kleinste im Betriebssystem
+verwaltete Einheit zwischen zwei und acht Kilobyte groß. Für kleine Tabellen
+fressen diese zusätzlichen Daten jeden Leistungsgewinn des Indexes wieder auf.
+
+Weiters muss der Index bei jeder Schreibanweisung gepflegt werden. Besonders
+beim Laden großer Mengen von Daten -- Zurückspielen von Backups zum Beispiel --
+ist es daher empfehlenswert, Indizes zu deaktivieren und erst nach dem Laden auf
+einen Sitz neuzuberechnen. Bei Tabellen, in die laufend geschrieben wird, aber
+nur selten gelesen -- Logbücher zum Beispiel -- sind Indizes generell eher
+schädlich.
+
+\subsubsection{Denormalisierung}
+
+Abfragen auf redundanzfreien Schemata erfordern oft Verknüpfungen zwei oder
+mehrerer Tabellen, um die gewünschten Antworten zu erhalten. Zur Beschleunigung
+solcher Abfragen können oft angeforderte Daten über Tabellengrenzen hinweg
+verschoben werden, um Verknüpfungen zu vermeiden. Dabei ist darauf zu achten,
+dass auftretende Redundanzen durch Maßnahmen wie Triggermethoden oder
+Konsistenzprüfer möglichst automatisch und nahe der Datenbank gepflegt oder
+überwacht werden.
+
+Eine andere Möglichkeit in diesem Bereich ist die Bildung und Pflege von
+oft benötigten Summen, zum Beispiel bei Rechnungen.
+
+\subsection{Reines Java}
+
+Die Leistung einer JDBC-Anwendung hängt stark davon ab, wie gut die
+zugrundeliegende Datenbank ausgenützt werden kann. Neben der schon
+angesprochenen Optimierung des Schemas und der Einführung passender Indizes,
+bewegt sich bei der Implementierung in Java das vor allem in der Reduktion der
+Kommunikation mit der Datenbank in Anzahl und Menge.
+
+\paragraph{Vermeidung unnötiger Schreibvorgänge:} Wird ein Attribut geändert,
+muss dieses nicht sofort in die Datenbank geschrieben werden. Änderungen müssen
+nur vor dem Abschluß der Transaktion zurückgeschrieben werden. Dabei können dann
+mehrere Änderungen in einer Anweisung übertragen werden. Wird eine
+Transaktion abgebrochen, brauchen sie überhaupt nicht zurückgeschrieben werden.
+
+\paragraph{Vermeidung unnötiger Attribute:} Besonders bei Objekten mit vielen
+oder großen Attributen kann es sich lohnen, selten benutzte Attribute nicht mit
+dem ersten Zugriff auf das Objekt zu laden, sondern erst, wenn sie tatsächlich
+von der Anwendung benötigt werden. 
+
+\paragraph{Zwischenspeichern:} Oft benötigte Objekte können in einem lokalen
+Zwischenspeicher abgelegt werden. Abfragen, die direkt aus dem Zwischenspeicher
+beantwortet werden können, benötigen so keine Kommunikation mit der Datenbank.
+Die Einhaltung der Transaktionsisolierung erfordert jedoch einigen Aufwand bei
+der Implementierung und beschränkt die Wirksamkeit des Zwischenspeichers.
+
+\paragraph{Stapelverarbeitung:} Einer der größten Vorteile der Implementierung
+ohne zusätzliche Bibliotheken ist die direkte Einsetzbarkeit des gesamten
+SQL-Umfangs. So ist es zum Beispiel viel effizienter, große Datenmengen direkt in
+der Datenbank zu kopieren oder umzuformen, als die selben Daten in die
+Javaanwendung zu laden und dann wieder zurückzuschreiben. Dabei wird jedoch die
+gesamte Geschäftslogik im Java-Objektmodell umgangen, besondere Vorsicht ist
+daher geboten.
+
+Mit JDBC~1.2 wurde die Möglichkeit geschaffen, mehrere Datenbankanweisungen
+gleichzeitig an die Datenbank zu übertragen. Das reduziert zwar den
+Kommunikationsaufwand, erfordert jedoch anwendungsseitig Anpassungen.
+
+\subsection{SimpleORM}
+
+\paragraph{Vermeidung unnötiger Schreibvorgänge:} SimpleORM schreibt Objekte
+erst beim \code{commit()} in die Datenbank. Da SimpleORM immer direkt die
+Datenbank abfragt, ist es manchmal notwendig, innerhalb einer Transaktion Objekte
+vorzeitig zurückzuschreiben, damit es zu keinen Anomalien kommt. Um das
+auszulösen hat jede \code{SRecordInstance} eine \code{flush()} Methode.
+
+\paragraph{Vermeidung unnötiger Attribute:} SimpleORM bietet drei Stufen der
+Wichtigkeit von Feldern an. \code{SFD\_DESCRIPTIVE} markiert Felder, die eine --
+für den Benutzer signifikante -- Beschreibung der Instanz darstellen. Werden für
+eine Überblicksliste oder ähnliches nur diese Felder benötigt, kann eine Abfrage
+für nur diese Felder mit \code{SQY\_DESCRIPTIVE} abgesetzt werden.
+
+Für große oder selten benutzte Felder ist die \code{SFD\_UNQUERIED} Markierung
+gedacht. So markierte Felder werden nur dann geladen, wenn die Abfrage auch die
+entsprechende\linebreak\code{SQY\_UNQUERIED} Markierung trägt.
+
+\paragraph{Zwischenspeichern:} Diese Bibliothek implementiert einen
+Zwischenspeicher für Objekte. Um nicht die Isolationszusicherungen der Datenbank
+zu verletzen, werden Instanzen nur für die Dauer einer Transaktion gespeichert.
+
+Der Zwischenspeicher wird auch genutzt, um die Objektidentät an die
+Datenbankidentät zu knüpfen: Wird das selbe Tupel innerhalb einer Transaktion
+mehrmals abgefragt, wird in Java immer die selbe Objektinstanz zurückgegeben.
+
+\paragraph{Stapelverarbeitung:} SimpleORM nutzt nicht die Möglichkeiten von JDBC
+zur Stapelverarbeitung.
+
+\subsection{Hibernate}
+
+\paragraph{Vermeidung unnötiger Schreibvorgänge:} Wie SimpleORM schreibt
+Hibernate so spät wie möglich zurück in die Datenbank und muss in Grenzfällen
+manuell ausgelöst werden. 
+
+\paragraph{Vermeidung unnötiger Attribute:} Einzelne Attribute können in
+Hibernate zu \emph{Komponenten} (von engl. "components") gruppiert werden. Diese
+Komponenten werden dann auf eigene Objekte abgebildet. Über HQL Abfragen ist es
+dann möglich, diese Komponenten einzeln abzurufen. Dabei ist zu beachten, dass in
+der Abbildung der Komponente ein \xml{<parent/>} Attribut eingefügt wird, um von
+der Komponente auf das Gesamtobjekt zu kommen. Für Details siehe
+\cite{hibernate}, Kapitel 8.1.
+
+\paragraph{Zwischenspeichern:} Die \code{Session} implementiert einen
+Zwischenspeicher auf Transaktionslevel. Zusätzlich kann ein anwendungsweiter
+Zwischenspeicher (engl.: second-level cache) eingerichtet werden, in dem Objekte
+über Transaktionen und Ausführungsstränge hinweg gepuffert werden. Dieser
+Zwischenspeicher sieht jedoch nur Änderungen, die von Hibernate selbst
+durchgeführt werden. Im Einsatz kann die Korrektheit daher nur durch externe
+Maßnahmen sichergestellt werden. Die verschiedenen Implementierungen und
+Beschränkungen werden in \cite{hibernate}, Kapitel 19.2 aufgelistet.
+
+
+\section{Leistungsvergleich Beispieldatenbank}
+
+Für einen empirischen Vergleich der Bibliotheken mit der manuellen
+Implementierung wurden vier synthetische Benchmarks implementiert, die die
+verschiedenen Komponenten testen. Alle Tests wurden auf einem Samsung M40
+Laptopp mit einem Intel Perntium M $1.80$GHz mit 1GB RAM und einer FUJITSU
+MHT2080AT 80GB Platte durchgeführt. Für die Implementierung der Benchmarks wurde
+das Japex (siehe \cite{japex}) Framework eingesetzt.
+
+\paragraph{Verbindungsaufbau:}{Der erste Benchmark öffnet nur eine Verbindung zur
+Datenbank und schliesst diese wieder. Damit werden die grundlegenden Kosten
+einer Implementierung gemessen. Alle Projekte brauchen hier circa $4$ ms.
+Während die Implementierung in reinem Java und Hibernate jeweils rund drei MB
+Speicher brauchen, kommt SimpleORM mit nur $2.5$ MB aus.}
+
+\begin{tabular}{r|ccc}
+\textbf{Verbindungsaufbau} & ms / Verbindung & $\sigma$ & max. Speicher \\
+\hline
+Manuell   & $3.8$ ms & $0.2\%$ & $2965.0$ kB \\
+SimpleORM & $3.7$ ms & $2.1\%$ & $2450.6$ kB \\
+Hibernate & $4.0$ ms & $1.7\%$ & $2912.0$ kB \\
+\end{tabular}
+
+\paragraph{Schlüsselzugriff:}{Hier wird ein kleines Objekt nach seinem
+Primärschlüssel geladen. Die angegebenen Zeiten sind die Differenz zwischen dem
+letzten Benchmark und diesem.}
+
+\begin{tabular}{r|ccc}
+\textbf{Schlüsselzugriff} & ms / Objekt & $\sigma$ & max. Speicher \\
+\hline
+Manuell   & $3.0$ ms % $6.8 - 3.8$ ms
+			& $0.1\%$ & $5188.6$ kB \\
+SimpleORM & $2.9$ ms % $6.6 - 3.7$ ms
+			& $1.4\%$ & $4484.9$ kB \\
+Hibernate & $2.6$ ms % $6.6 - 4.9$ ms
+			& $2.6\%$ & $5252.3$ kB \\
+\end{tabular}
+
+Bei diesen beiden Tests gibt es keine großen Überaschungen. Beide sind großteils
+von der Geschwindigkeit des JDBC Treibers und der Datenbank abhängig. Auffällig
+ist die geringere Varianz der manuellen Implementierung und die Tatsache,
+dass SimpleORM bei den Speicherspitzen rund 500 Kilobyte weniger verbraucht.
+
+\paragraph{Artikel laden:}{Eine Auswahl von Artikeln wird über eine
+Oder-Verknüpfung zweier zufälliger Tags geladen. Die Artikel sind Emails aus dem
+Archiv einer Mailingliste. Als Tags wurden die einzelnen Worte der Betreffzeile
+gesetzt. Die Graphik zeigt Dauer der Transaktion über der Anzahl gefundener
+Artikel. Ebenfalls eingezeichnet ist ein lineares Modell. Die gefunden Parameter
+sind anschliessend aufgelistet. }
+
+\input{img/articles.tex}
+
+% Daten aus img/Article*.params
+\begin{tabular}{r|cc}
+\textbf{Artikelabfrage} & ms / Verbindung & ms / Artikel \\
+\hline
+Manuell   & $15.4$ ms & $1.0$ ms \\
+SimpleORM & $14.2$ ms & $0.5$ ms \\
+Hibernate & $43.6$ ms & $1.2$ ms \\
+\end{tabular}
+
+\paragraph{Bilder laden:}{Eine Auswahl von Bildern wird über Tags geladen. Um
+die Ergebnisse vergleichbar zu halten, haben alle Bilder den gleichen Inhalt.
+Die Struktur der Daten ist der Ordnerstruktur eines privaten Bilderalbums
+entnommen. Zusätzlich wurde jedes Bild mit einem -- zufällig aus elf weiteren
+Tags gewählten -- Tag markiert. In der Verknüpfung wird jeweils ein Tag aus der
+Ordnerstruktur und eines der zusätzlichen Tags Und-verknüpft.}
+
+Die gesamte Bilddatenbank umfasste rund $1.4$ GB an Bilddaten, passte daher
+nicht vollständig in den Arbeitsspeicher des Testgeräts. Daher verursachten die
+Pufferspeicher der Datenbank und des Betriebssystems ausgeprägte
+Leistungsunterschiede, je nachdem ob diese Puffer für eine Abfrage genutzt
+werden konnten oder nicht.
+
+Zuerst eine Darstellung dieser Puffereffekte. Die folgende Graphik zeigt die
+einzelnen%% "Durch" ist eine zu lange Silbe
+\linebreak{}Durchgänge sortiert nach der Übertragungsgeschwindigkeit.
+
+\begin{center}
+\input{img/effects.tex}
+\end{center}
+
+Deutlich sichtbar sind die Spitzeneffekte der Pufferspeicher auf der linken Seite der
+Graphik. In der Mitte folgt ein breiter Bereich von Abfragen, die ausserhalb des
+Pufferspeichers arbeiten. Die folgende Graphik zeigt die
+Antwortzeit über die
+Anzahl der gefundenen Bilder, allerdings beschränkt auf die 500 Transaktionen
+mit der höchsten Übertragungsgeschwindigkeit. Damit wird die Leistung des
+Pufferspeichers des Betriebssystems gezeigt und wie gut dieser von der
+Implementierung ausgenutzt werden kann.
+
+\begin{center}
+\input{img/picturecache.tex}
+\end{center}
+
+Die durchschnittliche Leistung der Implementierungen zeigt die
+folgende Graphik, mit dem zentralen Drittel der
+Transaktionen.
+
+\begin{center}
+\input{img/picturetypical.tex}
+\end{center}
+
+Abschliessend eine tabellarische Übersicht der Puffereffekte:
+
+% Daten aus img/Picture*.params und run.log
+\begin{tabular}{r|cccc}
+ 			& ms / Bild & ms / Bild & \\
+\textbf{Bilderabfrage}  & sonst     & Puffer    & \% Gewinn & max. Speicher \\
+\hline
+Manuell   & $195.6$ ms & $118.4$ ms & $39.6\%$ & $128.2$ MB \\
+SimpleORM & $205.7$ ms & $113.5$ ms & $45.0\%$ &  $96.2$ MB \\
+Hibernate & $214.7$ ms & $135.6$ ms & $36.9\%$ & $290.1$ MB \\
+\end{tabular}
+
+
+
+
+\TODO{
+\section{Sonstiges}
+\TODO{}
+\subsection{SQL}
+
+\TODO{Quellen, ISO-Nummern}
+
+SQL:1999 und sein Nachfolger SQL:2003 
+haben mächtige Betriebsmittel vorgeschrieben um objektorientierte
+Konzepte direkt in der Datenbank abzubilden. Es stellt sich heute die
+Frage, warum sich diese Konzepte nicht durchgesetzt haben. 
+
+\begin{itemize}
+\item Einschränkung auf eine Programmiersprache im SQL Server
+\item fehlende Implementierungen
+\item Entwicklung von starken Ersatzkonzepten -- Middleware/verteilte Transaktionen
+\item keine Lösung für anstehende Probleme der Verteilung und Koordination von Objekten
+\end{itemize}
+
+
+\subsection{Reines Java}
+\TODO{}
+\subsection{SimpleORM}
+
+\TODO{Speak about additional possibilities with Properties}
+
+\subsection{Hibernate}
+\TODO{}
+
+%% \section{MUH}
+%% \subsection{SQL}
+%% \subsection{Reines Java}
+%% \subsection{SimpleORM}
+%% \subsection{Hibernate}
+
+\section{Basisoperationen}
+
+\subsection{SQL}
+\subsection{Reines Java}
+\subsection{Vorteile der manuellen Implementierung}
+
+Bei der manuelle Implementierung behält der Entwickler die komplette Kontrolle
+und Übersicht über die Funktionalität der Datenverwaltung. 
+
+Natürliche Möglichkeit komplexe Abfragen zu optimieren.
+
+
+
+\subsection{Nachteile der manuellen Implementierung}
+
+Fast doppelt soviel Zeilen Quellcode mit wesentlich(?) weniger Funktionalität.
+
+
+\subsection{SimpleORM}
+\subsection{Hibernate}
+
+\section{TODO}
+
+\begin{itemize}
+
+\item Basics
+\begin{itemize}
+\item Schema -> Code
+\item Code -> Schema
+\item Codegröße
+\end{itemize}
+
+\item Advanced
+\begin{itemize}
+\item Arbeiten mit mehreren Schemaversionen/Schemamigration (zB Entwicklung/Deployment)
+\item Arbeiten mit mehreren Datenquellen
+\item Ungewöhnliche Abbildungen von Datentypen
+\begin{itemize}
+\item zB: Enum -> Bitfelder
+\end{itemize}
+\item Hinzufügen/Löschen von Feldern
+\item Transparenz
+\item Datensicherheit (Transaktionsisolierung, SELECT \dots FOR UPDATE)
+\item mehrere Prozesse/Parallelität
+\item Serialisierung in externe Datenformate (zB XML)
+\end{itemize}
+
+\item Performance
+\begin{itemize}
+\item Initialisierung
+\item findById
+\item findByTags
+\item CRUD (kleine und große Datenmengen)
+\item browse Folder
+\item Optimierungsmöglichkeiten (custom SQL, Batchunterstützung)
+\end{itemize}
+\end{itemize}
+}
+
+\section{Programmieraufwand}
+
+Ein konsistentes Maß für Programmieraufwand ist die Anzahl von Zeilen im
+Quelltext. Hier die Daten\footnote{erzeugt mit David A. Wheelers
+"SLOCCount"} für die drei Projekte -- ohne die zusätzlichen Tests.
+
+\begin{tabular}{r|c|l}
+SLOC & Projekt & nach Programmiersprache \\
+\hline
+970 & JDBC & java=763,sql=207 \\
+895 & SimpleORM & java=895 \\
+519 & Hibernate & java=453,xml=66 \\
+\end{tabular}
+
+Dabei wird natürlich der nicht-meßbare Aufwand des Einlernens in die
+Bibliotheken nicht mitgerechnet. Dabei handelt es sich aber um konstante
+Aufwendungen, die nur bei Projekten mit geringen Anforderungen ins Gewicht
+fallen. 
+
+Bei der Architektur der JDBC-Implementierung ist kein solcher Basisaufwand zu
+verzeichnen. Dafür muss jedoch bei steigenden Anforderungen in diesem Bereich
+weiter programmiert werden. Zum Beispiel unterstützt die Pufferimplementierung
+keine parallelen Transaktionen. 
+
+Darüber hinaus existieren für Hibernatae noch eine Reihe an Tools für die
+Integration in den Entwicklungsablauf. Zum Beispiel enthält \emph{Hibernate
+Tools} (siehe \cite{hibtools}) ein Eclipse Plugin zur automatischen Erzeugung
+der Datenklassen aus der Hibernate XML Definition.
+
+\TODO{
+Als Beispiel für den weiteren Aufwand in der Entwicklung des Projektes, hier
+eine Gegenüberstellung der notwendigen Schritte um ein weiteres Feld in der
+Datenbank zu verwalten.
+
+\subsection{Reines Java}
+
+\subsection{SimpleORM}
+
+\subsection{Hibernate}
+
+}

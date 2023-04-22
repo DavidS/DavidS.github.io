@@ -1,0 +1,47 @@
+# /etc/ntp.conf, configuration for ntpd
+#
+#############################################################################
+#############################################################################
+####   PUPPET MANAGED   #####################################################
+#############################################################################
+#############################################################################
+
+driftfile /var/lib/ntp/ntp.drift
+statsdir /var/log/ntpstats/
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+# Default external servers
+server europe.pool.ntp.org iburst
+server time.inode.at iburst
+server ntp2b.mcc.ac.uk iburst
+server fartein.ifi.uio.no iburst
+server pluto.fips.at iburst
+server ntp1.nack.at iburst
+
+# EDV-BUS NTP-Group
+peer time.uni-ak.ac.at iburst
+restrict time.uni-ak.ac.at nomodify notrap
+
+peer chip.mariatreu.at iburst
+restrict chip.mariatreu.at nomodify notrap
+
+peer diode.black.co.at iburst
+restrict diode.black.co.at nomodify notrap
+
+# use local time source as fallback
+server 127.127.1.0
+fudge 127.127.1.0 stratum 13
+
+# By default, exchange time with everybody, but don't allow configuration.
+# See /usr/share/doc/ntp-doc/html/accopt.html for details.
+restrict -4 default kod notrap nomodify nopeer noquery
+restrict -6 default kod notrap nomodify nopeer noquery
+
+# Local users may interrogate the ntp server more closely.
+restrict 127.0.0.1
+restrict ::1
+

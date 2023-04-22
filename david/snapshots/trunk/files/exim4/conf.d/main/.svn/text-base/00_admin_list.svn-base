@@ -1,0 +1,3 @@
+hostlist admin_hosts = dsearch;/var/local/puppet/mail/ssmtp_hosts
+domainlist admin_domains = dsearch;/var/local/puppet/mail/ssmtp_hosts
+

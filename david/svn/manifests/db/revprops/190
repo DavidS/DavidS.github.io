@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-08-08T13:25:08.917943Z
+K 7
+svn:log
+V 118
+add separate backuppc apache log; notify apache about backuppc vhost changes; use $hostname for munin accessing apache
+END

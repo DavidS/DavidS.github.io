@@ -1,0 +1,56 @@
+\chapter{Beispiel}
+% nach jedem \section gehört diese Zeile eingefügt, damit keine Nummerierung
+% aufscheint:
+\thispagestyle{empty}
+\label{Kapitel_Garfield}
+
+\section{Garfield}
+So hier ein bisschen Textblabla und ein toller Garfield Comic (Siehe
+Abbildung~\ref{Garfield}):
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics[width=450pt,keepaspectratio]{img/garfield}
+% 450 ist die optimale Breite eines Bildes, wenn es jedoch höher als 390pt ist,
+% kann kein Text mehr auf derselben Seite angezeigt werden. Dann beschränkt man
+% am besten die Höhe auf 390pt:
+%\includegraphics[height=390pt,keepaspectratio]{img/garfield}
+\end{center}
+\caption{If it ain't broke, don't fix it!\cite{garfield}}
+\label{Garfield}
+\end{figure}
+
+\section{Sonstiges}
+\subsection{Zitate}
+Mit dem Befehl myquotecite kann man auch noch toll Zitate einfügen:
+
+\begin{myquotecite}{garfield}
+Ich bin nicht übergewichtig, ich bin nur untergroß!
+\end{myquotecite}
+
+Für die Bibtex gibt es noch eine recht gute Webseite, die die Bibtex
+Formatierung auflistet.\cite{bibtex}
+
+\subsection{Makefile}
+Die Befehle fürs beigelegte Makefile sind in Tabelle~\ref{makefile} aufgelistet:
+
+\renewcommand{\baselinestretch}{1}
+\begin{table}[h]
+\begin{tabular}{p{2cm}p{13cm}}
+Befehle & Was tun sie? \\
+\hline
+make & ruft mehrmals "`pdflatex Diplomarbeit"' auf, damit alle Referenzen
+stimmen und bindet auch die Bibliographie mit ein (bibtex Diplomarbet) \\
+make fast & schnelle Version, wenn man nur Kleinigkeiten geändert hat --
+Referenzen und Bibliographie werden nicht eingebunden! \\
+make view & öffnet das pdf file im Acrobat Reader (acroread Diplomarbeit.pdf) \\
+make clean & löscht alle unnötige Dateien (Table of content, pdfs...). Nur die
+tex-files, Bibliographie und Bilder bleiben bestehen. \\
+\hline
+\end{tabular}
+\caption{Wie verwende ich das Makefile?}
+\label{makefile}
+\end{table}
+\renewcommand{\baselinestretch}{1.5}
+
+So, viel Spaß!

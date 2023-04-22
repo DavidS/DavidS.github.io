@@ -1,0 +1,11 @@
+# 140_local_admin_hosts
+
+# all mails coming from admin hosts, are to be redirected to their respective admins
+admin_redirect:
+  debug_print = R: admin_redirect for $local_part@$domain
+  domains = +admin_domains
+  driver = redirect
+  data = ${lookup{$domain}lsearch*{/var/local/puppet/mail/ssmtp_domains/$domain}}
+  # skip routing if data lookup fails
+  no_more
+

@@ -1,0 +1,5 @@
+david.schmitt@uni-ak.ac.at
+  router = dnslookup, transport = remote_smtp
+  host poseidon.uni-ak.ac.at [193.170.188.104] MX=10
+  host merlin.uni-ak.ac.at   [193.170.188.110] MX=20
+  host zid.uni-ak.ac.at      [193.170.188.107] MX=30

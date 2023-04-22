@@ -1,0 +1,9 @@
+<html><head><title>&Auml;sthetik des Lebens</title></head>
+<frameset rows="150,*">
+<frame name="thumbs" src="thumbs.html">
+<frame name="views" src="views.html">
+<noframes>
+<!--#include file="thumbs" -->
+</noframes>
+</html>
+

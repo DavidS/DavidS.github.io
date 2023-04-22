@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-07-01T08:56:09.029202Z
+K 7
+svn:log
+V 48
+remove $in_domain, a severely unscalable concept
+END

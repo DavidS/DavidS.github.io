@@ -1,0 +1,12 @@
+HELO ypsilon.digitalekunst.ac.at
+MAIL FROM: <someone@digitalekunst.ac.at>
+RCPT TO: <someone@black.co.at>
+DATA
+From: <someone@digitalekunst.ac.at>
+To: <someone@black.co.at>
+Subject: smtpscanner testmail
+
+blah 
+fasel
+.
+QUIT

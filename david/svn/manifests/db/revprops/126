@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-07-29T10:35:34.516911Z
+K 7
+svn:log
+V 122
+fixed up refresh behaviour, still have to run the concat every time, but requirors are signalled only when the md5 changes
+END

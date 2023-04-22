@@ -1,0 +1,7 @@
+$TTL 86400
+$ORIGIN <%= name %>.
+$INCLUDE <%= soa %>
+$INCLUDE <%= ns %>
+
+@       NAPTR 100 10 "u" "E2U+sip" "!^(.*)$!sip:\\1@sip.edv-bus.at!" .
+

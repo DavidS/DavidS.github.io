@@ -1,0 +1,15 @@
+# schema for using LDAP to resolve mailAliases
+
+# Copyright 2004 University of Applied Arts Vienna
+
+# Distributed under the GPL. Standard disclaimer applies.
+
+
+# Usurping dead OID-branch under 1.1.252.5.
+
+attributetype ( 1.1.252.5.1 NAME 'rfc822MailMember' SUP mail )
+
+objectclass ( 1.1.252.5.2 NAME 'nisMailAlias' SUP top STRUCTURAL
+	MUST ( cn $ rfc822MailMember )
+	)
+

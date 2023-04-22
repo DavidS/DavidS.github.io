@@ -1,0 +1,10 @@
+define host{
+	use                     generic-host            ; Name of host template to use
+	host_name               <%= name %>
+	alias                   <%= short_alias %>
+	address                 <%= ip %>
+	hostgroups					ping-servers
+	<% if ! (/^(none|)$/i =~ nagios_parent) then %> parents <%= nagios_parent %> <% end %>
+}
+
+

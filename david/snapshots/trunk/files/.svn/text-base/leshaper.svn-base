@@ -1,0 +1,70 @@
+#!/bin/bash
+# shaper, based on the fabulous:
+#
+# Wonder Shaper
+#
+# Set the following values to somewhat less than your actual download
+# and uplink speed. In kilobits. Also set the device that is to be shaped.
+# 
+# From https://lefant.net/shaper, by Fabian Linzberger <e@lefant.net>
+# Adapted by David Schmitt <david@schmitt.edv-bus.at>
+
+[ -e /etc/default/leshaper ] && source /etc/default/leshaper
+
+[ -z "$DOWNLINK" ] || [ -z "$UPLINK" ] && exit 1
+
+# Reserve 75kbit/s bandwidth so we use the queues on our local NIC instead of
+# those in the network.
+DOWNLINK=$(( $DOWNLINK - 75 ))
+UPLINK=$(( $UPLINK - 75 ))
+
+DEV=${DEV:-uplink}
+
+if [ "$1" = "status" ]
+then
+        /sbin/tc -s qdisc ls dev $DEV
+        /sbin/tc -s class ls dev $DEV
+		  # hackish check to give exitstatus feedback about the config
+		  [ 3 -lt $(/sbin/tc -s qdisc ls dev $DEV | wc -l) ] \
+		  	&& [ 0 -lt $(/sbin/tc -s class ls dev $DEV | wc -l) ]
+        exit $?
+fi
+
+# clean existing down- and uplink qdiscs, hide errors
+/sbin/tc qdisc del dev $DEV root    2> /dev/null > /dev/null
+/sbin/tc qdisc del dev $DEV ingress 2> /dev/null > /dev/null
+
+if [ "$1" = "stop" ] 
+then 
+        exit
+fi
+
+
+########## uplink ###############
+
+# shape the root at UPLINK speed to keep the queue local no matter what
+# only use a small burst, since this is already almost maximum bandwidth
+# actually 9k is approximatly the reserved bandwidth (see above)
+/sbin/tc qdisc add dev $DEV root handle 1: tbf rate ${UPLINK}kbit burst 9k latency 50ms mpu 64b
+
+# prio band on top of that (automagically prioritises interactive traffic)
+/sbin/tc qdisc add dev $DEV parent 1: handle 11 prio
+
+/sbin/tc qdisc add dev $DEV parent 11:1 handle 111: sfq perturb 10
+/sbin/tc qdisc add dev $DEV parent 11:2 handle 112: sfq perturb 10
+/sbin/tc qdisc add dev $DEV parent 11:3 handle 113: sfq perturb 10
+
+########## downlink #############
+# slow downloads down to somewhat less than the real speed  to prevent 
+# queuing at our ISP. Tune to see how high you can set it.
+# ISPs tend to have *huge* queues to make sure big downloads are fast
+#
+# attach ingress policer:
+
+/sbin/tc qdisc add dev $DEV handle ffff: ingress
+
+# filter *all the rest* to it (0.0.0.0/0), drop everything that's
+# coming in too fast:
+/sbin/tc filter add dev $DEV parent ffff: protocol ip prio 50 u32 match ip src \
+   0.0.0.0/0 police rate ${DOWNLINK}kbit burst 10k drop flowid :1
+

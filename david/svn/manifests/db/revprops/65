@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-06-27T12:28:13.899316Z
+K 7
+svn:log
+V 64
+after going the whole way with assert_lsb..., really use the var
+END

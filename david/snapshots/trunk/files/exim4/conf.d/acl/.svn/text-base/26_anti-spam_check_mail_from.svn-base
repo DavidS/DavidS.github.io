@@ -1,0 +1,78 @@
+
+# This access control list is used for the MAIL FROM: command in an
+# incoming SMTP transaction.  The tests are run in order until the
+# sender address is either accepted or denied.
+#
+
+acl_check_mail_from:
+  # Record the current timestamp, in order to calculate elapsed time
+  # for subsequent delays
+  warn
+    set acl_m2  = $tod_epoch
+
+  # Accept mail received over local SMTP (i.e. not over TCP/IP). 
+  # We do this by testing for an empty sending host field.
+  # Also accept mails received from hosts for which we relay mail.
+  #
+  # Sender verification is omitted here, because in many cases
+  # the clients are dumb MUAs that don't cope well with SMTP
+  # error responses.
+  #
+  accept
+    hosts     = : +relay_from_hosts
+
+  # Accept if the message arrived over an authenticated connection,
+  # from any host. Again, these messages are usually from MUAs.
+  #
+  accept
+    authenticated = *
+
+  # If present, the ACL variables $acl_c0 and $acl_c1 contain rejection
+  # and/or warning messages to be applied to every delivery attempt in
+  # in this SMTP transaction.  Assign these to the corresponding 
+  # $acl_m{0,1} message-specific variables, and add any warning message
+  # from $acl_m1 to the message header.  (In the case of a rejection,
+  # $acl_m1 actually contains a log message instead, but this does not
+  # matter, as we will discard the header along with the message).
+  #
+  warn
+    set acl_m0  = $acl_c0
+    set acl_m1  = $acl_c1
+    message     = $acl_c1
+
+  # If sender did not provide a HELO/EHLO greeting, then prepare a reject
+  # message in $acl_m0, and a log message in $acl_m1.  We will later use
+  # these in a "deny" statement.  In the mean time, their presence indicate
+  # that we should keep stalling the sender.
+  #
+  warn
+    condition   = ${if def:sender_helo_name {0}{1}}
+    set acl_m0  = No HELO/EHLO received. Good Bye.
+    set acl_m1  = remote host did not present HELO/EHLO greeting.
+
+  # If we could not verify the sender address, create a warning message
+  # in $acl_m1 and add it to the mail header.  The presence of this
+  # message indicates that we should keep stalling the sender.
+  #
+  # You may choose to omit the "callout" option.  In particular, if
+  # you are sending outgoing mail through a smarthost, it will not
+  # give any useful information.
+  #
+  warn
+    condition   = ${if !def:acl_m1 {true}{false}}
+    !verify     = sender/callout
+    set acl_m1  = Invalid sender <$sender_address>
+    message     = X-Sender-Verify-Failed: $acl_m1
+    #log_message = delaying 20 seconds (check_mail_from: $acl_m1)
+    #delay	= 20s
+
+  warn
+    set acl_m2  = ${if def:acl_c1 {${eval:20 + $acl_m2 - $tod_epoch}}{0}}
+    condition 	= ${if >{$acl_m2}{0}{true}{false}}
+    log_message = delaying for $acl_m2 seconds (check_mail_from: $acl_c1)
+
+  # Accept the sender, but if we previously generated a message in
+  # $acl_c1, stall the sender until 20 seconds has elapsed.
+  accept
+    delay       = ${if >{$acl_m2}{0}{$acl_m2}{0}}s
+

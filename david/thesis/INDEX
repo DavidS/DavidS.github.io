@@ -1,0 +1,41 @@
+Probleme
+- Basisoperationen (CRUD)
+- Transaktionen (Isolation, Synchronisation)
+- Objektverteilung (WebService, RMI)
+- Programmierung (Tools, Aufwand, Legacyunterstützung)
+- Management (DB Schema, Batchloading)
+
+Lösungsmethoden
+- Integrierte Datenschicht
+- Separate Datenschicht
+- Code Erzeugung
+- Dynamisch
+
+Implementierung
+- SQL99
+- Hibernate
+- SimpleORM
+- Manual
+- ??
+
+Vergleich
+- Programming
+-- inheritance (DataObject)
+-- Add field
+-- change Picture.type into multi-boolean-column
+-- Error handling (missing fields, sql errors)
+-- management (schema updates)
+-- Associations/Collections
+--- SimpleORM unterstützt keine Collections ...
+-- Transparenz (IFolder.getParent/getParentId)
+-- Datensicherheit (Standardtransaktionsisolierung etc ...)
+-- Distribution
+
+- Performance (Alle transaktionen auf serializable und alle SELECT ... FOR UPDATE)
+-- startup time
+-- findByIId
+-- findByTags
+-- update
+-- delete
+-- walk folders
+

@@ -1,0 +1,26 @@
+head	1.1;
+access;
+symbols;
+locks
+	www-data:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2003.06.03.15.22.00;	author www-data;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@Momentan noch keine echten Veranstaltungen registriert.
+
+WikiProgrammierung ist nur eine BeispielSeite, auf der die verschiedenen Features ausgetestet werden.@

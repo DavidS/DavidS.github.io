@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: apache</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">apache</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/home/david/repos/complete/modules/apache/manifests/init_pp.html">
+                /home/david/repos/complete/modules/apache/manifests/init.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/apache/manifests/site_pp.html">
+                /home/david/repos/complete/modules/apache/manifests/site.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/apache/manifests/awstats_pp.html">
+                /home/david/repos/complete/modules/apache/manifests/awstats.pp
+                </a>
+        <br />
+                <a href="../files/home/david/repos/complete/modules/apache/manifests/debian_pp.html">
+                /home/david/repos/complete/modules/apache/manifests/debian.pp
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Overview
+</p>
+<h6>==</h6>
+<p>
+This <a href="apache.html#M000010">module</a> manages <a
+href="apache/apache2.html">apache2</a> on Debian/etch. There are defines to
+handle sites and modules the Debian Way.
+</p>
+<p>
+See also the wiki page at <a
+href="http://reductivelabs.com/trac/puppet/wiki/Recipes/DebianApache2Recipe">reductivelabs.com/trac/puppet/wiki/Recipes/DebianApache2Recipe</a>
+which was originally written by Tim Stoop &lt;tim.stoop@gmail.com&gt;
+</p>
+<p>
+Variables
+</p>
+<h6>===</h6>
+<p>
+The primary <a href="apache.html#M000009">port</a> (default: 80) can be
+configured by setting $apache2_port in the node scope.
+</p>
+<p>
+Setting $apache2_ssl to &quot;enabled&quot;, causes the SSL <a
+href="apache.html#M000010">module</a> to be installed and configured.
+Additionally <a href="apache/apache2.html">apache2</a> is configured to
+listen on 443 or $apache2_ssl_port and use puppet&#8216;s certificate.
+</p>
+<p>
+Classes
+</p>
+<h6>=</h6>
+<p>
+The main class, <a href="apache/apache2.html">apache2</a>, installs <a
+href="apache/apache2.html">apache2</a> with the default MPM.
+</p>
+<p>
+The <a href="apache/apache2.html">apache2</a>::no_default_site variant
+additionally removes Debian&#8216;s default <a
+href="apache.html#M000011">site</a> configuration.
+</p>
+<p>
+Types
+</p>
+<h5></h5>
+<p>
+This <a href="apache.html#M000010">module</a> provides types for <a
+href="apache.html#M000011">site</a> and <a
+href="apache.html#M000010">module</a> management.
+</p>
+<pre>
+        apache2::site (
+                $ensure = {*present*, absent, &quot;filename&quot;},
+                $require_package = {*apache2*, packagename},
+                $content,
+                $source,
+        )
+</pre>
+<p>
+This type manages the /etc/apache2/sites-available file and enables or
+disables the /etc/apache2/sites-enabled/$name symlink by calling a2ensite
+or a2dissite as neccessary.
+</p>
+<pre>
+        apache2::module (
+                $ensure = {*present*, absent},
+                $require = {*apache2*, packagename}
+        )
+</pre>
+<p>
+This type enables or disables the /etc/apache2/mods-enabled/$name symlink
+by calling a2enmod or a2dismod as neccessary.
+</p>
+<p>
+Monitoring
+</p>
+<h6>====</h6>
+<p>
+The class installs a <a href="nagios.html">nagios</a> service check for the
+primary <a href="apache.html#M000009">port</a>. Additionally a
+NameVirtualHost for $hostname is configured where the server-status is
+available for access from $ipaddress. This is used by the <a
+href="munin.html">munin</a> plugins apache_accesses, apache_processes and
+apache_volume.
+</p>
+<p>
+TODO
+</p>
+<h4></h4>
+<p>
+The <a href="apache.html#M000011">site</a> type should manage the
+sites-available file too, by providing content/source parameters.
+</p>
+<p>
+With the recent changes to &quot;require&quot; stacking, the <a
+href="apache.html#M000011">site</a>&#8216;s and <a
+href="apache.html#M000010">module</a>&#8216;s require parameter is
+obsolete.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Defines</h3>
+
+      <div class="name-list">
+      <a href="#M000010">module</a>&nbsp;&nbsp;
+      <a href="#M000009">port</a>&nbsp;&nbsp;
+      <a href="#M000011">site</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+<!-- if facts -->
+
+<!-- if plugins -->
+
+<!-- if nodes -->
+
+<!-- if class -->
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="apache/apache.html" class="link">apache::apache</a><br />
+Class <a href="apache/apache2.html" class="link">apache::apache2</a><br />
+Class <a href="apache/awstats.html" class="link">apache::awstats</a><br />
+Class <a href="apache/base.html" class="link">apache::base</a><br />
+Class <a href="apache/debian.html" class="link">apache::debian</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Global Variables</h3>
+
+      <div class="name-list">
+        <table summary="Variables">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">sites</td>
+          <td>=</td>
+          <td class="context-item-value">/etc/apache2/sites</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">mods</td>
+          <td>=</td>
+          <td class="context-item-value">/etc/apache2/mods</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Defines</h3>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <span class="method-name">module</span><span class="method-args">( $require_package =&gt; 'apache', $ensure =&gt; 'present' )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define an <a href="apache.html">apache</a> <a
+href="apache.html#M000010">module</a>. Debian packages place the <a
+href="apache.html#M000010">module</a> config into
+/etc/apache/mods-available.
+</p>
+<p>
+You can add a custom require (string) if the <a
+href="apache.html#M000010">module</a> depends on packages that aren&#8216;t
+part of the default <a href="apache.html">apache</a> package. Because of
+the package dependencies, <a href="apache.html">apache</a> will
+automagically be included.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <span class="method-name">port</span><span class="method-args">( $port )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Create a Listen directive for <a href="apache.html">apache</a> in
+ports.conf Use the $name to disambiguate between requests for the same <a
+href="apache.html#M000009">port</a> from different modules
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <span class="method-name">site</span><span class="method-args">( $require_package =&gt; 'apache', $content =&gt; '', $ensure =&gt; 'present', $source =&gt; '' )</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define an <a href="apache.html">apache</a> <a
+href="apache.html#M000011">site</a> from a file.
+</p>
+<p>
+You can add a custom require_package string if the <a
+href="apache.html#M000011">site</a> depends on packages that aren&#8216;t
+part of the default <a href="apache.html">apache</a> package.
+</p>
+<p>
+The parameters ensure, content and source behave like their respective
+counterparts on the File type.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- if resource_list -->
+
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

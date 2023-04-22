@@ -1,0 +1,7 @@
+@		SOA     <%= soa_primary %> <%= soa_contact %> (
+						<%= serial %>
+						<%= refresh %>
+						<%= soa_retry %>
+						<%= expire %>
+						<%= minimum %>
+			)

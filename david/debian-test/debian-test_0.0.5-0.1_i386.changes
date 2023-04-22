@@ -1,0 +1,49 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.7
+Date: Fri, 12 Apr 2002 23:54:48 +0200
+Source: debian-test
+Binary: debian-test
+Architecture: source all
+Version: 0.0.5-0.1
+Distribution: unstable frozen
+Urgency: medium
+Maintainer: Philip Hands <phil@hands.com>
+Changed-By: David Schmitt <david@schmitt.edv-bus.at>
+Description: 
+ debian-test - Scripts used to run tests against an installed Debian system
+Closes: 50566 63952 70263 95752 122495 134398
+Changes: 
+ debian-test (0.0.5-0.1) unstable frozen; urgency=medium
+ .
+   * NMU
+   * this closes all open bugs on debian-test so might as well go into woody
+     (does that sound familiar to someone?)
+   * improved description as suggested in bugreport.
+     (closes: #134398)
+   * use /bin/echo instead of bare echo to avoid bashist builtin.
+     (closes: #95752, #122495)
+   * added build-dep-indep for debhelper (>> 2.0.0); added DH_COMPAT=2;
+     moved buildtree from debian/tmp/ to debian/debian-test/;
+     (closes: #70263)
+   * Added -s to the manpage.
+     (closes: #63952)
+   * 0.0.5 already does exit nonzero unless all tests worked out.
+     (closes: #50566)
+   * fixed rules file: added -f to those rms so they just do their job;
+     removed dh_suidregister and dh_movefiles;
+     removed unneccesary buildstamp
+Files: 
+ efdc8c2a4515b442dfd4eef763feb11d 554 devel extra debian-test_0.0.5-0.1.dsc
+ 5f52e174c5f3fcb08fd034928c9a6e8e 9341 devel extra debian-test_0.0.5-0.1.tar.gz
+ 2583e7daf723659f189b66dd8eb61dcc 7748 devel extra debian-test_0.0.5-0.1_all.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+iD8DBQE8t1m/DB3hq4zlg5kRAr40AKDZHxdu6lvklzhPP5rfZOTlg/HZlwCglCnH
+jJqWZb0lfbdDxRjEY9qGj1U=
+=4cds
+-----END PGP SIGNATURE-----

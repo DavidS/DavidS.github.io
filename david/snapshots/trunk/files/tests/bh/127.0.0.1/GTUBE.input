@@ -1,0 +1,11 @@
+HELO localhost
+MAIL FROM: <postmaster@google.com>
+RCPT TO: <postmaster@microsoft.com>
+DATA
+From: <blubb@example.com>
+To: <example.com>
+Subject: smtpscanner testmail
+
+XJS*C4JDBQADN1.NSBN3*2IDNEN*GTUBE-STANDARD-ANTI-UBE-TEST-EMAIL*C.34X
+.
+QUIT

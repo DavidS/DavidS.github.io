@@ -1,0 +1,3 @@
+popularity-contest      popularity-contest/participate  boolean true
+popularity-contest      popularity-contest/hostid-failed        note
+popularity-contest      popularity-contest/use-http     boolean false

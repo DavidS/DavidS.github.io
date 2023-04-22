@@ -1,0 +1,52 @@
+8
+
+dir
+31
+file:///home/david/public_html/svn/manifests/trunk/files/tests/bh/193.170.188.90
+file:///home/david/public_html/svn/manifests
+
+
+
+2007-04-12T21:34:21.827236Z
+2
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f03ff2f1-f02d-0410-970d-b9634babeaa1
+
+digitalekunst_relay.input
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+323f8e0b3627725307673ac70dbcb0b2
+2007-04-12T21:34:21.827236Z
+2
+david
+
+digitalekunst_relay.output
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+0ac07dfb703ed8a79722238f5dc59849
+2007-04-12T21:34:21.827236Z
+2
+david
+

@@ -1,0 +1,48 @@
+
+                               David Schmitt
+
+                             Tutor der TU Wien
+
+                          Dienst: Fr 12:30 - 14:00
+
+             Spezielle Kenntnisse: 
+                         Linux(Guru), 
+                         HTML(das hier ist meine beste Seite [NOT!]),
+                         Java (tm),
+                         Windowspalette (gezwungenermassen)
+                         
+
+
+
+
+
+
+                    Hier noch ein Bild von mir:   :-)
+
+                     Manchmal auch mit Brille:    8-)
+
+                     .. oder Sonnenbrillen:    B-)
+
+                          Meist aber muede:   x-|
+
+
+
+
+
+
+
+
+
+
+
+                       +----------------------------+
+                       | This Page is Lynx Enhanced |
+                       | and HTML: K.M.A conforming | 
+                       +----------------------------+
+
+                        
+
+
+   To see a picture of me open a telnet to josefine.ben.tuwien.ac.at:80
+      and type "GET /~david/pics/GI.bmp HTTP/1.0" (without the quotes)
+                 I hope you are a BMP-compatible user.

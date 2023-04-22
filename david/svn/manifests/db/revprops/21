@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-04-17T08:26:00.832511Z
+K 7
+svn:log
+V 95
+important fix for the licensing info on the apache2 manifest which is originally from tim stoop
+END

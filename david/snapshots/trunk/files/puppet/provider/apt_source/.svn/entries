@@ -1,0 +1,40 @@
+8
+
+dir
+31
+file:///home/david/public_html/svn/manifests/trunk/files/puppet/provider/apt_source
+file:///home/david/public_html/svn/manifests
+
+
+
+2007-04-13T09:53:48.370553Z
+12
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f03ff2f1-f02d-0410-970d-b9634babeaa1
+
+parsed.rb
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+91fd2ad010385ae3df52ccf745db9a60
+2007-04-13T09:53:48.370553Z
+12
+david
+

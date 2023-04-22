@@ -1,0 +1,52 @@
+8
+
+dir
+31
+file:///home/david/public_html/svn/manifests/trunk/doc
+file:///home/david/public_html/svn/manifests
+
+
+
+2007-04-13T18:21:28.886803Z
+16
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f03ff2f1-f02d-0410-970d-b9634babeaa1
+
+README.munin
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+94534d77e836edff724040c22fefeaae
+2007-04-13T18:21:28.886803Z
+16
+david
+
+README.nagios2
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+4103481a6051278efb21474969134db5
+2007-04-13T18:21:28.886803Z
+16
+david
+

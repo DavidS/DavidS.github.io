@@ -1,0 +1,41 @@
+# globale Service Adressen
+127.0.0.1 localhost
+127.0.0.2 puppettest2.black.co.at puppettest2 local-dns
+127.0.0.3 admin.uni-ak.ac.at admin
+127.0.0.4 apt-cacher.black.co.at apt-cacher
+
+# lokale server
+127.2.0.1 mysql5-local
+
+# Andere Server
+192.168.0.1 router
+192.168.0.3 services.black.co.at puppetmaster puppettester puppettester.black.co.at services munin.black.co.at munin
+192.168.0.4 mx.edv-bus.at mx 
+192.168.0.5	rt.edv-bus.at rt
+192.168.0.6	nagios.edv-bus.at nagios
+192.168.0.7 svn-test.edv-bus.at svn-test
+
+83.64.231.70 ic.black.co.at ic backuppc.black.co.at backuppc admin-mx.edv-bus.at puppetmaster.black.co.at puppet backuppc.black.co.at backuppc
+83.64.231.70 smtpscanner.edv-bus.at smtpscanner
+83.64.231.72    diode.black.co.at       diode
+83.64.231.72	ejabberd.black.co.at black.co.at		ejabberd
+85.125.165.66	chip.mariatreu.at		chip
+85.125.165.66	chip.edv-bus.at	named.edv-bus.at named
+85.125.165.67	www.mariatreu.at		www	mysql5.mariatreu.at mysql5
+85.125.165.68	mail.mariatreu.at		mail
+
+85.125.165.34 fw-schmidg.edv-bus.at fw-schmidg
+62.178.45.213 fw-gudrun.black.co.at fw-gudrun
+85.125.165.77 fw-maria.mariatreu.at fw-maria
+85.125.165.78 fw-treu.mariatreu.at fw-treu
+127.0.0.1	zion.black.co.at	zion
+
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+

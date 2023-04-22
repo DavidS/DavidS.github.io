@@ -1,0 +1,656 @@
+\chapter{Grundlagen}
+\thispagestyle{empty}
+\label{Kapitel_Grundlagen}
+
+%% You're pirates. Hang the code, and hang the rules. They're more like
+%% guidelines anyway.  -- Elizabeth Swann in Pirates of the Caribbean
+
+Objekt-relationale Abbildungen sind immer in eine größere Anwendung eingebettet.
+Jenseits der grundlegenden Anforderungen an jede Anwendung erzeugen die
+unterschiedlichen Ansätze von Datenbanksystemen und objekt-orientieren Modellen
+immer wieder Reibungsverluste. Diese Diplomarbeit demonstriert das an einer
+Bild- und Artikeldatenbank mit Schlagworten und einer darauf aufbauenden
+Ordner-ähnlichen Struktur.
+
+Zuerst jedoch die Grundlagen von Datenbank- und Objektmodellierung, um eine
+Basis für dieses Beispiel zu schaffen. Nach einer kurzen Einführung in die
+Beispieldatenbank der folgen dann weitere Erläuterungen zu grundlegenden
+Aspekten der Datenhaltung.
+
+\section{Datenbankmodellierung}
+
+Jarosch bringt das Problem der Modellierung in \cite{bspdb} (S.~5~f) auf
+den Punkt. Menschen denken in Bedeutungen, zum Beispiel Namen oder Uhrzeiten.
+Computer können jedoch nur Buchstaben und Zahlen verarbeiten. Die für den
+Menschen darin offensichtlichen Zusammenhänge bleiben der Maschine
+verschlossen.
+
+Die Aufgabe für den Datenbankprogrammierer ist es nun, im entworfenen
+Schema die Bedeutungen in einer, dem Computer zugänglichen, formalen Sprache
+festzulegen. Durch diese Festlegung können dann unterschiedliche Anwendungen auf
+einen gemeinsamen Datenbestand zugreifen und so ohne Missverständnisse Daten
+austauschen. Diese Festlegung bewegt sich in einem Spannungsfeld zwischen der
+einfachen Darstellung und der vollständigen Erfassung aller Details. 
+
+Jarosch empfiehlt, die Entwicklung von Datenbanken in zwei separate Schritte zu
+trennen. Zuerst soll ein \emph{fachspezifisches Wissensmodell} von den Experten
+des Zielfaches erstellt werden. Danach kann dieses Wissensmodell in ein
+Datenbankschema übersetzt werden.
+
+\subsection{Fachspezifisches Wissensmodell}
+
+Für die Erstellung des Wissensmodelles führt Jarosch vier elementare Schritte
+an:
+
+\begin{description}
+\item[Klassifizierung:]{Welche verschiedenen Arten von Objekten gibt es
+überhaupt? In der Beispieldatenbank sind dies Artikel, Bilder, Schlagworte und
+Ordner. Andere mögliche Objekte wie \emph{Fotograph} oder \emph{Autor} werden nicht
+berücksichtigt, da es sich um eine persönliche Datenbank handeln soll.}
+\item[Abstraktion:]{Welche Gruppierungen und Eigenschaften sind signifikant für
+die Modellierung? Eine der signifikanten Unterscheidungen in der
+Beispieldatenbank ist zwischen Schlagworten und Artikeln: Ein Artikel ist ein
+Text mit Titel und Zusammenfassung, während ein Schlagwort hingegen einen (oder
+mehrere) Artikel einem Thema zuordnet. Ein interessanter Grenzfall ist die Unterscheidung
+zwischen Artikeln und Bildern: während sich Text und Bild auf der einen Seite
+deutlich unterschieden, handelt es sich doch bei beiden um Artefakte mit Titel,
+Erzeugungsdatum und Schlagworten. Die Einführung eines Oberbegriffes, der diese
+Gemeinsamkeiten zusammenfasst, eröffnet einen Ansatzpunkt für spätere
+Erweiterungen -- zum Beispiel, wenn auch Musikstücke verwaltet werden sollen.}
+\item[Identifizierung:]{Welche Eigenschaften unterscheiden Objekte der gleichen
+Art voneinander? Schlagworte sind offensichtlich ihre eigene Identität. Bei
+Artefakten hingegen wird die Identifizierung schon schwieriger. Soll zum
+Beispiel der Titel immer eindeutig sein? Sogar wenn ja, wird sich der Titel nie
+ändern? Um die Beantwortung solcher Fragen zu umgehen wird oft ein
+\emph{künstlicher Schlüssel} eingeführt, mit dem Objekte fortlaufend
+durchnummeriert werden. Da dieser Schlüssel keinerlei Bedeutung trägt, ist er
+automatisch eindeutig und dauerhaft.}
+\item[Sachlogische Zusammenhänge:]{Wie hängen die einzelnen Objekte
+(Objektarten) zusammen? Artefakte haben eine beliebige Anzahl von Schlagworten.
+Schlagworte können naturgemäß mehreren Artefakten zugeordnet werden. Ordner
+schränken mit einem zusätzlichen Schlagwort die Auswahl des übergeordneten
+Ordners ein. }
+\end{description}
+
+Ausgehend von diesen fachspezifischen Erkenntnissen kann ein logische
+Datenbankschema abgeleitet werden. Das logische Datenbankschema ist eine formale
+Aufbereitung der Datenstruktur in der gewählten Datenbeschreibungssprache des
+Zieldatenbank. Typischerweise handelt es sich dabei um einen SQL Dialekt. 
+
+\subsection{Datenbankschema}
+
+Die im Wissensmodell beschriebenen Objekte und Attribute können nun als
+Tabellen in der Datenbank angelegt werden. Dabei bilden die identifizierenden
+Attribute die jeweiligen, eindeutigen Schlüssel. Mit zusätzlichen
+Fremdschlüsseln - das sind Verweise auf einen Eintrag in einer Tabelle - können
+die sachlogischen Zusammenhänge modelliert werden. Jarosch beschreibt in
+\cite{bspdb} 20 "Transformationsregeln", wie Beziehungen mit verschiedensten
+Einschränkungen in SQL implementiert werden.
+
+\subsection{Normalformen}
+
+Für die Genauigkeit und Benutzbarkeit der Datenbank ist die realistische
+Abbildung der relevanten Objekte in das fachspezifische Wissensmodell
+entscheident. Für die effiziente und sichere Programmierung der Datenbank selbst
+ist die korrekte Transformation dieses Wissensmodells in ein logisches
+Datenbankschema erforderlich.
+
+Neben der Abbildung der betrachteten Daten ist das erste Ziel eines
+Datenbankschemas die Vermeidung von Mehrfachspeicherungen. Solche Redundanzen
+brauchen nicht nur mehr Speicherplatz sondern verlangen auch eine erhöhte
+Vorsicht bei Schreibvorgängen. Wird ein mehrfach abgelegtes Datum nicht überall
+geändert, kommt es zu internen Widersprüchen der Datenbasis.
+
+Um Redundanzen und die dadurch ermöglichten Inkonsistenzen zu vermeiden, wurden
+in der Datenbanktheorie die sogenannten Nor\-mal\-for\-men eingeführt. Ein Schema in
+erster Normalform enthält nur Relationen unteilbarer Werte. Zweite und dritte
+Normalform vermeiden direkte bzw. transitive Redundanzen in Bezug auf
+Schlüsselwerte. Vierte und fünfte Normalform vermeiden zusätzlich Redundanzen
+innerhalb der Datenattribute. Dabei bauen die Normalformen aufeinander auf:
+jede stärkere Normalform verlangt alle darunterliegenden.
+
+\subsubsection{Unteilbare Werte}
+
+In Kents Zusammenfassung der Normalformen \cite{normalforms} wird die erste
+Normalform definiert als Forderung, dass alle Datensätze eines Typs \emph{die
+gleiche Anzahl an Feldern haben müssen}. Diese Einschränkung ist tief in der
+Struktur relationaler Datenbanken verankert, die Listen, Mengen und Graphen
+nicht als elementare Datentypen sondern nur als Beziehungen von Tabellen
+zueinander kennen.
+
+In der Programmierpraxis wird unter diesem Titel auch gefordert, dass keine
+zusammengesetzten Felder vorkommen. Eine passende Definition von
+"`zusammengesetzt"' muss jedoch von Projekt zu Projekt und von Feld zu Feld neu
+gefunden werden, da dies stark von der erwarteten Anwendung abhängt. Ein
+typisches Beispiel für solche Abwägungen ist die postalische Adresse. Je nach
+Anwendung kann ein einfacher mehrzeiliger Text ausreichen oder ein komplexer
+Datensatz erforderlich sein. Relevante Fragen, um dieses Spannungsfeld
+auszuloten, sind vor allem die Homogenität der Daten -- so unterscheiden sich
+US-amerikanische Adressen im Inhalt und der Anordnung der Felder deutlich von
+europäischen -- und den zu erwartenden Anwendungen und Abfragen.
+
+%% Ein anderes Beispiel sind Emailadressen: Zur Speicherung von Kontaktadressen
+%% wird niemand auf die Idee kommen localpart und domain zu trennen. Für die
+%% Speicherung für einen MTA ist das ein übliches Verfahren
+
+\subsubsection{Redundanzen im Bezug auf Schlüsselwerte}
+
+Ein Wertefeld in einem Datensatz muss \emph{den Schlüssel, den ganzen Schlüssel
+und nichts anderes als den Schlüssel} beschreiben.
+
+Eine Verletzung der zweiten Normalform beschreibt nur einen Teil des
+Schlüssels. Ein Beispiel aus \cite{normalforms}:
+
+\[ \textrm{Inventar} ( Teilenummer, Lager, \textrm{Anzahl}, \textrm{Lageradresse} ) \]
+
+Die Tabelle "Inventar" hat die Spalten "Teilenummer", "Lager", "Anzahl" und
+"Lageradresse". Die ersten beiden Spalten bilden den identifizierenden Schlüssel.
+Durch die mehrfache Angabe der Lageradresse, nämlich für jedes gelagerte Teil
+einmal, ist diese Relation überbestimmt. Bei Datenänderungen wirft dies eine
+Reihe von
+Problemen auf. Gibt es in einem Lager verschiedene Teile wird die Lageradresse
+mehrmals gespeichert. Kommt es zu einer Adressänderung oder werden Teile von
+einem Lager in ein anderes transportiert, kann es bei unvollständigen
+Datenaktualisierungen zu internen Widersprüchen kommen, die innerhalb des
+Systems nicht mehr reparierbar sind. Besonders bei langen Teilelisten ist auch
+der benötigte Speicherplatz nicht zu vernachlässigen, der durch die oftmals
+wiederholte Speicherung der Lageradressen verschwendet wird.
+
+Um solche Widersprüche zu vermeiden, modelliert man solche Daten in zwei
+unabhängigen Relationen:
+
+\[ \textrm{Inventar} ( Teilenummer, Lager, \textrm{Anzahl} ) \]
+\[ \textrm{Lager} ( Lager, \textrm{Lageradresse} ) \]
+
+Dadurch wird die Lageradresse nur noch einmal pro Lager gespeichert. Bei
+Änderungen kann es zu keinen Missverständnissen mehr kommen.
+
+Die dritte Normalform behandelt ähnlich gelagerte Situationen, nämlich wenn es
+sich bei dem überbestimmten Feld nicht um einen Schlüssel handelt. Als Beispiel
+die Liste der Lagerarbeiter: geht man davon aus, dass jeder Arbeiter nur in
+einem Lager arbeiten kann, ist dieses nicht mehr Teil des Schlüssels: 
+
+\[
+\textrm{Arbeiter} ( Arbeiter, \textrm{Lager}, \textrm{Gehalt},
+	\textrm{Lageradresse} )
+\]
+
+Probleme und Lösung sind die selben wie bei der zweiten Normalform. Bei
+unvollständigen Datenaktualisierungen kommt es zu internen Widersprüchen und
+die Modellierung in zwei unabhängigen Relationen vermeidet diese.
+
+\subsubsection{Interne Redundanzen}
+
+Interne Redundanzen tauchen auf, wenn sich mehrere Datenfelder in einer
+Relation korrekt auf den Schlüssel beziehen, aber untereinander unabhängig sind.
+Kent bringt in \cite{normalforms} Sprachen und Talente als Beispiel. Beide sind
+als Attribut einer Person in dritter Normalform. Werden die beiden Attribute
+gemeinsam in einer Relation gespeichert, wird damit auch ein
+Bedeutungszusammenhang -- zum Beispiel, dass gewisse Talente nur in gewissen
+Sprachen ausgeübt werden können -- suggeriert. Existiert dieser Zusammenhang im
+sachlogischen Wissensmodell gar nicht, verletzt die Tabelle die vierte Normalfrom.
+Auch hier ist die Lösung wieder eine Zerlegung in die grundlegenden Relationen.
+
+Zu beachten ist jedoch, dass das entscheidende Kriterium hier rein in der
+Bedeutung der Daten liegt und nicht mehr formalisiert werden kann. Bezieht sich
+das Sprachfeld tatsächlich darauf, in welcher Sprache das Talent ausgeübt werden
+kann -- zum Beispiel "schreiben", "rechnen" -- dann ist die Darstellung in einer
+Relation durchaus sinnvoll und zulässig.
+
+Eine andere Art interner Redundanz wird von der fünften Normalform verboten.
+Diese verlangt, dass ein Datensatz sich nicht in
+Datensätze mit einem Schlüssel mit weniger Feldern
+zerlegen lässt. Ein solcherart unzerlegbarer Datensatz
+mit minimalem Schlüssel ist automatisch in zweiter bis vierter Normalform. Eine
+Datenbank in vierter Normalform kann diese Bedingung nur durch externe
+Einschränkungen auf den Daten verletzen. Kent gibt als klassisches Beispiel die
+Dreiecksbeziehung zwischen Vertretern, Herstellern und Produkten an. Im
+allgemeinen Fall ist die Relation, die diese Beziehung beschreibt, in vierter
+und fünfter Normalform:
+
+\[ \textrm{verkauft} ( Vertreter, Hersteller, Produkt ) \]
+
+Verlangt jedoch das sachlogische Modell, dass Vertreter Produkte aus ihrem
+Sortiment von \emph{allen} von ihm vertretenen Herstellern anbieten, so kann dies durch
+drei kleinere Relationen beschrieben werden:
+
+\[ \textrm{verkauft} ( Vertreter,  Produkt ) \]
+\[ \textrm{vertritt} ( Vertreter,  Hersteller ) \]
+\[ \textrm{erzeugt}  ( Hersteller, Produkt ) \]
+
+\subsubsection{Praktische Anwendung}
+
+Aufgrund der mittlerweile weitverbreiteten Erfahrung mit Datenbankschemata haben
+die Normalenformen als Handlungsanweisungen an Bedeutung verloren. Gerade in
+Verbindung mit modernen Programmiersprachen wird die Datenbank oft aus dem
+Objektschema abgeleitet. Dort sind die Attribute schon in jener
+Granularität aufbereitet, die für die Anwendung relevant ist (erste Normalform).
+Ebenso treten Redundanzen zu Schlüsselwerten kaum auf, da solche Attribute
+normalerweise als eigenständige Klassen -- und damit auch als eigenständige
+Relationen -- realisiert werden (zweite und dritte Normalform).
+
+Die weiteren Normalformen haben in der Praxis geringere Bedeutung. Die vierte
+Normalform befasst sich mit einem Sachverhalt, der in der Implementierung
+offensichtliche Probleme aufwirft. Solche Konstruktionen werden daher intuitiv
+vermieden und nur in besonderen Spezialfällen -- zum Beispiel zur
+Leistungsoptimierung -- eingesetzt. Die fünfte Normalform hingegen verlangt sehr
+strikte Voraussetzungen für den Zusammenhang von Daten, der dem heutigen Drang
+nach flexibleren Geschäftsmodellen zuwiderläuft.
+
+\subsubsection{Denormalisierung}
+
+Die Redundanzfreiheit und die damit verbundenen Vermeidung von
+Inkonsistenzen führen vor allem bei größeren Abfragen zu Flaschenhälsen, da
+Relationenverknüpfungen mehr Laufzeitresourcen benötigen als einfache
+Indexabfragen. Um diesem Effekt entgegen zu wirken, kann man in der
+Entwicklung des Datenbankschemas gezielt Redundanzen einführen, um bestimmte
+Abfragen zu beschleunigen. Als Beispiel in einer Abrechnungsdatenbank könnte die
+Gesamtsumme einer Rechnung als eigenes Attribut gespeichert werden, anstatt sie
+bei jeder Abfrage aus den Einzelposten neu zu berechnen. 
+
+%% \subsection{Schemaorganisation}
+%% \TODO{interne, konzeptuelle und externe Schemata;}
+
+\section{Objektmodellierung}
+
+Analog wie bei der Modellierung von Datenbanken liegt jedem Objektmodell ein
+fachspezifisches Wissenmodell zugrunde. Zusätzlich zu den Überlegungen
+bezüglich der gespeicherten Daten im vorigen Abschnitt, können
+informationstechnologische Objekte jedoch auch Verhaltensmuster enthalten.
+Diese werden in einem ersten Schritt oft als Anwendungsfalldiagramme (siehe zum
+Beispiel \cite{uml}) modelliert. Abbildung~\ref{usecases} zeigt die
+grundlegenden Anwendungsfälle für die Beispieldatenbank.
+
+\begin{figure}
+\includegraphics[width=15cm,keepaspectratio]{img/webbook_use_cases}
+\caption{\code{webbook} Anwendungsfälle}
+\label{usecases}
+\end{figure}
+
+Zum besseren Überblick führen Anwendungsfalldiagramme auch Benutzergruppen ein.
+Hier -- auf der linken Seite dargestellt -- werden die Rollen "Autor" und "Gast"
+modelliert. Durch die Verbindungslinien werden die erlaubten Anwendungsfälle
+dargestellt. Strichlierte Pfeile stehen für Anwendungsfallinklusion. Zum
+Beispiel muss für den Anwendungfall "Ordner betrachten" der Anwendungsfall
+"Laden" abgearbeitet werden.
+
+Ebenso wie bei der Datenbankmodellierung können die Objekte und Attribute des
+fach\-spe\-zi\-fi\-schen Wissensmodelles in die Objekte des Datenmodelles übernommen
+werden. Da Objekte an sich bereits unterscheidbar sind, benötigen sie keine
+besonderen Vorkehrungen für die Identifizierung. Diese Informationen sind erst
+später für allfällige Such- und Ablagesysteme von Bedeutung. Sachlogische
+Zusammenhänge werden daher auch ohne Umweg über Schlüsselwerte als Verweise auf
+andere Objekte modelliert.
+
+%% TODO: diesen cheat hier überprüfen (lstlisting kann nicht in pdf-verzeichnis genutzt werden)
+\section{Die \emph{webbook} Beispieldatenbank}
+
+Um die in dieser Diplomarbeit behandelten Methoden und Werkzeuge vergleichbar
+zu machen, wurde eine kleine Bild- und Artikeldatenbank in Java implementiert.
+Ziel war es, eine überschaubare Schnittstelle unter Zuhilfenahme verschiedener
+Bibliotheken und Werkzeuge umzusetzen, um Erfahrungen mit den Werkzeugen zu
+sammeln und um daran die Effizienz und Effektivität beurteilen zu können.
+
+Um die Funktionalität der Produkte zu demonstrieren implementiert die
+Beispielanwendung lediglich den Datenzugriff und keine Benutzeroberfläche. In
+einer umfassenden Architektur könnte aufbauend auf den hier implementierten
+Geschäftsobjekten die Geschäftslogik in einem Applikationsserver ablaufen.
+Alternativ kann die Benutzeroberfläche, zum Beispiel über einen Webserver,
+direkt mit dieser Bibliothek arbeiten.
+
+Die grundlegenden Objekte der Datenbank sind Artikel und Bilder. Über
+Schlagworte können Gruppen gebildet werden. Diese Objekte und ihre Attribute
+werden im folgenden näher beschrieben.
+
+Der Java-Quelltext ist in der Eclipse Entwicklungsumgebung nach verwendeten
+Werkzeugen in Projekte gegliedert; allen Implementierungen gemeinsam ist das
+\code{Common} Projekt, in dem gemeinsame Schnittstellendefinitionen im Paket
+\code{webbook} und die Modultests im Paket \code{webbook.tests} definiert sind.
+Abbildung~\ref{ueberblick} zeigt das \code{Common} Projekt und die darin
+enthaltenen Schnittstellen und Klassen.
+
+\begin{figure}
+\includegraphics[width=15cm,keepaspectratio]{img/overview}
+\caption{Überblick über die \code{webbook} Objekte}
+\label{ueberblick}
+\end{figure}
+
+\subsection{Schnittstellen}
+
+Das \code{IDataObject} ist das Kernstück des gesamten Modells und
+Basisklasse für die anderen Objekte. Es enthält jene Attribute, die allen
+Artefakten gemein sind: eine eindeutige ID, Er\-zeu\-gungs-
+und Modifikationsdatum, einen Titel und die Menge von Schlagworten, die diesem
+Objekt zugeordnet sind. Die Attribute sind als einfache \code{get}- und
+\code{set}-Zugriffsmethoden nach der Java Beans Konvention (Siehe
+\cite{beans101}, 8.3) implementiert:
+
+\begin{lstlisting}[caption=\lstinline{IDataObject}]
+public interface IDataObject {
+
+    public abstract int      getId();
+    public abstract void     setId(int id);
+
+    public abstract Set<Tag> getTags();
+
+    public abstract String   getTitle();
+    public abstract void     setTitle(String title);
+
+    /* ... */
+\end{lstlisting}
+
+\code{IArticle} und \code{IPicture} definieren die weiteren
+Attribute der Geschäftsobjekte: Zusammenfassung und Text für Artikel sowie
+Bilddaten, -unterschriften und Beschreibungstexte für Bilder.
+
+\begin{lstlisting}[caption=Datenobjekt am Beispiel von \lstinline{IPicture}]
+public interface IPicture extends IDataObject {
+
+    public abstract byte[] getData();
+    public abstract void   setData(byte[] data);
+
+    public abstract Set<? extends IPicture> getThumbnails();
+
+    /* ... */
+\end{lstlisting}
+
+\begin{note}
+Eine Menge von Objekten kann in Java in einem \code{Set} gespeichert werden.
+Seit Java 1.5 gibt es mit der \code{Set<? extends IPicture>} Notation eine neue
+Syntax um "Menge von Objekten einer von \code{IPicture} abgeleiteten Klasse" zu
+definieren. Typparameter für Klassen werden später besonders bei den Tests
+verwendet.
+\end{note}
+
+Der \code{IFolder} ist eine Möglichkeit, aus der engen Folksonomie (siehe
+\cite{folksonomy}, 3.2.3) der Schlagworte Gruppierungen zu bilden, die die enthaltenen
+Strukturen abbilden. Sowohl die Mengenabfragen von Schlagwörtern, als auch die
+rekursiven Ordnerstrukturen sind von reinen relationalen Systemen nicht
+befriedigend gelöst worden und sind daher interessante Beispiele um die Grenzen
+von objekt-relationalen Abbildungen abzutasten.
+
+\begin{lstlisting}[caption=Attribute von \lstinline{IFolder}]
+public interface IFolder extends IDataObject {
+
+    public abstract IFolder getParent();
+    public abstract Tag getAddedTag();
+    public abstract TagExpression getAddedTags();
+
+    /* ... */
+\end{lstlisting}
+
+\begin{figure}
+%%\includegraphics[width=15cm,keepaspectratio]{img/folder.pdf}
+\includegraphics{img/folderstruct}
+%%\input{img/Folder.tex}
+\caption{Folderstruktur}
+\label{folderstruktur}
+\end{figure}
+
+Die \code{IDatabase} Schnittstelle enthält alle Datenbank-relevanten
+Operationen für die Ver\-bin\-dungs- und Transaktionsverwaltung, sowie Methoden zum
+Laden und Speichern der Artefakte.
+
+Alle Schnittstellen in diesem Projekt sind mit generischen Typparametern
+versehen. So haben alle konkreten Implementierungen die gleiche Aussenform und
+arbeiten doch mit ihren eigenen, konkreten Typen.
+
+\section{Datensicherheit}
+
+Um in einem Programmiersystem Daten sinnvoll verwalten zu können, muss das
+System zumindest die folgenden vier Anforderungen erfüllen:\label{ACID}
+
+\begin{description}
+\item[Atomare Transaktion:]{Eine Transaktion heisst atomar, wenn alle Anweisungen
+aus denen die Transaktion besteht ganz oder gar nicht durchgeführt werden.
+Dazu wird zu Beginn der Ausführung ein Eintrag in eine Logdatei geschrieben.
+Alle Änderungen an der Datenbank versieht das DBMS mit einem Verweis auf den
+zugehörigen Eintrag in dieser Logdatei. Wurde die Anweisung erfolgreich
+abgeschlossen, wird dies in der Logdatei ebenfalls verzeichnet. Ist es notwendig
+den Zustand der Datenbank nach einem Absturz zu rekonstruieren, können anhand
+der Logdatei die offenen Transaktion aufgefunden und die potentiell fehlerhaften
+oder nur teilweise durchgeführten Anweisungen aufgeräumt werden.}
+\item[Konsistenz:]{Um die Qualität des Datenbestandes jederzeit zu
+gewährleisten, muss ein DBMS dafür Sorge tragen, dass die angegebene
+Randbedingungen (Datentypen, Wertebereiche, gegenseitige Abhängigkeiten) für die
+Daten zu jedem Zeitpunkt eingehalten werden. Dazu werden diese Randbedingungen
+spätestens beim Abschluss einer Transaktion überprüft. Wird dabei eine
+potentielle Inkonsistenz entdeckt, bricht die Operation ab und die bisher
+getätigten
+Änderungen werden rückgängig gemacht.}
+\item[Isolierung:]{Die Forderung nach Korrektheit im Mehrbenutzerbetrieb erweitert die
+Kon\-sis\-tenz\-an\-for\-der\-ungen um einen wichtigen Aspekt: parallel ablaufende
+Anweisungen dürfen sich nicht gegenseitig stören. Das formale Kriterium hierfür
+-- die Serialisierbarkeit der Abläufe --
+lautet, dass sich die Datenbank so verhält, als ob alle Anweisungen nacheinander
+statt gleichzeitig ausgeführt werden. Bei einzelnen Anweisungen ist das durch
+triviale Zeilen- oder Tabellensperren implementierbar. Isolierung über mehrere
+Anweisungen hinweg wird später im folgenden Abschnitt~\ref{transactions}~Transaktionen
+noch detaillierter besprochen.}
+\item[Dauerhaftigkeit:]{Meldet ein DBMS die erfolgreiche Durchführung einer
+Transaktion, so muss diese -- im Rahmen der physikalischen Möglichkeiten -- auch
+gesichert und dauerhaft gespeichert sein.}
+\end{description}
+
+Die dafür oft verwendete Abkürzung lautet "ACID", aus dem Englischen von
+Atomicity, Consistency, Isolation und Durability -- Atomare Operationen,
+Konsistenz, Isolierung und Dauerhaftigkeit.
+
+\TODO{Literatur!}
+
+\section{Transaktionen}
+\label{transactions}
+
+Um komplexere Operationen durchzuführen, kann man einzelne Basisoperationen
+in einer Transaktion zusammenfassen. Die Transaktion als Ganzes erfüllt dann
+wieder die ACID Anforderungen. Konsistenz und Dauerhaftigkeit folgen aus den
+entsprechenden Kriterien für Einzelanweisungen transitiv: Wenn jede einzelne
+Anweisung korrekt ist und die Ergebnisse dauerhaft gespeichert werden, dann
+müssen auch Aneinanderreihungen solcher Anweisung korrekt und dauerhaft sein.
+
+Das Kriterium der Serialisierung -- die virtuelle Nacheinanderausführung von
+Anweisungen -- gilt selbstverständlich ebenfalls für Transaktionen. Während selbst
+bei komplexen Einzelanweisungen eine Isolierung zwischen gleichzeitig laufenden
+Anweisungen mittels Sperren einfach ist, führt ein unbedachter Einsatz von
+Sperren in länger laufenden Transaktionen zu gravierenden
+Leistungsverlusten, da die meisten Benutzer darauf warten müssen, dass
+die gerade laufende, fremde Transaktion abgeschlossen wird.
+
+Auf der Anwendungsseite kann dem durch die Vermeidung von lang laufenden
+Transaktionen entgegengewirkt werden.
+
+\TODO{forward-referenz auf Behandlung lang laufender Transaktionen}
+
+Um Transaktionen atomar zu halten, müssen entweder alle oder keine der
+Anweisungen durchgeführt werden. Das klassische Beispiel dazu ist eine
+Überweisung von einem Konto auf ein anderes Konto. Um eine solche Überweisung
+durchzuführen, wird vom Ursprungskonto der Betrag abgezogen, während am
+Zielkonto der Betrag hinzuaddiert wird. Würde aufgrund einer Fehlersituation zum
+Beispiel nur der Betrag abgebucht aber nicht wieder gutgeschrieben, so
+verschwände der Betrag spurlos im Nichts.
+
+Ein anderes Problem von Transaktionen ist die Möglichkeit zum sogenannten
+\emph{Deadlock}. Dabei warten zwei Transaktionen jeweils auf die von der anderen
+Transaktion gesperrten Ressourcen. Da keine der beiden Transaktionen fortfahren
+kann bevor die andere nicht ihre Resourcen freigibt, bleiben sie -- ohne
+Eingriff von aussen -- ewig stecken. Die Methoden um solche Probleme zu
+entdecken und zu behandeln sind nicht Inhalt dieser Diplomarbeit.
+
+\TODO{Literatur!}
+
+\section{Basisoperationen}
+
+Die Minimalanforderungen für die Datenverwaltung sind im Akronym
+"CRUD", vom englischen Create, Read, Update und Delete, zusammengefasst. Auf
+Deutsch: Datenobjekte müssen erzeugt, gelesen, verändert und gelöscht werden
+können.
+
+\TODO{Literatur!}
+
+In SQL werden die Basisoperationen mit diesen Befehlen durchgeführt:
+
+\begin{lstlisting}[language=SQL, caption=Grundlegende SQL Befehle]
+-- Erzeugen einer Datenzeile
+INSERT INTO tabelle (attr1, attr2) VALUES (wert1, wert2);
+
+-- Abrufen
+SELECT attr1, attr2 FROM tabelle WHERE bedingung;
+
+-- Ändern
+UPDATE tabelle SET attr1 = wert1 WHERE bedingung;
+
+-- Löschen
+DELETE FROM tabelle WHERE bedingung;
+\end{lstlisting}
+
+Dabei ist vor allem zu beachten, dass -- bis auf \code{INSERT} -- immer auf
+Mengen von Da\-ten\-zei\-len operiert wird, die die prädikatenlogische Formel
+\code{bedingung} erfüllen. Diese Mengen können natürlich auch kein oder nur ein
+Element enthalten.
+
+In Java hingegen sind die Basisoperationen zwischen dem
+\lstinline{IDatabase} Interface und den einzelnen Klassen aufgeteilt.
+
+\begin{lstlisting}[caption=\lstinline{IDatabase} Operationen]
+/* Erzeugen */
+public abstract OBJ createObject();
+
+/* Abrufen */
+public abstract OBJ findById(int id) throws SQLException;
+public abstract Set<? extends OBJ> findByTags(TagExpression tags) throws SQLException;
+
+/* Abspeichern */
+public abstract OBJ saveObject(OBJ o) throws SQLException;
+
+/* Löschen */
+public abstract OBJ deleteObject(OBJ o) throws SQLException;
+\end{lstlisting}
+
+Änderungen an Objekten werden direkt an den Objekten vorgenommen und über die
+\lstinline{IDatabase} Schnittstelle als Ganzes gespeichert. Es bleibt dem Framework
+überlassen zu entscheiden wie die Daten gespeichert werden sollen. Im Gegensatz
+zu SQL sieht man sofort, dass die Abfragen wesentlich eingeschränkter sind,
+dafür aber auf einer wesentlich höheren Ebene formuliert werden.
+
+\section{Programmierung}
+
+Ein fundamentales Problem der Programmierung objekt-relationaler Anwendungen ist
+die Notwendigkeit, Programmtext und Datenbankschema synchron zu halten. Selbst im
+einfachsten Fall existieren fünf Listen aller Attribute eines Objektes: bei der
+Datenbank- und Objektdefinition sowie in den Datenbankanweisungen für Create,
+Read und Update, da hier ja immer Attributswerte von und zur Datenbank kopiert
+werden müssen. Bei diesen Kopiervorgängen bringen objekt-relationale
+Abbildungen eine erhöhte Sicherheit, da sie durch die Werkzeuge weitestgehend
+automatisiert werden.
+
+\subsection{Datentypen}
+
+Mit geringerem Aufwand aber höherer Komplexität ist die Konversion
+zwischen programmiersprachlichen Datentypen und jenen der Datenbank zu beachten.
+\begin{description}
+\item[Zahlentypen:]{Da sich Wertebereiche und Genauigkeit oft an den
+Möglichkeiten der zugrunde liegenden Hardware und damit an weitverbreiteten
+Standards (zum Beispiel \cite{ieee754} für Gleitkommazahlen) orientieren, kann
+bei diesen Datentypen oft eine eindeutige Zuordnung getroffen werden.}
+\item[Zeichenketten:]{Während bei Programmiersprachen Zeichenketten unbeschränkt
+sind, enthalten Datenbanken oft starke Optimierungen für längenbeschränkte
+Zeichenketten. Das Objektmodell muss die Einschränkungen des Datenbankschemas
+erzwingen, um Lauf\-zeit- und Konsistenzfehler zu vermeiden. Verschärft werden
+diese Probleme noch durch eventuell erforderliche Zeichensatzkonversionen
+zwischen verschiedenen Anwendungsteilen und Zeichenkodierungen wie UTF-8, die einen
+variablem Platzbedarf bei konstanter Zeichenanzahl haben.}
+\item[Zeit- und Datumsangaben:]{Wertebereich, Genauigkeit, Epoche, interne
+Repräsentation (Fixkomma oder Gleitkomma), externe Repräsentation
+(US-amerikanisch, europäisch, international), Zeitzonen, Kalender, Schalttage, 
+-minuten und -sekunden, unterschiedliche Zeitquellen, Fehlerbehandlung.
+Subtile und nicht so subtile Unterschiede in diesen Parametern führen --
+zusammen mit komplexen und daher mangelhaft implementierten Standards --
+unweigerlich zu Problemen in der Kommunikation zwischen verschiedenen Produkten.
+Einige Probleme können durch eine gemeinsame, anwendungsweite, externe
+Repräsentation, die ohne Genauigkeitsverlust in alle beteiligten internen
+Repräsentation ein-eindeutig umgewandelt werden kann, behoben werden. Dadurch
+können Werte -- die Korrektheit der Umwandlungen vorausgesetzt -- beliebig oft
+umgewandelt werden ohne die gespeicherten Zeitpunkte zu verwischen.
+
+Andere Probleme -- zum Beispiel wie sich Systeme in den Umschaltstunden zum
+Sommerzeitwechsel zu verhalten haben -- können nur durch eine präzise Definition
+des gewünschten Verhaltens umgangen werden. }
+\item[Boolsche Werte:]{Die Unterstüzung von Bit-Werten schwankt zwischen
+verschiedenen Datenbanksystemen stark. Eine portable Alternative bildet
+Wahrheitswerte auf die Zeichen 'w' und 'f' -- für wahr und falsch -- ab und
+sorgt mittels Konsistenzbedingungen für die Einhaltung dieser Konvention.}
+\end{description}
+
+Um umfangreichere Datenmengen -- zum Beispiel Bilddateien oder unbeschränkte
+Texte -- direkt in der Datenbank zu verwalten werden sogenannte BLOBs oder
+CLOBs\footnote{Binary Large OBjects und Character Large OBjects, für große
+Binär- oder Textmengen.} zur Verfügung gestellt. Um das Laufzeit-, Speicher- und
+Kommunikationsverhalten dieser Daten im Griff zu behalten, werden dafür meist
+zeichenstromorientierte Schnittstellen zur Verfügung gestellt, die wiederum
+seperat bedient werden müssen. Unterstützung für diese Datentypen ist
+weitverbreitet.
+
+Neben diesen Standardtypen gilt es, für eine Vielzahl von komplexeren Datentypen
+effiziente Abbildungen und Konversionen zu finden. Um nur einige Beispiele zu
+nennen: Netzwerkadressen oder geometrische Daten für Geoinformationssysteme. Da
+es sich dabei um kaum oder gar nicht standardisierte Erweiterungen handelt, ist
+auch selten Unterstützung in Programmierwerkzeugen dafür vorhanden. 
+
+\subsection{Abfragen}
+
+Abfragen auf einer Datenbank können um Größenordnungen schneller sein als
+gleichwertige Abfragen auf dem Objektmodell. Drei grundlegende Ursachen können
+dabei festgestellt werden:
+
+\begin{description}
+\item[Optimierung:] Die Abfrageoptimierung ist ein intensiv erforschtes Gebiet
+der Datenbankprogrammierung. Sowohl auf der Seite der Programmierer als auch auf
+Seite der Datenbanken selbst existieren Rezepte um die bekannten Flaschenhälse
+zu umgehen.
+\item[Kommunikations- und Transformationsaufwand:] Wird die Datenbank direkt
+abgefragt, so muß nur das gewünschte Abfrageergebnis zum Benutzer übertragen
+werden. Wird die gleiche Abfrage jedoch über ein zwischengeschaltetes
+Objektmodell moderiert, müssen potentiell alle Daten aller beteiligten Objete
+übertragen und interpretiert werden, auch wenn diese für die Berechnung
+irrelevant sind.
+\item[Abfragekomplexität:] Abfragen die im Objektmodell sehr einfach zu
+formulieren sind, können bei der Ausführung auf der Datenbank nur schwer
+umsetzbar sein. Speziell polymorphe Abfragen und Abfragen nach komplexen
+berechneten Werden -- zum Beispiel "Kreditwürdigkeit" -- werden in
+objekt-orientierten Systemen direkt unterstützt, während sie in relationalen
+Systemen aufwändig nachprogrammiert werden müssen.
+\end{description}
+
+\subsection{Portabilität}
+
+Um die Abhängigkeit von einem Datenbankhersteller zu minimieren ist die
+Portabilität zwischen unterschiedlichen Herstellern auch eine wichtige
+Anforderung an eine objekt-relationale Abbildung. Um diese Unabhängigkeit zu
+erreichen, werden die programmierten Abfragen in datenbankspezifische
+Anweisungen übersetzt.
+
+\section{Kommunikation}
+
+Sobald eine Anwendung aus mehr als einem (System-)Prozess besteht, wird die
+Kommunikation zwischen diesen Prozessen zu einem Kernproblem der gesamten
+Anwendung.
+
+\paragraph{Zur Erhöhung des Transaktionsdurchsatzes} werden mehrere,
+gleichzeitig arbeitende Systemprozesse eingesetzt. Um dabei die Korrektheit der
+Daten zu garantieren,
+müssen dabei auch die Anforderungen von CRUD und ACID über alle Prozesse hinweg
+erfüllt werden. Da diese bereits von allen üblichen Datenbankimplementierungen
+abgedeckt werden, bietet sich ein zentraler Datenbankserver an, als Angelpunkt
+für eine Mehrprozessarchitektur zu dienen.
+
+\begin{samepage}
+\paragraph{Zur Einbettung in Dritt-Anwendungen} müssen
+Kommunikationsschnittstellen nach außen zur Verfügung gestellt werden. Eine
+interessante Entwicklung in diesem Bereich ist die serviceorientierte
+Architektur (SOA). Hier werden Daten und Funktionalität über
+herstellerunabhängige Protokolle und Formate (zum Beispiel HTTP,
+SOAP und XML) im Netzwerk angeboten.
+Eine detaillierte Behandlung würde jedoch den Rahmen dieser Arbeit
+bei Weitem sprengen.
+\end{samepage}
+

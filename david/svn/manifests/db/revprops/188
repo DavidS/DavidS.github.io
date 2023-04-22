@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-08-08T09:15:57.817975Z
+K 7
+svn:log
+V 77
+fix xen0/xenu usage; fix acpi munin plugin on vservers; fix xen munin plugins
+END

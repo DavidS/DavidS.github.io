@@ -1,0 +1,11 @@
+
+**** SMTP testing session as if from host 2.2.2.2
+**** but without any ident (RFC 1413) callback.
+**** This is not for real!
+
+220 smtp.uni-ak.ac.at ESMTP Exim 4
+250 smtp.uni-ak.ac.at Hello localhost [2.2.2.2]
+250 OK
+550-Callout verification failed:
+550 550 unknown user
+221 smtp.uni-ak.ac.at closing connection

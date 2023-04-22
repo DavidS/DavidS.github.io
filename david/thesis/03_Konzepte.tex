@@ -1,0 +1,291 @@
+\chapter{Konzepte}
+\thispagestyle{empty}
+\label{Kapitel_Konzepte}
+
+In der händischen Modellierung wird, ausgehend von dem fachspezifischen
+Wissensmodell, die technischen Modelle für Relationen und Objekte abgeleitet.
+Dabei müssen
+die beiden Modelle bezüglich Attributen und Wertebereichen aufeinander
+abgestimmt sein. Abbildung~\ref{klassisch} illustriert diesen Vorgang. 
+
+\begin{figure}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+\begin{center}
+%%\includegraphics[width=15cm,keepaspectratio]{img/klassisch}
+\includegraphics[width=.99\textwidth,keepaspectratio]{img/klassisch}
+\end{center}
+\caption{Klassische Architektur}
+\label{klassisch}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+\begin{center}
+\includegraphics[width=.99\textwidth,keepaspectratio]{img/orm}
+\end{center}
+\caption{Architektur mit objekt-relationaler Abbildung}
+\label{orm}
+\end{minipage}
+\hfill
+\end{figure}
+
+Bei dieser getrennten Behandlung der beiden technischen Modelle kommt es jedoch
+zu Redundanzen zwischen diesen Modellen, die -- besonders bei Änderungen am
+fachspezifischen Wissensmodell
+-- zu unangenehmen Fehlerquellen werden. Hier setzt eine Implementierung mittels
+objekt-relationaler Abbildung an, um die technische Modellierung zu
+konzentrieren. Abbildung~\ref{orm} zeigt diese Alternative. Da durch die
+Abbildung das Relationenmodell aus dem Objektmodell erzeugt werden kann, bleibt
+auch bei Änderungen die interne Konsistenz erhalten.
+
+Für die Aufteilung der einzelnen Komponenten des Abbildungsapparates gibt es
+verschiedene Möglichkeiten. Je nach Anforderungen des Projektes und der
+Strukturierung der Entwicklung kann die Datenzugriffsschicht entweder direkt in
+die Datenklassen \emph{integriert} oder für eine reduzierte Koppelung
+\emph{getrennt} entwickelt werden. Zur Steigerung der Laufzeiteffizienz 
+kann die Datenschicht während der Entwicklung erzeugt und
+\emph{kompiliert} werden. Alternativ dazu kann eine erhöhte Flexibilität
+gewonnen werden, indem die Datenschicht zur Laufzeit \emph{dynamisch
+konfiguriert} wird.
+
+\section{Funktionsumfang}
+
+\TODO{in's Kapitel 5 verschieben?}
+
+Das Ideal des praktischen Programmierers in Sachen objekt-orientierter
+Persistenz wäre ein System mit der Einfachheit einer Datenbank und der
+Ausdruckskraft einer modernen Programmiersprache. Ein solches System müsste
+atomare Transaktionen und Isolation zwischen Prozessen und Benutzern bieten,
+sowie den vollen Funktionsumfang einer Programmiersprache. Außerdem braucht so ein
+System -- unabhängig von der Programmierung des Systems -- Möglichkeiten, um
+Änderungen am physikalischen Schema zur Leistungsoptimierung durchzuführen.
+
+Die folgenden Abschnitte besprechen Möglichkeiten, wie mit heute verfügbaren
+Mitteln solche Systeme gestaltet werden können. 
+
+\TODO{Graphik um verschiedene Produkte(!) in diesem Koordinatensystem zu zeigen}
+\TODO{hier kann noch über logische Unabhängigkeit gesprochen werden}
+
+\section{Integrierte Datenschicht}
+
+Mit einer \emph{integrierten Datenschicht} wird der Datenbankzugriff fest in die
+Geschäftsobjekte eingebunden. Persistenzfunktionalität wird damit direkt in die
+Objekthierarchie integriert. Diese Vorgehensweise maximiert die Kohärenz
+zwischen Quelltext und Schema, da das Schema unmittelbar aus den im Quelltext
+definierten Strukturen generiert wird. Abbildung~\ref{integriert} illustriert
+diese Architektur.
+
+\begin{figure}
+\begin{center}
+\includegraphics{img/integrierteDatenschicht}
+\end{center}
+\caption{Integrierte Datenschicht}
+\label{integriert}
+\end{figure}
+
+Aufgrund der hohen Koppelung zwischen Anwendung und Datenschicht kann auf
+ge\-ne\-ra\-li\-sie\-ren\-de Schnittstellen verzichtet werden. Die Anwendung kann
+daher die Besonderheiten der verwendeten Datenschicht effizient nutzen. Wird die
+Datenschicht im gleichen Projekt implementiert, kann auch besonders auf die
+Anforderungen der Anwendung eingegangen werden. Durch die parallele Entwicklung
+bedarf es -- jenseits der eigentlichen Programmierzeit -- keiner weiteren
+Einarbeitung. Bei sehr kleinen Projekten kann das eine signifikante Ersparnis
+sein.
+
+Auf der anderen Seite schlägt sich -- ebenfalls aufgrund der hohen Koppelung --
+jede Änderung an der Datenschicht unmittelbar auf alle betroffenen Teile der
+Anwendung durch. Insbesondere ist ein Ersetzen der Datenschicht durch eine
+andere Implementierung mit hohem Aufwand verbunden.
+
+\section{Getrennte Datenschicht}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=.99\textwidth,keepaspectratio]{img/externeDatenschicht}
+\end{center}
+\caption{Getrennte Datenschicht}
+\label{extern}
+\end{figure}
+
+Je größer Anwendungen werden, desto stärker wird auch der Druck, einzelne
+Komponenten an Spezialisten (innerhalb wie außerhalb des Projektes) auszulagern. Da
+gerade Datenbankagenden bereits zu einem hohen Maß von Spezialisten bedient
+werden, ist die Datenschicht ein guter Kandidat für eine architekturelle
+Teilung. Abbildung~\ref{extern} illustriert die Anordnung der Komponenten.
+Besonders zu beachten ist, dass die Geschäftsprozesse nun nichts mehr von der
+internen Mechanik der Datenschicht wissen müssen.
+
+Aufgrund dieser reduzierten Koppelung kann die Datenschicht auch ohne Änderung
+der Geschäftsprozesse getauscht werden. Lediglich jene Teile der Geschäftslogik,
+die Daten abfragen, sind nun von solchen Änderungen betroffen. Durch eine
+passende \emph{Fassadenschnittstelle} zur Datenschicht kann auch die
+Geschäftslogik von Änderungen dort geschützt werden. Diese Fassade bietet auch
+eine Plattform, um aus den daten-nahen Aufrufen der Datenschicht
+geschäfts-orientierte Methoden zu bauen.
+
+\section{Implementierung der Datenschicht}
+
+Unabhängig von der Beziehung der Datenschicht zu den Geschäftsobjekten, wird die
+Art der Implementierung der Datenschicht gewählt. Grundsätzlich besteht hier
+kein Zusammenhang. In der Regel werden jedoch integrierte Datenschichten eher
+statisch implementiert, während externe Datenschichten dynamische Methoden
+bevorzugen, da diese eine weitere Reduzierung der Koppelung versprechen. 
+
+\subsection{Statische Implementierung}
+
+Vor allem bei der händischen Implementierung einer Datenschicht in kleineren
+Projekten kann sie \emph{direkt} in den Klassen der Geschäftsobjekte
+implementiert werden. Dies stellt auch die stärkste Form der oben besprochenen
+integrierten Datenschicht dar: die Geschäftslogik manipuliert die Datenbank
+unmittelbar.
+
+Eine andere Möglichkeit der statischen Implementierung der Datenschicht ist die
+\emph{automatisierte Quelltexterzeugung}. Aus einer externen Beschreibung des
+Schemas werden Basisklassen erzeugt, die die reine Datenbankmanipulation
+implementieren. Um die Geschäftslogik unabhängig vom Datenschema und dem
+Erzeugungsprozess zu halten, wird sie in abgeleiteten Klassen implementiert.
+Dadurch erhält sie Zugriff auf die erzeugte Datenschnittstelle ohne mit dem
+Datenbankquelltext vermischt zu werden.
+
+\subsection{Dynamische Methoden}
+
+Die einfachste Möglichkeit einer dynamischen Datenschicht, ist die
+Implementierung eines \emph{intelligenten Datensatzes} (engl.: "rich record").
+Dabei wird nur das Schema statisch definiert, also Klassen, Attributsnamen und
+-typen. Während der Ausführung des Programmes werden aus diesen Informationen
+die Datenbankanweisungen
+erzeugt. Gegenüber der statischen Erzeugung der Datenschicht, wird bei diesem
+Verfahren weniger Bytecode\footnote{Java-"Maschinensprache"} erzeugt, dafür
+leidet die Ausführungsgeschwindigkeit, da mehr Aufwand für die Erzeugung von
+Datenbankanweisungen und die Schemamanipulation notwendig ist.
+
+Eine Stufe darüber befinden sich dynamische Methoden, die aus einer externen
+Schemadefinition zur Laufzeit die Geschäftsobjekte über \emph{Reflection}
+manipulieren. Reflection ist eine Methode um in Java die Struktur von
+Klassen erst zur Laufzeit zu erkunden. Damit können dann zum Beispiel Methoden
+aufgerufen werden, deren Existenz zur Übersetzungszeit gar nicht bekannt war. 
+Die eigentliche Struktur der Datenschicht wird zur Laufzeit aus einer
+Konfigurationsdatei gelesen. 
+
+Ein wesentlich komplexere Möglichkeit ist die Manipulation des Bytecodes der
+Geschäftsobjekte nach der Übersetzung des Quelltextes oder zur Laufzeit. Dabei
+werden von einem speziellen Übersetzer oder einer Laufzeitkomponente der
+Datenschicht versteckte, abgeleitete Klassen der Geschäftsobjekte erzeugt, die
+die eigentliche Persistenz implementieren. Dieser Ansatz verbindet die
+Flexibilität einer zur Laufzeit konfigurierbaren Datenschicht mit der Effizienz
+einer statischen Implementierung. Auf der negativen Seite muss angemerkt werden,
+dass die Implementierung solcher Werkzeuge technisch aufwändig ist. Zusätzlich
+verursachen die Modifikationen am Bytecode eine Verschleierung der tatsächlich
+ablaufenden Vorgänge in der virtuellen Maschine, sodass es vor allem beim
+Debuggen schwer nachvollziehbar ist, was tatsächlich geschieht.
+
+\section{Objektidentität}
+
+Ein wesentlicher Punkt, in dem sich Objektmodelle von Relationen unterscheiden,
+ist die Feststellung der Identität. Während Relationentupel nur anhand ihres
+Primärschlüssels identifiziert werden, haben Instanzen eines Objektmodelles eine
+inhärente Identität, die sie von anderen Instanzen mit gleichen Werten
+unterscheidet. Um die striktere relationale Interpretierung in einer
+objekt-orientierten Sprache umzusetzen, muss die objekt-relationale Abbildung
+beim mehrfachen Laden eines relationalen Datensatzes diesen immer auf die
+\emph{selbe} Objektinstanz abbilden.
+
+Mit einem Objektpufferspeicher, in dem alle aktiven Instanzen referenziert
+werden, kann die Datenschicht die relationale Objektidentität wahren, indem bei
+wiederholten Anfragen zu dem gleichen Tupel auch die selbe Objektinstanz 
+zurückgegeben wird. In der Datenbank erfordert das zumindest \sql{REPEATABLE
+READ} Isolierung\footnote{Details dazu in Abschnitte~\ref{isolation}}, damit
+diese Pufferung keine Inkonsistenzen verursachen kann.
+Daraus folgt auch unmittelbar, dass die Lebenszeit der Instanzen von der
+zugrundeliegenden Datenbanktransaktion abhängt. Wird eine neue Transaktion
+eröffnet, können alle bereits geladenen Daten durch fremde Transaktionen
+modifiziert worden sein und müssen daher zumindest validiert werden.
+
+\section{Sperrmechanismen} 
+
+Im Zusammenspiel von Datenschicht und Datenbank müssen auch die Sperrmechanismen
+den Gegebenheiten angepasst werden. Welche Möglichkeiten nutzbar sind, hängt
+dabei von der erwarteten Abarbeitungsdauer der Geschäftsfälle und der
+Möglichkeit, innerhalb der Anwendung die Datenbankverbindung aufrecht zu erhalten,
+ab.
+
+\subsection{Konservative Isolierung}
+
+Erlaubt die Systemarchitektur, jeden Geschäftsfall innerhalb einer eigenen
+Datenbanktransaktion
+durchzuführen, so ist dies die einfachste Art, parallel ablaufende Geschäftsfälle
+zu isolieren. Dafür muss jedoch die Datenbankverbindung während des gesamten
+Geschäftsfall bestehen bleiben und von diesem exklusiv genutzt werden.
+Geschäftsfälle, die auf Benutzereingaben warten, müssen dabei datenbankseitig
+sorgfältig gestaltet werden, um sich nicht gegenseitig durch zu großflächige Sperren zu
+behindern. Kommt es doch zu einem Konflikt, blockiert die Datenbank die
+Transaktion, bis die sperrende Transaktion beendet wird. Die dabei auftretenden
+Verzögerungen sind besonders für Benutzerschnittstellen nicht akzeptabel.
+
+Abhängig von der Datenbankimplementierung können Transaktionen auch statt zu
+blo\discretionary{k-}{k}{ck}ieren abbrechen. Während automatisch ablaufende Geschäftsfälle dies
+meistens durch einfaches Wiederholen der Transaktion beheben können, ist das für
+Geschäftsfälle mit Benutzerinteraktion nicht in benutzerfreundlicher Art und
+Weise möglich.
+
+\subsection{Optimistische Sperren}
+\label{optimisticlock}
+
+Um die Probleme lange laufender Transaktionen zu umgehen, kann auch ein
+alternatives Sperrprotokoll innerhalb der Datenschicht implementiert werden. Die
+Isolierung von Datenbanktransaktionen wird dann nur noch zur konsistenten
+Kommunikation mit dem Datenspeicher genutzt.
+
+Eine einfache und effiziente optimistische Sperre kann mit einem
+Zeitstempelattribut implementiert werden. In diesem vermerkt man den Zeitpunkt
+der letzten Änderung. Ein Geschäftsfall kann dann beim Zurückschreiben
+überprüfen, ob sich der Zeitstempel seit dem Auslesen des Objektes geändert hat.
+In SQL kann das innerhalb der \sql{UPDATE} Anweisung verglichen werden:
+
+\begin{lstlisting}
+UPDATE tabelle
+SET attribut=wert, ...
+WHERE primärschlüsselbedingung
+	AND letzte Änderung = gemerkter Wert
+\end{lstlisting}
+
+Wird durch diese Anweisung \emph{kein} Tupel geändert, hat sich der Zeitstempel
+seit dem Lesevorgang geändert. Die Anwendung hat nun die Möglichkeit, die
+Änderungen festzustellen und dann eine intelligente Entscheidung über die
+weitere Vorgehensweise -- zum Beispiel durch Anzeigen und Rückfragen beim
+Benutzer -- zu treffen.
+
+Wenn die Datenschicht eine Instanz nach dem Zurückschreiben weiterverwenden
+will, generiert sie den Zeitstempel zuerst selbst und schreibt ihn zusammen mit
+der Instanz in die Datenbank. Damit bleiben Objekt und Datenbank konsistent. Der
+Nachteil dieser Methode ist jedoch, dass jede Anwendung, die diese Datenbank
+benutzt auch den Zeitstempel korrekt verwalten muss. Besonders in heterogenen
+Umgebungen ist daher die Generierung des Zeitstempels mittels Triggermethoden in
+der Datenbank zu bevorzugen. Damit kann keine Anwendung einen Datensatz mehr
+verändern, ohne konformen Anwendungen diese Änderung zu signalisieren.
+
+Mit etwas mehr Aufwand kann auch das Zeitstempelattribut vermieden werden. Dafür
+muss eine komplette Kopie der gelesenen Daten gespeichert werden. Beim
+Zurückschreiben wird dann nicht ein eigenes Attribut sondern alle gelesenen
+Attribute überprüft. Diese Methode hat gegenüber dem Zeitstempelattribut einen
+offensichtlichen Speicher-, Kommunikations- und Laufzeitmehraufwand. Dafür
+benötigt dieses Sperrprotokoll kein zusätzliches Attribut -- besonders bei
+unmodifizierbaren Fremdschemata notwendig -- und ist gegenüber unkooperativen
+Anwendungen robuster, da es unter keinen Umständen unbemerkt fremde Änderungen
+überschreibt.
+
+\subsection{Präventive Konfliktvermeidung}
+
+Um Schreibkonflikte überhaupt vollständig zu vermeiden, kann zu Beginn eines
+Bearbeitungsvorganges das Objekt als "in Arbeit" markiert werden. Andere
+Benutzer, die darauf zugreifen wollen, können nun erkennen, dass eine Bearbeitung
+zu einem Konflikt führen würde. Um erkennen zu können, ob so eine Markierung noch
+aktuell ist, oder ob der Bearbeitungsvorgang unerwartet unterbrochen worden ist,
+empfiehlt es sich, die Markierung mit einem Zeitstempel zu versehen, bis wann sie
+aufrecht erhalten werden soll. Ist diese Zeit abgelaufen, kann der nächste
+Bearbeiter die Markierung stillschweigend ignorieren. Braucht ein
+Bearbeitungsvorgang länger, muß die Markierung automatisch vor Ablauf
+verlängert werden.
+
+
+

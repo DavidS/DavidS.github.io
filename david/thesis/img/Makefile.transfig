@@ -1,0 +1,31 @@
+#
+# TransFig makefile
+#
+
+all: Article.tex implementierungen.tex 
+
+# translation into pstex
+
+Article.tex: Article.eps Makefile.transfig
+	fig2dev -L pstex_t -p Article.eps Article.fig Article.tex
+clean::
+	rm -f Article.tex
+
+Article.eps: Article.fig Makefile.transfig
+	fig2dev -L pstex Article.fig Article.eps
+clean::
+	rm -f Article.eps
+
+
+# translation into pstex
+
+implementierungen.tex: implementierungen.eps Makefile.transfig
+	fig2dev -L pstex_t -p implementierungen.eps implementierungen.fig implementierungen.tex
+clean::
+	rm -f implementierungen.tex
+
+implementierungen.eps: implementierungen.fig Makefile.transfig
+	fig2dev -L pstex implementierungen.fig implementierungen.eps
+clean::
+	rm -f implementierungen.eps
+

@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-08-08T17:58:32.187667Z
+K 7
+svn:log
+V 62
+add smbldap user/group provider; configure first users in host
+END

@@ -1,0 +1,4 @@
+david@schmitt.edv-bus.at
+  router = dnslookup, transport = remote_smtp
+  host mail.edv-bus.at   [85.125.165.35] MX=100
+  host mail.mariatreu.at [85.125.165.68] MX=150

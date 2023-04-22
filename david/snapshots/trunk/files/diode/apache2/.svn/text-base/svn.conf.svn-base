@@ -1,0 +1,9 @@
+<VirtualHost *>
+	ServerName club.black.co.at
+	<Location /svn>
+		DAV svn
+		SVNParentPath /home/david/public_html/svn/
+		AuthzSVNAccessFile /home/david/public_html/svn/authz
+	</Location>
+</VirtualHost>
+

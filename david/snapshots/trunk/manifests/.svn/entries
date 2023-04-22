@@ -1,0 +1,55 @@
+8
+
+dir
+31
+file:///home/david/public_html/svn/manifests/trunk/manifests
+file:///home/david/public_html/svn/manifests
+
+
+
+2007-04-19T09:48:27.049932Z
+31
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f03ff2f1-f02d-0410-970d-b9634babeaa1
+
+site.pp
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+76dcd505575195768a232f7301cdc7dd
+2007-04-17T09:45:19.211984Z
+24
+david
+
+common.pp
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+d625ed4290469d5175f2d730d22903e4
+2007-04-19T09:48:27.049932Z
+31
+david
+
+classes
+dir
+

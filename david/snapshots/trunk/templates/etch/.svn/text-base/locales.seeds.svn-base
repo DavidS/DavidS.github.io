@@ -1,0 +1,2 @@
+locales locales/default_environment_locale      select  None
+locales locales/locales_to_be_generated multiselect     de_AT ISO-8859-1, de_AT.UTF-8 UTF-8

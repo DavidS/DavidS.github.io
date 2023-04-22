@@ -1,0 +1,61 @@
+testInputExists (__main__.SetupCorrectTests) ... ok
+testInputIsFile (__main__.SetupCorrectTests) ... ok
+testBuilding (__main__.TestLexer) ... ok
+testDotLexer (__main__.TestLexer) ... ok
+testDotLexerFinish (__main__.TestLexer) ... ok
+testDotLexerStart (__main__.TestLexer) ... ok
+testNullLexer (__main__.TestLexer) ... ok
+testBuilding (__main__.TestParser) ... ok
+testDotParse (__main__.TestParser) ... ok
+testNullParse (__main__.TestParser) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.015s
+
+OK
+tokenVal ((-8, 'ident'), 'Document')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, 'ident'), 'Document')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+{(1, (-8, '*')): ((-4, 0),), (1, (-8, 'dot')): ((-3, 2),), (2, (-8, '*')): ((-4, 1),)}
+dot
+tokenVal ((-8, 'dot'), None)
+tokenVal ((-8, 'ident'), 'Document')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')

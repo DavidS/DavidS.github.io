@@ -1,0 +1,4 @@
+HELO localhost
+MAIL FROM: <david@black.co.at>
+RCPT TO: <muhdasldghlag@edv-bus.at>
+QUIT

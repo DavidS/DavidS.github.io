@@ -1,0 +1,121 @@
+\begin{thebibliography}{10}
+
+\bibitem{DCE}
+{\em DCE 1.1: Remote Procedure Call}.
+\newblock Berkshire, UK, 1997.
+
+\bibitem{3rdGen}
+{\sc Advanced DBMS~Function, The~Committee~for}: {\em Third-generation database
+  system manifesto}.
+\newblock SIGMOD Rec., 19(3):31--44, 1990.
+
+\bibitem{folksonomy}
+{\sc Albrecht, Christine}: {\em Folksonomy}.
+\newblock Diplomarbeit, Technische Universität Wien, März 2006.
+
+\bibitem{jdbc4}
+{\sc Andersen, Lance}: {\em JDBC 4.0 Specification --- JSR 221}.
+\newblock Sanda Clara, California, 2006.
+
+\bibitem{dood90}
+{\sc Atkinson, Malcom}, {\sc David {De Witt}}, {\sc David Maier}, {\sc
+  Fran\c{c}ois Banicilhon}, {\sc Klaus Dittrich} \btxandlong{}\ {\sc Stanley
+  Zdonik}: {\em The Object-Oriented Database System Manifesto}.
+\newblock \Btxinlong{}\ {\sc Kim, Won}, {\sc Jean-Marie Nicolas} \btxandlong{}\
+  {\sc Shojiro Nishio}\ (\btxeditorslong{}): {\em Building an Object-Oriented
+  Database System}, \btxpageslong{}\ 223--240, North-Holland, 1990. Elsevier
+  Sience Publishers B.V.
+
+\bibitem{simpleorm}
+{\sc Berglas, Dr.~Anthony}: {\em SimpleORM White Paper}, 2005.
+
+\bibitem{hibernate}
+{\sc hibernate.org}: {\em Hibernate Reference Documentation}.
+\newblock Version 3.2.4.
+
+\bibitem{hibtools}
+{\sc hibernate.org}: {\em Hibernate Tools}.
+
+\bibitem{ieee754}
+{\sc IEEE Standards Committee 754}, Institute of Electrical and Electronics
+  Engineers, New York: {\em IEEE Standard for Binary Floating-Point Arithmetic,
+  ANSI/IEEE Standard 754-1985}, 1985.
+\newblock Reprinted in SIGPLAN Notices, 22(2):9-25, 1987.
+
+\bibitem{SQL92}
+{\sc {International Organization for Standardization}}: {\em {ISO\slash IEC}
+  9075:1992: Title: Information technology --- Database languages --- {SQL}}.
+\newblock International Organization for Standardization, Geneva, Switzerland,
+  1992.
+
+\bibitem{SQL99}
+{\sc {International Organization for Standardization}}: {\em {ISO\slash IEC}
+  9075-1:1999: Title: Information technology --- Database languages --- {SQL}
+  --- Part 1: Framework}.
+\newblock International Organization for Standardization, Geneva, Switzerland,
+  1999.
+
+\bibitem{SQL03}
+{\sc {International Organization for Standardization}}: {\em {ISO\slash IEC}
+  9075-1:2003: Title: Information technology --- Database languages --- {SQL}
+  --- Part 1: Framework}.
+\newblock International Organization for Standardization, Geneva, Switzerland,
+  2003.
+
+\bibitem{bspdb}
+{\sc Jarosch, Helmut}: {\em Datenbanken: Eine beispielhafte Einführung für
+  Studenten und Praktiker}.
+\newblock Vieweg, Braunschweig/Wiesbaden, 2002.
+
+\bibitem{normalforms}
+{\sc Kent, William}: {\em A simple guide to five normal forms in relational
+  database theory}.
+\newblock Commun. ACM, 26(2):120--125, 1983.
+
+\bibitem{generate}
+{\sc Niemann, Christoph}: {\em Datenbankfähige Client/Server Anwendungen:
+  Generierung aus OOA-Modellen}.
+\newblock Forschung in der Softwaretechnik. Spektrum Akademischer Verlag,
+  Heidelberg; Berlin, 2000.
+
+\bibitem{postgres}
+{\sc The PostgreSQL Global Development Group}: {\em PostgreSQL 8.1.8
+  Documentation}.
+
+\bibitem{uml}
+{\sc Roff, Jason~T.}: {\em UML: Das mitp Standardwerk zur professionellen
+  Softwareentwicklung}.
+\newblock IT Studienausgabe. mitp-Verlag, Bonn, 2004.
+
+\bibitem{javadb}
+{\sc Saake, Gunter} \btxandlong{}\ {\sc Kai-Uwe Sattler}: {\em Datenbanken \&
+  Java: JDBC, SQLJ und ODMG}.
+\newblock iX Edition. dpunkt Verlag, Heidelberg, 2000.
+
+\bibitem{japex}
+{\sc <Santiago.PericasGeertsen@sun.com>, Santiago Pericas-Geertsen}: {\em Japex
+  -- Version 1.0.26}, 2006.
+
+\bibitem{javaapi}
+{\sc Sun Microsystems}, Mountain View: {\em Java 2 Platform Standard Ed. 5.0}.
+
+\bibitem{beans101}
+{\sc Sun Microsystems}, Mountain View: {\em JavaBeans API Specification},
+  August 1997.
+\newblock Version 1.01-A.
+
+\bibitem{javaser}
+{\sc Sun Microsystems}, Palo Alto, California: {\em Java Object Serialization
+  Specification}, 2003.
+\newblock Version 1.5.0.
+
+\bibitem{juc}
+{\sc Sun Microsystems, Inc.}: {\em Concurrency Utilities}, 2004.
+\newblock Abgerufen am 16. 5. 2007.
+
+\bibitem{objmod}
+{\sc Vetter, Max}: {\em Objektmodellierung: eine Einführung in die
+  objektorientierte Analyse und das objektorientierte Design}.
+\newblock Leitfäden der Informatik. Teubner, Stuttgart, 1995.
+
+\end{thebibliography}

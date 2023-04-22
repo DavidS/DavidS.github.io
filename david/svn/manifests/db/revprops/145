@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-08-01T11:45:15.868380Z
+K 7
+svn:log
+V 60
+move exim4 confdir and repair dependency on File[/etc/exim4/
+END

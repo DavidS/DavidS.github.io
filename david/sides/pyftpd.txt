@@ -1,0 +1,15 @@
+http://melkor.dnp.fmph.uniba.sk/~garabik/pyftpd.html
+
+---------------------------------------------------------------------
+Originally based on pyFTPdrop[1] by Marco Amrein, pyftpd is an advanced ftp server
+written in python. To learn more, read the README file coming with it. 
+[1] http://www.mythi.cx/python/
+---------------------------------------------------------------------
+
+Modular. Authentifikation und VFS k"onnen als Modul implementiert
+werden.  Python oder kompatibel. 
+
++ Memory sparsam.
+
+- python
+

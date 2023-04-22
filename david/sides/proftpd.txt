@@ -1,0 +1,19 @@
+http://www.proftpd.net
+
+---------------------------------------------------------------------
+ A powerful replacement for wu-ftpd, this File Transfer Protocol
+ daemon supports hidden directories, virtual hosts, and per-directory
+ ".ftpaccess" files.  It uses a single main configuration file, with a
+ syntax similar to Apache.
+
+ Because of the advanced design, anonymous-FTP directories can have
+ an arbitrary internal structure (bin, lib, etc, and special files are
+ not needed).  Advanced features like multiple password files and
+ upload/download ratios are also supported.
+---------------------------------------------------------------------
+
+DMBS Infrastruktur vorhanden.
+LDAP Infrastruktur vorhanden.
+Quota m"oglich.
+Modular, Virtuelle Directories koennen als Modul implementiert werden. 
+	Implementation straightforward, C oder kompatible.

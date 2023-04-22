@@ -1,0 +1,11 @@
+# This file is brought to you by puppet
+
+# basic etch
+deb http://ftp.at.debian.org/debian etch main
+# security suppport
+deb http://security.debian.org/ etch/updates main
+# local packages
+#deb http://puppetmaster:81/ /
+
+# additional packages, see preferences
+#deb http://ftp.at.debian.org/debian sid main

@@ -1,0 +1,22 @@
+Format: 1.7
+Date: Wed, 19 Mar 2003 13:18:30 +0100
+Source: sqwebmail-de
+Binary: sqwebmail-de
+Architecture: source all
+Version: 3.5.0.20030301-1
+Distribution: unstable
+Urgency: low
+Maintainer: nobody@nowhere
+Changed-By: David Schmitt <david@schmitt.edv-bus.at>
+Description: 
+ sqwebmail-de - German translations for the SqWebMail webmail service
+Closes: 185038 185621
+Changes: 
+ sqwebmail-de (3.5.0.20030301-1) unstable; urgency=low
+ .
+   * Initial packaging (Closes: #185621,#185038)
+Files: 
+ 2acf33425d803b3168919a964a79d862 397 mail optional sqwebmail-de_3.5.0.20030301-1.dsc
+ 0446517eebae4cb9866bc60d8f277f7a 61647 mail optional sqwebmail-de_3.5.0.20030301.orig.tar.gz
+ 725465d97d87305a6cf526f231f0ea38 28968 mail optional sqwebmail-de_3.5.0.20030301-1.diff.gz
+ 0aab48ef7c25a9efc89861bdb3a60ba3 28732 mail optional sqwebmail-de_3.5.0.20030301-1_all.deb

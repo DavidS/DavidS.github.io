@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-06-28T15:01:26.491855Z
+K 7
+svn:log
+V 52
+add a few things which should be removed on vservers
+END

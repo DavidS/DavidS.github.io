@@ -1,0 +1,9 @@
+# This file is managed by puppet.
+
+# Set the following values to your actual download # and uplink speed in
+# kilobits.
+DOWNLINK=<%= downlink_speed %>
+UPLINK=<%= uplink_speed %>
+
+# override the uplink device if it is not called "uplink"
+#DEV=eth0

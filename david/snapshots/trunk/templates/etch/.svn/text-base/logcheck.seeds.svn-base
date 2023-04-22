@@ -1,0 +1,8 @@
+# Automatically create /etc/logcheck/logcheck.logfiles from /etc/syslog.conf ?
+logcheck        logcheck/auto_create_logfiles   boolean false
+# Delete obsolete conffiles
+logcheck-database       logcheck-database/conffile-cleanup      boolean true
+# The security level for the default ignore file.
+logcheck-database       logcheck-database/security_level        select  server
+# The email address to which the mails should be sent.
+logcheck        logcheck/email_address  string  staff@edv-bus.at

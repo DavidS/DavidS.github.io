@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: nagios</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">nagios</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/home/david/repos/complete/modules/nagios/manifests/init_pp.html">
+                /home/david/repos/complete/modules/nagios/manifests/init.pp
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Overview
+</p>
+<h6>==</h6>
+<p>
+To use the <a href="nagios.html">nagios</a> resources, activate
+storeconfigs on the puppetmaster.
+</p>
+<p>
+Monitor
+</p>
+<hr size="5"></hr><p>
+On one node the &quot;<a href="nagios.html">nagios</a>&quot; class has to
+be included. This installs <a href="nagios.html">nagios</a> and <a
+href="apache.html">apache</a> and configures the cgi on <a
+href="http://node/nagios">node/nagios</a>/
+</p>
+<p>
+Hosts
+</p>
+<hr size="3"></hr><p>
+On a node which shall be monitored with <a href="nagios.html">nagios</a>,
+include the &quot;<a href="nagios.html">nagios</a>::<a
+href="nagios/target.html">target</a>&quot;. This just creates a <a
+href="nagios.html#M000029">host</a> declaration for this hosts
+&quot;$fqdn&quot;. Set the $nagios_parent variable in the node scope for
+enabling the reachability features of <a href="nagios.html">nagios</a>. If
+a node needs more customisation, use the &quot;<a
+href="nagios.html">nagios</a>::<a href="nagios.html#M000029">host</a>&quot;
+component directly.
+</p>
+<p>
+To monitor hosts not managed by puppet, add &quot;<a
+href="nagios.html">nagios</a>::<a
+href="nagios.html#M000028">extra_host</a>&quot;s to the monitoring node.
+These can be used as intermediate $nagios_parent&#8216;s
+</p>
+<p>
+Services
+</p>
+<hr size="6"></hr><p>
+Services can be monitored by using the &quot;<a
+href="nagios.html">nagios</a>::<a
+href="nagios.html#M000031">service</a>&quot; component.
+</p>
+<p>
+The simplest form is::
+</p>
+<pre>
+        nagios::service { check_dns: }
+</pre>
+<p>
+The intention being obviously to put such declarations into a component
+defining a <a href="nagios.html#M000031">service</a>, thereby being
+automatically applied together with all instances of the <a
+href="nagios.html#M000031">service</a>.
+</p>
+<p>
+Caveats
+</p>
+<h6>=</h6>
+<p>
+Performance
+</p>
+<hr size="9"></hr><p>
+A major drawback is that currently the needed storeconfig setting and
+subsequent filling of the database is really a drag on performance. 0.22.1
+for example breaks at approximatly 120 monitored services (depends on H/W
+of course). 0.22.3 has improved that my a factor of 3-4.
+</p>
+<p>
+Consistency/Validation/Verification
+</p>
+<hr size="10"></hr><p>
+After convergance of the configuration, the system is obviously consistent.
+That is, all defined services are monitored. The problem is though, that it
+is neither automatically valid - it is not guaranteed that all components
+declare a <a href="nagios.html">nagios</a>::<a
+href="nagios.html#M000031">service</a> - and even if the configuration is
+valid it definitly is unverified, since that is always a judgment call for
+an external observer.
+</p>
+<p>
+Examples
+</p>
+<h6>==</h6>
+<p>
+Usage example::
+</p>
+<p>
+node <a href="nagios.html">nagios</a> {
+</p>
+<pre>
+        include nagios
+
+        # Declare another nagios command
+        nagios::command { http_port: command_line
+</pre>
+<h1>&gt; &#8217;/usr/lib/nagios/plugins/check_http -p $ARG1$ -H $HOSTADDRESS$ -I</h1>
+<p>
+$HOSTADDRESS$&#8217;
+</p>
+<pre>
+        # Declare unmanaged hosts
+        nagios_extra_host {
+                &quot;router01&quot;:
+                        parent =&gt; &quot;gateway&quot;,
+                        ip =&gt; &quot;10.0.0.1&quot;;
+                &quot;router02&quot;:
+                        parent =&gt; &quot;router01&quot;,
+                        ip =&gt; &quot;192.168.0.1&quot;;
+        }
+</pre>
+<p>
+}
+</p>
+<p>
+node <a href="nagios/target.html">target</a> {
+</p>
+<pre>
+        # Monitor this host
+        $nagios_parent = &quot;router01&quot;
+        include nagios_target
+
+        # monitor a service
+        $apache2_port = 8080
+        include apache
+
+        # The apache class actually does this somewhere:
+        #nagios::service { &quot;http_${apache2_port}&quot;:
+        #       check_command =&gt; &quot;http_port!${apache2_port}&quot;
+        #}
+        # which goes via export/collect to the nagios node.
+</pre>
+<p>
+}
+</p>
+<p>
+License
+</p>
+<h6>=</h6>
+<p>
+Copyright (C) 2007 David Schmitt &lt;david@schmitt.edv-bus.at&gt; See the
+file LICENSE in the top directory for the full license.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Defines</h3>
+
+      <div class="name-list">
+      <a href="#M000030">command</a>&nbsp;&nbsp;
+      <a href="#M000028">extra_host</a>&nbsp;&nbsp;
+      <a href="#M000029">host</a>&nbsp;&nbsp;
+      <a href="#M000031">service</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+<!-- if facts -->
+
+<!-- if plugins -->
+
+<!-- if nodes -->
+
+<!-- if class -->
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="nagios/nagios.html" class="link">nagios::nagios</a><br />
+Class <a href="nagios/nagios2.html" class="link">nagios::nagios2</a><br />
+Class <a href="nagios/target.html" class="link">nagios::target</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Global Variables</h3>
+
+      <div class="name-list">
+        <table summary="Variables">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">nagios_cfgdir</td>
+          <td>=</td>
+          <td class="context-item-value">${module_dir_path}/nagios</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+the directory containing all <a href="nagios.html">nagios</a> configs:
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Defines</h3>
+
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+          <span class="method-name">command</span><span class="method-args">( $command_line )</span>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <span class="method-name">extra_host</span><span class="method-args">( $parent =&gt; 'none', $short_alias =&gt; 'fqdn', $ip =&gt; 'fqdn' )</span>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+          <span class="method-name">host</span><span class="method-args">( $short_alias =&gt; 'fqdn', $ip =&gt; 'fqdn' )</span>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+          <span class="method-name">service</span><span class="method-args">( $check_command =&gt; '', $nagios_description =&gt; '', $nagios_host_name =&gt; 'fqdn' )</span>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- if resource_list -->
+
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

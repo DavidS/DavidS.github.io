@@ -1,0 +1,13 @@
+Package: librcs-perl
+Version: 1.04-1
+Section: perl
+Priority: optional
+Architecture: all
+Depends: rcs, perl (>= 5.6.0-16)
+Installed-Size: 260
+Maintainer: David Schmitt <david@schmitt.edv-bus.at>
+Description: Perl Object Class for Revision Control System (RCS)
+ This Perl module provides an object oriented interface to access
+ Revision Control System (RCS) utilities.
+ .
+ This module should simplify the creation of an RCS front-end.

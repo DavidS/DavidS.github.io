@@ -1,0 +1,52 @@
+8
+
+dir
+31
+file:///home/david/public_html/svn/manifests/trunk
+file:///home/david/public_html/svn/manifests
+
+
+
+2007-04-19T09:48:27.049932Z
+31
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f03ff2f1-f02d-0410-970d-b9634babeaa1
+
+files
+dir
+
+LICENSE
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+5fc5d5362977007848f1c2b818d76515
+2007-04-13T18:21:28.886803Z
+16
+david
+
+doc
+dir
+
+manifests
+dir
+
+templates
+dir
+

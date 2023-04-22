@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SUB="$1"
+BASE="/var/local/puppet/bind/$SUB"
+DOMAINS="$(ls "$BASE/zones")"
+
+MASTER="$BASE/config/master.conf"
+SLAVE="$BASE/config/slave.conf"
+
+echo "# Created by update-zones" > "$MASTER"
+echo "# Created by update-zones" > "$SLAVE"
+
+for i in $DOMAINS
+do
+
+	echo "zone \"$i\" { type master; file \"$BASE/zones/$i\"; } ;" >> "$MASTER"
+
+	echo "zone \"$i\" { type slave; file \"$i\"; masters {" >> "$SLAVE"
+	cat "$BASE/config/servers.conf" >> "$SLAVE"
+	echo "}; } ;" >> "$SLAVE"
+
+done
+

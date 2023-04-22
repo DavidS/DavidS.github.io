@@ -1,0 +1,95 @@
+#!/bin/bash
+
+CONFDIR=/etc/exim4
+TESTDIR=$CONFDIR/tests
+RET=0
+
+# Note that we use `"$@"' to let each command-line parameter expand to a 
+# separate word. The quotes around `$@' are essential!
+# We need TEMP as the `eval set --' would nuke the return value of getopt.
+TEMP=$(getopt -o i --long interactive \
+     -n "$0" -- "$@")
+
+if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
+
+# Note the quotes around `$TEMP': they are essential!
+eval set -- "$TEMP"
+
+while true ; do
+case "$1" in
+	-i|--interactive) INTERACT=y ; shift ;;
+	--) shift ; break ;;
+	*) echo "Internal error!" ; exit 1 ;;
+esac
+done
+
+function commit() {
+	if [ -n "$INTERACT" ] ; then
+		read -n 1 -p "Commit change? [yn] "
+		if [ "$REPLY" = y ] ; then
+			cat $1 > $2 # preserve file modes
+		fi
+		echo
+	fi
+}
+
+function address_test() {
+
+TEST=$1
+
+for i in $TESTDIR/$TEST/*
+do
+	address=$(basename $i)
+	tmp=$(mktemp -p /tmp $TEST.$address.XXXXXX)
+	exim4 -$TEST $address > $tmp 2>/dev/null
+	if ! diff -qwb $i $tmp
+	then
+		echo $TEST: $address: 
+		diff -ywb $i $tmp
+		commit $tmp $i
+		RET=$(( $RET + 1 ))
+	fi
+	rm -f $tmp
+done
+
+}
+
+function host_test() {
+
+TEST=$1
+
+for i in $TESTDIR/$TEST/*/*.input
+do
+	base=$(basename $i .input)
+	src=$(basename $(dirname $i))
+	tmp=$(mktemp -p /tmp $TEST.$src.$base.XXXXXX)
+	sed=''
+	[ -r $TESTDIR/$TEST/$src/$base.sed ] && sed="-f $TESTDIR/$TEST/$src/$base.sed"
+	exim4 -$TEST $src < $i 2>/dev/null \
+		| sed \
+			-e 's/\r//g' \
+			-e 's/^\([0-9]\{3\}\) [^ ]*.black.co.at/\1 smtpscanner.black.co.at/' \
+			-e 's/^\(220 .* ESMTP Exim 4\)\..*$/\1/' \
+			-e 's/^\(250 OK id=\).*/\1/' \
+			$sed > $tmp
+
+	output=$TESTDIR/$TEST/$src/$base.output
+	if ! diff -qwb $output $tmp
+	then
+		echo $TEST: $base: 
+		diff -ywb $output $tmp
+		commit $tmp $i
+		RET=$(( $RET + 1 ))
+	fi
+	rm -f $tmp
+done
+
+}
+
+address_test bt
+address_test brw
+
+host_test bh
+host_test bhc
+
+exit $RET

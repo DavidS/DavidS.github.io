@@ -1,0 +1,523 @@
+   0  $accept : text $end
+
+   1  text :
+   2       | text simple_text_part
+   3       | text ulist1
+
+   4  markup : OPEN_BRACE markup_content CLOSE_BRACE
+
+   5  markup_content : markup
+   6                 | STRING
+   7                 | WIKI_NAME
+   8                 | list_string markup
+   9                 | list_string STRING
+  10                 | list_string WIKI_NAME
+
+  11  list_string :
+  12              | markup
+  13              | STRING
+  14              | WIKI_NAME
+  15              | list_string markup
+  16              | list_string STRING
+  17              | list_string WIKI_NAME
+
+  18  ulist1 : ULI1 list_string
+  19         | ulist2
+  20         | ulist1 ULI1 list_string
+  21         | ulist1 ulist2
+
+  22  ulist2 : ULI2 list_string
+  23         | ulist3
+  24         | ulist2 ULI2 list_string
+  25         | ulist2 ulist3
+
+  26  simple_text_part : markup
+  27                   | EMPTY_LINE
+  28                   | HR
+  29                   | WIKI_NAME
+  30                   | STRING
+  31                   | CLOSE_BRACE
+
+state 0
+	$accept : . text $end  (0)
+	text : .  (1)
+
+	.  reduce 1
+
+	text  goto 1
+
+
+state 1
+	$accept : text . $end  (0)
+	text : text . simple_text_part  (2)
+	text : text . ulist1  (3)
+
+	$end  accept
+	ULI1  shift 2
+	ULI2  shift 3
+	ulist3  shift 4
+	HR  shift 5
+	EMPTY_LINE  shift 6
+	STRING  shift 7
+	OPEN_BRACE  shift 8
+	CLOSE_BRACE  shift 9
+	WIKI_NAME  shift 10
+	.  error
+
+	simple_text_part  goto 11
+	ulist1  goto 12
+	markup  goto 13
+	ulist2  goto 14
+
+
+2: shift/reduce conflict (shift 15, reduce 11) on STRING
+2: shift/reduce conflict (shift 8, reduce 11) on OPEN_BRACE
+2: shift/reduce conflict (shift 16, reduce 11) on WIKI_NAME
+state 2
+	ulist1 : ULI1 . list_string  (18)
+	list_string : .  (11)
+
+	STRING  shift 15
+	OPEN_BRACE  shift 8
+	WIKI_NAME  shift 16
+	$end  reduce 11
+	ULI1  reduce 11
+	ULI2  reduce 11
+	ulist3  reduce 11
+	HR  reduce 11
+	EMPTY_LINE  reduce 11
+	CLOSE_BRACE  reduce 11
+
+	markup  goto 17
+	list_string  goto 18
+
+
+3: shift/reduce conflict (shift 15, reduce 11) on STRING
+3: shift/reduce conflict (shift 8, reduce 11) on OPEN_BRACE
+3: shift/reduce conflict (shift 16, reduce 11) on WIKI_NAME
+state 3
+	ulist2 : ULI2 . list_string  (22)
+	list_string : .  (11)
+
+	STRING  shift 15
+	OPEN_BRACE  shift 8
+	WIKI_NAME  shift 16
+	$end  reduce 11
+	ULI1  reduce 11
+	ULI2  reduce 11
+	ulist3  reduce 11
+	HR  reduce 11
+	EMPTY_LINE  reduce 11
+	CLOSE_BRACE  reduce 11
+
+	markup  goto 17
+	list_string  goto 19
+
+
+state 4
+	ulist2 : ulist3 .  (23)
+
+	.  reduce 23
+
+
+state 5
+	simple_text_part : HR .  (28)
+
+	.  reduce 28
+
+
+state 6
+	simple_text_part : EMPTY_LINE .  (27)
+
+	.  reduce 27
+
+
+state 7
+	simple_text_part : STRING .  (30)
+
+	.  reduce 30
+
+
+8: shift/reduce conflict (shift 20, reduce 11) on STRING
+8: shift/reduce conflict (shift 8, reduce 11) on OPEN_BRACE
+8: shift/reduce conflict (shift 21, reduce 11) on WIKI_NAME
+state 8
+	markup : OPEN_BRACE . markup_content CLOSE_BRACE  (4)
+	list_string : .  (11)
+
+	STRING  shift 20
+	OPEN_BRACE  shift 8
+	WIKI_NAME  shift 21
+
+	markup  goto 22
+	markup_content  goto 23
+	list_string  goto 24
+
+
+state 9
+	simple_text_part : CLOSE_BRACE .  (31)
+
+	.  reduce 31
+
+
+state 10
+	simple_text_part : WIKI_NAME .  (29)
+
+	.  reduce 29
+
+
+state 11
+	text : text simple_text_part .  (2)
+
+	.  reduce 2
+
+
+12: shift/reduce conflict (shift 25, reduce 3) on ULI1
+12: shift/reduce conflict (shift 3, reduce 3) on ULI2
+12: shift/reduce conflict (shift 4, reduce 3) on ulist3
+state 12
+	text : text ulist1 .  (3)
+	ulist1 : ulist1 . ULI1 list_string  (20)
+	ulist1 : ulist1 . ulist2  (21)
+
+	ULI1  shift 25
+	ULI2  shift 3
+	ulist3  shift 4
+	$end  reduce 3
+	HR  reduce 3
+	EMPTY_LINE  reduce 3
+	STRING  reduce 3
+	OPEN_BRACE  reduce 3
+	CLOSE_BRACE  reduce 3
+	WIKI_NAME  reduce 3
+
+	ulist2  goto 26
+
+
+state 13
+	simple_text_part : markup .  (26)
+
+	.  reduce 26
+
+
+14: shift/reduce conflict (shift 27, reduce 19) on ULI2
+14: shift/reduce conflict (shift 28, reduce 19) on ulist3
+state 14
+	ulist1 : ulist2 .  (19)
+	ulist2 : ulist2 . ULI2 list_string  (24)
+	ulist2 : ulist2 . ulist3  (25)
+
+	ULI2  shift 27
+	ulist3  shift 28
+	$end  reduce 19
+	ULI1  reduce 19
+	HR  reduce 19
+	EMPTY_LINE  reduce 19
+	STRING  reduce 19
+	OPEN_BRACE  reduce 19
+	CLOSE_BRACE  reduce 19
+	WIKI_NAME  reduce 19
+
+
+state 15
+	list_string : STRING .  (13)
+
+	.  reduce 13
+
+
+state 16
+	list_string : WIKI_NAME .  (14)
+
+	.  reduce 14
+
+
+state 17
+	list_string : markup .  (12)
+
+	.  reduce 12
+
+
+18: shift/reduce conflict (shift 29, reduce 18) on STRING
+18: shift/reduce conflict (shift 8, reduce 18) on OPEN_BRACE
+18: shift/reduce conflict (shift 30, reduce 18) on WIKI_NAME
+state 18
+	list_string : list_string . markup  (15)
+	list_string : list_string . STRING  (16)
+	list_string : list_string . WIKI_NAME  (17)
+	ulist1 : ULI1 list_string .  (18)
+
+	STRING  shift 29
+	OPEN_BRACE  shift 8
+	WIKI_NAME  shift 30
+	$end  reduce 18
+	ULI1  reduce 18
+	ULI2  reduce 18
+	ulist3  reduce 18
+	HR  reduce 18
+	EMPTY_LINE  reduce 18
+	CLOSE_BRACE  reduce 18
+
+	markup  goto 31
+
+
+19: shift/reduce conflict (shift 29, reduce 22) on STRING
+19: shift/reduce conflict (shift 8, reduce 22) on OPEN_BRACE
+19: shift/reduce conflict (shift 30, reduce 22) on WIKI_NAME
+state 19
+	list_string : list_string . markup  (15)
+	list_string : list_string . STRING  (16)
+	list_string : list_string . WIKI_NAME  (17)
+	ulist2 : ULI2 list_string .  (22)
+
+	STRING  shift 29
+	OPEN_BRACE  shift 8
+	WIKI_NAME  shift 30
+	$end  reduce 22
+	ULI1  reduce 22
+	ULI2  reduce 22
+	ulist3  reduce 22
+	HR  reduce 22
+	EMPTY_LINE  reduce 22
+	CLOSE_BRACE  reduce 22
+
+	markup  goto 31
+
+
+state 20
+	markup_content : STRING .  (6)
+	list_string : STRING .  (13)
+
+	STRING  reduce 13
+	OPEN_BRACE  reduce 13
+	CLOSE_BRACE  reduce 6
+	WIKI_NAME  reduce 13
+
+
+state 21
+	markup_content : WIKI_NAME .  (7)
+	list_string : WIKI_NAME .  (14)
+
+	STRING  reduce 14
+	OPEN_BRACE  reduce 14
+	CLOSE_BRACE  reduce 7
+	WIKI_NAME  reduce 14
+
+
+state 22
+	markup_content : markup .  (5)
+	list_string : markup .  (12)
+
+	STRING  reduce 12
+	OPEN_BRACE  reduce 12
+	CLOSE_BRACE  reduce 5
+	WIKI_NAME  reduce 12
+
+
+state 23
+	markup : OPEN_BRACE markup_content . CLOSE_BRACE  (4)
+
+	CLOSE_BRACE  shift 32
+	.  error
+
+
+state 24
+	markup_content : list_string . markup  (8)
+	markup_content : list_string . STRING  (9)
+	markup_content : list_string . WIKI_NAME  (10)
+	list_string : list_string . markup  (15)
+	list_string : list_string . STRING  (16)
+	list_string : list_string . WIKI_NAME  (17)
+
+	STRING  shift 33
+	OPEN_BRACE  shift 8
+	WIKI_NAME  shift 34
+	.  error
+
+	markup  goto 35
+
+
+25: shift/reduce conflict (shift 15, reduce 11) on STRING
+25: shift/reduce conflict (shift 8, reduce 11) on OPEN_BRACE
+25: shift/reduce conflict (shift 16, reduce 11) on WIKI_NAME
+state 25
+	ulist1 : ulist1 ULI1 . list_string  (20)
+	list_string : .  (11)
+
+	STRING  shift 15
+	OPEN_BRACE  shift 8
+	WIKI_NAME  shift 16
+	$end  reduce 11
+	ULI1  reduce 11
+	ULI2  reduce 11
+	ulist3  reduce 11
+	HR  reduce 11
+	EMPTY_LINE  reduce 11
+	CLOSE_BRACE  reduce 11
+
+	markup  goto 17
+	list_string  goto 36
+
+
+26: shift/reduce conflict (shift 27, reduce 21) on ULI2
+26: shift/reduce conflict (shift 28, reduce 21) on ulist3
+state 26
+	ulist1 : ulist1 ulist2 .  (21)
+	ulist2 : ulist2 . ULI2 list_string  (24)
+	ulist2 : ulist2 . ulist3  (25)
+
+	ULI2  shift 27
+	ulist3  shift 28
+	$end  reduce 21
+	ULI1  reduce 21
+	HR  reduce 21
+	EMPTY_LINE  reduce 21
+	STRING  reduce 21
+	OPEN_BRACE  reduce 21
+	CLOSE_BRACE  reduce 21
+	WIKI_NAME  reduce 21
+
+
+27: shift/reduce conflict (shift 15, reduce 11) on STRING
+27: shift/reduce conflict (shift 8, reduce 11) on OPEN_BRACE
+27: shift/reduce conflict (shift 16, reduce 11) on WIKI_NAME
+state 27
+	ulist2 : ulist2 ULI2 . list_string  (24)
+	list_string : .  (11)
+
+	STRING  shift 15
+	OPEN_BRACE  shift 8
+	WIKI_NAME  shift 16
+	$end  reduce 11
+	ULI1  reduce 11
+	ULI2  reduce 11
+	ulist3  reduce 11
+	HR  reduce 11
+	EMPTY_LINE  reduce 11
+	CLOSE_BRACE  reduce 11
+
+	markup  goto 17
+	list_string  goto 37
+
+
+state 28
+	ulist2 : ulist2 ulist3 .  (25)
+
+	.  reduce 25
+
+
+state 29
+	list_string : list_string STRING .  (16)
+
+	.  reduce 16
+
+
+state 30
+	list_string : list_string WIKI_NAME .  (17)
+
+	.  reduce 17
+
+
+state 31
+	list_string : list_string markup .  (15)
+
+	.  reduce 15
+
+
+state 32
+	markup : OPEN_BRACE markup_content CLOSE_BRACE .  (4)
+
+	.  reduce 4
+
+
+state 33
+	markup_content : list_string STRING .  (9)
+	list_string : list_string STRING .  (16)
+
+	STRING  reduce 16
+	OPEN_BRACE  reduce 16
+	CLOSE_BRACE  reduce 9
+	WIKI_NAME  reduce 16
+
+
+state 34
+	markup_content : list_string WIKI_NAME .  (10)
+	list_string : list_string WIKI_NAME .  (17)
+
+	STRING  reduce 17
+	OPEN_BRACE  reduce 17
+	CLOSE_BRACE  reduce 10
+	WIKI_NAME  reduce 17
+
+
+state 35
+	markup_content : list_string markup .  (8)
+	list_string : list_string markup .  (15)
+
+	STRING  reduce 15
+	OPEN_BRACE  reduce 15
+	CLOSE_BRACE  reduce 8
+	WIKI_NAME  reduce 15
+
+
+36: shift/reduce conflict (shift 29, reduce 20) on STRING
+36: shift/reduce conflict (shift 8, reduce 20) on OPEN_BRACE
+36: shift/reduce conflict (shift 30, reduce 20) on WIKI_NAME
+state 36
+	list_string : list_string . markup  (15)
+	list_string : list_string . STRING  (16)
+	list_string : list_string . WIKI_NAME  (17)
+	ulist1 : ulist1 ULI1 list_string .  (20)
+
+	STRING  shift 29
+	OPEN_BRACE  shift 8
+	WIKI_NAME  shift 30
+	$end  reduce 20
+	ULI1  reduce 20
+	ULI2  reduce 20
+	ulist3  reduce 20
+	HR  reduce 20
+	EMPTY_LINE  reduce 20
+	CLOSE_BRACE  reduce 20
+
+	markup  goto 31
+
+
+37: shift/reduce conflict (shift 29, reduce 24) on STRING
+37: shift/reduce conflict (shift 8, reduce 24) on OPEN_BRACE
+37: shift/reduce conflict (shift 30, reduce 24) on WIKI_NAME
+state 37
+	list_string : list_string . markup  (15)
+	list_string : list_string . STRING  (16)
+	list_string : list_string . WIKI_NAME  (17)
+	ulist2 : ulist2 ULI2 list_string .  (24)
+
+	STRING  shift 29
+	OPEN_BRACE  shift 8
+	WIKI_NAME  shift 30
+	$end  reduce 24
+	ULI1  reduce 24
+	ULI2  reduce 24
+	ulist3  reduce 24
+	HR  reduce 24
+	EMPTY_LINE  reduce 24
+	CLOSE_BRACE  reduce 24
+
+	markup  goto 31
+
+
+State 2 contains 3 shift/reduce conflicts.
+State 3 contains 3 shift/reduce conflicts.
+State 8 contains 3 shift/reduce conflicts.
+State 12 contains 3 shift/reduce conflicts.
+State 14 contains 2 shift/reduce conflicts.
+State 18 contains 3 shift/reduce conflicts.
+State 19 contains 3 shift/reduce conflicts.
+State 25 contains 3 shift/reduce conflicts.
+State 26 contains 2 shift/reduce conflicts.
+State 27 contains 3 shift/reduce conflicts.
+State 36 contains 3 shift/reduce conflicts.
+State 37 contains 3 shift/reduce conflicts.
+
+
+11 terminals, 8 nonterminals
+32 grammar rules, 38 states

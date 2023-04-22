@@ -1,0 +1,77 @@
+Overview
+========
+
+Munin is a performance monitoring system which creates nice RRD graphs and has
+a very easy plugin interface.
+
+To use this configuration, mark the central collector with "munin::host", each
+node with "munin::base" and configure the plugins with "munin::plugin".
+Convinience components exist for a "munin::client" and a
+"munin::vserver_client" who enable and disable a few plugins which are usually
+missed by the installation scripts or not relevant.
+
+This module uses storeconfig functionality.
+
+
+
+Reference
+=========
+
+
+include munin::host
+-------------------
+
+This installs the munin collector. Additionally inetd and micro-httpd are
+configured to serve the generated html and graphs on port 81.
+
+Configured munin clients are automatically collected and added to the collector.
+
+
+munin::base
+-----------
+
+Install munin-node and register with the collector.
+
+Parameter::
+
+	name: irrelevant
+	bindhost: to which hostname or ip munin should bind. use 'fqdn' to use
+		the $fqdn as bindhost. Default: 'fqdn'
+	port: to which port to bind. Default: 4949
+
+
+munin::plugin
+-------------
+
+Manages a munin plugin
+
+Parameter::
+
+	name: Which plugin to manage. This is used as name of the symlink
+		in /etc/munin/plugins/.
+	ensure: Valid values: "present", "absent" or a relative path. Specifies
+		which script to use as plugin.
+		present: use $name
+		absent: remove this plugin
+		Everything else is interpreted as a path relative to
+		$script_path
+		Default: present
+	script_path: From where plugins should be symlinked
+
+Examples::
+
+	# Enable monitoring of disk stats in bytes
+	munin::plugin { df_abs: }
+
+	# Install custom plugin from /usr/local/share/munin-plugins/ntp_
+	munin::plugin { "ntp_${ntpserver}":
+		ensure => "ntp_",
+		script_path => "/usr/local/share/munin-plugins",
+	}
+
+License
+=======
+
+Copyright (C) 2007 David Schmitt <david@schmitt.edv-bus.at>
+See the file LICENSE in the top directory for the full license.
+

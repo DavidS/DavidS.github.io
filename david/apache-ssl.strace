@@ -1,0 +1,1367 @@
+execve("/etc/init.d/apache-ssl", ["/etc/init.d/apache-ssl", "start"], [/* 21 vars */]) = 0
+uname({sys="Linux", node="zion", ...})  = 0
+brk(0)                                  = 0x80b226c
+open("/etc/ld.so.preload", O_RDONLY)    = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=26536, ...}) = 0
+old_mmap(NULL, 26536, PROT_READ, MAP_PRIVATE, 3, 0) = 0x40016000
+close(3)                                = 0
+open("/lib/libreadline.so.4", O_RDONLY) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0P\244\0"..., 1024) = 1024
+fstat64(3, {st_mode=S_IFREG|0644, st_size=144280, ...}) = 0
+old_mmap(NULL, 150704, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x4001d000
+mprotect(0x4003d000, 19632, PROT_NONE)  = 0
+old_mmap(0x4003d000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x1f000) = 0x4003d000
+old_mmap(0x40041000, 3248, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x40041000
+close(3)                                = 0
+open("/lib/libhistory.so.4", O_RDONLY)  = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\240\25"..., 1024) = 1024
+fstat64(3, {st_mode=S_IFREG|0644, st_size=20516, ...}) = 0
+old_mmap(NULL, 23580, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x40042000
+mprotect(0x40047000, 3100, PROT_NONE)   = 0
+old_mmap(0x40047000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x4000) = 0x40047000
+close(3)                                = 0
+open("/lib/libncurses.so.5", O_RDONLY)  = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\240\341"..., 1024) = 1024
+fstat64(3, {st_mode=S_IFREG|0644, st_size=245944, ...}) = 0
+old_mmap(NULL, 260704, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x40048000
+mprotect(0x4007c000, 47712, PROT_NONE)  = 0
+old_mmap(0x4007c000, 36864, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x33000) = 0x4007c000
+old_mmap(0x40085000, 10848, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x40085000
+close(3)                                = 0
+open("/lib/libdl.so.2", O_RDONLY)       = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\264\34"..., 1024) = 1024
+fstat64(3, {st_mode=S_IFREG|0644, st_size=9460, ...}) = 0
+old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40088000
+old_mmap(NULL, 12340, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x40089000
+mprotect(0x4008b000, 4148, PROT_NONE)   = 0
+old_mmap(0x4008b000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x1000) = 0x4008b000
+old_mmap(0x4008c000, 52, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x4008c000
+close(3)                                = 0
+open("/lib/libc.so.6", O_RDONLY)        = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\210\326"..., 1024) = 1024
+fstat64(3, {st_mode=S_IFREG|0755, st_size=1170728, ...}) = 0
+old_mmap(NULL, 1187168, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x4008d000
+mprotect(0x401a5000, 40288, PROT_NONE)  = 0
+old_mmap(0x401a5000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x117000) = 0x401a5000
+old_mmap(0x401ab000, 15712, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x401ab000
+close(3)                                = 0
+munmap(0x40016000, 26536)               = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+open("/dev/tty", O_RDWR|O_NONBLOCK|O_LARGEFILE) = 3
+close(3)                                = 0
+brk(0)                                  = 0x80b226c
+brk(0x80b3000)                          = 0x80b3000
+brk(0x80b4000)                          = 0x80b4000
+getuid32()                              = 0
+getgid32()                              = 0
+geteuid32()                             = 0
+getegid32()                             = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+time(NULL)                              = 1001457857
+brk(0x80b5000)                          = 0x80b5000
+open("/etc/mtab", O_RDONLY)             = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=128, ...}) = 0
+old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+read(3, "/dev/hda1 / ext2 rw,errors=remou"..., 4096) = 128
+close(3)                                = 0
+munmap(0x40016000, 4096)                = 0
+open("/proc/meminfo", O_RDONLY)         = 3
+fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+read(3, "        total:    used:    free:"..., 4096) = 574
+close(3)                                = 0
+munmap(0x40016000, 4096)                = 0
+brk(0x80b6000)                          = 0x80b6000
+rt_sigaction(SIGCHLD, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGCHLD, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigaction(SIGQUIT, {SIG_IGN}, {SIG_DFL}, 8) = 0
+uname({sys="Linux", node="zion", ...})  = 0
+brk(0x80b7000)                          = 0x80b7000
+stat64("/root", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64(".", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+getpid()                                = 1608
+getppid()                               = 1607
+brk(0x80b8000)                          = 0x80b8000
+getpgrp()                               = 1607
+rt_sigaction(SIGCHLD, {0x806c18c, [], 0x4000000}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+open("/etc/init.d/apache-ssl", O_RDONLY|O_LARGEFILE) = 3
+ioctl(3, SNDCTL_TMR_TIMEBASE, 0xbffff928) = -1 ENOTTY (Inappropriate ioctl for device)
+_llseek(3, 0, [0], SEEK_CUR)            = 0
+read(3, "#! /bin/bash\n#\n# apache\tStart th"..., 80) = 80
+_llseek(3, 0, [0], SEEK_SET)            = 0
+getrlimit(0x7, 0xbffff984)              = 0
+dup2(3, 255)                            = 255
+close(3)                                = 0
+fcntl64(255, F_SETFD, FD_CLOEXEC)       = 0
+fcntl64(255, F_GETFL)                   = 0x8000 (flags O_RDONLY|O_LARGEFILE)
+fstat64(255, {st_mode=S_IFREG|0755, st_size=1080, ...}) = 0
+_llseek(255, 0, [0], SEEK_CUR)          = 0
+brk(0x80b9000)                          = 0x80b9000
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, "#! /bin/bash\n#\n# apache\tStart th"..., 1080) = 1080
+brk(0x80ba000)                          = 0x80ba000
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigaction(SIGHUP, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGHUP, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGHUP, {SIG_IGN}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+stat64("/usr/sbin/apache-ssl", {st_mode=S_IFREG|0755, st_size=318076, ...}) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+stat64("/usr/sbin/apache-sslctl", {st_mode=S_IFREG|0755, st_size=7119, ...}) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+brk(0x80bb000)                          = 0x80bb000
+stat64(".", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64("/bin/egrep", {st_mode=S_IFREG|0755, st_size=47580, ...}) = 0
+stat64("/bin/egrep", {st_mode=S_IFREG|0755, st_size=47580, ...}) = 0
+brk(0x80bc000)                          = 0x80bc000
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -652, [428], SEEK_CUR)     = 0
+fork()                                  = 1609
+[pid  1609] getpid()                    = 1609
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid  1609] close(255 <unfinished ...>
+[pid  1608] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1609] <... close resumed> )       = 0
+[pid  1609] rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid  1608] rt_sigprocmask(SIG_BLOCK, [CHLD],  <unfinished ...>
+[pid  1609] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1608] <... rt_sigprocmask resumed> [], 8) = 0
+[pid  1609] rt_sigaction(SIGTSTP, {SIG_DFL},  <unfinished ...>
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid  1609] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1608] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1609] rt_sigaction(SIGTTIN, {SIG_DFL},  <unfinished ...>
+[pid  1608] rt_sigprocmask(SIG_BLOCK, [CHLD],  <unfinished ...>
+[pid  1609] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1608] <... rt_sigprocmask resumed> [], 8) = 0
+[pid  1609] rt_sigaction(SIGTTOU, {SIG_DFL},  <unfinished ...>
+[pid  1608] rt_sigaction(SIGINT, {0x806b418, [], 0x4000000},  <unfinished ...>
+[pid  1609] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1608] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1609] rt_sigaction(SIGHUP, {SIG_IGN}, {SIG_IGN}, 8) = 0
+[pid  1608] wait4(-1,  <unfinished ...>
+[pid  1609] rt_sigaction(SIGINT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+[pid  1609] rt_sigaction(SIGQUIT, {SIG_DFL}, {SIG_IGN}, 8) = 0
+[pid  1609] rt_sigaction(SIGCHLD, {SIG_DFL}, {0x806c18c, [], 0x4000000}, 8) = 0
+[pid  1609] execve("/bin/egrep", ["egrep", "-q", "-i", "^[[:space:]]*ServerType[[:space:"..., "/etc/apache-ssl/httpd.conf"], [/* 21 vars */]) = 0
+[pid  1609] uname({sys="Linux", node="zion", ...}) = 0
+[pid  1609] brk(0)                      = 0x8054890
+[pid  1609] open("/etc/ld.so.preload", O_RDONLY) = -1 ENOENT (No such file or directory)
+[pid  1609] open("/etc/ld.so.cache", O_RDONLY) = 3
+[pid  1609] fstat64(3, {st_mode=S_IFREG|0644, st_size=26536, ...}) = 0
+[pid  1609] old_mmap(NULL, 26536, PROT_READ, MAP_PRIVATE, 3, 0) = 0x40016000
+[pid  1609] close(3)                    = 0
+[pid  1609] open("/lib/libc.so.6", O_RDONLY) = 3
+[pid  1609] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\210\326"..., 1024) = 1024
+[pid  1609] fstat64(3, {st_mode=S_IFREG|0755, st_size=1170728, ...}) = 0
+[pid  1609] old_mmap(NULL, 1187168, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x4001d000
+[pid  1609] mprotect(0x40135000, 40288, PROT_NONE) = 0
+[pid  1609] old_mmap(0x40135000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x117000) = 0x40135000
+[pid  1609] old_mmap(0x4013b000, 15712, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x4013b000
+[pid  1609] close(3)                    = 0
+[pid  1609] munmap(0x40016000, 26536)   = 0
+[pid  1609] brk(0)                      = 0x8054890
+[pid  1609] brk(0x80548b8)              = 0x80548b8
+[pid  1609] brk(0x8055000)              = 0x8055000
+[pid  1609] brk(0x8056000)              = 0x8056000
+[pid  1609] brk(0x8057000)              = 0x8057000
+[pid  1609] open("/etc/apache-ssl/httpd.conf", O_RDONLY|O_LARGEFILE) = 3
+[pid  1609] brk(0x8063000)              = 0x8063000
+[pid  1609] fstat64(3, {st_mode=S_IFREG|0644, st_size=39688, ...}) = 0
+[pid  1609] read(3, "##\n## httpd.conf -- Apache HTTP "..., 32768) = 32768
+[pid  1609] brk(0x8064000)              = 0x8064000
+[pid  1609] brk(0x8065000)              = 0x8065000
+[pid  1609] brk(0x8066000)              = 0x8066000
+[pid  1609] read(3, "rt/phf_abuse_log.cgi.\n#\n#<Locati"..., 32768) = 6920
+[pid  1609] read(3, "", 32768)          = 0
+[pid  1609] close(3)                    = 0
+[pid  1609] close(1)                    = 0
+[pid  1609] _exit(1)                    = ?
+<... wait4 resumed> [WIFEXITED(s) && WEXITSTATUS(s) == 1], 0, NULL) = 1609
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [CHLD], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [CHLD], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [CHLD], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [CHLD], NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) ---
+wait4(-1, 0xbffff4b8, WNOHANG, NULL)    = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGINT, {SIG_DFL}, {0x806b418, [], 0x4000000}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+read(255, "\ncase \"$1\" in\n  start)\n    echo "..., 1080) = 652
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+brk(0x80bd000)                          = 0x80bd000
+write(1, "Starting web server: apache-ssl."..., 33Starting web server: apache-ssl.
+) = 33
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -9, [1071], SEEK_CUR)      = 0
+fork()                                  = 1610
+[pid  1610] getpid()                    = 1610
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid  1610] close(255 <unfinished ...>
+[pid  1608] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1610] <... close resumed> )       = 0
+[pid  1608] rt_sigprocmask(SIG_BLOCK, [CHLD],  <unfinished ...>
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid  1608] <... rt_sigprocmask resumed> [], 8) = 0
+[pid  1610] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1608] rt_sigprocmask(SIG_BLOCK, [CHLD],  <unfinished ...>
+[pid  1610] rt_sigaction(SIGTSTP, {SIG_DFL},  <unfinished ...>
+[pid  1608] <... rt_sigprocmask resumed> [CHLD], 8) = 0
+[pid  1610] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [CHLD],  <unfinished ...>
+[pid  1610] rt_sigaction(SIGTTIN, {SIG_DFL},  <unfinished ...>
+[pid  1608] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1610] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid  1610] rt_sigaction(SIGTTOU, {SIG_DFL},  <unfinished ...>
+[pid  1608] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1610] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1608] rt_sigprocmask(SIG_BLOCK, [CHLD],  <unfinished ...>
+[pid  1610] rt_sigaction(SIGHUP, {SIG_IGN},  <unfinished ...>
+[pid  1608] <... rt_sigprocmask resumed> [], 8) = 0
+[pid  1610] <... rt_sigaction resumed> {SIG_IGN}, 8) = 0
+[pid  1608] rt_sigaction(SIGINT, {0x806b418, [], 0x4000000},  <unfinished ...>
+[pid  1610] rt_sigaction(SIGINT, {SIG_DFL},  <unfinished ...>
+[pid  1608] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1610] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1608] wait4(-1,  <unfinished ...>
+[pid  1610] rt_sigaction(SIGQUIT, {SIG_DFL}, {SIG_IGN}, 8) = 0
+[pid  1610] rt_sigaction(SIGCHLD, {SIG_DFL}, {0x806c18c, [], 0x4000000}, 8) = 0
+[pid  1610] execve("/usr/sbin/apache-sslctl", ["/usr/sbin/apache-sslctl", "start"], [/* 21 vars */]) = 0
+[pid  1610] uname({sys="Linux", node="zion", ...}) = 0
+[pid  1610] brk(0)                      = 0x80b226c
+[pid  1610] open("/etc/ld.so.preload", O_RDONLY) = -1 ENOENT (No such file or directory)
+[pid  1610] open("/etc/ld.so.cache", O_RDONLY) = 3
+[pid  1610] fstat64(3, {st_mode=S_IFREG|0644, st_size=26536, ...}) = 0
+[pid  1610] old_mmap(NULL, 26536, PROT_READ, MAP_PRIVATE, 3, 0) = 0x40016000
+[pid  1610] close(3)                    = 0
+[pid  1610] open("/lib/libreadline.so.4", O_RDONLY) = 3
+[pid  1610] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0P\244\0"..., 1024) = 1024
+[pid  1610] fstat64(3, {st_mode=S_IFREG|0644, st_size=144280, ...}) = 0
+[pid  1610] old_mmap(NULL, 150704, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x4001d000
+[pid  1610] mprotect(0x4003d000, 19632, PROT_NONE) = 0
+[pid  1610] old_mmap(0x4003d000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x1f000) = 0x4003d000
+[pid  1610] old_mmap(0x40041000, 3248, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x40041000
+[pid  1610] close(3)                    = 0
+[pid  1610] open("/lib/libhistory.so.4", O_RDONLY) = 3
+[pid  1610] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\240\25"..., 1024) = 1024
+[pid  1610] fstat64(3, {st_mode=S_IFREG|0644, st_size=20516, ...}) = 0
+[pid  1610] old_mmap(NULL, 23580, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x40042000
+[pid  1610] mprotect(0x40047000, 3100, PROT_NONE) = 0
+[pid  1610] old_mmap(0x40047000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x4000) = 0x40047000
+[pid  1610] close(3)                    = 0
+[pid  1610] open("/lib/libncurses.so.5", O_RDONLY) = 3
+[pid  1610] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\240\341"..., 1024) = 1024
+[pid  1610] fstat64(3, {st_mode=S_IFREG|0644, st_size=245944, ...}) = 0
+[pid  1610] old_mmap(NULL, 260704, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x40048000
+[pid  1610] mprotect(0x4007c000, 47712, PROT_NONE) = 0
+[pid  1610] old_mmap(0x4007c000, 36864, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x33000) = 0x4007c000
+[pid  1610] old_mmap(0x40085000, 10848, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x40085000
+[pid  1610] close(3)                    = 0
+[pid  1610] open("/lib/libdl.so.2", O_RDONLY) = 3
+[pid  1610] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\264\34"..., 1024) = 1024
+[pid  1610] fstat64(3, {st_mode=S_IFREG|0644, st_size=9460, ...}) = 0
+[pid  1610] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40088000
+[pid  1610] old_mmap(NULL, 12340, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x40089000
+[pid  1610] mprotect(0x4008b000, 4148, PROT_NONE) = 0
+[pid  1610] old_mmap(0x4008b000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x1000) = 0x4008b000
+[pid  1610] old_mmap(0x4008c000, 52, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x4008c000
+[pid  1610] close(3)                    = 0
+[pid  1610] open("/lib/libc.so.6", O_RDONLY) = 3
+[pid  1610] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\210\326"..., 1024) = 1024
+[pid  1610] fstat64(3, {st_mode=S_IFREG|0755, st_size=1170728, ...}) = 0
+[pid  1610] old_mmap(NULL, 1187168, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x4008d000
+[pid  1610] mprotect(0x401a5000, 40288, PROT_NONE) = 0
+[pid  1610] old_mmap(0x401a5000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x117000) = 0x401a5000
+[pid  1610] old_mmap(0x401ab000, 15712, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x401ab000
+[pid  1610] close(3)                    = 0
+[pid  1610] munmap(0x40016000, 26536)   = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] open("/dev/tty", O_RDWR|O_NONBLOCK|O_LARGEFILE) = 3
+[pid  1610] close(3)                    = 0
+[pid  1610] brk(0)                      = 0x80b226c
+[pid  1610] brk(0x80b3000)              = 0x80b3000
+[pid  1610] brk(0x80b4000)              = 0x80b4000
+[pid  1610] getuid32()                  = 0
+[pid  1610] getgid32()                  = 0
+[pid  1610] geteuid32()                 = 0
+[pid  1610] getegid32()                 = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] time(NULL)                  = 1001457857
+[pid  1610] brk(0x80b5000)              = 0x80b5000
+[pid  1610] open("/etc/mtab", O_RDONLY) = 3
+[pid  1610] fstat64(3, {st_mode=S_IFREG|0644, st_size=128, ...}) = 0
+[pid  1610] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+[pid  1610] read(3, "/dev/hda1 / ext2 rw,errors=remou"..., 4096) = 128
+[pid  1610] close(3)                    = 0
+[pid  1610] munmap(0x40016000, 4096)    = 0
+[pid  1610] open("/proc/meminfo", O_RDONLY) = 3
+[pid  1610] fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+[pid  1610] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+[pid  1610] read(3, "        total:    used:    free:"..., 4096) = 574
+[pid  1610] close(3)                    = 0
+[pid  1610] munmap(0x40016000, 4096)    = 0
+[pid  1610] brk(0x80b6000)              = 0x80b6000
+[pid  1610] rt_sigaction(SIGCHLD, {SIG_DFL}, {SIG_DFL}, 8) = 0
+[pid  1610] rt_sigaction(SIGCHLD, {SIG_DFL}, {SIG_DFL}, 8) = 0
+[pid  1610] rt_sigaction(SIGINT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+[pid  1610] rt_sigaction(SIGINT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+[pid  1610] rt_sigaction(SIGQUIT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+[pid  1610] rt_sigaction(SIGQUIT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigaction(SIGQUIT, {SIG_IGN}, {SIG_DFL}, 8) = 0
+[pid  1610] uname({sys="Linux", node="zion", ...}) = 0
+[pid  1610] stat64("/root", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+[pid  1610] stat64(".", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+[pid  1610] getpid()                    = 1610
+[pid  1610] getppid()                   = 1608
+[pid  1610] brk(0x80b7000)              = 0x80b7000
+[pid  1610] getpgrp()                   = 1607
+[pid  1610] rt_sigaction(SIGCHLD, {0x806c18c, [], 0x4000000}, {SIG_DFL}, 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] brk(0x80b8000)              = 0x80b8000
+[pid  1610] open("/usr/sbin/apache-sslctl", O_RDONLY|O_LARGEFILE) = 3
+[pid  1610] ioctl(3, SNDCTL_TMR_TIMEBASE, 0xbffff958) = -1 ENOTTY (Inappropriate ioctl for device)
+[pid  1610] _llseek(3, 0, [0], SEEK_CUR) = 0
+[pid  1610] read(3, "#!/bin/sh\n#\n# Apache control scr"..., 80) = 80
+[pid  1610] _llseek(3, 0, [0], SEEK_SET) = 0
+[pid  1610] getrlimit(0x7, 0xbffff9b4)  = 0
+[pid  1610] dup2(3, 255)                = 255
+[pid  1610] close(3)                    = 0
+[pid  1610] fcntl64(255, F_SETFD, FD_CLOEXEC) = 0
+[pid  1610] fcntl64(255, F_GETFL)       = 0x8000 (flags O_RDONLY|O_LARGEFILE)
+[pid  1610] fstat64(255, {st_mode=S_IFREG|0755, st_size=7119, ...}) = 0
+[pid  1610] _llseek(255, 0, [0], SEEK_CUR) = 0
+[pid  1610] brk(0x80ba000)              = 0x80ba000
+[pid  1610] brk(0x80bb000)              = 0x80bb000
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] read(255, "#!/bin/sh\n#\n# Apache control scr"..., 7119) = 7119
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] brk(0x80bc000)              = 0x80bc000
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] brk(0x80bd000)              = 0x80bd000
+[pid  1610] brk(0x80be000)              = 0x80be000
+[pid  1610] brk(0x80bf000)              = 0x80bf000
+[pid  1610] brk(0x80c0000)              = 0x80c0000
+[pid  1610] brk(0x80c1000)              = 0x80c1000
+[pid  1610] brk(0x80c2000)              = 0x80c2000
+[pid  1610] brk(0x80c3000)              = 0x80c3000
+[pid  1610] brk(0x80c4000)              = 0x80c4000
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] stat64("/var/run/apache-ssl.pid", 0xbffff59c) = -1 ENOENT (No such file or directory)
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+[pid  1610] _llseek(255, -2842, [4277], SEEK_CUR) = 0
+[pid  1610] fork()                      = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1611] close(255 <unfinished ...>
+[pid  1610] rt_sigprocmask(SIG_BLOCK, [CHLD],  <unfinished ...>
+[pid  1611] <... close resumed> )       = 0
+[pid  1610] <... rt_sigprocmask resumed> [], 8) = 0
+[pid  1611] rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid  1611] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1610] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1611] rt_sigaction(SIGTSTP, {SIG_DFL},  <unfinished ...>
+[pid  1610] rt_sigprocmask(SIG_BLOCK, [CHLD],  <unfinished ...>
+[pid  1611] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1610] <... rt_sigprocmask resumed> [], 8) = 0
+[pid  1611] rt_sigaction(SIGTTIN, {SIG_DFL},  <unfinished ...>
+[pid  1610] rt_sigaction(SIGINT, {0x806b418, [], 0x4000000},  <unfinished ...>
+[pid  1611] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1610] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1611] rt_sigaction(SIGTTOU, {SIG_DFL}, {SIG_DFL}, 8) = 0
+[pid  1610] wait4(-1,  <unfinished ...>
+[pid  1611] rt_sigaction(SIGINT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+[pid  1611] rt_sigaction(SIGQUIT, {SIG_DFL}, {SIG_IGN}, 8) = 0
+[pid  1611] rt_sigaction(SIGCHLD, {SIG_DFL}, {0x806c18c, [], 0x4000000}, 8) = 0
+[pid  1611] execve("/usr/sbin/apache-ssl", ["/usr/sbin/apache-ssl"], [/* 21 vars */]) = 0
+[pid  1611] uname({sys="Linux", node="zion", ...}) = 0
+[pid  1611] brk(0)                      = 0x80990d8
+[pid  1611] open("/etc/ld.so.preload", O_RDONLY) = -1 ENOENT (No such file or directory)
+[pid  1611] open("/etc/ld.so.cache", O_RDONLY) = 3
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=26536, ...}) = 0
+[pid  1611] old_mmap(NULL, 26536, PROT_READ, MAP_PRIVATE, 3, 0) = 0x40016000
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/lib/libm.so.6", O_RDONLY) = 3
+[pid  1611] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0000I\0\000"..., 1024) = 1024
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=134688, ...}) = 0
+[pid  1611] old_mmap(NULL, 137204, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x4001d000
+[pid  1611] mprotect(0x4003e000, 2036, PROT_NONE) = 0
+[pid  1611] old_mmap(0x4003e000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x20000) = 0x4003e000
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/lib/libcrypt.so.1", O_RDONLY) = 3
+[pid  1611] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\240\20"..., 1024) = 1024
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=21000, ...}) = 0
+[pid  1611] old_mmap(NULL, 183740, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x4003f000
+[pid  1611] mprotect(0x40044000, 163260, PROT_NONE) = 0
+[pid  1611] old_mmap(0x40044000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x4000) = 0x40044000
+[pid  1611] old_mmap(0x40045000, 159164, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x40045000
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/usr/lib/libgdbm.so.1", O_RDONLY) = 3
+[pid  1611] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\340\24"..., 1024) = 1024
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=23276, ...}) = 0
+[pid  1611] old_mmap(NULL, 23708, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x4006c000
+[pid  1611] mprotect(0x40071000, 3228, PROT_NONE) = 0
+[pid  1611] old_mmap(0x40071000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x4000) = 0x40071000
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/lib/libdb2.so.2", O_RDONLY) = 3
+[pid  1611] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\0_\0\000"..., 1024) = 1024
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=262712, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40072000
+[pid  1611] old_mmap(NULL, 265836, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x40073000
+[pid  1611] mprotect(0x400b3000, 3692, PROT_NONE) = 0
+[pid  1611] old_mmap(0x400b3000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x3f000) = 0x400b3000
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/lib/libdl.so.2", O_RDONLY) = 3
+[pid  1611] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\264\34"..., 1024) = 1024
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=9460, ...}) = 0
+[pid  1611] old_mmap(NULL, 12340, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x400b4000
+[pid  1611] mprotect(0x400b6000, 4148, PROT_NONE) = 0
+[pid  1611] old_mmap(0x400b6000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x1000) = 0x400b6000
+[pid  1611] old_mmap(0x400b7000, 52, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x400b7000
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/usr/lib/libssl.so.0.9.6", O_RDONLY) = 3
+[pid  1611] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\260\214"..., 1024) = 1024
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=176344, ...}) = 0
+[pid  1611] old_mmap(NULL, 181088, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x400b8000
+[pid  1611] mprotect(0x400e1000, 13152, PROT_NONE) = 0
+[pid  1611] old_mmap(0x400e1000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x28000) = 0x400e1000
+[pid  1611] old_mmap(0x400e4000, 864, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x400e4000
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/usr/lib/libcrypto.so.0.9.6", O_RDONLY) = 3
+[pid  1611] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0P$\2\000"..., 1024) = 1024
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=786264, ...}) = 0
+[pid  1611] old_mmap(NULL, 802176, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x400e5000
+[pid  1611] mprotect(0x4019b000, 56704, PROT_NONE) = 0
+[pid  1611] old_mmap(0x4019b000, 45056, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0xb5000) = 0x4019b000
+[pid  1611] old_mmap(0x401a6000, 11648, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x401a6000
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/lib/libc.so.6", O_RDONLY) = 3
+[pid  1611] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\210\326"..., 1024) = 1024
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0755, st_size=1170728, ...}) = 0
+[pid  1611] old_mmap(NULL, 1187168, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x401a9000
+[pid  1611] mprotect(0x402c1000, 40288, PROT_NONE) = 0
+[pid  1611] old_mmap(0x402c1000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x117000) = 0x402c1000
+[pid  1611] old_mmap(0x402c7000, 15712, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x402c7000
+[pid  1611] close(3)                    = 0
+[pid  1611] munmap(0x40016000, 26536)   = 0
+[pid  1611] brk(0)                      = 0x80990d8
+[pid  1611] brk(0x809b0f8)              = 0x809b0f8
+[pid  1611] brk(0x809c000)              = 0x809c000
+[pid  1611] brk(0x809f000)              = 0x809f000
+[pid  1611] brk(0x80a2000)              = 0x80a2000
+[pid  1611] brk(0x80a5000)              = 0x80a5000
+[pid  1611] brk(0x80a7000)              = 0x80a7000
+[pid  1611] stat64("/usr/lib/apache-ssl/suexec", {st_mode=S_IFREG|S_ISUID|0755, st_size=13100, ...}) = 0
+[pid  1611] lstat64("/etc/apache-ssl/httpd.conf", {st_mode=S_IFREG|0644, st_size=39688, ...}) = 0
+[pid  1611] open("/etc/apache-ssl/httpd.conf", O_RDONLY|O_LARGEFILE) = 3
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=39688, ...}) = 0
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=39688, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+[pid  1611] read(3, "##\n## httpd.conf -- Apache HTTP "..., 4096) = 4096
+[pid  1611] stat64("/etc/apache-ssl", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+[pid  1611] read(3, "apache/srm.conf\n#AccessConfig /e"..., 4096) = 4096
+[pid  1611] open("/usr/lib/apache/1.3/mod_log_config_ssl.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\240\21"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=13296, ...}) = 0
+[pid  1611] old_mmap(NULL, 16304, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x40017000
+[pid  1611] mprotect(0x4001a000, 4016, PROT_NONE) = 0
+[pid  1611] old_mmap(0x4001a000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x2000) = 0x4001a000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_mime_ssl.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\260\r\0"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=11128, ...}) = 0
+[pid  1611] old_mmap(NULL, 14272, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x402cb000
+[pid  1611] mprotect(0x402ce000, 1984, PROT_NONE) = 0
+[pid  1611] old_mmap(0x402ce000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x2000) = 0x402ce000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_negotiation.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\0\22\0"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=20972, ...}) = 0
+[pid  1611] old_mmap(NULL, 23980, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x402cf000
+[pid  1611] mprotect(0x402d4000, 3500, PROT_NONE) = 0
+[pid  1611] old_mmap(0x402d4000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x4000) = 0x402d4000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/etc/ld.so.cache", O_RDONLY) = 4
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=26536, ...}) = 0
+[pid  1611] old_mmap(NULL, 26536, PROT_READ, MAP_PRIVATE, 4, 0) = 0x402d5000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/lib/libdb.so.2", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0P\24\0\000"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=51024, ...}) = 0
+[pid  1611] old_mmap(NULL, 53876, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x402dc000
+[pid  1611] mprotect(0x402e9000, 628, PROT_NONE) = 0
+[pid  1611] old_mmap(0x402e9000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0xc000) = 0x402e9000
+[pid  1611] close(4)                    = 0
+[pid  1611] munmap(0x402d5000, 26536)   = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_status.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0000\r\0"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=15232, ...}) = 0
+[pid  1611] old_mmap(NULL, 18252, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x402d5000
+[pid  1611] mprotect(0x402d9000, 1868, PROT_NONE) = 0
+[pid  1611] old_mmap(0x402d9000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x3000) = 0x402d9000
+[pid  1611] close(4)                    = 0
+[pid  1611] read(3, " LoadModule info_module /usr/lib"..., 4096) = 4096
+[pid  1611] open("/usr/lib/apache/1.3/mod_autoindex.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\320\27"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=28208, ...}) = 0
+[pid  1611] old_mmap(NULL, 31220, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x402ea000
+[pid  1611] mprotect(0x402f1000, 2548, PROT_NONE) = 0
+[pid  1611] old_mmap(0x402f1000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x6000) = 0x402f1000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_dir.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0P\t\0\000"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=5472, ...}) = 0
+[pid  1611] old_mmap(NULL, 8480, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x402f2000
+[pid  1611] mprotect(0x402f3000, 4384, PROT_NONE) = 0
+[pid  1611] old_mmap(0x402f3000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0) = 0x402f3000
+[pid  1611] close(4)                    = 0
+[pid  1611] brk(0x80aa000)              = 0x80aa000
+[pid  1611] open("/usr/lib/apache/1.3/mod_cgi.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\20\22\0"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=11240, ...}) = 0
+[pid  1611] old_mmap(NULL, 14248, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x402f5000
+[pid  1611] mprotect(0x402f8000, 1960, PROT_NONE) = 0
+[pid  1611] old_mmap(0x402f8000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x2000) = 0x402f8000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_userdir.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0`\t\0\000"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=6180, ...}) = 0
+[pid  1611] old_mmap(NULL, 9188, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x402f9000
+[pid  1611] mprotect(0x402fb000, 996, PROT_NONE) = 0
+[pid  1611] old_mmap(0x402fb000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x1000) = 0x402fb000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_alias.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\320\n\0"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=7632, ...}) = 0
+[pid  1611] old_mmap(NULL, 10640, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x402fc000
+[pid  1611] mprotect(0x402fe000, 2448, PROT_NONE) = 0
+[pid  1611] old_mmap(0x402fe000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x1000) = 0x402fe000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_rewrite.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\260\35"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=44420, ...}) = 0
+[pid  1611] old_mmap(NULL, 47440, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x402ff000
+[pid  1611] mprotect(0x4030a000, 2384, PROT_NONE) = 0
+[pid  1611] old_mmap(0x4030a000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0xa000) = 0x4030a000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_access.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\0\n\0\000"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=7148, ...}) = 0
+[pid  1611] old_mmap(NULL, 10160, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x4030b000
+[pid  1611] mprotect(0x4030d000, 1968, PROT_NONE) = 0
+[pid  1611] old_mmap(0x4030d000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x1000) = 0x4030d000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_auth_ssl.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0@\f\0\000"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=7656, ...}) = 0
+[pid  1611] old_mmap(NULL, 10664, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x4030e000
+[pid  1611] mprotect(0x40310000, 2472, PROT_NONE) = 0
+[pid  1611] old_mmap(0x40310000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x1000) = 0x40310000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_expires.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\360\n\0"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=7132, ...}) = 0
+[pid  1611] old_mmap(NULL, 10140, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x40311000
+[pid  1611] mprotect(0x40313000, 1948, PROT_NONE) = 0
+[pid  1611] old_mmap(0x40313000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x1000) = 0x40313000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_unique_id.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\20\t\0"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=5792, ...}) = 0
+[pid  1611] brk(0x80ab000)              = 0x80ab000
+[pid  1611] old_mmap(NULL, 8840, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x40314000
+[pid  1611] mprotect(0x40316000, 648, PROT_NONE) = 0
+[pid  1611] old_mmap(0x40316000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x1000) = 0x40316000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/mod_setenvif.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0000\v\0"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=7356, ...}) = 0
+[pid  1611] old_mmap(NULL, 10364, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x40317000
+[pid  1611] mprotect(0x40319000, 2172, PROT_NONE) = 0
+[pid  1611] old_mmap(0x40319000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x1000) = 0x40319000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/usr/lib/apache/1.3/libssl.so", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0000+\0\000"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=31832, ...}) = 0
+[pid  1611] old_mmap(NULL, 34896, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x4031a000
+[pid  1611] mprotect(0x40322000, 2128, PROT_NONE) = 0
+[pid  1611] old_mmap(0x40322000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x7000) = 0x40322000
+[pid  1611] close(4)                    = 0
+[pid  1611] socket(PF_UNIX, SOCK_STREAM, 0) = 4
+[pid  1611] connect(4, {sin_family=AF_UNIX, path="/var/run/.nscd_socket"}, 110) = -1 ENOENT (No such file or directory)
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/etc/nsswitch.conf", O_RDONLY) = 4
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=465, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(4, "# /etc/nsswitch.conf\n#\n# Example"..., 4096) = 465
+[pid  1611] brk(0x80ac000)              = 0x80ac000
+[pid  1611] read(4, "", 4096)           = 0
+[pid  1611] close(4)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] open("/etc/ld.so.cache", O_RDONLY) = 4
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=26536, ...}) = 0
+[pid  1611] old_mmap(NULL, 26536, PROT_READ, MAP_PRIVATE, 4, 0) = 0x40323000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/lib/libnss_compat.so.2", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\220\33"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=41700, ...}) = 0
+[pid  1611] old_mmap(NULL, 44688, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x4032a000
+[pid  1611] mprotect(0x40334000, 3728, PROT_NONE) = 0
+[pid  1611] old_mmap(0x40334000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x9000) = 0x40334000
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/lib/libnsl.so.1", O_RDONLY) = 4
+[pid  1611] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0 B\0\000"..., 1024) = 1024
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=71380, ...}) = 0
+[pid  1611] old_mmap(NULL, 82780, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x40335000
+[pid  1611] mprotect(0x40346000, 13148, PROT_NONE) = 0
+[pid  1611] old_mmap(0x40346000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x10000) = 0x40346000
+[pid  1611] old_mmap(0x40348000, 4956, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x40348000
+[pid  1611] close(4)                    = 0
+[pid  1611] munmap(0x40323000, 26536)   = 0
+[pid  1611] uname({sys="Linux", node="zion", ...}) = 0
+[pid  1611] open("/etc/passwd", O_RDONLY) = 4
+[pid  1611] fcntl64(4, F_GETFD)         = 0
+[pid  1611] fcntl64(4, F_SETFD, FD_CLOEXEC) = 0
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=1213, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] _llseek(4, 0, [0], SEEK_CUR) = 0
+[pid  1611] read(4, "root:x:0:0:root:/root:/bin/bash\n"..., 4096) = 1213
+[pid  1611] close(4)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] socket(PF_UNIX, SOCK_STREAM, 0) = 4
+[pid  1611] connect(4, {sin_family=AF_UNIX, path="/var/run/.nscd_socket"}, 110) = -1 ENOENT (No such file or directory)
+[pid  1611] close(4)                    = 0
+[pid  1611] open("/etc/group", O_RDONLY) = 4
+[pid  1611] fcntl64(4, F_GETFD)         = 0
+[pid  1611] fcntl64(4, F_SETFD, FD_CLOEXEC) = 0
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0644, st_size=567, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] _llseek(4, 0, [0], SEEK_CUR) = 0
+[pid  1611] read(4, "root:x:0:\ndaemon:x:1:\nbin:x:2:\ns"..., 4096) = 567
+[pid  1611] close(4)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] read(3, "invent host names and hope they "..., 4096) = 4096
+[pid  1611] read(3, "t to form a \"canonical\" name.  W"..., 4096) = 4096
+[pid  1611] brk(0x80af000)              = 0x80af000
+[pid  1611] read(3, "# Note that if you include a tra"..., 4096) = 4096
+[pid  1611] brk(0x80b2000)              = 0x80b2000
+[pid  1611] read(3, "aic/X 2.1+)\n    # uncompress inf"..., 4096) = 4096
+[pid  1611] read(3, "matching file is called. This el"..., 4096) = 4096
+[pid  1611] read(3, "rt/phf_abuse_log.cgi.\n#\n#<Locati"..., 4096) = 4096
+[pid  1611] brk(0x80b5000)              = 0x80b5000
+[pid  1611] read(3, "apache/apache_1.2.5-ssl/SSLconf/"..., 4096) = 2824
+[pid  1611] read(3, "", 4096)           = 0
+[pid  1611] close(3)                    = 0
+[pid  1611] munmap(0x40016000, 4096)    = 0
+[pid  1611] stat64("/etc/apache-ssl/srm.conf", {st_mode=S_IFREG|0644, st_size=297, ...}) = 0
+[pid  1611] lstat64("/etc/apache-ssl/srm.conf", {st_mode=S_IFREG|0644, st_size=297, ...}) = 0
+[pid  1611] open("/etc/apache-ssl/srm.conf", O_RDONLY|O_LARGEFILE) = 3
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=297, ...}) = 0
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=297, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+[pid  1611] read(3, "#\n# This is the default file for"..., 4096) = 297
+[pid  1611] read(3, "", 4096)           = 0
+[pid  1611] close(3)                    = 0
+[pid  1611] munmap(0x40016000, 4096)    = 0
+[pid  1611] stat64("/etc/apache-ssl/access.conf", {st_mode=S_IFREG|0644, st_size=285, ...}) = 0
+[pid  1611] lstat64("/etc/apache-ssl/access.conf", {st_mode=S_IFREG|0644, st_size=285, ...}) = 0
+[pid  1611] open("/etc/apache-ssl/access.conf", O_RDONLY|O_LARGEFILE) = 3
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=285, ...}) = 0
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=285, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+[pid  1611] read(3, "#\n# This is the default file for"..., 4096) = 285
+[pid  1611] read(3, "", 4096)           = 0
+[pid  1611] close(3)                    = 0
+[pid  1611] munmap(0x40016000, 4096)    = 0
+[pid  1611] uname({sys="Linux", node="zion", ...}) = 0
+[pid  1611] gettimeofday({1001457858, 68880}, NULL) = 0
+[pid  1611] getpid()                    = 1611
+[pid  1611] open("/etc/resolv.conf", O_RDONLY) = 3
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=130, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+[pid  1611] read(3, "nameserver 127.0.0.1\nsearch jose"..., 4096) = 130
+[pid  1611] read(3, "", 4096)           = 0
+[pid  1611] close(3)                    = 0
+[pid  1611] munmap(0x40016000, 4096)    = 0
+[pid  1611] socket(PF_UNIX, SOCK_STREAM, 0) = 3
+[pid  1611] connect(3, {sin_family=AF_UNIX, path="/var/run/.nscd_socket"}, 110) = -1 ENOENT (No such file or directory)
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/etc/ld.so.cache", O_RDONLY) = 3
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=26536, ...}) = 0
+[pid  1611] old_mmap(NULL, 26536, PROT_READ, MAP_PRIVATE, 3, 0) = 0x40323000
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/lib/libnss_files.so.2", O_RDONLY) = 3
+[pid  1611] read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\200\"\0"..., 1024) = 1024
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=33924, ...}) = 0
+[pid  1611] old_mmap(NULL, 37252, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x4034a000
+[pid  1611] mprotect(0x40352000, 4484, PROT_NONE) = 0
+[pid  1611] old_mmap(0x40352000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x7000) = 0x40352000
+[pid  1611] old_mmap(0x40353000, 388, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x40353000
+[pid  1611] close(3)                    = 0
+[pid  1611] munmap(0x40323000, 26536)   = 0
+[pid  1611] open("/etc/host.conf", O_RDONLY) = 3
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=26, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+[pid  1611] read(3, "order hosts,bind\nmulti on\n", 4096) = 26
+[pid  1611] read(3, "", 4096)           = 0
+[pid  1611] close(3)                    = 0
+[pid  1611] munmap(0x40016000, 4096)    = 0
+[pid  1611] open("/etc/hosts", O_RDONLY) = 3
+[pid  1611] fcntl64(3, F_GETFD)         = 0
+[pid  1611] fcntl64(3, F_SETFD, FD_CLOEXEC) = 0
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=308, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+[pid  1611] read(3, "127.0.0.1\tlocalhost\n192.168.1.10"..., 4096) = 308
+[pid  1611] read(3, "", 4096)           = 0
+[pid  1611] close(3)                    = 0
+[pid  1611] munmap(0x40016000, 4096)    = 0
+[pid  1611] open("/var/log/apache-ssl/error.log", O_WRONLY|O_APPEND|O_CREAT|O_LARGEFILE, 0666) = 3
+[pid  1611] fcntl64(3, F_DUPFD, 15)     = 15
+[pid  1611] close(3)                    = 0
+[pid  1611] fcntl64(15, F_GETFL)        = 0x8401 (flags O_WRONLY|O_APPEND|O_LARGEFILE)
+[pid  1611] fstat64(15, {st_mode=S_IFREG|0644, st_size=124, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+[pid  1611] _llseek(15, 0, [0], SEEK_CUR) = 0
+[pid  1611] dup2(15, 2)                 = 2
+[pid  1611] dup(2)                      = 3
+[pid  1611] close(2)                    = 0
+[pid  1611] dup(1)                      = 2
+[pid  1611] brk(0x80b6000)              = 0x80b6000
+[pid  1611] brk(0x80b7000)              = 0x80b7000
+[pid  1611] brk(0x80b8000)              = 0x80b8000
+[pid  1611] brk(0x80b9000)              = 0x80b9000
+[pid  1611] brk(0x80ba000)              = 0x80ba000
+[pid  1611] brk(0x80bc000)              = 0x80bc000
+[pid  1611] brk(0x80bd000)              = 0x80bd000
+[pid  1611] open("/usr/lib/ssl/cert.pem", O_RDONLY) = -1 ENOENT (No such file or directory)
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] open("/etc/apache-ssl/apache.pem", O_RDONLY|O_LARGEFILE) = 4
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0600, st_size=1827, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(4, "-----BEGIN RSA PRIVATE KEY-----\n"..., 4096) = 1827
+[pid  1611] brk(0x80be000)              = 0x80be000
+[pid  1611] close(4)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] write(2, "Reading key for server zion.int."..., 48Reading key for server zion.int.josefine.at:443
+) = 48
+[pid  1611] open("/etc/apache-ssl/apache.pem", O_RDONLY|O_LARGEFILE) = 4
+[pid  1611] fstat64(4, {st_mode=S_IFREG|0600, st_size=1827, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(4, "-----BEGIN RSA PRIVATE KEY-----\n"..., 4096) = 1827
+[pid  1611] close(4)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] open("/dev/null", O_RDONLY|O_NONBLOCK|O_DIRECTORY) = -1 ENOTDIR (Not a directory)
+[pid  1611] open("/etc/apache-ssl", O_RDONLY|O_NONBLOCK|O_LARGEFILE|O_DIRECTORY) = 4
+[pid  1611] fstat64(4, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+[pid  1611] fcntl64(4, F_SETFD, FD_CLOEXEC) = 0
+[pid  1611] brk(0x80c0000)              = 0x80c0000
+[pid  1611] getdents64(0x4, 0x80bd738, 0x1000, 0x2) = 296
+[pid  1611] open("/etc/apache-ssl/.", O_RDONLY) = 5
+[pid  1611] fstat64(5, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(5, 0x4001b000, 4096)   = -1 EISDIR (Is a directory)
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] close(5)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] open("/etc/apache-ssl/..", O_RDONLY) = 5
+[pid  1611] fstat64(5, {st_mode=S_IFDIR|0755, st_size=8192, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(5, 0x4001b000, 4096)   = -1 EISDIR (Is a directory)
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] close(5)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] open("/etc/apache-ssl/conf", O_RDONLY) = 5
+[pid  1611] fstat64(5, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(5, 0x4001b000, 4096)   = -1 EISDIR (Is a directory)
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] close(5)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] open("/etc/apache-ssl/mime.types", O_RDONLY) = 5
+[pid  1611] fstat64(5, {st_mode=S_IFREG|0644, st_size=5488, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(5, "################################"..., 4096) = 4096
+[pid  1611] read(5, "image/x-corelphotopaint\t\t\t\tcpt\ni"..., 4096) = 1392
+[pid  1611] read(5, "", 4096)           = 0
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] close(5)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] open("/etc/apache-ssl/apache.pem", O_RDONLY) = 5
+[pid  1611] fstat64(5, {st_mode=S_IFREG|0600, st_size=1827, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(5, "-----BEGIN RSA PRIVATE KEY-----\n"..., 4096) = 1827
+[pid  1611] read(5, "", 4096)           = 0
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] close(5)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] open("/etc/apache-ssl/cf0854f1.0", O_RDONLY) = 5
+[pid  1611] fstat64(5, {st_mode=S_IFREG|0600, st_size=1827, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(5, "-----BEGIN RSA PRIVATE KEY-----\n"..., 4096) = 1827
+[pid  1611] read(5, "", 4096)           = 0
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] close(5)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] open("/etc/apache-ssl/httpd.conf", O_RDONLY) = 5
+[pid  1611] fstat64(5, {st_mode=S_IFREG|0644, st_size=39688, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(5, "##\n## httpd.conf -- Apache HTTP "..., 4096) = 4096
+[pid  1611] read(5, "apache/srm.conf\n#AccessConfig /e"..., 4096) = 4096
+[pid  1611] read(5, " LoadModule info_module /usr/lib"..., 4096) = 4096
+[pid  1611] read(5, "invent host names and hope they "..., 4096) = 4096
+[pid  1611] read(5, "t to form a \"canonical\" name.  W"..., 4096) = 4096
+[pid  1611] read(5, "# Note that if you include a tra"..., 4096) = 4096
+[pid  1611] read(5, "aic/X 2.1+)\n    # uncompress inf"..., 4096) = 4096
+[pid  1611] read(5, "matching file is called. This el"..., 4096) = 4096
+[pid  1611] read(5, "rt/phf_abuse_log.cgi.\n#\n#<Locati"..., 4096) = 4096
+[pid  1611] read(5, "apache/apache_1.2.5-ssl/SSLconf/"..., 4096) = 2824
+[pid  1611] read(5, "", 4096)           = 0
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] close(5)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] open("/etc/apache-ssl/access.conf", O_RDONLY) = 5
+[pid  1611] fstat64(5, {st_mode=S_IFREG|0644, st_size=285, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(5, "#\n# This is the default file for"..., 4096) = 285
+[pid  1611] read(5, "", 4096)           = 0
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] close(5)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] open("/etc/apache-ssl/srm.conf", O_RDONLY) = 5
+[pid  1611] fstat64(5, {st_mode=S_IFREG|0644, st_size=297, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(5, "#\n# This is the default file for"..., 4096) = 297
+[pid  1611] read(5, "", 4096)           = 0
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] close(5)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] open("/etc/apache-ssl/cron.conf", O_RDONLY) = 5
+[pid  1611] fstat64(5, {st_mode=S_IFREG|0644, st_size=816, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] read(5, "# Debian Apache cron.daily confi"..., 4096) = 816
+[pid  1611] read(5, "", 4096)           = 0
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] getpid()                    = 1611
+[pid  1611] close(5)                    = 0
+[pid  1611] munmap(0x4001b000, 4096)    = 0
+[pid  1611] getdents64(0x4, 0x80bd738, 0x1000, 0x15) = 0
+[pid  1611] fstat64(1, {st_mode=S_IFREG|0644, st_size=67683, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001b000
+[pid  1611] fork()                      = 1612
+[pid  1611] close(2 <unfinished ...>
+[pid  1612] rt_sigaction(SIGCHLD, {SIG_DFL},  <unfinished ...>
+[pid  1611] <... close resumed> )       = 0
+[pid  1612] <... rt_sigaction resumed> {SIG_DFL}, 8) = 0
+[pid  1611] dup(3 <unfinished ...>
+[pid  1612] dup2(15, 2 <unfinished ...>
+[pid  1611] <... dup resumed> )         = 2
+[pid  1612] <... dup2 resumed> )        = 2
+[pid  1611] close(3 <unfinished ...>
+[pid  1612] dup2(2, 1 <unfinished ...>
+[pid  1611] <... close resumed> )       = 0
+[pid  1612] <... dup2 resumed> )        = 1
+[pid  1611] uname( <unfinished ...>
+[pid  1612] close(15 <unfinished ...>
+[pid  1611] <... uname resumed> {sys="Linux", node="zion", ...}) = 0
+[pid  1612] <... close resumed> )       = 0
+[pid  1611] socket(PF_UNIX, SOCK_STREAM, 0) = 3
+[pid  1611] connect(3, {sin_family=AF_UNIX, path="/var/run/.nscd_socket"}, 110 <unfinished ...>
+[pid  1612] getpid()                    = 1612
+[pid  1611] <... connect resumed> )     = -1 ENOENT (No such file or directory)
+[pid  1612] execve("/usr/lib/apache-ssl/gcache", ["/usr/lib/apache-ssl/gcache", "33", "/var/run/gcache_port"], [/* 21 vars */] <unfinished ...>
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/etc/hosts", O_RDONLY) = 3
+[pid  1611] fcntl64(3, F_GETFD)         = 0
+[pid  1611] fcntl64(3, F_SETFD, FD_CLOEXEC) = 0
+[pid  1611] fstat64(3,  <unfinished ...>
+[pid  1612] <... execve resumed> )      = 0
+[pid  1611] <... fstat64 resumed> {st_mode=S_IFREG|0644, st_size=308, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+[pid  1612] uname( <unfinished ...>
+[pid  1611] <... old_mmap resumed> )    = 0x4001c000
+[pid  1612] <... uname resumed> {sys="Linux", node="zion", ...}) = 0
+[pid  1611] read(3,  <unfinished ...>
+[pid  1612] brk(0 <unfinished ...>
+[pid  1611] <... read resumed> "127.0.0.1\tlocalhost\n192.168.1.10"..., 4096) = 308
+[pid  1612] <... brk resumed> )         = 0x804a8d8
+[pid  1611] read(3,  <unfinished ...>
+[pid  1612] open("/etc/ld.so.preload", O_RDONLY <unfinished ...>
+[pid  1611] <... read resumed> "", 4096) = 0
+[pid  1612] <... open resumed> )        = -1 ENOENT (No such file or directory)
+[pid  1611] close(3 <unfinished ...>
+[pid  1612] open("/etc/ld.so.cache", O_RDONLY <unfinished ...>
+[pid  1611] <... close resumed> )       = 0
+[pid  1612] <... open resumed> )        = 4
+[pid  1611] munmap(0x4001c000, 4096 <unfinished ...>
+[pid  1612] fstat64(4,  <unfinished ...>
+[pid  1611] <... munmap resumed> )      = 0
+[pid  1612] <... fstat64 resumed> {st_mode=S_IFREG|0644, st_size=26536, ...}) = 0
+[pid  1611] gettimeofday( <unfinished ...>
+[pid  1612] old_mmap(NULL, 26536, PROT_READ, MAP_PRIVATE, 4, 0 <unfinished ...>
+[pid  1611] <... gettimeofday resumed> {1001457858, 119646}, NULL) = 0
+[pid  1612] <... old_mmap resumed> )    = 0x40016000
+[pid  1611] select(0, NULL, NULL, NULL, {0, 880354} <unfinished ...>
+[pid  1612] close(4)                    = 0
+[pid  1612] open("/lib/libm.so.6", O_RDONLY) = 4
+[pid  1612] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0000I\0\000"..., 1024) = 1024
+[pid  1612] fstat64(4, {st_mode=S_IFREG|0644, st_size=134688, ...}) = 0
+[pid  1612] old_mmap(NULL, 137204, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x4001d000
+[pid  1612] mprotect(0x4003e000, 2036, PROT_NONE) = 0
+[pid  1612] old_mmap(0x4003e000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x20000) = 0x4003e000
+[pid  1612] close(4)                    = 0
+[pid  1612] open("/lib/libcrypt.so.1", O_RDONLY) = 4
+[pid  1612] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\240\20"..., 1024) = 1024
+[pid  1612] fstat64(4, {st_mode=S_IFREG|0644, st_size=21000, ...}) = 0
+[pid  1612] old_mmap(NULL, 183740, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x4003f000
+[pid  1612] mprotect(0x40044000, 163260, PROT_NONE) = 0
+[pid  1612] old_mmap(0x40044000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x4000) = 0x40044000
+[pid  1612] old_mmap(0x40045000, 159164, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x40045000
+[pid  1612] close(4)                    = 0
+[pid  1612] open("/usr/lib/libgdbm.so.1", O_RDONLY) = 4
+[pid  1612] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\340\24"..., 1024) = 1024
+[pid  1612] fstat64(4, {st_mode=S_IFREG|0644, st_size=23276, ...}) = 0
+[pid  1612] old_mmap(NULL, 23708, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x4006c000
+[pid  1612] mprotect(0x40071000, 3228, PROT_NONE) = 0
+[pid  1612] old_mmap(0x40071000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x4000) = 0x40071000
+[pid  1612] close(4)                    = 0
+[pid  1612] open("/lib/libdb2.so.2", O_RDONLY) = 4
+[pid  1612] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\0_\0\000"..., 1024) = 1024
+[pid  1612] fstat64(4, {st_mode=S_IFREG|0644, st_size=262712, ...}) = 0
+[pid  1612] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40072000
+[pid  1612] old_mmap(NULL, 265836, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x40073000
+[pid  1612] mprotect(0x400b3000, 3692, PROT_NONE) = 0
+[pid  1612] old_mmap(0x400b3000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x3f000) = 0x400b3000
+[pid  1612] close(4)                    = 0
+[pid  1612] open("/lib/libdl.so.2", O_RDONLY) = 4
+[pid  1612] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\264\34"..., 1024) = 1024
+[pid  1612] fstat64(4, {st_mode=S_IFREG|0644, st_size=9460, ...}) = 0
+[pid  1612] old_mmap(NULL, 12340, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x400b4000
+[pid  1612] mprotect(0x400b6000, 4148, PROT_NONE) = 0
+[pid  1612] old_mmap(0x400b6000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x1000) = 0x400b6000
+[pid  1612] old_mmap(0x400b7000, 52, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x400b7000
+[pid  1612] close(4)                    = 0
+[pid  1612] open("/usr/lib/libssl.so.0.9.6", O_RDONLY) = 4
+[pid  1612] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\260\214"..., 1024) = 1024
+[pid  1612] fstat64(4, {st_mode=S_IFREG|0644, st_size=176344, ...}) = 0
+[pid  1612] old_mmap(NULL, 181088, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x400b8000
+[pid  1612] mprotect(0x400e1000, 13152, PROT_NONE) = 0
+[pid  1612] old_mmap(0x400e1000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x28000) = 0x400e1000
+[pid  1612] old_mmap(0x400e4000, 864, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x400e4000
+[pid  1612] close(4)                    = 0
+[pid  1612] open("/usr/lib/libcrypto.so.0.9.6", O_RDONLY) = 4
+[pid  1612] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0P$\2\000"..., 1024) = 1024
+[pid  1612] fstat64(4, {st_mode=S_IFREG|0644, st_size=786264, ...}) = 0
+[pid  1612] old_mmap(NULL, 802176, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x400e5000
+[pid  1612] mprotect(0x4019b000, 56704, PROT_NONE) = 0
+[pid  1612] old_mmap(0x4019b000, 45056, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0xb5000) = 0x4019b000
+[pid  1612] old_mmap(0x401a6000, 11648, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x401a6000
+[pid  1612] close(4)                    = 0
+[pid  1612] open("/lib/libc.so.6", O_RDONLY) = 4
+[pid  1612] read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\210\326"..., 1024) = 1024
+[pid  1612] fstat64(4, {st_mode=S_IFREG|0755, st_size=1170728, ...}) = 0
+[pid  1612] old_mmap(NULL, 1187168, PROT_READ|PROT_EXEC, MAP_PRIVATE, 4, 0) = 0x401a9000
+[pid  1612] mprotect(0x402c1000, 40288, PROT_NONE) = 0
+[pid  1612] old_mmap(0x402c1000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 4, 0x117000) = 0x402c1000
+[pid  1612] old_mmap(0x402c7000, 15712, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x402c7000
+[pid  1612] close(4)                    = 0
+[pid  1612] munmap(0x40016000, 26536)   = 0
+[pid  1612] rt_sigaction(SIGPIPE, {SIG_IGN}, {SIG_DFL}, 8) = 0
+[pid  1612] time(NULL)                  = 1001457858
+[pid  1612] brk(0)                      = 0x804a8d8
+[pid  1612] brk(0x804a900)              = 0x804a900
+[pid  1612] brk(0x804b000)              = 0x804b000
+[pid  1612] open("/etc/localtime", O_RDONLY) = 4
+[pid  1612] fstat64(4, {st_mode=S_IFREG|0644, st_size=786, ...}) = 0
+[pid  1612] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40016000
+[pid  1612] read(4, "TZif\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\6\0\0\0\6\0"..., 4096) = 786
+[pid  1612] close(4)                    = 0
+[pid  1612] munmap(0x40016000, 4096)    = 0
+[pid  1612] write(2, "[Wed Sep 26 00:44:18 2001] /usr/"..., 62) = 62
+[pid  1612] socket(PF_UNIX, SOCK_STREAM, 0) = 4
+[pid  1612] unlink("/var/run/gcache_port") = 0
+[pid  1612] bind(4, {sin_family=AF_UNIX, path="/var/run/gcache_port"}, 110) = 0
+[pid  1612] listen(4, 512)              = 0
+[pid  1612] chmod("/var/run/gcache_port", 0700) = 0
+[pid  1612] chown32(0xbffffc84, 0x21, 0xffffffff) = 0
+[pid  1612] geteuid32()                 = 0
+[pid  1612] setuid32(0x21)              = 0
+[pid  1612] accept(4,  <unfinished ...>
+[pid  1611] <... select resumed> )      = 0 (Timeout)
+[pid  1611] open("/etc/mime.types", O_RDONLY|O_LARGEFILE) = 3
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=5488, ...}) = 0
+[pid  1611] fstat64(3, {st_mode=S_IFREG|0644, st_size=5488, ...}) = 0
+[pid  1611] old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4001c000
+[pid  1611] read(3, "################################"..., 4096) = 4096
+[pid  1611] brk(0x80c3000)              = 0x80c3000
+[pid  1611] read(3, "image/x-corelphotopaint\t\t\t\tcpt\ni"..., 4096) = 1392
+[pid  1611] read(3, "", 4096)           = 0
+[pid  1611] close(3)                    = 0
+[pid  1611] munmap(0x4001c000, 4096)    = 0
+[pid  1611] open("/var/log/apache-ssl/access.log", O_WRONLY|O_APPEND|O_CREAT|O_LARGEFILE, 0644) = 3
+[pid  1611] fcntl64(3, F_DUPFD, 15)     = 16
+[pid  1611] close(3)                    = 0
+[pid  1611] open("/var/log/apache-ssl/ssl.log", O_WRONLY|O_APPEND|O_CREAT|O_LARGEFILE, 0644) = 3
+[pid  1611] fcntl64(3, F_DUPFD, 15)     = 17
+[pid  1611] close(3)                    = 0
+[pid  1611] chdir("/")                  = 0
+[pid  1611] fork()                      = 1613
+[pid  1613] setsid()                    = 1613
+[pid  1613] close(0)                    = 0
+[pid  1613] open("/dev/null", O_RDONLY|O_LARGEFILE) = 0
+[pid  1613] write(1, "Launching... /usr/lib/apache-ssl"..., 49Launching... /usr/lib/apache-ssl/gcache
+pid=1612
+) = 49
+[pid  1613] close(1)                    = 0
+[pid  1613] munmap(0x4001b000, 4096)    = 0
+[pid  1613] open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC|O_LARGEFILE, 0666) = 1
+[pid  1613] getpid()                    = 1613
+[pid  1613] time(NULL)                  = 1001457859
+[pid  1613] close(17)                   = 0
+[pid  1613] close(16)                   = 0
+[pid  1611] write(1, "Launching... /usr/lib/apache-ssl"..., 49Launching... /usr/lib/apache-ssl/gcache
+pid=1612
+ <unfinished ...>
+[pid  1613] munmap(0x4031a000, 34896 <unfinished ...>
+[pid  1611] <... write resumed> )       = 49
+[pid  1613] <... munmap resumed> )      = 0
+[pid  1611] munmap(0x4001b000, 4096 <unfinished ...>
+[pid  1613] munmap(0x40317000, 10364 <unfinished ...>
+[pid  1611] <... munmap resumed> )      = 0
+[pid  1613] <... munmap resumed> )      = 0
+[pid  1611] _exit(0)                    = ?
+[pid  1613] munmap(0x40314000, 8840)    = 0
+[pid  1613] munmap(0x40311000, 10140)   = 0
+[pid  1613] munmap(0x4030e000, 10664)   = 0
+[pid  1610] <... wait4 resumed> [WIFEXITED(s) && WEXITSTATUS(s) == 0], 0, NULL) = 1611
+[pid  1613] munmap(0x4030b000, 10160 <unfinished ...>
+[pid  1610] rt_sigprocmask(SIG_BLOCK, [CHLD TTOU],  <unfinished ...>
+[pid  1613] <... munmap resumed> )      = 0
+[pid  1610] <... rt_sigprocmask resumed> [CHLD], 8) = 0
+[pid  1613] munmap(0x402ff000, 47440 <unfinished ...>
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [CHLD],  <unfinished ...>
+[pid  1613] <... munmap resumed> )      = 0
+[pid  1610] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1613] munmap(0x402fc000, 10640 <unfinished ...>
+[pid  1610] rt_sigprocmask(SIG_BLOCK, [CHLD],  <unfinished ...>
+[pid  1613] <... munmap resumed> )      = 0
+[pid  1610] <... rt_sigprocmask resumed> [CHLD], 8) = 0
+[pid  1613] munmap(0x402f9000, 9188 <unfinished ...>
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [CHLD],  <unfinished ...>
+[pid  1613] <... munmap resumed> )      = 0
+[pid  1610] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1613] munmap(0x402f5000, 14248 <unfinished ...>
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid  1613] <... munmap resumed> )      = 0
+[pid  1610] <... rt_sigprocmask resumed> NULL, 8) = 0
+[pid  1613] munmap(0x402f2000, 8480 <unfinished ...>
+[pid  1610] --- SIGCHLD (Child exited) ---
+[pid  1613] <... munmap resumed> )      = 0
+[pid  1610] wait4(-1,  <unfinished ...>
+[pid  1613] --- SIGSEGV (Segmentation fault) ---
+[pid  1610] <... wait4 resumed> 0xbffff228, WNOHANG, NULL) = -1 ECHILD (No child processes)
+[pid  1610] sigreturn()                 = ? (mask now [])
+[pid  1610] rt_sigaction(SIGINT, {SIG_DFL}, {0x806b418, [], 0x4000000}, 8) = 0
+[pid  1610] write(1, "/usr/sbin/apache-sslctl start: h"..., 46/usr/sbin/apache-sslctl start: httpsd started
+) = 46
+[pid  1610] rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1610] read(255, "\nexit $ERROR\n\n## ==============="..., 7119) = 2842
+[pid  1610] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1610] rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1610] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1610] _exit(0)                    = ?
+[pid  1608] <... wait4 resumed> [WIFEXITED(s) && WEXITSTATUS(s) == 0], 0, NULL) = 1610
+[pid  1608] rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [CHLD], 8) = 0
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [CHLD], NULL, 8) = 0
+[pid  1608] rt_sigprocmask(SIG_BLOCK, [CHLD], [CHLD], 8) = 0
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [CHLD], NULL, 8) = 0
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1608] --- SIGCHLD (Child exited) ---
+[pid  1608] wait4(-1, 0xbffff418, WNOHANG, NULL) = -1 ECHILD (No child processes)
+[pid  1608] sigreturn()                 = ? (mask now [])
+[pid  1608] rt_sigaction(SIGINT, {SIG_DFL}, {0x806b418, [], 0x4000000}, 8) = 0
+[pid  1608] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1608] rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1608] rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1608] read(255, "\nexit 0\n\n", 1080) = 9
+[pid  1608] rt_sigprocmask(SIG_BLOCK, NULL, [], 8) = 0
+[pid  1608] rt_sigprocmask(SIG_BLOCK, [CHLD TTOU], [], 8) = 0
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1608] rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1608] rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[pid  1608] _exit(0)                    = ?

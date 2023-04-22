@@ -1,0 +1,152 @@
+PLAIN
+END
+ENDREP
+id: 1g.0.r5/17
+type: dir
+pred: 1g.0.r2/73533
+count: 1
+text: 5 0 4 4 2d2977d1c96f487abe4a1e202dd03b4e
+cpath: /trunk/files/nagios2
+copyroot: 0 /
+
+PLAIN
+K 22
+abackup_authorized_key
+V 17
+file 3.0.r2/84760
+K 11
+bash.bashrc
+V 17
+file 4.0.r2/87066
+K 3
+bin
+V 16
+dir 5.0.r2/84481
+K 14
+default_locale
+V 17
+file e.0.r2/81643
+K 5
+diode
+V 15
+dir 4y.0.r4/905
+K 4
+etch
+V 16
+dir f.0.r2/67076
+K 5
+exim4
+V 16
+dir k.0.r2/70730
+K 6
+facter
+V 17
+dir 12.0.r2/81986
+K 4
+home
+V 17
+dir 14.0.r2/71624
+K 5
+hosts
+V 18
+file 19.0.r2/72284
+K 10
+locale.gen
+V 18
+file 1a.0.r2/82118
+K 8
+logcheck
+V 17
+dir 1b.0.r2/66187
+K 7
+nagios2
+V 14
+dir 1g.0.r5/17
+K 8
+ntp.conf
+V 18
+file 1i.0.r2/67207
+K 15
+ntp.server.conf
+V 18
+file 1j.0.r2/72003
+K 30
+phpmyadmin.mysql5.mariatreu.at
+V 17
+dir 1k.0.r2/71900
+K 7
+profile
+V 18
+file 1l.0.r2/72148
+K 6
+puppet
+V 17
+dir 1m.0.r2/86932
+K 5
+sarge
+V 17
+dir 1x.0.r2/73190
+K 15
+ssh_known_hosts
+V 18
+file 22.0.r2/71754
+K 20
+sysctl.conf.firewall
+V 18
+file 23.0.r2/84611
+K 5
+tests
+V 17
+dir 24.0.r2/81510
+END
+ENDREP
+id: 2.0.r5/1016
+type: dir
+pred: 2.0.r4/1890
+count: 2
+text: 5 161 842 842 e04b75abc3a3d1c12b996da2cb09c7e4
+cpath: /trunk/files
+copyroot: 0 /
+
+PLAIN
+K 5
+files
+V 15
+dir 2.0.r5/1016
+K 9
+manifests
+V 16
+dir 36.0.r4/2315
+K 9
+templates
+V 18
+dir 3w.0.r2/100312
+END
+ENDREP
+id: 1.0.r5/1279
+type: dir
+pred: 1.0.r4/2585
+count: 4
+text: 5 1157 109 109 167098f3c31abc3203c9f54122c7a473
+cpath: /trunk
+copyroot: 0 /
+
+PLAIN
+K 5
+trunk
+V 15
+dir 1.0.r5/1279
+END
+ENDREP
+id: 0.0.r5/1463
+type: dir
+pred: 0.0.r4/2769
+count: 5
+text: 5 1415 35 35 a13d9f22bcda7681d37297e885bd3ba9
+cpath: /
+copyroot: 0 /
+
+1h.0.r2/73323 delete false false /trunk/files/nagios2/htpasswd.users
+
+
+1463 1592

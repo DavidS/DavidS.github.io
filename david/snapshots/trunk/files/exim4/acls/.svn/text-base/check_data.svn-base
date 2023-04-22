@@ -1,0 +1,63 @@
+# reject and delay messages with serious MIME container errors
+deny
+  message = Found MIME error ($demime_reason[$demime_errorlevel])
+  demime = *
+  condition = ${if >{$demime_errorlevel}{2}{1}{0}}
+  delay = 20s
+
+# warn and delay for other errors
+warn
+  message = X-MIME-Check: Found MIME error ($demime_reason[$demime_errorlevel])
+  demime = *
+  condition = ${if >{$demime_errorlevel}{0}{1}{0}}
+  delay = 5s
+
+# Reject known virus spreading file extensions.
+# Accepting these is pretty much braindead.
+deny
+  message = contains .$found_extension file (blacklisted).
+  demime = com:vbs:bat:pif:scr:exe
+  delay = 20s
+
+# assert that the address list headers are syntactically correct.
+warn
+  message = X-Header-Syntax-Check: unverifyable
+  log_message = Message headers fail syntax check
+  !acl = acl_whitelist_local_deny
+  !verify = header_syntax
+
+# assert that there is a verifiable sender address in at least
+# one of the "Sender:", "Reply-To:", or "From:" header lines.
+warn
+  message = X-Header-Sender-Check: unverifyable
+  log_message = No verifiable sender address in message headers
+  !acl = acl_whitelist_local_deny
+  !verify = header_sender
+
+# deny all malware
+deny
+  message = This message contains malware ($malware_name)
+  malware = *
+  delay = 20s
+
+# Always put X-Spam-Score header in the message.
+# It looks like this:
+# X-Spam-Score: 6.6 (++++++)
+# When a MUA cannot match numbers, it can match for an
+# equivalent number of '+' signs.
+# The 'true' makes sure that the header is always put
+# in, no matter what the score.
+warn
+  message = X-uni-ak-SpamScore: $spam_score ($spam_bar)
+  log_message = scored $spam_score points
+  condition = ${if <{$message_size}{80k}{1}{0}}
+  spam = nobody:true
+
+# Deny over threshold (50 == 5.0 !!)
+deny
+  message = Spam score too high ($spam_score)
+  condition = ${if <{$message_size}{80k}{1}{0}}
+  spam = nobody:true
+  condition = ${if >{$spam_score_int}{50}{1}{0}}
+  delay = 20s
+

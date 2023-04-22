@@ -1,0 +1,15 @@
+$TTL 86400
+$ORIGIN <%= name %>.
+$INCLUDE <%= soa %>
+$INCLUDE <%= ns %>
+$INCLUDE <%= mx %>
+
+
+mail    IN      CNAME	mail.edv-bus.at.
+webmail	IN		A		62.178.226.98
+
+; Aktuell still gelegt
+;@	IN	A	83.64.231.72
+$ORIGIN *.seccom.at.
+;@       IN      CNAME	www.edv-bus.at.
+

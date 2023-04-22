@@ -1,0 +1,16 @@
+This is the debian package for the Rcs module.
+It was created by David Schmitt <david@schmitt.edv-bus.at> using dh-make-perl.
+
+The upstream author is: 
+
+Craig Freter, <craig@freter.com>.
+
+
+Copyright (C) 1997,1998,1999,2000,2001 Craig Freter.  All rights reserved.
+This program is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.
+
+Perl is distributed under your choice of the GNU General Public License or
+the Artistic License.  On Debian GNU/Linux systems, the complete text of the
+GNU General Public License can be found in `/usr/share/common-licenses/GPL'
+and the Artistic Licence in `/usr/share/common-licenses/Artistic'.

@@ -1,0 +1,15 @@
+
+# Drop connection on first syntax or protocol error
+#smtp_max_synprot_errors = 0
+
+# Don't pipeline
+pipelining_advertise_hosts = 
+
+# try HELO/EHLO verification
+helo_try_verify_hosts = *
+
+# Virusscanner
+av_scanner = cmdline:/usr/bin/clamdscan --no-summary %s/*:FOUND: :: (.*) FOUND
+
+# Spamscanner
+spamd_address = 192.168.0.4 783

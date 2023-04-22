@@ -1,0 +1,16 @@
+# schema for using LDAP to resolve apache-urls into the $home of a user.
+
+# Copyright 2004 University of Applied Arts Vienna
+
+# Distributed under the GPL. Standard disclaimer applies.
+
+
+# Usurping dead OID-branch under 1.1.252.3
+
+attributetype ( 1.1.252.3.1 NAME 'apacheAliasDestination' SUP text )
+
+# map http://host/$cn/ to ~$uid/$apacheAliasDestination
+objectclass ( 1.1.252.3.2 NAME 'webAlias' SUP top STRUCTURAL
+	MUST ( cn $ uid $ apacheAliasDestination )
+	)
+

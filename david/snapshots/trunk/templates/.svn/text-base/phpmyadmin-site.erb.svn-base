@@ -1,0 +1,19 @@
+<VirtualHost *:<%= apache2_ssl_port %>>
+
+	ServerName <%= fqdn %>
+
+	RedirectMatch ^/$ /phpmyadmin/
+	Alias /phpmyadmin /usr/share/phpmyadmin
+
+	ServerSignature On
+	
+	ErrorLog /var/log/apache2/error.log
+	LogLevel warn
+	CustomLog /var/log/apache2/access.log combined
+
+	SSLEngine on
+
+	Include /etc/phpmyadmin/apache.conf
+
+</VirtualHost>
+

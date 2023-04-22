@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx
+ version="1.0"
+creator="GPSBabel - http://www.gpsbabel.org"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://www.topografix.com/GPX/1/0"
+xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
+<time>2008-07-05T18:11:09Z</time>
+<bounds minlat="25.061783362" minlon="-94.799016668" maxlat="50.982883293" maxlon="121.640266674"/>
+<wpt lat="47.717011431" lon="14.288961254">
+  <ele>601.185791</ele>
+  <name>001</name>
+  <cmt>28-JUN-08</cmt>
+  <desc>28-JUN-08</desc>
+  <sym>Flag, Blue</sym>
+</wpt>
+<wpt lat="38.855549991" lon="-94.799016668">
+  <ele>325.049072</ele>
+  <name>GARMIN</name>
+  <cmt>GARMIN</cmt>
+  <desc>GARMIN</desc>
+  <sym>Flag, Blue</sym>
+</wpt>
+<wpt lat="50.982883293" lon="-1.463899976">
+  <ele>35.934692</ele>
+  <name>GRMEUR</name>
+  <cmt>GRMEUR</cmt>
+  <desc>GRMEUR</desc>
+  <sym>Flag, Blue</sym>
+</wpt>
+<wpt lat="25.061783362" lon="121.640266674">
+  <ele>38.097656</ele>
+  <name>GRMTWN</name>
+  <cmt>GRMTWN</cmt>
+  <desc>GRMTWN</desc>
+  <sym>Flag, Blue</sym>
+</wpt>
+</gpx>

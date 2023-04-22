@@ -1,0 +1,7 @@
+librcs-perl (1.04-1) unstable; urgency=low
+
+  * Initial Release.
+  * Fixed rcspath.
+
+ -- David Schmitt <david@schmitt.edv-bus.at>  Mon,  2 Jun 2003 16:03:52 +0200
+

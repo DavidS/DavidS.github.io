@@ -1,0 +1,161 @@
+PLAIN
+K 7
+LICENSE
+V 18
+file 58.0.r16/7751
+K 22
+abackup_authorized_key
+V 17
+file 3.0.r2/84760
+K 13
+backports.key
+V 18
+file 5c.0.r23/2062
+K 11
+bash.bashrc
+V 17
+file 4.0.r2/87066
+K 3
+bin
+V 16
+dir 5.0.r2/84481
+K 14
+default_locale
+V 17
+file e.0.r2/81643
+K 5
+diode
+V 17
+dir 4y.0.r33/1783
+K 4
+etch
+V 16
+dir f.0.r2/67076
+K 5
+exim4
+V 16
+dir k.0.r2/70730
+K 6
+facter
+V 17
+dir 12.0.r2/81986
+K 4
+home
+V 17
+dir 14.0.r23/2677
+K 5
+hosts
+V 18
+file 19.0.r2/72284
+K 8
+leshaper
+V 17
+file 5a.1.r28/941
+K 10
+locale.gen
+V 18
+file 1a.0.r2/82118
+K 8
+logcheck
+V 16
+dir 1b.0.r22/776
+K 7
+nagios2
+V 14
+dir 1g.0.r5/17
+K 8
+ntp.conf
+V 18
+file 1i.0.r2/67207
+K 15
+ntp.server.conf
+V 18
+file 1j.0.r2/72003
+K 30
+phpmyadmin.mysql5.mariatreu.at
+V 17
+dir 1k.0.r2/71900
+K 7
+profile
+V 18
+file 1l.0.r2/72148
+K 6
+puppet
+V 17
+dir 1m.0.r12/2676
+K 5
+sarge
+V 17
+dir 1x.0.r2/73190
+K 20
+sysctl.conf.firewall
+V 18
+file 23.0.r2/84611
+K 5
+tests
+V 17
+dir 24.0.r2/81510
+END
+ENDREP
+id: 2.0.r47/926
+type: dir
+pred: 2.0.r33/2903
+count: 10
+text: 47 0 913 913 41480be012603ac8b727f73a588a7fe2
+cpath: /trunk/files
+copyroot: 0 /
+
+PLAIN
+K 7
+LICENSE
+V 18
+file 57.0.r16/8923
+K 3
+doc
+V 16
+dir 51.0.r36/714
+K 5
+files
+V 15
+dir 2.0.r47/926
+K 9
+manifests
+V 17
+dir 36.0.r45/1625
+K 7
+modules
+V 17
+dir 5h.0.r46/2341
+K 9
+templates
+V 17
+dir 3w.0.r45/3294
+END
+ENDREP
+id: 1.0.r47/1291
+type: dir
+pred: 1.0.r46/2712
+count: 46
+text: 47 1068 210 210 f564bb3521410a5b5613c59b5c4c34e4
+cpath: /trunk
+copyroot: 0 /
+
+PLAIN
+K 5
+trunk
+V 16
+dir 1.0.r47/1291
+END
+ENDREP
+id: 0.0.r47/1480
+type: dir
+pred: 0.0.r46/2901
+count: 47
+text: 47 1431 36 36 01c0ac3e4921864a13bf9e13ae7ecca2
+cpath: /
+copyroot: 0 /
+
+22.0.r2/71754 delete false false /trunk/files/ssh_known_hosts
+
+
+1480 1613

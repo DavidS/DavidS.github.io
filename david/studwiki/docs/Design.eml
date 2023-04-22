@@ -1,0 +1,131 @@
+From david@diode.josefine.at Fri May 23 19:50:03 2003
+Date: Fri, 23 May 2003 19:49:59 +0200
+From: David Schmitt <david@josefine.at>
+To: admin@alpha-i.at
+Subject: Re: Vorschlag: Alpha-I Admin Symposion
+Message-ID: <20030523174959.GA21086@josefine.at>
+User-Agent: Mutt/1.3.28i
+
+On Wed, May 21, 2003 at 11:01:29PM +0200, Heinrich Moser wrote:
+[irrelevante Teile des Originals gelöscht]
+> [Wilde Vision: Zusammenlegung IForum, Sides4-mi, Alpha-I, tuwien.lva.* 
+> (zumdindest die mit Informatik-Bezug) zu einem großen, komfortablen, in 
+> sich konsistenten Informationsnetzwerk mit Zugang über heterogene Medien 
+> (News, Mail, Web...). Was wäre mit einem runden Tisch Alpha-I, Sides-Team, 
+> Fachschaft? Runde Tische sind doch in letzter Zeit eh so in Mode...]
+
+Muhahaha. Was erwartest Du Dir davon? Die Probleme und Ziele sind
+IMHO deutlich abgesteckt: 
+* IForum funktioniert für die Allgemeinheit prächtig, hat aber für
+  Poweruser ein überstyltes Interface. Der Punkt hier ist sicher der
+  Community-Faktor. Die Größe des IForums zeigt auch, daß selbst eine
+  einzige Studienrichtung in einem Interface ohne Filtermöglichkeiten
+  nicht benutzbar ist.
+* LZK/SIDES hat einige Punkte, die aufgrund seines "offiziellen" Status
+  nicht so leicht zu erreichen sind: HS-Reservierung, Einbindung der
+  Lehrenden, vorhandene Datenbasis, Authentifizierung gegen die
+  Whitepages. Auf der anderen Seite gibt es schwerwiegende Nachteile,
+  durch die Systeme wie das IForum gepusht werden: Personal- und
+  Innovationsmangel, grausames Interface, geringe Akzeptanz aufgrund
+  technischer Schwächen, fehlende Integration in die Individuelle
+  Studienplanung.
+
+
+
+
+
+
+Daraus lassen sich eine Reihe von Anforderungen zusammenbasteln.
+
+Basics, die für die "Aufrechterhaltung des Betriebs" notwendig sind:
+
+* LVA-Metadaten ala LZK
+* Diskussionsforen ala IForum
+* Editierbarkeit für Lehrpersonal
+* Benachrichtigung über Änderungen
+
+
+
+
+Advanced Stuff:
+
+Nur ein kurzer Abriß, was mir vorschweben würde:
+
+* Editieren einzelner LVA-Metadaten in einem strikteren Wiki
+* Dadurch ermöglicht (und umgekehrt) die LVA-Metadaten in einer
+  Datenbank hinterlegen
+* Seiten einer Studienrichtung/LVA/Semester zuordnen
+* Mail- oder Webbenachrichtungen bei Änderungen auf subskribierten
+  Seiten
+* Ein Wiki2Mail Interface mit dem Lehrpersonal wichtige Nachrichten
+  sofort verschicken kann
+* Allgemeine und personalisierte Semester Terminpläne
+* personalisierte Stundenpläne
+* Platz für Diskussionen über die LVAs und allgemein
+
+Grundsätzlich würde ich ein sehr offenes System anpeilen, daß ähnlich
+eines Wikis möglichst viele Inhalte direkt in-place über den Browser
+editieren kann.
+
+
+
+
+
+
+Security:
+
+Bei "normalen" Wikis erfolgt die Sicherung der Inhalte über einen
+starken sozialen Gruppenzwang der durch den "öffentlichen Raum Wiki" und
+das große Publikum erzeugt wird. Das StudentenWiki hätte aber das
+Problem, daß es als SIDES/LZK-Nachfolger keine Alternativen gibt, eine
+rein pseudonyme Nutzung daher sicher (siehe zB UID'02) zu beachtlichen
+sozialen Problemen und wahrscheinlich auch zu interessanten rechtlichen
+Problemen führt.
+
+Um die maximal mögliche Freiheit im Wiki aufrecht zu erhalten würde ich
+vorschlagen ein Set an "sensitiven" Seiten zu erstellen. Diese
+sensitiven Seiten sollten dann nur von authentifizierten Usern (also
+Personal _und_ Studierende) editierbar sein.
+
+
+
+
+
+
+
+
+Ein nicht zu verachtendes Problem ist die Migration. Hier gibt es drei
+Pfade die zu beachten sind: Vom LZK (Lehrende, Subskriptionen, Hörsaal- und
+LVA-Metadaten), vom IForum (primär Studierende) und von anderen
+Studienrichtungen (gibt es da ähnliche Einrichtungen?).
+
+Realistischerweise, sollten wir wohl einen "slow-start" mit einem
+bestensfalls semi-automatisiert befüllten Subset der Informatik beginnen
+einen Prototypen herzustellen. An dem kann man mal sehen wie das
+von der Benutzbarkeit her aussieht und wie die einzelnen Features
+zusammenpassen. Wenn die Alpha-I Leute als Beta-Tester damit arbeiten,
+kann man anfangen mit Rektor/LZK zu plaudern. Auch darf man nicht
+vergessen, daß in einigen Jahren das TUWIS vom Grazer CampusOnline
+(vormals TUG-Online) abgelöst werden soll. Das sollte man sich auch mal
+ansehen.
+
+> >>>* Eine Newshierarchie für alle LVAs mit entsprechenden
+> >>> Maillinglisten und Gateways
+> >>Wär das nicht übertrieben?
+> Entspräche ungefähr Sides4-mi. IMHO nur in Kooperation damit sinnvoll.
+
+Siehe oben, ich glaube ich habe mich gerade selbst superseded ...
+
+
+Wir sollten uns wirklich mal zusammensetzen und mal den Bleistift
+schwingen.
+
+
+MfG David
+-- 
+  * Customer: "My palmtop won't turn on."
+  * Tech Support: "Did the battery run out, maybe?"
+  * Customer: "No, it doesn't use batteries. It's Windows powered."
+	-- http://www.rinkworks.com/stupid/cs_power.shtml
+
+

@@ -1,0 +1,142 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{german,a4,url}
+
+
+\title{Besprechungsprotokoll\\Freitag, 2001-04-06}
+\author{David Schmitt\thanks{e9725491@student.tuwien.ac.at}}
+
+\nonfrenchspacing
+
+\begin{document}
+
+\maketitle
+
+\vfill
+
+\begin{abstract}
+
+Lagebesprechung zur Kl"arung des Umfangs und Inhaltes des Praktikums
+"`LVA-spezifischer Webspace f"ur Vortragende"'. Es wurden grundlegende
+Parameter und folgende Inhalte festgelegt: Authentifikation und
+Autorisation, Ressourcen, Sessionabwicklung, Life-Cyclemanagement einer
+LVA, Referenz-Management beim Upload, statistische Zugriffsauswertungen
+f"ur Vortragende, Security sowie die notwendigen technischen Grundlagen.
+Au"serdem wurde ein vorl"aufiger Zeitplan f"ur die Abwicklung des
+Praktikums skizziert und ein "Uberblick "uber die vorhandene technischen
+Infrastruktur gegeben.
+
+\end{abstract}
+
+\newpage
+
+\section{Umfang und Form}
+
+Das Praktikum "`LVA-spezifischer Webspace f"ur Vortragende"' sollte in
+einem Design- und Technikvorschlag zur Umsetzung des Projektes
+"`LVA-spezifischer Webspace f"ur Vortragende"' resultieren. Ausgehend von
+den konkreten Vorschl"agen und Ideen des Papers sollte eine rasche und
+geradlinige Durchf"uhrung des Projektes m"oglich sein. Das Paper soll in
+\LaTeX\ abgefasst sein.
+
+\section{Authentifikation und Autorisation}
+
+Wie auf \url{http://www.lzk.ac.at/sides/sides-auth.html} beschrieben sind
+die Authentifikation\footnote{Festellung der Person} und die
+Autorisation\footnote{Feststellung der Berechtigungen einer Person}
+getrennte Abl"aufe. Zur Authentifizierung soll der sogenannte Auth-Daemon,
+der via LDAP auf die X.500 Whitepages\footnote{siehe
+\url{http://wp.tuwien.ac.at/}} der TU-Wien zugreift, genutzt werden.
+Autorisiert soll "uber die Zuordnung von LVAs zu Vortragenden in der SIDES
+Datenbank werden.
+
+\section{Ressourcen}
+
+Zur Zeit gibt es an der TU-Wien ca.~5000 LVAs. Jeder LVA sollten 20MB
+Speicherplatz zur Verf"ugung gestellt werden. Es wird jedoch erwartet, dass
+nur 1500 LVAs das Service in Anspruch nehmen. Dazu kommen noch ca 250-500kB
+f"ur Zugriffsstatistiken bei genutzten LVAs und das Indextemplate f"ur jede
+LVA.
+
+\section{Sessionabwicklung}
+
+Wie soll der Zugriff auf die LVAspaces aussehen? Vorgeschlagen wurde ftp,
+WebDAV, smb oder Webupload. Es ist dabei besonders darauf zu achten, da"s
+das System vorallem von computerfremden Vortragenden genutzt werden soll
+und daher das Interface so einfach wie m"oglich gestaltet werden sollte.
+Auch ist darauf zu achten, da"s nur die LVAspaces sichtbar sein sollten,
+auf die der angemeldete Benutzer Zugriff hat. Der Benutzer mu"s alle
+"ublichen Dateioperationen durchf"uhren k"onnen: schreiben, lesen,
+umbenennen, l"oschen, Verzeichnisse anlegen, umbenennen und l"oschen.
+
+\section{Life-Cyclemanagement}
+
+Es m"ussen "Uberlegungen zur Erstellung, Benutzung, Rechtevergabe,
+Quota"anderungen, Semesterwechsel und L"oschung der LVA angestellt werden.
+Diese Vorg"ange m"ussen in die bestehenden Automatismen eingebunden werden
+und entsprechend automatisiert durchf"uhrbar sein.  Wie die restlichen
+Abl"aufe im SIDES sollten auch zu diesen Abl"aufen automatisiert
+Verst"andigungen an die Betroffenen verschickt werden.
+
+\section{Referenzmanagement}
+
+Um die Benutzung des Systems m"oglichst einfach und transparent zu
+gestalten sollte das System daf"ur sorgen, dass Referenzen zwischen
+Dokumenten nach M"oglichkeit erhalten bleiben. Insbesondere sollte versucht
+werden Referenzen in das Filesystem des Nutzers auf korrekte Referenzen in
+den LVAspaces umzuschreiben. Komplement"ar dazu sollte mit einem
+Linkchecker die Seiten "uberpr"uft werden um Fehler, die durch einfaches
+Umschreiben nicht behoben werden konnten abzufangen und den Benutzer
+m"oglichst proaktiv darin zu Unterst"utzen, den Fehler zu beheben.
+
+\section{Zugriffsstatistiken}
+
+Ein Tool wie analog oder webalizer soll benutzt werden um nach LVA
+aufgeschl"usselte Zugriffstatistiken zu erzeugen.
+
+\section{Security}
+
+K"onnen durch den Einsatz des Systems Resourcen mi"sbraucht werden?  Welche
+besonderen Vorkehrungen zur Absicherung des Systems sind notwendig?
+
+\section{Technische Infrastruktur}
+
+\subsection{Vorhandene}
+
+Liste der aktuell eingesetzten Technologien und Produkte:
+\begin{description}
+\item[Webserver:]{Apache\footnote{siehe \url{http://www.apache.org/}}}
+\item[CGI-Umgebung:]{mod\_perl\footnote{siehe \url{http://perl.apache.org/}}}
+\item[Datenbank:]{Oracle 8\footnote{siehe \url{http://www.oracle.com/}}}
+\item[DB-Access:]{oraperl/DBD::Oracle\footnote{siehe 
+\url{http://gd.tuwien.ac.at/languages/perl/CPAN/modules/by-category/07_Database_Interfaces/Oraperl/DBD-Oracle-1.06.readme}}}
+\item[Securityframework\footnote{siehe \url{http://www.lzk.ac.at/sides/sides-auth.html}}:]{SIDES/Whitepages/authd}
+\end{description}
+
+\section{Zeitplan}
+
+Enzi wird am Dienstag, 2001-04-17 aus dem Urlaub zur"uck sein. Dann sollen
+dir bis dato gesammelten Informationen vor dem SIDES Team pr"asentiert und
+diskutiert werden um sie in der zweiten Woche nach Ostern weiter zu
+verfeinern und in eine akzeptable Form zu bringen.
+
+\section{Zusammenfassung}
+
+Nocheinmal kurz zusammengefa"sst die wichtigsten zu behandelnden Punkte des
+Praktikums:
+\begin{itemize}
+\item{Zusammenfassung "uber M"oglichkeiten des Projektes 
+	"`LVA-spezifischer Webspace f"ur Vortragende"'}
+\item{Authentifikation via authd/LDAP}
+\item{Autorisation aus SIDES-Datenbank}
+\item{Darstellung/Abwicklung einer Session}
+\item{Life-Cyclemanagement: Anlegen, l"oschen, editieren, Semesterende,
+	LVA-Ende}
+\item{Referenzenmanagement: innere Struktur von Dokumentsammlungen
+	erhalten}
+\item{Zugriffstatistiken}
+\item{Technische Infrastruktur: ftpd, Quotas, Ressourcen}
+\item{Erste Pr"asentation am Dienstag, 2001-04-17}
+\end{itemize}
+
+\end{document}

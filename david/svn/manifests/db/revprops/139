@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-08-01T08:09:32.852457Z
+K 7
+svn:log
+V 129
+minor typo fixes, removed obsolete disconnected vs_ip, set the right host as lower stratum fallback, fix dhcp subnet for firewall
+END

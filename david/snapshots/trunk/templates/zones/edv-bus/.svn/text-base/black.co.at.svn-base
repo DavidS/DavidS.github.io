@@ -1,0 +1,58 @@
+$INCLUDE <%= header %>
+
+; needed for jabber
+@		A	83.64.231.72
+
+; ic
+ic		IN	A	83.64.231.70
+; diode
+diode		IN	A	83.64.231.72
+isp		IN	A	83.64.231.72
+debian		IN	A	83.64.231.72
+release-tracker	IN	A	83.64.231.72
+bookmark	IN	A	83.64.231.72
+www		IN	A	83.64.231.72
+wiki		IN	A	83.64.231.72
+webalizer	IN	A	83.64.231.72
+mail		IN	A	83.64.231.72
+news		IN	A	83.64.231.72
+club		IN	A	83.64.231.72
+security	IN	A	83.64.231.72
+lists		IN	A	83.64.231.72
+time		IN	A	83.64.231.72
+posteingang	IN	A	83.64.231.72
+shadowland	IN	A	83.64.231.72
+puppet		IN	A	83.64.231.70
+puppetmaster	IN	A	83.64.231.70
+
+cheesy		IN	A	83.64.231.72
+
+;dipl		IN	A	85.125.165.44
+
+fw-gudrun		IN	A 62.178.45.213
+chello		IN	CNAME	fw-gudrun
+
+oma		IN	A	84.114.167.214
+
+; mfischer
+gjat		IN	A	80.108.136.197
+		IN	MX	10 gjat.black.co.at.
+		IN	MX	20 mail.black.co.at.
+		IN	MX	40 zid.uni-ak.ac.at.
+; spamblock, da mfischer diese Adresse nicht mehr benutzt.
+nospam-guru	IN	CNAME	guru.black.co.at.
+guru		IN	A	127.0.0.1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Kunden
+
+;fcg		IN	A	85.125.165.43
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; admin MX
+puppettester	MX	10 <%= smarthost %>.
+munin				MX	10 <%= smarthost %>.
+services			MX 10 <%= smarthost %>.
+ic					MX 10 <%= smarthost %>.
+fw-gudrun		MX 10 <%= smarthost %>.
+ejabberd			MX 10 <%= smarthost %>.

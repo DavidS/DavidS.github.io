@@ -1,0 +1,5 @@
+^\w{3} [ :0-9]{11} [._[:alnum:]-]+ stunnel\[[0-9]+\]: connect from [^ ]* \([^ ]*\)$
+^\w{3} [ :0-9]{11} [._[:alnum:]-]+ stunnel\[[0-9]+\]: Using '143' as tcpwrapper service name$
+^\w{3} [ :0-9]{11} [._[:alnum:]-]+ stunnel\[[0-9]+\]: stunnel [0-9].[0-9]+ on i386-pc-linux-gnu PTHREAD\+LIBWRAP with OpenSSL
+^\w{3} [ :0-9]{11} [._[:alnum:]-]+ named\[[0-9]+\]: FORMERR resolving '[^']*':
+^\w{3} [ :0-9]{11} [._[:alnum:]-]+ puppetd\[[0-9]+\]: \(//[-_.[:alnum:]]+/debian_base/debian_etch/apt\[default_apt\]/exec=/usr/bin/apt-get -y update && /usr/bin/apt-get autoclean #hourly/returns\) executed successfully$

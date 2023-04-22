@@ -1,0 +1,15 @@
+# schema for using LDAP to resolve apache-urls into the $home of a user.
+
+# Copyright 2004 University of Applied Arts Vienna
+
+# Distributed under the GPL. Standard disclaimer applies.
+
+
+# Usurping dead OID-branch under 1.1.252.4.
+
+attributetype ( 1.1.252.4.1 NAME 'extraParameter' SUP text )
+
+objectclass ( 1.1.252.4.2 NAME 'extraParameters' SUP top STRUCTURAL
+	MUST ( extraParameter )
+	)
+

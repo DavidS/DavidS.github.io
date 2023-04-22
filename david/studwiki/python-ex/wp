@@ -1,0 +1,82 @@
+testInputExists (__main__.SetupCorrectTests) ... ok
+testInputIsFile (__main__.SetupCorrectTests) ... ok
+testBuilding (__main__.TestLexer) ... ok
+testDotLexer (__main__.TestLexer) ... ok
+testDotLexerFinish (__main__.TestLexer) ... ok
+testDotLexerStart (__main__.TestLexer) ... ok
+testNullLexer (__main__.TestLexer) ... ok
+testBuilding (__main__.TestParser) ... ok
+testDotParse (__main__.TestParser) ... ERROR
+testNullParse (__main__.TestParser) ... ok
+
+======================================================================
+ERROR: testDotParse (__main__.TestParser)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "./swtests.py", line 52, in testDotParse
+    assert self.parser.DoParse("dot"), "parser has not recognized 'dot'"
+  File "./uniWikiParser.py", line 21, in DoParse
+    parseResult = parseOb.GO()
+  File "./kjParser.py", line 827, in GO
+    self.DoOneReduction()
+  File "./kjParser.py", line 760, in DoOneReduction
+    self.ParseError(current,tokenVal, "nomatch1")
+  File "./kjParser.py", line 811, in ParseError
+    raise SyntaxError, 'unexpected token sequence.' + data
+SyntaxError: unexpected token sequence.LL
+*******************************
+current state = 1
+expects: 
+'*', 'dot', 
+('nomatch1',)
+current token = 'dot'
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.019s
+
+FAILED (errors=1)
+tokenVal ((-8, 'ident'), 'Document')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, 'ident'), 'Document')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+{(1, (-8, '*')): ((-4, 0),), (1, (-8, 'dot')): ((-3, 2),), (2, (-8, '*')): ((-4, 1),)}
+tokenVal dot
+tokenVal ((-8, 'ident'), 'Document')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '@R'), '@R')
+tokenVal ((-6, '::'), '::')
+tokenVal ((-6, '>>'), '>>')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')
+tokenVal ((-8, '*'), '*')

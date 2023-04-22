@@ -1,0 +1,100 @@
+8
+
+dir
+31
+file:///home/david/public_html/svn/manifests/trunk/templates
+file:///home/david/public_html/svn/manifests
+
+
+
+2007-04-19T09:28:25.639855Z
+28
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f03ff2f1-f02d-0410-970d-b9634babeaa1
+
+phpmyadmin-site.erb
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+22774a4bd8b1a7d0834380bea7ff8090
+2007-04-12T21:34:21.827236Z
+2
+david
+
+nagios
+dir
+
+sarge
+dir
+
+LICENSE
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+c0e8a41f6dc87a7f77ee55dbcac8ddb2
+2007-04-13T18:21:28.886803Z
+16
+david
+
+etch
+dir
+
+backuppc_set_pattern.erb
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+9c651f0c8202e6a54f23f8649dbcb910
+2007-04-12T21:34:21.827236Z
+2
+david
+
+default_leshaper
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+8ff886c331e1f7da1bad5843dda346b5
+2007-04-19T09:28:25.639855Z
+28
+david
+
+dnsmasq.conf
+file
+
+
+
+
+2007-05-02T15:46:01.000000Z
+e8c7163caf3de3deb7dba722579d783e
+2007-04-12T21:34:21.827236Z
+2
+david
+
+zones
+dir
+

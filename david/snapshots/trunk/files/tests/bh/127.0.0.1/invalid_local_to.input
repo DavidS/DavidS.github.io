@@ -1,0 +1,12 @@
+HELO localhost
+MAIL FROM: <gerhard.schmitt@black.co.at>
+RCPT TO: <sdkhashd@black.co.at>
+DATA
+From: <gerhard.schmitt@black.co.at>
+To: <sdkhashd@black.co.at>
+Subject: smtpscanner testmail
+
+blah 
+fasel
+.
+QUIT

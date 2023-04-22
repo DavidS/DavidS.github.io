@@ -1,0 +1,246 @@
+\chapter{Objekt-orientierte Datenbanksysteme}
+\thispagestyle{empty}
+\label{Kapitel_Vergleich}
+
+1990 -- in den Hochtagen der OODBMS Entwicklung -- hat sich eine Gruppe
+führender Forscher dieses Gebietes zusammengetan, um das "Object Oriented
+Database System Manifesto"\cite{dood90} zu schreiben um dem kommerziell
+getriebenen Hype um OODBMS' mit einem "Lakmustest" der Objektorientierung
+entgegenzutreten. Auch sollte damit ein einheitliches Vokabular für die weitere
+Diskussion geschaffen werden. Als kommerzielles Gegengewicht wurde mit
+\cite{3rdGen} das "Third-Generation Database System Manifesto" geschrieben, um
+den Notwendigkeiten des Einsatzes solcher Systeme außerhalb der akademischen
+Welt festzuhalten.
+
+Um dieses Spannungsfeld zu beleuchten, zuerst eine Klassifizierung der drei
+Implementierungen nach \cite{dood90}, sowie eine Diskussion der zusätzlichen
+Anforderungen von \cite{3rdGen}.
+
+\section{Die Goldenen Regeln}
+
+Die folgenden dreizehn Kriterien wurden von den Autoren als unbedingt notwendig
+identifiziert, um ein objektorientiertes Datenbanksystem zu charakterisieren.
+
+\subsection{Thou shalt support complex objects}
+\label{complex_objects}
+
+Dieses Gebot fordert neben den üblichen atomaren Typen (Zahlen,
+Zeichenketten, Wahrheitswerte) auch zusammengesetzte Typen, zumindest Mengen,
+Listen, und Tupel. Diese werden ja bereits von Java in Form von Collections,
+Arrays und Klassen bereitgestellt und sind daher für alle Implementierungen
+gleichermaßen verfügbar. 
+
+\subsection{Thou shalt support object identity}
+
+Alle drei Systeme unterstützen Primärschlüssel als Objektidentitätsträger.
+
+SimpleORM beschränkt das auf eine Transaktion, um die Isolierung auch zwischen
+Transaktionen in einer virtuellen Maschine zu gewährleisten. Hibernate
+implementiert in der \code{Session} ähnliche Mechanismen, um das gleiche zu
+erreichen. In der reinen Javaversion habe ich mich auf eine globale
+\code{Registry} beschränkt, um wiederholbare Lesevorgänge zu ermöglichen. Mehrere
+parallele Transaktionen in einer VM werden damit zwar nicht unterstützt, dem
+Gebot ist jedoch Genüge getan.
+
+\subsection{Thou shalt encapsulate thine objects}
+
+Wie bei der Unterstützung komplexer Objekte kann dieses Gebot durch die korrekte
+Anwendung der Javamechanismen erfüllt werden. Alle drei gezeigten Beispiele implementieren
+die selbe Schnittstelle, die keinen Zugriff auf die Interna zulässt und sind
+also gleichauf.
+
+\subsection{Thou shalt support types or classes}
+
+Auch dieses Gebot wird durch den Einsatz von Java ohne Probleme erfüllt.
+
+\subsection{Thine classes or types shalt inherit from their ancestors}
+
+Die reinen Javaversion nutzt zwar Vererbung, um die Objektseite des
+Beispieles zu modellieren. Auf der \code{DAL} Seite ist die Verteilung der
+Verantwortlichkeiten des Datenbankzugriffes jedoch zu komplex, um sich für so
+ein kleines Projekt zu lohnen. Im Falle einer Weiterentwicklung könnten
+entsprechende Mechanismen nachgereicht werden. Eine Möglichkeit dazu wäre das
+Weiterreichen von SQL-Teilen und \code{ResultSet}s durch die
+Ableitungshierarchie. Damit werden die einzelnen Klassen natürlich stark
+gekoppelt, die Performance bleibt jedoch hoch, da nur eine minimale Anzahl an
+Anweisungen an die Datenbank abgesetzt wird. Eine andere Möglichkeit ist die
+autonome Verwaltung von Attributen in den jeweiligen Klassen. Dadurch wird eine
+starke Koppelung zwischen den Klassen vermieden, jede Ebene in der
+Ableitungshierarchie muss jedoch eigene Anweisungen an die Datenbank stellen.
+
+Hibernate unterstützt die Abbildung von beliebigen Ableitungshierarchien auf
+fast beliebige Datenbankstrukturen. Die Implementierung auf der SQL Seite kann
+damit flexibel an die Anforderungen der Applikation angepasst werden.
+
+Entsprechend der SimpleORM Philosophie wird keine Ableitungsart speziell
+unterstützt. Trotzdem können -- wie in \abschnitt{ableitung} beschrieben -- auch
+mit SimpleORM Hierarchien flexibel abgebildet werden.
+
+\subsection{Thou shalt not bind prematurely}
+
+Gemeint ist dabei Methodenüberladung und späte Bindung. Wiederum ein
+Gebot, das schon aufgrund der Nutzung von Java erfüllt wird.
+
+\subsection{Thou shalt be computationally complete}
+
+Von einer Programmiersprache wie Java offensichtlich erfülltes Gebot. Die
+Autoren selbst weisen schon darauf hin, dass dieses Gebot sinnvollerweise durch
+die Anbindung an eine Programmiersprache erfolgen kann und nicht unbedingt eine
+neue Datenbanksprache erfordert.
+
+\subsection{Thou shalt be extensible}
+
+Dieses Gebot fordert, dass es keine Unterscheidung zwischen system- und
+benutzerdefinierter Typen gibt. Speziell sollten eventuelle Unterschiede in der
+Unterstützung benutzerdefinierter Typen durch das System vor der Applikation und
+dem Programmierer versteckt sein.
+
+Da innerhalb eines Werkzeugs alle Objekte gleichberechtigt und benutzerdefiniert
+sind, kann dieses Gebot auch als erfüllt betrachtet werden.
+
+\subsection{Thou shalt remember thy data}
+
+Dieses, auch für heutige Programmiersprachen, ungewöhnliches Gebot fordert, dass
+beliebige Objekte unabhängig von ihrem Typ und ohne explizite Übersetzung
+gespeichert werden können.
+
+Java alleine erfüllt dies natürlich nicht. Beschränkt man die Betrachtung jedoch wie
+beim letzten Gebot auf die implementierten persistenten Typen, so kann auch
+dieses Gebot als erfüllt betrachtet werden. Die zugrundeliegende Forderung nach
+automatischer globaler Persistenz wird jedoch von keiner der Implementierungen
+erfüllt.
+
+\subsection{Thou shalt manage very large databases}
+
+Um große Datenmengen effizient verwalten zu können, werden hier analog zu den
+relationalen Datenbanken transparentes Indexmanagement, Datengruppierungen
+(Clustering), Pufferspeicher, Zugriffspfadauswahl und Abfrageoptimierungen
+verlangt.
+
+Dieses Gebot ist auf mehreren Ebenen zu beurteilen. Am einfachsten nach den
+Buchstaben des Manifestes. Dort wird -- 1990, einige Jahre vor dem ersten PC --
+nur die komplette Kapselung der physikalischen Ebene (Speicherverwaltung,
+Indexstrukturen, Plattenzugriffe) von der logischen Ebene der Programmierer
+getrennt. Durch die Verwendung einer SQL Datenbank als Basis ist das
+offensichtlich und mit einer hohen Implementierungsqualität gewährleistet. Es
+kann jedoch auch nicht geleugnet werden, dass die Menge an individuellem und
+vor allem stark leistungsbeeinflussenden Design und Programmierung innerhalb
+der Datenobjekte nicht dem Geiste dieses Gebots entspricht. Die Flexibilität
+auf der Javaseite ist zwar notwendig um auch in Extremfällen akzeptable
+Leistung zu erhalten, sie ist aber nicht, wie gefordert, komplett unsichtbar.
+
+Es liegt jedoch nahe, dass gerade die korrekte Auswahl eines der in
+\ref{ableitung} beschriebenen Implementierungsschematas -- ebenso wie die korrekte
+Auswahl von Indexarten -- aufgrund der Abhängigkeit von der Abfragelast auf
+lange Zeit hinweg nicht automatisierbar sein wird.
+
+\subsection{Thou shalt support concurrent users}
+
+Auf Datenbankebene unterstützen dies alle Methoden. Innerhalb einer virtuellen
+Maschine kann das jedoch nur von den Bibliotheken mit einem Session-beschränkten
+Pufferspeicher gewährleistet werden.
+
+\subsection{Thou shalt recover from hardware and software failures}
+
+Transaktionen auf dem Objektmodell werden in allen Implementierungen direkt auf
+Datenbanktransaktionen abgebildet. Damit können dort alle tradionellen und
+etablierten Sicherungsmassnahmen greifen.
+
+\subsection{Thou shalt have a simple way of querying data}
+
+Einzig Hibernate bringt seine eigene Abfragesprache mit. Für sie existiert
+jedoch zur Zeit kein allgemein verfügbares Benutzerinterface. Alternativ kann in
+allen Fällen direkt mit SQL auf die zugrundeliegende Datenbank zugegriffen
+werden. Da dies eine Verletzung der Kapselung darstellt, sollte man sich hier
+aber auf Lesezugriffe beschränken.
+
+
+\section{Details}
+
+Die folgenden Eigenschaften sind signifikante Verbesserungen der
+Implementierungsqualität, aber -- wie zum Beispiel mehrfache Vererbung -- schon
+ausserhalb des unbedingt Notwendigen.
+
+Die ersten beiden Forderungen, mehrfache Vererbung sowie Typüberprüfungen und
+-in\-fe\-renz, werden von Java nicht oder nur teilweise zur Verfügung gestellt und
+sind daher von keiner der Implementierungen erfüllt.
+
+\subsection{Verteilung}
+
+Schon die grundlegende Architektur erlaubt die Trennung von virtueller Maschine
+und Datenbank. Weitere Verteilung kann durch die parallele Ausführung mehrerer
+virtueller Maschinen erreicht werden. Diese können sich ja weiterhin über die
+Datenbank synchronisieren. Bei der Verteilung der Datenbank kann es je nach
+eingesetzter Technologie jedoch zu zusätzlichen Programmieranforderungen auf der
+Javaseite kommen (zB Trennung von Schreib- und Lesepfaden).
+
+\subsection{Langlaufende Transaktionen}
+
+Die reine Javaimplementierung hat keine besondere Unterstützung für lang laufende
+Transaktionen. Lediglich die vom verwendeten Datenbanksystem zur Verfügung
+gestellten Mechanismen (zB \sql{CHECKPOINT} von Postgres) könnten verwendet
+werden. Sollte dies nicht ausreichen, können zusätzlich
+optimistische Sperrstrategien (siehe Abschnitt~\ref{optimisticlock})
+eingesetzt werden, um Objekte von Datenbanktransaktionen zu entkoppeln.
+
+Hibernate und SimpleORM unterstützen beide das Auskoppeln von Objekten aus einer
+Transaktion. Dadurch werden die Objekte serialisierbar -- sie haben ja keine
+Isolierungsanforderungen mehr -- und können zum Beispiel in der \code{Session}
+eines Webservers gelagert werden. Werden die Objekte wieder in eine neue
+Transaktion eingekoppelt und Änderungen in die Datenbank zurückgeschrieben, so
+wenden beide Bibliotheken Methoden aus dem Bereich der optimistischen Sperren an,
+um Schreibkonflikte zu bemerken und Datenschäden zu vermeiden.
+
+\subsection{Versionskontrolle}
+
+Keine der vorgestellten Produkte unterstützt Versionskontrolle der Objekte oder
+des Datenschemas.
+
+\section{Offene Parameter}
+
+Im letzten Abschnitt stellen die Autoren jene Eigenschaften dar, über die damals
+noch kein Konsens vorhanden war. Sie bilden die Freiheitsgrade für
+Implementierungen. Es handelt sich dabei um
+
+\begin{description}
+\item[Programmierparadigma]{logische (zB Prolog), funktionale (zB Haskell) oder
+imperative (zB Java) Programmierung}
+\item[eingebaute Typen]{Es wird zwar in \abschnitt{complex_objects} eine
+minimale Menge an eingebauten Typen vorgestellt. Einer Implementierung steht es
+jedoch frei, diese beliebig zu erweitern.}
+\item[Typsystem]{Generische Typen, Templates, Typeinschränkungen und vieles
+mehr.}
+\item[Vereinheitlichung]{In wie weit Methoden und Typen Objekte sind.}
+\end{description}
+
+Alle dieser Eigenschaften werden durch die Wahl von Java als
+Implementierungssprache festgelegt. Ein Konsens ausserhalb einzelner
+Programmiersprachen ist jedoch nicht abzusehen.
+
+\section{Datenbanken der "`Dritten Generation"'}
+
+In \cite{3rdGen} berichten Autoren mit starkem industriellen
+Hintergrund\footnote{IBM, DEC, Oracle} über ihre Erfahrungen mit der
+Weiterentwicklung relationaler Systeme und stellen die These auf, dass die
+wichtigsten objektorientierten Eigenschaften dadurch genausogut oder besser
+erreicht werden können.
+
+Speziell im Bereich des Datenbankzugriffes und der Einbettung in
+Programmiersysteme, wo \cite{dood90} nur einen einfachen Weg zur
+Datenabfrage fordern, wird \cite{3rdGen} wesentlich detaillierter.
+
+\subsection{Randbedingungen und Trigger}
+
+\cite{3rdGen} prophezeit einen Wachstumsschub bei der Anwendung von
+Datenbank-basierter Überprüfung von Klasseninvarianten und Geschäftsregeln.
+Aktuelle DBMS inkludieren dafür auch weitgehende Unterstützung. Zum Beispiel
+Oracle mit integrierter Java Umgebung, der MS-SQL Server mit .NET
+Triggermethoden oder PostgreSQL mit der Möglichkeit zur Einbettung von Java, R,
+Ruby und Shellskripten. Besonders in kleineren Projekten ist jedoch die höhere
+Komplexität der Verteilung von Quelltext auf mehrere Komponenten den erwarteten
+Gewinnen gegenüberzustellen.
+
+In vielen Fällen haben auch Applikationsserver die Integration der
+Geschäftslogik übernommen. Die SQL-Datenbank wird in diesem Modell nur noch als
+verlässlicher, leistungsfähiger Datenspeicher benutzt.
+

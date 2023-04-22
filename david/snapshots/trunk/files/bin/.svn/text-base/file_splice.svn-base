@@ -1,0 +1,41 @@
+#!/usr/bin/perl -ni
+
+BEGIN {
+
+	$SPLICE = shift @ARGV;
+	$COMMENT_CHAR = shift @ARGV;
+	$SECTION_PATTERN = shift @ARGV;
+
+	$BEGIN_PATTERN = $COMMENT_CHAR . " BEGIN " . $SECTION_PATTERN;
+	$END_PATTERN = $COMMENT_CHAR . " END " . $SECTION_PATTERN;
+
+	$in_section     = 0;
+	$spliced	= 0;
+
+	sub output_splice() {
+		return if $spliced;
+
+		print $BEGIN_PATTERN, "\n";
+		open (SPLICE, "<$SPLICE");
+		while(<SPLICE>) { print $_; }
+		close (SPLICE);
+		print $END_PATTERN, "\n";
+		$spliced = 1;
+	}
+}
+
+END {
+	output_splice();
+}
+
+
+if (/$BEGIN_PATTERN/) {
+	$in_section = 1;
+	output_splice();
+}
+elsif (/$END_PATTERN/) {
+	$in_section = 0;
+}
+elsif (!$in_section) {
+	print;
+}

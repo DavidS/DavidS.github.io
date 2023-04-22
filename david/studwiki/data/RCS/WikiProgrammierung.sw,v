@@ -1,0 +1,156 @@
+head	1.4;
+access;
+symbols;
+locks
+	www-data:1.4; strict;
+comment	@# @;
+
+
+1.4
+date	2003.06.02.20.56.34;	author www-data;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2003.06.02.20.30.35;	author www-data;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2003.06.02.20.25.22;	author www-data;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2003.06.02.18.04.50;	author david;	state Exp;
+branches;
+next	;
+
+
+desc
+@init
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@{LVA: 815.815, SS, WS, 2.0SWS }
+{Titel: Design, Programmierung und Betrieb eines Wikis}
+{Studienplan: 881, 1. Semester }
+{Vortragende: DavidSchmitt, HinzUndKunz}
+{Institut: E119}
+{Standardtermin: HS17, Jeden Montag 16:00 bis 18:00 }
+{Termin: Prüfung, HS17, 2003-06-30}
+
+{Lehrziel}
+
+* Erarbeitung grundlegender Konzepte und Techniken von Wikis
+* Erkennen der strukturellen und sozialen Grundlagen der Wiki-Community
+* Anwenden der Technologie für eigene Aufgaben.
+
+{Lehrinhalt}
+
+* Was ist ein WikiWiki und WarumWikiFunktioniert?
+* WikiTechnik und TextFormatierung
+* WikiImplementierung
+** UseMod
+** C2
+* WikiPsychologie
+* WikiProgrammierung und WikiProgrammierungsRekursionen
+
+{Anmerkungen}
+
+Diese Veranstaltung wird von den Designern und Programmieren des StudentenWikis
+abgehalten und gibt einen Einblick hinter die Kulissen des Wikis.
+
+2. Absatz
+
+----
+
+c'est ne pas un Anmerkung!
+
+---
+
+{Links}
+
+* {Link: Das Alpha-I Wiki http://wiki.alpha-i.at/}
+
+{Kontakt}
+
+* mailto:david@@josefine.at
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d23 1
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d35 2
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 41
+a41 44
+
+* {LVA: 815.815, SS, WS, 2.0SWS } blah }
+* {Titel: Design, Programmierung und Betrieb eines Wikis}
+* {Studienplan: 881, 1. Semester }
+* {Vortragende: DavidSchmitt, HinzUndKunz}
+* {Institut: E119}
+* {Standardtermin: HS17, Jeden Montag 16:00 bis 18:00 }
+* {Termin: Prüfung, HS17, 2003-06-30}
+
+}
+
+{Lehrziel}
+
+* Erarbeitung grundlegender Konzepte und Techniken von Wikis
+* Erkennen der strukturellen und sozialen Grundlagen der Wiki-Community
+* Anwenden der Technologie für eigene Aufgaben.
+
+{Lehrinhalt}
+
+* Was ist ein WikiWiki und WarumWikiFunktioniert?
+* WikiTechnik und TextFormatierung
+* WikiImplementierung
+** UseMod
+** C2
+* WikiPsychologie
+
+{Anmerkungen}
+
+Diese Veranstaltung wird von den Designern und Programmieren des StudentenWikis
+abgehalten und gibt einen Einblick hinter die Kulissen des Wikis.
+
+2. Absatz
+
+----
+
+c'est ne pas un Anmerkung!
+
+{Links}
+
+* {Link: Das Alpha-I Wiki http://wiki.alpha-i.at/}
+
+{Kontakt}
+
+* mailto:david@@josefine.at
+@

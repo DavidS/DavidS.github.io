@@ -1,0 +1,62 @@
+### acl/22_anti-spam_check_helo
+
+# This access control list is used for the HELO or EHLO command in 
+# an incoming SMTP transaction. The tests are run in order until the
+# greeting is either accepted or denied.
+
+local_check_helo:
+  # Record the current timestamp, in order to calculate elapsed time
+  # for subsequent delays
+  warn
+    set acl_m2  = $tod_epoch
+
+  # Accept mail received over local SMTP (i.e. not over TCP/IP).  
+  # We do this by testing for an empty sending host field.
+  # Also accept mails received from hosts for which we relay mail.
+  #
+  accept
+    log_message = Accepting EHLO/HELO ($sender_helo_name): relay_from: $sender_host_address
+    hosts       = : +relay_from_hosts
+
+  # If the remote host greets with an IP address, then prepare a reject
+  # message in $acl_c0, and a log message in $acl_c1.  We will later use
+  # these in a "deny" statement.  In the mean time, their presence indicate
+  # that we should keep stalling the sender.
+  # 
+  warn
+    condition   = ${if isip {$sender_helo_name}{true}{false}}
+    set acl_c0  = IP address in HELO/EHLO greeting disallowed
+    set acl_c1  = remote host used IP address in HELO/EHLO greeting
+
+  # Likewise if the peer greets with one of our own names
+  # 
+  warn
+    condition   = ${if match_domain{$sender_helo_name}\
+                       {$primary_hostname:+local_domains:+virtual_domains}\
+                       {true}{false}}
+    set acl_c0  = use your own name in HELO/EHLO (you used: $sender_helo_name)
+    set acl_c1  = remote host used our name in HELO/EHLO greeting
+
+  # If HELO verification fails, we prepare a warning message in acl_c1.
+  # We will later add this message to the mail header.  In the mean time,
+  # its presence indicates that we should keep stalling the sender.
+  # 
+  warn
+    condition   = ${if !def:acl_c1 {true}{false}}
+    !verify     = helo
+    set acl_c1  = X-HELO-Warning: Remote host $sender_host_address \
+                  ${if def:sender_host_name {($sender_host_name) }}\
+                  incorrectly presented itself as $sender_helo_name
+    log_message = remote host presented unverifiable HELO/EHLO greeting ($sender_helo_name).
+
+  warn
+    set acl_m2  = ${if def:acl_c1 {${eval:20 + $acl_m2 - $tod_epoch}}{0}}
+    condition   = ${if >{$acl_m2}{0}{true}{false}}
+    log_message = delaying for $acl_m2 seconds (check_helo: $acl_c1)
+
+  # Accept the greeting, but if we previously generated a message in
+  # $acl_c1, stall the sender until 20 seconds has elapsed.
+  accept
+    log_message = HELO: delaying for ${if eq{$received_protocol}{esmtpsa}{0}{${if >{$acl_m2}{0}{$acl_m2}{0}}}}s
+    delay       = ${if eq{$received_protocol}{esmtpsa}{0}{${if >{$acl_m2}{0}{$acl_m2}{0}}}}s
+

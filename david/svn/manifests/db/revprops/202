@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-08-15T10:44:06.455023Z
+K 7
+svn:log
+V 44
+add gitweb support and export manifests repo
+END

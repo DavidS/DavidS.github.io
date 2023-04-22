@@ -1,0 +1,14 @@
+TODO:
+
+2001-04-09: Autorisation: Einbindung in Role/Person/Permission Schema nach http://www.lzk.ac.at/sides/sides-auth.html
+	- Bearbeiten einer LVA (automatisch durch Vortragendenstatus)
+	- Bearbeiten aller LVAs eines Instituts/Abteilung (Zusammen mit zB: 'PRIV:LVA-Daten Exxx editieren'?)
+	
+2001-04-09: Indextemplate: Auflistung der LVA Information
+	- Zeit, Ort, Vortragender, etc.
+	- Links:
+		* Homepage
+		* News
+	- Sides News <<-- Moeglicherweise Template als eigenstaendige externe Page?
+		zB: /sides/lva123.html  und /sides/lva123/blah.html
+	- eventuell dynamisch generieren.

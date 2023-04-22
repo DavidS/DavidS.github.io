@@ -1,0 +1,9 @@
+$INCLUDE <%= header %>
+
+@		IN	MX	20 mail.piaristen.at.
+
+www		IN	CNAME	www.mariatreu.at.
+posteingang	IN	CNAME	mail.mariatreu.at.
+postausgang	IN	CNAME	mail.mariatreu.at.
+ftp		IN	CNAME	mail.mariatreu.at.
+mail		IN	CNAME	mail.mariatreu.at.

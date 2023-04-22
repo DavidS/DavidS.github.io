@@ -1,0 +1,19 @@
+$TTL 86400
+$ORIGIN <%= name %>.
+
+@		SOA     <%= soa_primary %> <%= soa_contact %> (
+						<%= serial %>
+						<%= refresh %>
+						<%= soa_retry %>
+						<%= expire %>
+						<%= minimum %>
+			)
+
+<% for nameservername in nameservers %>
+@	NS	<%= nameservername %>
+<% end %>
+
+@		MX		100 mail.edv-bus.at.
+		MX		150 mail.mariatreu.at.
+
+webmail  IN      CNAME www

@@ -1,0 +1,62 @@
+\chapter{Zusammenfassung}
+\thispagestyle{empty}
+\label{Kapitel_Zusammenfassung}
+
+Reines SQL ist immer noch unübertroffen in Kompaktheit und reiner
+Abfrageleistung. Im Gegensatz zur ursprünglichen Absicht, SQL als
+Benutzerschnittstelle anzubieten, ist die Text- und Anweisungs-orientierte
+Arbeitsweise nicht mehr Endnutzer-tauglich. Moderne Anwendungen -- sei es auf
+Web- oder Desktopbasis -- bauen jedoch auf objekt-orientierten Sprachen und
+Bibliotheken auf. Die besprochene Kluft zwischen den leistungsfähigen -- aber
+inflexiblen -- relationalen Systemen und den Objektmodellen kann sowohl durch
+selbstprogrammierte Übersetzungsfunktionen als auch durch Fremdprodukte
+überbrückt werden.
+
+Die vorgestellten Bibliotheken -- SimpleORM und Hibernate -- zeigen dabei ganz
+unterschiedliche Ansätze, wodurch sie in unterschiedlichen Situationen ihre
+Stärken ausspielen können.
+
+\paragraph{SimpleORM} ist eine leistungsstarke Bibliothek, die dem
+Programmierer die
+grundlegende Kontrolle über die Datenbank aus der Hand nehmen. In der
+Abwägung zwischen Funktionsumfang und Benutzbarkeit zielt SimpleORM auf den
+erfahrenen JDBC-Programmierer, der sich die mechanische Arbeit des
+Datenbankzugriffes erleichten möchte ohne die Möglichkeiten der
+Stapelverarbeitung zu verlieren. Die knappe, präzise
+Dokumentation~in~\cite{simpleorm} beschreibt in rund 17 Seiten die gesamte
+Programmierschnittstelle und die wichtigsten Eckpfeiler der zugrundeliegenden
+Designphilosophie.
+
+SimpleORM eignet sich besonders für Projekte mit einfachen Datenstrukturen und
+hohen Anforderungen an den Datendurchsatz. Komplexere Beziehungen zwischen Daten
+-- wie die Hierarchie in der Beispieldatenbank -- müssen selbst entworfen
+werden, stellen aber aufgrund der hohen Flexibilität der Bibliothek keine
+besonderen Hindernisse dar.
+
+\paragraph{Hibernate} baut zwar auch auf JDBC auf, um sich zur Datenbank zu verbinden,
+bietet aber die gesamte Datenzugriffsfunktionalität selbst an. Durch diese
+Kapselung kann Hibernate einen wesentlich intensivere Unterstützung der
+Datenbankkommunikation anbieten, erfordert aber ebenso eine intensivere
+Beschäftigung mit Hibernate selbst. Die Entkoppelung der Datenbank von den
+Geschäftsobjekten durch die XML-Abbildungsbeschreibung erlaubt auch die
+getrennte Weiterentwicklung von Anwendung und Datenbank. Die Hibernate
+Referenz~\cite{hibernate} beschreibt auf über 200 Seiten die gesamte
+Programmierschnittstelle und das XML Schema der Abbildungsbeschreibung.
+
+Hibernate eignet sich besonders für Projekte mit komplexen Datenstrukturen oder
+nicht-trivialen Datenbanksituationen. Hier wiederum im Speziellen ist der
+Zugriff auf Alt-Systeme hervorzuheben, da der Datenzugriff auf beliebige
+Schemaformen erfolgen kann. Der Datendurchsatz von Hibernate blieb zwar hinter den
+anderen Bibliotheken zurück, dafür gibt es allerdings eine breite Palette an
+Optimierungsparametern und Zusatzprodukten zur Leistungssteigerung. Deren
+Konfiguration und Einsatz lohnt sich ebenfalls nur für Projekte mit
+entsprechenden Anforderungen.
+
+
+SimpleORM als auch Hibernate erfüllen im Zusammenspiel mit der
+Implementierungssprache die meisten Anforderungen, die an objekt-orientierte
+Datenbanksysteme gestellt werden. Gegenüber der händischen Implementierung mit
+JDBC werden damit respektable Einsparungen im Bereich des Programmieraufwandes
+und der Komplexität geboten, dem gegenüber steht eine Investition in das
+Erlernen der Bibliothek.
+

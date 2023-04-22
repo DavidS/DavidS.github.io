@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-08-01T11:25:58.760776Z
+K 7
+svn:log
+V 35
+tighten down deps for backports key
+END

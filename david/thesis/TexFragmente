@@ -1,0 +1,11 @@
+\section{SQL -- SQL:1999 Fehlschlag}
+
+Achse Implementationsabhängigkeit: Datenfriedhof(DF) --- Applikationsserver(AS);
+
+DF: minimale Abhängigkeit von Datenbank, kein Verlaß auf komplexe 
+SQL:1999-Features
+
+AS: hohe Abhängigkeit von Datenbank, keine Standardisierung notwendig, native
+Features haben reichere Semantik
+
+

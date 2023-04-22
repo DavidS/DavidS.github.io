@@ -1,0 +1,3 @@
+^\w{3} [ :0-9]{11} [._[:alnum:]-]+ puppetd\[[0-9]+\]: \(Package\[[^ ]*\]\(provider=apt\)\) Failed to handle dpkg-query line "(unknown|purge) ok not-installed [^ ]+ "
+^\w{3} [ :0-9]{11} [._[:alnum:]-]+ spamd\[[0-9]+\]: spamd: result: .*,autolearn=(no|spam|ham|unavailable) ?$
+^\w{3} [ :0-9]{11} [._[:alnum:]-]+ stunnel\[[0-9]+\]: SSL_read \(SSL_ERROR_SYSCALL\): Connection reset by peer \(104\)$

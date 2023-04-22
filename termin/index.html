@@ -1,0 +1,72 @@
+<html>
+ <head>
+  <title>Terminplaner</title>
+ </head>
+ <body bgcolor=gainsboro>
+ <script language="JavaScript" type="text/javascript">
+  function change()
+  {
+    var x = Math.round(Math.random()*2)*128;
+    var y = Math.round(Math.random()*2)*128;
+    var z = Math.round(Math.random()*2)*128;
+    var c = "rgb(" + x + "," + y + "," + z + ")";
+    x = 256-x; y = 256-y; z = 256-z;
+    var b = "rgb(" + x + "," + y + "," + z + ")";
+    a.style.color=c;
+    a.style.background=b;
+  }
+ setInterval(change,900);
+ </script>
+ <body bgcolor=gainsboro>
+   <table border=0 cellpadding=7 cellspacing=0><tr><td bgcolor=white>
+    <h2 id="a" style="margin-bottom:0">
+	    &nbsp;Termine!&nbsp;</h2>
+   </td></tr></table>
+   <table align=right border=0 cellspacing=0 cellpadding=0>
+    <tr><td><img width="512" height="384" src="http://www.cheesy.at/wp-content/uploads/2010/08/evis-geburtstag-im-prater/031-1024x768.jpg" title="Party" alt="Party" /></td></tr>
+   </table>
+   <p>Wir suchen einen f&uuml;r alle akzeptablen Termine
+     <!-- hier das richtige Anfangs- und Enddatum einsetzen -->
+     zwischen Mitte Juni und Ende August.
+     <!-- weiter unten als hidden-Felder auch im Formular -->
+   </p>
+   <p>Bitte als Passwort den Vornamen in der Zeile neben dem Kurzzeichen 
+      eingeben!
+   </p>
+   <form action="/cgi-bin/neuwahl.cgi" method=post>
+    <table>
+     <!--<tr><td>DS</td>
+         <td><input type="password" name='ds'></td>
+     </tr>-->
+     <tr><td>HY</td>
+         <td><input type="password" name='hy'></td>
+     </tr>
+     <tr><td>LI</td>
+         <td><input type="password" name='li'></td>
+     </tr>
+     <tr><td>PA</td>
+         <td><input type="password" name='pa'></td>
+     </tr>
+     <tr><td>TT</td>
+         <td><input type="password" name='tt'></td>
+     </tr>
+     <tr><td>TT jun.</td>
+         <td><input type="password" name='dv'></td>
+     </tr>
+     <tr><td>PE</td>
+         <td><input type="password" name='pe'></td>
+     </tr>
+     <tr><td>IP</td>
+         <td><input type="password" name='ip'></td>
+     </tr>
+     <tr>
+      <td colspan=2 align=center>
+          <input type="submit" value="Submit"></td>
+     </tr>
+     <!-- hier das richtige Anfangs- und Enddatum einsetzen -->
+          <input type=hidden name='a' value='10.06.2021'>
+          <input type=hidden name='e' value='31.08.2021'>
+   </form>
+  </table>
+ </body>
+</html>

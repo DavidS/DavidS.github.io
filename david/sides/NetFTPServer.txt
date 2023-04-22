@@ -1,0 +1,11 @@
+http://search.cpan.org/doc/RWMJ/Net-FTPServer-1.0.7/lib/Net/FTPServer.pm
+
+---------------------------------------------------------------------
+Net::FTPServer is a secure, extensible and configurable FTP server written in
+Perl.
+---------------------------------------------------------------------
+
+Extrem modular, VFS Layer vorhanden, keine Quota vorhanden, Perl.
+
+
+

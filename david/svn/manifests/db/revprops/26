@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 5
+david
+K 8
+svn:date
+V 27
+2007-04-19T09:08:45.746612Z
+K 7
+svn:log
+V 72
+fixed puppet stopping to use right parameter (enable, instead of ensure)
+END

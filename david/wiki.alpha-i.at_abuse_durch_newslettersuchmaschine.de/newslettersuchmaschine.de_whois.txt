@@ -1,0 +1,55 @@
+% Copyright (c)2004 by DENIC
+% Version: 1.00.0
+%
+% Restricted rights.
+%
+%
+% Except for agreed Internet operational purposes, no part of this
+% information may be reproduced, stored in a retrieval system, or
+% transmitted, in any form or by any means, electronic, mechanical,
+% recording, or otherwise, without prior permission of the DENIC
+% on behalf of itself and/or the copyright holders. Any use of this
+% material to target advertising or similar activities are explicitly
+% forbidden and will be prosecuted. The DENIC requests to be notified
+% of any such activities or suspicions thereof.
+
+domain:      newslettersuchmaschine.de
+domain-ace:  newslettersuchmaschine.de
+descr:       Erich Kersting
+descr:       Eschebergstr. 30
+descr:       D-34128 Kassel
+descr:       Germany
+nserver:     ns13.schlund.de
+nserver:     ns14.schlund.de
+status:      connect
+changed:     2004-04-20T03:05:42+0200
+source:      DENIC
+
+[admin-c]
+Type:         PERSON
+Name:         Erich Kersting
+Address:      Eschebergstr. 30
+City:         Kassel
+Pcode:        34128
+Country:      DE
+Remarks:      ACTION UPDATE
+Remarks:      ID [#33382826/32228331]
+Changed:      2004-02-17T12:57:47+0100
+Source:       DENIC
+
+[tech-c][zone-c]
+Type:         PERSON
+Name:         Puretec Hostmaster
+Address:      1&1 Internet AG
+Address:      Erbprinzenstr. 4-12
+City:         Karlsruhe
+Pcode:        76133
+Country:      DE
+Phone:        +49 1908 70700
+Fax:          +49 1805 001372
+Email:        hostmaster@puretec.de
+Remarks:      ACTION UPDATE
+Remarks:      ID [#5255780/5105904]
+Changed:      2002-08-13T11:58:06+0200
+Source:       DENIC
+
