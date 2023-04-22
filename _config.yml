@@ -4,8 +4,8 @@ theme: minima
 # remote_theme: DavidS/time-machine
 show_downloads: false
 
-url: 'https://club.black.co.at'
-baseurl: '/log'
+url: 'https://black.co.at'
+baseurl: '/'
 title: "DavidS' log"
 author: 'David Schmitt'
 
@@ -28,7 +28,7 @@ defaults:
     values:
       layout: "post"
       # this pattern matches up with previous' ikiwiki URLs for the blog
-      permalink: /posts/:year-:month-:day-:title/index:output_ext
+      permalink: "/posts/:year-:month-:day-:title/index:output_ext"
 
 jekyll_analytics:
   Plausible:
