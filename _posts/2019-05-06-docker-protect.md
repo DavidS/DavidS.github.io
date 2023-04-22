@@ -4,7 +4,7 @@ category: hosting
 tags: docker docker-compose hosting security
 ---
 
-A follow-up to [last week's docker-compose post](/log/posts/2019-04-27-docker-compose/).
+A follow-up to [last week's docker-compose post](/posts/2019-04-27-docker-compose/).
 
 # Updating the containers
 

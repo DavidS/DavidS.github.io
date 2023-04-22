@@ -13,7 +13,7 @@ Akteure:
 * Jede [Menge](http://www.wienkav.at/kav/kfj/medstellen_anzeigen.asp?ID=138) [hilfreicher](http://www.wienkav.at/kav/kfj/medstellen_anzeigen.asp?ID=718) [Krankenschwestern und -pfleger](http://www.barmherzige-brueder.at/bbwien/ambu/uroamb.htm) sowie [Ä](http://www.barmherzige-brueder.at/bbwien/abtimg/schramek.jpg)[r](http://Dr.Wilhelm.Bauer)[z](http://members.nextra.at/khbb.urologie/mitarbei.htm)[t](http://Fr.Dr.De.Santis)[e](http://www.urologie-zentrum.de/seiten/aerzte_weissbach.html)[n](http://Prof.Dr.Pont)
 * Meine [Freundin](http://www.cheesy.at)
 * Meine [Mutter](http://ohne.internet.auftritt) und mein [Vater](http://club.black.co.at/gerhard/)
-* [Ich](/log/archive/dsewiki_profil)
+* [Ich](/archive/dsewiki_profil)
 
 # Erster Akt: Diagnose und Behandlung
 

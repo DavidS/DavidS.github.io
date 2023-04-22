@@ -6,7 +6,7 @@ tags: puppet testing retrospec exim travisci beaker docker vagrant fullstack cla
 
 > Please note that this post is a linear and unedited brain dump of what I did. Many things might have changed meanwhile, and I may have learned how to do things better. This is an experiment in progress.
 
-This is a continuation of [last week's post](/log/posts/2016-04-03-containing-docker/), refreshing my [exiscan module](https://github.com/DavidS/puppet-exiscan) using [retrospec-puppet](https://github.com/nwops/puppet-retrospec), and a few other nifty technologies. In the last installment I contained docker in a virtualbox to avoid magic action at a distance on my desktop (dialogs popping up, audio being muted).
+This is a continuation of [last week's post](/posts/2016-04-03-containing-docker/), refreshing my [exiscan module](https://github.com/DavidS/puppet-exiscan) using [retrospec-puppet](https://github.com/nwops/puppet-retrospec), and a few other nifty technologies. In the last installment I contained docker in a virtualbox to avoid magic action at a distance on my desktop (dialogs popping up, audio being muted).
 
 ## Picking up the Pieces
 

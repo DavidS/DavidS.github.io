@@ -32,7 +32,7 @@ defaults:
 
 jekyll_analytics:
   Plausible:
-    domain: 'club.black.co.at'
+    domain: 'black.co.at'
     host: 'https://plausible.black.co.at'
     404_tracking: true
     embed_tracker: true

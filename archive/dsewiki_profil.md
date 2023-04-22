@@ -41,7 +41,7 @@ WikiManifesto: Meines Erachtens nach sollte der Diskurs auf WikiSeiten sehr geri
 
 # Krebs
 
-Aufgrund der Menge des Materials jetzt auf einer [eigenen Seite](/log/archive/dsewiki_krebs).
+Aufgrund der Menge des Materials jetzt auf einer [eigenen Seite](/archive/dsewiki_krebs).
 
 Für Leute mit gutem Magen: [Ästhetik des Lebens](http://club.black.co.at/david/pics/Aesthetik%20des%20Lebens/)
 
@@ -101,7 +101,7 @@ Siehe [ihre Homepage](http://www.cheesy.at/).
   * Am WardsWiki:DavidSchmitt seit 2001-01-04
   * Freundin seit 2001-04-03
   * Wohnung seit 2001-11-01
-  * [Wiedergeboren](/log/archive/dsewiki_krebs) am 2004-06-19
+  * [Wiedergeboren](/archive/dsewiki_krebs) am 2004-06-19
   * [Geheiratet](http://www.cheesy.at/fotos.php?lang=de&dir=fotos/alben/Feiern/2006-10-13-Hochzeit/cimg1508.jpg) am 2006-10-13
   * Mit Frau in's [[Link][Url=http://www.slb.com]Ausland] gegangen am 2006-11-12
   * Umzug nach [Vechta](http://www.meinestadt.de/vechta/home) am 2007-04-27

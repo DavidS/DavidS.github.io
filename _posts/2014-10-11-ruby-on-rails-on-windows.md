@@ -15,7 +15,7 @@ DevKit into a really nice installer. Native extensions install out of the box,
 except for [libv8](https://rubygems.org/gems/libv8), which is required by
 therubyracer, which is required by less-rails, which is required by
 twitter-bootstrap-rails, which is my [preferred bootstrap
-gem](http://club.black.co.at/log/posts/2014-08-18-bootstrap-shootout/), which
+gem](http://black.co.at/posts/2014-08-18-bootstrap-shootout/), which
 has a build dependency on Python 2. Libv8, that is. Libv8 has a build
 dependency on python2. [Isn't it
 ironic?](https://www.youtube.com/watch?v=Jne9t8sHpUc)
